@@ -1,0 +1,8 @@
+#ifndef CONTROLTESTS_H
+#define CONTROLTESTS_H
+
+//#define TEST_ALLOCATOR
+//#define TEST_ARRAY
+#define TEST_LINKED_ARRAY
+
+#endif // !CONTROLTESTS_H

@@ -1,0 +1,78 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Source Files\Allocator">
+      <UniqueIdentifier>{adb7572f-943f-4386-ac51-05c69bbfd3b5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Utilities">
+      <UniqueIdentifier>{8b19a015-d798-4a2d-be36-ae081341d3bf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Profiler">
+      <UniqueIdentifier>{4b176224-0d33-41a5-ac3e-cd419bac3ec7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Containers">
+      <UniqueIdentifier>{9d064113-373c-4aee-ba0f-10d9309810db}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Allocator\bs_PoolAllocator.h">
+      <Filter>Source Files\Allocator</Filter>
+    </ClInclude>
+    <ClInclude Include="Utilities\bs_types.h">
+      <Filter>Source Files\Utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="Utilities\bs_define.h">
+      <Filter>Source Files\Utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="Allocator\bs_Pool.h">
+      <Filter>Source Files\Allocator</Filter>
+    </ClInclude>
+    <ClInclude Include="Utilities\bs_arrayOperations.h">
+      <Filter>Source Files\Utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="Utilities\bs_math.h">
+      <Filter>Source Files\Utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="bs_StackAllocator.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Allocator\bs_StackAllocator.h">
+      <Filter>Source Files\Allocator</Filter>
+    </ClInclude>
+    <ClInclude Include="Allocator\bs_Memory.h">
+      <Filter>Source Files\Allocator</Filter>
+    </ClInclude>
+    <ClInclude Include="Profiler\bs_Profiler.h">
+      <Filter>Source Files\Profiler</Filter>
+    </ClInclude>
+    <ClInclude Include="Containers\bs_Array.h">
+      <Filter>Source Files\Containers</Filter>
+    </ClInclude>
+    <ClInclude Include="Containers\bs_LinkedArray.h">
+      <Filter>Source Files\Containers</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Allocator\bs_Pool.cpp">
+      <Filter>Source Files\Allocator</Filter>
+    </ClCompile>
+    <ClCompile Include="Allocator\bs_StackAllocator.cpp">
+      <Filter>Source Files\Allocator</Filter>
+    </ClCompile>
+    <ClCompile Include="Profiler\bs_Profiler.cpp">
+      <Filter>Source Files\Profiler</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>
