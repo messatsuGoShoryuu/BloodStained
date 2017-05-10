@@ -30,7 +30,7 @@ void arrayPoolTest(int itemCount);
 void simplePoolAllocatorTest();
 void arrayPoolAllocatorTest(int itemCount, int poolSize);
 void stackAllocatorTest(ui64 stackSize);
-void mallocFreeProfilingTest();
+void mallocBS_FreeProfilingTest();
 
 int main()
 {
@@ -49,7 +49,7 @@ int main()
 		std::cout << "3 : Simple Pool Allocator Test" << std::endl;
 		std::cout << "4 : Array Pool Allocator Test" << std::endl;
 		std::cout << "5 : Stack Allocator Profiling Test" << std::endl;
-		std::cout << "6 : Malloc Free Profiling Test" << std::endl;
+		std::cout << "6 : BS_Malloc BS_Free Profiling Test" << std::endl;
 		std::cout << "7 : Quit" << std::endl;
 
 		int input = 0;
@@ -67,7 +67,7 @@ int main()
 				break;
 			case 5: stackAllocatorTest(65536);
 				break;
-			case 6: mallocFreeProfilingTest();
+			case 6: mallocBS_FreeProfilingTest();
 				break;
 			case 7: quit = true;
 				std::cout << "Quitting" << std::endl;
@@ -346,7 +346,7 @@ void stackAllocatorTest(ui64 stackSize)
 	showMemoryStats();
 }
 
-void mallocFreeProfilingTest()
+void mallocBS_FreeProfilingTest()
 {
 	std::cout << "Profile New:" << std::endl;
 
@@ -372,17 +372,17 @@ void mallocFreeProfilingTest()
 	showMemoryStats();
 
 
-	std::cout << "Profile Malloc:" << std::endl;
+	std::cout << "Profile BS_Malloc:" << std::endl;
 
-	int* ints = (int*)Malloc(sizeof(int) * 10);
+	int* ints = (int*)BS_Malloc(sizeof(int) * 10);
 
-	std::cout << "int* ints = (int*)Malloc(sizeof(int) * 10);" <<std::endl;
+	std::cout << "int* ints = (int*)BS_Malloc(sizeof(int) * 10);" <<std::endl;
 
 	showMemoryStats();
 
-	std::cout << "Free(ints,sizeof(int) * 10);" << std::endl;
+	std::cout << "BS_Free(ints,sizeof(int) * 10);" << std::endl;
 
-	Free(ints);
+	BS_Free(ints);
 
 	showMemoryStats();
 }

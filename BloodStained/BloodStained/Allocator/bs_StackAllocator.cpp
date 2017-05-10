@@ -1,5 +1,5 @@
 #include "bs_StackAllocator.h"
-#include "../Utilities/bs_math.h"
+#include "../Math/bs_math.h"
 #include "../Profiler/bs_Profiler.h"
 
 #include<memory>
@@ -37,7 +37,7 @@ namespace bs
 
 	bool StackAllocator::initialize()
 	{
-		m_stackBase = static_cast<byte*>(malloc(m_stackSize));
+		m_stackBase = static_cast<byte*>(malloc((size_t)m_stackSize));
 		if (!m_stackBase) return false;
 
 #ifdef BS_PROFILE_MEMORY
@@ -67,11 +67,11 @@ namespace bs
 
 		//move pointer by aligned size
 		ui32 frame = m_pointer;
-		size = nearest2PowMultipleOf(size, align);
+		size = math::nearest2PowMultipleOf(size, align);
 		m_pointer += size;
 
 		//store last frame value and move pointer 
-		storeUi32ToByteArray(m_stackBase + m_pointer,frame);
+		math::storeUi16ToByteArray(m_stackBase + m_pointer,frame);
 		m_pointer += intSize;
 
 #ifdef BS_PROFILE_MEMORY

@@ -41,20 +41,24 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <IncludePath>G:\Programming\BloodStained\BloodStained\Libraries\include;G:\Programming\BloodStained\BloodStained\BloodStained;$(IncludePath)</IncludePath>
     <LibraryPath>G:\Programming\BloodStained\BloodStained\Libraries\lib\Bloodstained_Library;G:\Programming\BloodStained\BloodStained\Libraries\lib;$(LibraryPath)</LibraryPath>
+    <OutDir>$(SolutionDir)\Debug\</OutDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <IncludePath>G:\Programming\BloodStained\BloodStained\Libraries\include;G:\Programming\BloodStained\BloodStained\BloodStained;$(IncludePath)</IncludePath>
     <LibraryPath>G:\Programming\BloodStained\BloodStained\Libraries\lib\Bloodstained_Library;G:\Programming\BloodStained\BloodStained\Libraries\lib;$(LibraryPath)</LibraryPath>
+    <OutDir>$(SolutionDir)\Release\</OutDir>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
+      <ShowIncludes>true</ShowIncludes>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>Bloodstained_Lib.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>Bloodstained_Lib.lib;resource.res;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -64,21 +68,47 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
+      <ShowIncludes>true</ShowIncludes>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <AdditionalDependencies>Bloodstained_Lib.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>Bloodstained_Lib.lib;resource.res;%(AdditionalDependencies)</AdditionalDependencies>
+      <SubSystem>
+      </SubSystem>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="bsArrayTest.cpp" />
     <ClCompile Include="bsLinkedArrayTest.cpp" />
+    <ClCompile Include="bsString.cpp" />
+    <ClCompile Include="bsWindowsWindowTest.cpp" />
     <ClCompile Include="bs_allocatorTest.cpp" />
+    <ClCompile Include="bs_clockTest.cpp" />
+    <ClCompile Include="Camera3DTest.cpp" />
+    <ClCompile Include="FileExplorer.cpp" />
+    <ClCompile Include="FootballApp.cpp" />
+    <ClCompile Include="HashMapTest.cpp" />
+    <ClCompile Include="Resource_Test.cpp" />
+    <ClCompile Include="SpriteShader.cpp" />
+    <ClCompile Include="SpriteTest.cpp" />
+    <ClCompile Include="TestLevel.cpp" />
+    <ClCompile Include="TestShader.cpp" />
+    <ClCompile Include="TestsMain.cpp" />
+    <ClCompile Include="TexShader3D.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Camera3DTest.h" />
     <ClInclude Include="controlTests.h" />
+    <ClInclude Include="FileExplorer.h" />
+    <ClInclude Include="FootballApp.h" />
+    <ClInclude Include="SpriteShader.h" />
+    <ClInclude Include="SpriteTest.h" />
+    <ClInclude Include="TestLevel.h" />
+    <ClInclude Include="TestShader.h" />
+    <ClInclude Include="TexShader3D.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

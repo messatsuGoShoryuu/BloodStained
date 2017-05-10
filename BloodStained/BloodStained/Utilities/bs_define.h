@@ -1,6 +1,13 @@
 #ifndef BS_DEFINE_H
 #define BS_DEFINE_H
 
+#define		BS_EDITOR
+
+#ifndef BS_EDITOR
+#define BS_STANDALONE
+#endif // !BS_EDITOR
+
+
 //math
 #define		BS_REAL				f32
 #define		BS_MAX_FLOAT		1.0E8
@@ -43,5 +50,36 @@
 
 //Non pointer this
 #define SELF (*this)
+
+
+//Undecorated function name
+#if _MSC_VER
+#include <crtdefs.h>
+#define BS_UNDECORATED_FUNCTION __FUNCTION__
+#endif
+
+
+//Architecture
+#if _MSC_VER
+
+#ifdef _WIN32 
+#define BS_ARCHITECTURE_X86
+#endif
+
+#ifdef _WIN64
+#define BS_ARCHITECTURE_X64
+#endif
+#endif
+
+//OGL draw types
+#define	BS_DRAWTYPE_STATIC	GL_STATIC_DRAW
+#define BS_DRAWTYPE_DYNAMIC	GL_DYNAMIC_DRAW
+#define BS_DRAWTYPE_STREAM	GL_STREAM_DRAW
+
+
+//Debug
+#ifdef _DEBUG
+#define BS_DEBUG_BUILD
+#endif
 
 #endif // !BS_DEFINE_H

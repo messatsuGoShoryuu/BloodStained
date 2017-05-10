@@ -69,6 +69,7 @@ void intPoolTest()
 {
 	std::cout << "Integer Pool Test:" << std::endl;
 	bs::LinkedArrayPool<int> p;
+	p.initialize();
 
 	int* i1 = p.add(5);
 	std::cout << "Added new int" << *i1 << std::endl;
@@ -128,22 +129,97 @@ void fooPoolTest()
 	std::cout << "Foo Pool Test:" << std::endl;
 
 	bs::LinkedArrayPool<Foo> p;
+	p.initialize();
 
 	Foo* f1 = p.construct(10, 15);
 
 	std::cout << "Added new int: ";
 	printFoo(f1);
 
+	std::cout << "Max index = " << p.maxIndex() << " Min index = " << p.minIndex() << std::endl;
+
 	std::cout<<std::endl;
 
 	showMemoryStats();
 
+	for (ui32 i = 0; i < 10; i++)
+	{
+		p.construct(i, i + 1);
+	}
+
+	p.remove(f1);
+
+	for (ui32 i = 0; i < 20; i++)
+	{
+		if (p[i]->isEmpty) continue;
+		std::cout << "Foo[" << i << "] = ";
+		printFoo(&p[i]->item);
+		std::cout << std::endl;
+	}
+	std::cout << "Max index = " << p.maxIndex() << " Min index = " << p.minIndex() << std::endl;
+
+	showMemoryStats();
+
+	p.remove(&p[3]->item);
+
+	p.construct(50, 40);
+
+	for (ui32 i = 0; i < 20; i++)
+	{
+		if (p[i]->isEmpty) continue;
+		std::cout << "Foo[" << i << "] = ";
+		printFoo(&p[i]->item);
+		std::cout << std::endl;
+	}
+	std::cout << "Max index = " << p.maxIndex() << " Min index = " << p.minIndex() << std::endl;
+
+	showMemoryStats();
+
+	p.destroy();
+
+	showMemoryStats();
 	system("pause");
 }
 
 void fooArrayTest()
 {
 	std::cout << "Foo Array Test:" << std::endl;
+
+	showMemoryStats();
+
+	std::cout << "Create linked array" << std::endl;
+	bs::LinkedArray<Foo> l(20);
+
+	showMemoryStats();
+
+	for (ui32 i = 0; i < 16; i++)
+		l.construct(i, i + 1);
+
+	std::cout << "Sizeof pool = " << sizeof(bs::LinkedArrayPool<Foo>) << std::endl;
+
+	for (ui32 i = 0; i < 16; i++)
+	{
+		Foo* f = l[i];
+		if (f)
+			std::cout << "l[" << i << "].x = " << f->x << ", y = " << f->y << std::endl;
+	}
+
+	std::cout << "Remove 3" << std::endl;
+
+	l.remove(l[3]);
+
+	for (ui32 i = 0; i < 16; i++)
+	{
+		Foo* f = l[i];
+		if (f)
+			std::cout << "l[" << i << "].x = " << f->x << ", y = " << f->y << std::endl;
+	}
+
+	showMemoryStats();
+
+	std::cout << "destroy linked array" << std::endl;
+	l.destroy();
+	showMemoryStats();
 
 	system("pause");
 }

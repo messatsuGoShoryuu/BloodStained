@@ -225,7 +225,7 @@ namespace bs
 			Pool* temp = m_poolIterator;
 			m_poolIterator = temp->next();
 			temp->shutDown();
-			delete(temp);
+			delete temp;
 		}
 		return true;
 	}

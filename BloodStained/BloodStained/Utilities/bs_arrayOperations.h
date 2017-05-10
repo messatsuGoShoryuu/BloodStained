@@ -1,15 +1,11 @@
-#ifndef BS_ARRAY_OPERATIONS
-#define BS_ARRAY_OPERATIONS
+#ifndef BS_ARRAYOPERATIONS_H
+#define BS_ARRAYOPERATIONS_H
 
 #include "bs_types.h"
 
+
 namespace bs
 {
-	/*Copy an array into an existing one (should be preallocated).
-	*@source: source array
-	*@destination: destination array
-	*@count: item count of the source array
-	*/
 	template <class T>
 	void copyArray(T* source, T* destination, ui32 count)
 	{
@@ -33,7 +29,7 @@ namespace bs
 			{
 				source[i].~T();
 			}
-				
+
 		}
 	}
 

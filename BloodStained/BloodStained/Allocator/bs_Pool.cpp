@@ -1,6 +1,6 @@
 #include "bs_Pool.h"
 #include "../Utilities/bs_arrayOperations.h"
-#include "../Utilities/bs_math.h"
+#include "../Math/bs_math.h"
 #include "../Profiler/bs_Profiler.h"
 
 #include <assert.h>
@@ -53,6 +53,9 @@ namespace bs
 		m_poolByteCount(p.m_poolByteCount)
 	{
 		m_buffer = (byte*)malloc(m_poolByteCount);
+#ifdef BS_PROFILE_MEMORY
+		Profiler::addAllocatedBytes(m_poolByteCount);
+#endif
 		copyArray(p.m_buffer, m_buffer, m_poolByteCount);
 	}
 
@@ -66,6 +69,7 @@ namespace bs
 	//manual initialization
 	bool Pool::initialize()
 	{
+
 		//calculate aligned item size
 		_calculateItemSize();
 
@@ -79,6 +83,8 @@ namespace bs
 		m_buffer = (byte*)malloc(m_poolByteCount);
 #ifdef BS_PROFILE_MEMORY
 		Profiler::addAllocatedBytes(m_poolByteCount);
+		Profiler::addMallocCount(1);
+		Profiler::addPoolCount();
 #endif
 		if (!m_buffer) return false;
 
@@ -103,6 +109,8 @@ namespace bs
 
 #ifdef BS_PROFILE_MEMORY
 			Profiler::removeAllocatedBytes(m_poolByteCount);
+			Profiler::addFreeCount(1);
+			Profiler::removePoolCount();
 #endif
 			m_buffer = nullptr;
 		}
@@ -182,7 +190,7 @@ namespace bs
 	//calculates the item size with the alignment
 	void Pool::_calculateItemSize()
 	{
-		m_itemSize = nearest2PowMultipleOf(m_itemSize, m_alignment);
+		m_itemSize = math::nearest2PowMultipleOf(m_itemSize, m_alignment);
 	}
 
 	//Read ui16 from byte array.
@@ -200,6 +208,6 @@ namespace bs
 	void Pool::_putUi16ToBuffer(ui16 value, ui32 index)
 	{
 		if (m_itemSize == 1) m_buffer[index] = static_cast<byte>(value);
-		else storeUi16ToByteArray(m_buffer + index, value);
+		else math::storeUi16ToByteArray(m_buffer + index, value);
 	}
 }

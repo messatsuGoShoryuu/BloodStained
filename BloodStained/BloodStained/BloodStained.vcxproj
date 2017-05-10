@@ -58,6 +58,8 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
+      <ShowIncludes>true</ShowIncludes>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -65,7 +67,11 @@
     <Lib>
       <UseUnicodeResponseFiles>true</UseUnicodeResponseFiles>
       <OutputFile>$(OutDir)$(TargetName)$(TargetExt)</OutputFile>
+      <AdditionalDependencies>Comctl32.lib;opengl32.lib;glu32.lib;glew32.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;freetype26d.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Lib>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
@@ -74,6 +80,8 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
+      <ShowIncludes>true</ShowIncludes>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -83,6 +91,7 @@
     <Lib>
       <UseUnicodeResponseFiles>true</UseUnicodeResponseFiles>
       <OutputFile>$(OutDir)$(TargetName)$(TargetExt)</OutputFile>
+      <AdditionalDependencies>Comctl32.lib;opengl32.lib;glu32.lib;glew32.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;freetype26d.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Lib>
   </ItemDefinitionGroup>
   <ItemGroup>
@@ -90,19 +99,153 @@
     <ClInclude Include="Allocator\bs_Pool.h" />
     <ClInclude Include="Allocator\bs_PoolAllocator.h" />
     <ClInclude Include="Allocator\bs_StackAllocator.h" />
-    <ClInclude Include="bs_StackAllocator.h" />
     <ClInclude Include="Containers\bs_Array.h" />
+    <ClInclude Include="Containers\bs_HashMap.h" />
     <ClInclude Include="Containers\bs_LinkedArray.h" />
+    <ClInclude Include="Editor\bs_Editor.h" />
+    <ClInclude Include="Editor\bs_EditorApp.h" />
+    <ClInclude Include="Editor\bs_EditorEnums.h" />
+    <ClInclude Include="Editor\bs_EditorPlatform.h" />
+    <ClInclude Include="Editor\bs_FolderExplorer.h" />
+    <ClInclude Include="Editor\Windows\bs_WindowsEditorWindow.h" />
+    <ClInclude Include="Editor\Windows\bs_WindowsListviewWindow.h" />
+    <ClInclude Include="External\HashFunctions\MurmurHash\bs_MurmurHash.h" />
+    <ClInclude Include="External\ImageLoading\LodePng\lodepng.h" />
+    <ClInclude Include="Functions\bs_BaseMemberFunction.h" />
+    <ClInclude Include="Functions\bs_Function.h" />
+    <ClInclude Include="Functions\bs_FunctionTimer.h" />
+    <ClInclude Include="Functions\bs_MemberFunction.h" />
+    <ClInclude Include="Game\bs_Game.h" />
+    <ClInclude Include="Game\bs_Level.h" />
+    <ClInclude Include="Game\bs_LevelScript.h" />
+    <ClInclude Include="Game\Entity\bs_Entity.h" />
+    <ClInclude Include="Game\Entity\Component\Basic\bs_Transform2D.h" />
+    <ClInclude Include="Game\Entity\Component\Basic\bs_Transform3D.h" />
+    <ClInclude Include="Game\Entity\Component\bs_Component.h" />
+    <ClInclude Include="Game\Entity\Component\bs_ComponentManager.h" />
+    <ClInclude Include="Globals\bs_globals.h" />
+    <ClInclude Include="Input\bs_InputManager.h" />
+    <ClInclude Include="Math\bs_math.h" />
+    <ClInclude Include="Math\bs_Matrix3x3.h" />
+    <ClInclude Include="Math\bs_Matrix4x4.h" />
+    <ClInclude Include="Math\bs_Quaternion.h" />
+    <ClInclude Include="Math\bs_Rect.h" />
+    <ClInclude Include="Math\bs_Vector.h" />
+    <ClInclude Include="Math\bs_Vector2.h" />
+    <ClInclude Include="Math\bs_Vector3.h" />
+    <ClInclude Include="Math\bs_Vector4.h" />
+    <ClInclude Include="Physics\3D\Collisions\bs_Primitives.h" />
+    <ClInclude Include="Physics\3D\Collisions\bs_Ray3D.h" />
+    <ClInclude Include="Platform\Windows\bs_WindowsMain.h" />
+    <ClInclude Include="Platform\Windows\Input\bs_WindowsInput.h" />
+    <ClInclude Include="Platform\Windows\Input\bs_windowsKeyboard.h" />
+    <ClInclude Include="Platform\Windows\WindowsFileSystem\bs_WindowsFileSystem.h" />
+    <ClInclude Include="Platform\Windows\WindowsWindow\bs_WindowsOpenGLWindow.h" />
+    <ClInclude Include="Platform\Windows\WindowsWindow\bs_WindowsWindow.h" />
     <ClInclude Include="Profiler\bs_Profiler.h" />
+    <ClInclude Include="Rendering\bs_Camera.h" />
+    <ClInclude Include="Rendering\bs_Camera2D.h" />
+    <ClInclude Include="Rendering\bs_Camera3D.h" />
+    <ClInclude Include="Rendering\bs_Color.h" />
+    <ClInclude Include="Rendering\bs_OpenGLWindow.h" />
+    <ClInclude Include="Rendering\bs_Screen.h" />
+    <ClInclude Include="Rendering\bs_ScreenInitializer.h" />
+    <ClInclude Include="Rendering\bs_Shader.h" />
+    <ClInclude Include="Rendering\bs_ShaderManager.h" />
+    <ClInclude Include="Rendering\bs_ShaderScript.h" />
+    <ClInclude Include="Rendering\bs_Texture2D.h" />
+    <ClInclude Include="Rendering\bs_Vertex.h" />
+    <ClInclude Include="Rendering\bs_VertexBufferObject.h" />
+    <ClInclude Include="Rendering\RenderedObjects\Debug\bs_DebugRenderer.h" />
+    <ClInclude Include="Rendering\RenderedObjects\Debug\bs_DebugShader.h" />
+    <ClInclude Include="Rendering\RenderedObjects\Font\bs_Font.h" />
+    <ClInclude Include="Rendering\RenderedObjects\Font\bs_FontManager.h" />
+    <ClInclude Include="Rendering\RenderedObjects\Font\bs_FontRenderer.h" />
+    <ClInclude Include="Rendering\RenderedObjects\Font\bs_FontShader.h" />
+    <ClInclude Include="Rendering\RenderedObjects\Line\bs_Line.h" />
+    <ClInclude Include="Rendering\RenderedObjects\Sprite\bs_Sprite.h" />
+    <ClInclude Include="Rendering\RenderedObjects\Sprite\bs_SpriteRenderer.h" />
+    <ClInclude Include="resource.h" />
+    <ClInclude Include="Resources\bs_FileSystem.h" />
+    <ClInclude Include="Resources\bs_Folder.h" />
+    <ClInclude Include="Resources\bs_ImageLoader.h" />
+    <ClInclude Include="Resources\bs_Path.h" />
+    <ClInclude Include="Resources\bs_Resource.h" />
+    <ClInclude Include="Resources\bs_ResourceManager.h" />
     <ClInclude Include="Utilities\bs_arrayOperations.h" />
+    <ClInclude Include="Utilities\bs_Clock.h" />
     <ClInclude Include="Utilities\bs_define.h" />
-    <ClInclude Include="Utilities\bs_math.h" />
+    <ClInclude Include="Utilities\bs_Error.h" />
+    <ClInclude Include="Utilities\bs_String.h" />
     <ClInclude Include="Utilities\bs_types.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Allocator\bs_Memory.cpp" />
     <ClCompile Include="Allocator\bs_Pool.cpp" />
     <ClCompile Include="Allocator\bs_StackAllocator.cpp" />
+    <ClCompile Include="Containers\bs_HashMap.cpp" />
+    <ClCompile Include="Editor\bs_EditorApp.cpp" />
+    <ClCompile Include="Editor\bs_FolderExplorer.cpp" />
+    <ClCompile Include="Editor\Windows\bs_WindowsEditorWindow.cpp" />
+    <ClCompile Include="Editor\Windows\bs_WindowsListviewWindow.cpp" />
+    <ClCompile Include="External\HashFunctions\MurmurHash\bs_MurmurHash.cpp" />
+    <ClCompile Include="External\ImageLoading\LodePng\lodepng.cpp" />
+    <ClCompile Include="Functions\bs_FunctionTimer.cpp" />
+    <ClCompile Include="Game\bs_Game.cpp" />
+    <ClCompile Include="Game\bs_Level.cpp" />
+    <ClCompile Include="Game\bs_LevelScript.cpp" />
+    <ClCompile Include="Game\Entity\bs_Entity.cpp" />
+    <ClCompile Include="Game\Entity\Component\Basic\bs_Transform2D.cpp" />
+    <ClCompile Include="Game\Entity\Component\Basic\bs_Transform3D.cpp" />
+    <ClCompile Include="Game\Entity\Component\bs_Component.cpp" />
+    <ClCompile Include="Game\Entity\Component\bs_ComponentManager.cpp" />
+    <ClCompile Include="Globals\bs_globals.cpp" />
+    <ClCompile Include="Input\bs_InputManager.cpp" />
+    <ClCompile Include="Math\bs_Matrix3x3.cpp" />
+    <ClCompile Include="Math\bs_Matrix4x4.cpp" />
+    <ClCompile Include="Math\bs_Quaternion.cpp" />
+    <ClCompile Include="Math\bs_Rect.cpp" />
+    <ClCompile Include="Math\bs_Vector2.cpp" />
+    <ClCompile Include="Math\bs_Vector3.cpp" />
+    <ClCompile Include="Math\bs_Vector4.cpp" />
+    <ClCompile Include="Physics\3D\Collisions\bs_Ray3D.cpp" />
+    <ClCompile Include="Platform\Windows\bs_WindowsMain.cpp" />
+    <ClCompile Include="Platform\Windows\Input\bs_WindowsInput.cpp" />
+    <ClCompile Include="Platform\Windows\WindowsFileSystem\bs_WindowsFileSystem.cpp" />
+    <ClCompile Include="Platform\Windows\WindowsWindow\bs_WindowsOpenGLWindow.cpp" />
+    <ClCompile Include="Platform\Windows\WindowsWindow\bs_WindowsWindow.cpp" />
     <ClCompile Include="Profiler\bs_Profiler.cpp" />
+    <ClCompile Include="Rendering\bs_Camera.cpp" />
+    <ClCompile Include="Rendering\bs_Camera2D.cpp" />
+    <ClCompile Include="Rendering\bs_Camera3D.cpp" />
+    <ClCompile Include="Rendering\bs_Color.cpp" />
+    <ClCompile Include="Rendering\bs_OpenGLWindow.cpp" />
+    <ClCompile Include="Rendering\bs_ScreenInitializer.cpp" />
+    <ClCompile Include="Rendering\bs_Shader.cpp" />
+    <ClCompile Include="Rendering\bs_ShaderManager.cpp" />
+    <ClCompile Include="Rendering\bs_ShaderScript.cpp" />
+    <ClCompile Include="Rendering\bs_Texture2D.cpp" />
+    <ClCompile Include="Rendering\bs_VertexBufferObject.cpp" />
+    <ClCompile Include="Rendering\RenderedObjects\Debug\bs_DebugRenderer.cpp" />
+    <ClCompile Include="Rendering\RenderedObjects\Debug\bs_DebugShader.cpp" />
+    <ClCompile Include="Rendering\RenderedObjects\Font\bs_Font.cpp" />
+    <ClCompile Include="Rendering\RenderedObjects\Font\bs_FontManager.cpp" />
+    <ClCompile Include="Rendering\RenderedObjects\Font\bs_FontRenderer.cpp" />
+    <ClCompile Include="Rendering\RenderedObjects\Font\bs_FontShader.cpp" />
+    <ClCompile Include="Rendering\RenderedObjects\Line\bs_Line.cpp" />
+    <ClCompile Include="Rendering\RenderedObjects\Sprite\bs_Sprite.cpp" />
+    <ClCompile Include="Rendering\RenderedObjects\Sprite\bs_SpriteRenderer.cpp" />
+    <ClCompile Include="Resources\bs_FileSystem.cpp" />
+    <ClCompile Include="Resources\bs_ImageLoader.cpp" />
+    <ClCompile Include="Resources\bs_Path.cpp" />
+    <ClCompile Include="Resources\bs_Resource.cpp" />
+    <ClCompile Include="Resources\bs_ResourceManager.cpp" />
+    <ClCompile Include="Utilities\bs_Clock.cpp" />
+    <ClCompile Include="Utilities\bs_Error.cpp" />
+    <ClCompile Include="Utilities\bs_String.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="resource.rc" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

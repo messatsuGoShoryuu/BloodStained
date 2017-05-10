@@ -25,6 +25,90 @@
     <Filter Include="Source Files\Containers">
       <UniqueIdentifier>{9d064113-373c-4aee-ba0f-10d9309810db}</UniqueIdentifier>
     </Filter>
+    <Filter Include="External">
+      <UniqueIdentifier>{8f85d26a-8fdd-4c0f-be93-7bd08ce4a062}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="External\HashFunctions">
+      <UniqueIdentifier>{7803af41-c0b2-4c29-88f6-fea2eb2bf07e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="External\HashFunctions\MurmurHash">
+      <UniqueIdentifier>{10bbebd8-763b-4e20-93c9-dd90cc18ce06}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Globals">
+      <UniqueIdentifier>{8a41cb1a-92ee-4d76-87d5-2107d335cdad}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Functions">
+      <UniqueIdentifier>{8d640fab-3ff8-48f4-956c-671dbd021d2b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Platform">
+      <UniqueIdentifier>{64211178-8658-4b97-87e4-6085f40d0b4d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Platform\Windows">
+      <UniqueIdentifier>{e4eec723-d12c-499f-b1c1-776199d0c789}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Platform\Windows\WindowsWindow">
+      <UniqueIdentifier>{93226cfe-7785-4c55-b2f9-304fd4756fde}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Rendering">
+      <UniqueIdentifier>{5d6087e1-6bde-41ce-9868-52a791600f68}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Resources">
+      <UniqueIdentifier>{418c38a1-f4a8-47b7-bcd6-59629dda2d6a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Editor">
+      <UniqueIdentifier>{67f8de03-b499-405e-a919-d3716245b21d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Editor\Windows">
+      <UniqueIdentifier>{b8aaefdc-9014-437d-8f5f-902af624d522}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Game">
+      <UniqueIdentifier>{87c07257-c6e2-450a-9446-2e2cc1a8c527}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Math">
+      <UniqueIdentifier>{ea761e6c-f39c-4433-ac82-5d652c04bb90}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Game\Entity">
+      <UniqueIdentifier>{52f6b8a1-955c-45c8-9c9f-8980474562f9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Game\Entity\Component">
+      <UniqueIdentifier>{1914dca2-67c4-42f4-be18-bcfadc397803}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Game\Entity\Component\Basic">
+      <UniqueIdentifier>{822f455e-0086-461c-a139-fd1ed472ac9d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="External\ImageLoading">
+      <UniqueIdentifier>{5ce50fe3-4e34-44b4-bd6f-beff74825a0a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Platform\Windows\Input">
+      <UniqueIdentifier>{3a3f046b-a9f2-4850-a8c0-b76522695dc7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Input">
+      <UniqueIdentifier>{e6fcbb68-6cca-48e7-a731-f775d582b9a1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Physics">
+      <UniqueIdentifier>{4238b6f1-d8e3-4d9d-a933-766486731429}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Physics\3D">
+      <UniqueIdentifier>{ba8e4bba-1c59-4986-a458-6c8e7e45f9e4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Physics\3D\Collisions">
+      <UniqueIdentifier>{18de808d-94f3-4806-a0d4-11d419536363}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Rendering\RenderedObjects">
+      <UniqueIdentifier>{4b687121-1ed2-4e34-9c3f-56ce9b316c60}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Rendering\RenderedObjects\Line">
+      <UniqueIdentifier>{afa955e2-ab3d-452c-bebd-2899248dee42}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Rendering\RenderedObjects\Sprite">
+      <UniqueIdentifier>{4792f34b-22c3-402e-9d50-2c6bc2670e88}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Rendering\RenderedObjects\Debug">
+      <UniqueIdentifier>{8599b834-7a9f-42f7-8a2c-7634b938cfa6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Rendering\RenderedObjects\Font">
+      <UniqueIdentifier>{ee5f1832-ff2d-4179-b16a-54d36245b878}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Allocator\bs_PoolAllocator.h">
@@ -42,12 +126,6 @@
     <ClInclude Include="Utilities\bs_arrayOperations.h">
       <Filter>Source Files\Utilities</Filter>
     </ClInclude>
-    <ClInclude Include="Utilities\bs_math.h">
-      <Filter>Source Files\Utilities</Filter>
-    </ClInclude>
-    <ClInclude Include="bs_StackAllocator.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Allocator\bs_StackAllocator.h">
       <Filter>Source Files\Allocator</Filter>
     </ClInclude>
@@ -63,6 +141,225 @@
     <ClInclude Include="Containers\bs_LinkedArray.h">
       <Filter>Source Files\Containers</Filter>
     </ClInclude>
+    <ClInclude Include="External\HashFunctions\MurmurHash\bs_MurmurHash.h">
+      <Filter>External\HashFunctions\MurmurHash</Filter>
+    </ClInclude>
+    <ClInclude Include="Utilities\bs_String.h">
+      <Filter>Source Files\Utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="Utilities\bs_Clock.h">
+      <Filter>Source Files\Utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="Globals\bs_globals.h">
+      <Filter>Source Files\Globals</Filter>
+    </ClInclude>
+    <ClInclude Include="Functions\bs_FunctionTimer.h">
+      <Filter>Source Files\Functions</Filter>
+    </ClInclude>
+    <ClInclude Include="Platform\Windows\WindowsWindow\bs_WindowsWindow.h">
+      <Filter>Source Files\Platform\Windows\WindowsWindow</Filter>
+    </ClInclude>
+    <ClInclude Include="Functions\bs_Function.h">
+      <Filter>Source Files\Functions</Filter>
+    </ClInclude>
+    <ClInclude Include="Platform\Windows\WindowsWindow\bs_WindowsOpenGLWindow.h">
+      <Filter>Source Files\Platform\Windows\WindowsWindow</Filter>
+    </ClInclude>
+    <ClInclude Include="Rendering\bs_Color.h">
+      <Filter>Source Files\Rendering</Filter>
+    </ClInclude>
+    <ClInclude Include="Platform\Windows\bs_WindowsMain.h">
+      <Filter>Source Files\Platform\Windows</Filter>
+    </ClInclude>
+    <ClInclude Include="Platform\Windows\WindowsFileSystem\bs_WindowsFileSystem.h">
+      <Filter>Source Files\Platform\Windows\WindowsWindow</Filter>
+    </ClInclude>
+    <ClInclude Include="Resources\bs_FileSystem.h">
+      <Filter>Source Files\Resources</Filter>
+    </ClInclude>
+    <ClInclude Include="Resources\bs_Path.h">
+      <Filter>Source Files\Resources</Filter>
+    </ClInclude>
+    <ClInclude Include="Containers\bs_HashMap.h">
+      <Filter>Source Files\Containers</Filter>
+    </ClInclude>
+    <ClInclude Include="Resources\bs_ResourceManager.h">
+      <Filter>Source Files\Resources</Filter>
+    </ClInclude>
+    <ClInclude Include="Resources\bs_Resource.h">
+      <Filter>Source Files\Resources</Filter>
+    </ClInclude>
+    <ClInclude Include="Resources\bs_Folder.h">
+      <Filter>Source Files\Resources</Filter>
+    </ClInclude>
+    <ClInclude Include="resource.h">
+      <Filter>Resource Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Editor\Windows\bs_WindowsListviewWindow.h">
+      <Filter>Editor\Windows</Filter>
+    </ClInclude>
+    <ClInclude Include="Editor\Windows\bs_WindowsEditorWindow.h">
+      <Filter>Editor\Windows</Filter>
+    </ClInclude>
+    <ClInclude Include="Editor\bs_Editor.h">
+      <Filter>Editor</Filter>
+    </ClInclude>
+    <ClInclude Include="Editor\bs_FolderExplorer.h">
+      <Filter>Editor</Filter>
+    </ClInclude>
+    <ClInclude Include="Functions\bs_MemberFunction.h">
+      <Filter>Source Files\Functions</Filter>
+    </ClInclude>
+    <ClInclude Include="Functions\bs_BaseMemberFunction.h">
+      <Filter>Source Files\Functions</Filter>
+    </ClInclude>
+    <ClInclude Include="Editor\bs_EditorEnums.h">
+      <Filter>Editor</Filter>
+    </ClInclude>
+    <ClInclude Include="Editor\bs_EditorPlatform.h">
+      <Filter>Editor</Filter>
+    </ClInclude>
+    <ClInclude Include="Editor\bs_EditorApp.h">
+      <Filter>Editor</Filter>
+    </ClInclude>
+    <ClInclude Include="Rendering\bs_OpenGLWindow.h">
+      <Filter>Source Files\Rendering</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\bs_Game.h">
+      <Filter>Source Files\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\bs_Level.h">
+      <Filter>Source Files\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\bs_LevelScript.h">
+      <Filter>Source Files\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="Rendering\bs_Screen.h">
+      <Filter>Source Files\Rendering</Filter>
+    </ClInclude>
+    <ClInclude Include="Rendering\bs_ScreenInitializer.h">
+      <Filter>Source Files\Rendering</Filter>
+    </ClInclude>
+    <ClInclude Include="Math\bs_Matrix3x3.h">
+      <Filter>Source Files\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="Math\bs_math.h">
+      <Filter>Source Files\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="Math\bs_Vector3.h">
+      <Filter>Source Files\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="Math\bs_Vector4.h">
+      <Filter>Source Files\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="Math\bs_Vector2.h">
+      <Filter>Source Files\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="Math\bs_Vector.h">
+      <Filter>Source Files\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="Math\bs_Matrix4x4.h">
+      <Filter>Source Files\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="Rendering\bs_Camera2D.h">
+      <Filter>Source Files\Rendering</Filter>
+    </ClInclude>
+    <ClInclude Include="Math\bs_Rect.h">
+      <Filter>Source Files\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Entity\Component\bs_Component.h">
+      <Filter>Source Files\Game\Entity\Component</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Entity\bs_Entity.h">
+      <Filter>Source Files\Game\Entity</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Entity\Component\bs_ComponentManager.h">
+      <Filter>Source Files\Game\Entity\Component</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Entity\Component\Basic\bs_Transform2D.h">
+      <Filter>Source Files\Game\Entity\Component\Basic</Filter>
+    </ClInclude>
+    <ClInclude Include="Rendering\bs_ShaderManager.h">
+      <Filter>Source Files\Rendering</Filter>
+    </ClInclude>
+    <ClInclude Include="Rendering\bs_Shader.h">
+      <Filter>Source Files\Rendering</Filter>
+    </ClInclude>
+    <ClInclude Include="Rendering\bs_ShaderScript.h">
+      <Filter>Source Files\Rendering</Filter>
+    </ClInclude>
+    <ClInclude Include="Rendering\bs_VertexBufferObject.h">
+      <Filter>Source Files\Rendering</Filter>
+    </ClInclude>
+    <ClInclude Include="Math\bs_Quaternion.h">
+      <Filter>Source Files\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="Rendering\bs_Camera.h">
+      <Filter>Source Files\Rendering</Filter>
+    </ClInclude>
+    <ClInclude Include="Rendering\bs_Camera3D.h">
+      <Filter>Source Files\Rendering</Filter>
+    </ClInclude>
+    <ClInclude Include="External\ImageLoading\LodePng\lodepng.h">
+      <Filter>External\ImageLoading</Filter>
+    </ClInclude>
+    <ClInclude Include="Resources\bs_ImageLoader.h">
+      <Filter>Source Files\Resources</Filter>
+    </ClInclude>
+    <ClInclude Include="Rendering\bs_Texture2D.h">
+      <Filter>Source Files\Rendering</Filter>
+    </ClInclude>
+    <ClInclude Include="Rendering\bs_Vertex.h">
+      <Filter>Source Files\Rendering</Filter>
+    </ClInclude>
+    <ClInclude Include="Platform\Windows\Input\bs_windowsKeyboard.h">
+      <Filter>Source Files\Platform\Windows\Input</Filter>
+    </ClInclude>
+    <ClInclude Include="Platform\Windows\Input\bs_WindowsInput.h">
+      <Filter>Source Files\Platform\Windows\Input</Filter>
+    </ClInclude>
+    <ClInclude Include="Input\bs_InputManager.h">
+      <Filter>Source Files\Input</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Entity\Component\Basic\bs_Transform3D.h">
+      <Filter>Source Files\Game\Entity\Component\Basic</Filter>
+    </ClInclude>
+    <ClInclude Include="Physics\3D\Collisions\bs_Ray3D.h">
+      <Filter>Source Files\Physics\3D\Collisions</Filter>
+    </ClInclude>
+    <ClInclude Include="Rendering\RenderedObjects\Line\bs_Line.h">
+      <Filter>Source Files\Rendering\RenderedObjects\Line</Filter>
+    </ClInclude>
+    <ClInclude Include="Physics\3D\Collisions\bs_Primitives.h">
+      <Filter>Source Files\Physics\3D\Collisions</Filter>
+    </ClInclude>
+    <ClInclude Include="Rendering\RenderedObjects\Sprite\bs_Sprite.h">
+      <Filter>Source Files\Rendering\RenderedObjects\Sprite</Filter>
+    </ClInclude>
+    <ClInclude Include="Rendering\RenderedObjects\Sprite\bs_SpriteRenderer.h">
+      <Filter>Source Files\Rendering\RenderedObjects\Sprite</Filter>
+    </ClInclude>
+    <ClInclude Include="Rendering\RenderedObjects\Debug\bs_DebugRenderer.h">
+      <Filter>Source Files\Rendering\RenderedObjects\Debug</Filter>
+    </ClInclude>
+    <ClInclude Include="Rendering\RenderedObjects\Debug\bs_DebugShader.h">
+      <Filter>Source Files\Rendering\RenderedObjects\Debug</Filter>
+    </ClInclude>
+    <ClInclude Include="Rendering\RenderedObjects\Font\bs_FontManager.h">
+      <Filter>Source Files\Rendering\RenderedObjects\Font</Filter>
+    </ClInclude>
+    <ClInclude Include="Rendering\RenderedObjects\Font\bs_Font.h">
+      <Filter>Source Files\Rendering\RenderedObjects\Font</Filter>
+    </ClInclude>
+    <ClInclude Include="Rendering\RenderedObjects\Font\bs_FontShader.h">
+      <Filter>Source Files\Rendering\RenderedObjects\Font</Filter>
+    </ClInclude>
+    <ClInclude Include="Rendering\RenderedObjects\Font\bs_FontRenderer.h">
+      <Filter>Source Files\Rendering\RenderedObjects\Font</Filter>
+    </ClInclude>
+    <ClInclude Include="Utilities\bs_Error.h">
+      <Filter>Source Files\Utilities</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Allocator\bs_Pool.cpp">
@@ -74,5 +371,190 @@
     <ClCompile Include="Profiler\bs_Profiler.cpp">
       <Filter>Source Files\Profiler</Filter>
     </ClCompile>
+    <ClCompile Include="External\HashFunctions\MurmurHash\bs_MurmurHash.cpp">
+      <Filter>External\HashFunctions\MurmurHash</Filter>
+    </ClCompile>
+    <ClCompile Include="Utilities\bs_String.cpp">
+      <Filter>Source Files\Utilities</Filter>
+    </ClCompile>
+    <ClCompile Include="Allocator\bs_Memory.cpp">
+      <Filter>Source Files\Allocator</Filter>
+    </ClCompile>
+    <ClCompile Include="Utilities\bs_Clock.cpp">
+      <Filter>Source Files\Utilities</Filter>
+    </ClCompile>
+    <ClCompile Include="Globals\bs_globals.cpp">
+      <Filter>Source Files\Globals</Filter>
+    </ClCompile>
+    <ClCompile Include="Functions\bs_FunctionTimer.cpp">
+      <Filter>Source Files\Functions</Filter>
+    </ClCompile>
+    <ClCompile Include="Platform\Windows\WindowsWindow\bs_WindowsWindow.cpp">
+      <Filter>Source Files\Platform\Windows\WindowsWindow</Filter>
+    </ClCompile>
+    <ClCompile Include="Platform\Windows\WindowsWindow\bs_WindowsOpenGLWindow.cpp">
+      <Filter>Source Files\Platform\Windows\WindowsWindow</Filter>
+    </ClCompile>
+    <ClCompile Include="Rendering\bs_Color.cpp">
+      <Filter>Source Files\Rendering</Filter>
+    </ClCompile>
+    <ClCompile Include="Platform\Windows\bs_WindowsMain.cpp">
+      <Filter>Source Files\Platform\Windows</Filter>
+    </ClCompile>
+    <ClCompile Include="Platform\Windows\WindowsFileSystem\bs_WindowsFileSystem.cpp">
+      <Filter>Source Files\Platform\Windows\WindowsWindow</Filter>
+    </ClCompile>
+    <ClCompile Include="Resources\bs_Path.cpp">
+      <Filter>Source Files\Resources</Filter>
+    </ClCompile>
+    <ClCompile Include="Resources\bs_FileSystem.cpp">
+      <Filter>Source Files\Resources</Filter>
+    </ClCompile>
+    <ClCompile Include="Containers\bs_HashMap.cpp">
+      <Filter>Source Files\Containers</Filter>
+    </ClCompile>
+    <ClCompile Include="Resources\bs_ResourceManager.cpp">
+      <Filter>Source Files\Resources</Filter>
+    </ClCompile>
+    <ClCompile Include="Resources\bs_Resource.cpp">
+      <Filter>Source Files\Resources</Filter>
+    </ClCompile>
+    <ClCompile Include="Editor\Windows\bs_WindowsListviewWindow.cpp">
+      <Filter>Editor\Windows</Filter>
+    </ClCompile>
+    <ClCompile Include="Editor\Windows\bs_WindowsEditorWindow.cpp">
+      <Filter>Editor\Windows</Filter>
+    </ClCompile>
+    <ClCompile Include="Editor\bs_FolderExplorer.cpp">
+      <Filter>Editor</Filter>
+    </ClCompile>
+    <ClCompile Include="Editor\bs_EditorApp.cpp">
+      <Filter>Editor</Filter>
+    </ClCompile>
+    <ClCompile Include="Rendering\bs_OpenGLWindow.cpp">
+      <Filter>Source Files\Rendering</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\bs_Game.cpp">
+      <Filter>Source Files\Game</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\bs_Level.cpp">
+      <Filter>Source Files\Game</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\bs_LevelScript.cpp">
+      <Filter>Source Files\Game</Filter>
+    </ClCompile>
+    <ClCompile Include="Rendering\bs_ScreenInitializer.cpp">
+      <Filter>Source Files\Rendering</Filter>
+    </ClCompile>
+    <ClCompile Include="Math\bs_Vector2.cpp">
+      <Filter>Source Files\Math</Filter>
+    </ClCompile>
+    <ClCompile Include="Math\bs_Vector3.cpp">
+      <Filter>Source Files\Math</Filter>
+    </ClCompile>
+    <ClCompile Include="Math\bs_Vector4.cpp">
+      <Filter>Source Files\Math</Filter>
+    </ClCompile>
+    <ClCompile Include="Math\bs_Matrix4x4.cpp">
+      <Filter>Source Files\Math</Filter>
+    </ClCompile>
+    <ClCompile Include="Math\bs_Matrix3x3.cpp">
+      <Filter>Source Files\Math</Filter>
+    </ClCompile>
+    <ClCompile Include="Rendering\bs_Camera2D.cpp">
+      <Filter>Source Files\Rendering</Filter>
+    </ClCompile>
+    <ClCompile Include="Math\bs_Rect.cpp">
+      <Filter>Source Files\Math</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\Entity\Component\bs_Component.cpp">
+      <Filter>Source Files\Game\Entity\Component</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\Entity\bs_Entity.cpp">
+      <Filter>Source Files\Game\Entity</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\Entity\Component\bs_ComponentManager.cpp">
+      <Filter>Source Files\Game\Entity\Component</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\Entity\Component\Basic\bs_Transform2D.cpp">
+      <Filter>Source Files\Game\Entity\Component\Basic</Filter>
+    </ClCompile>
+    <ClCompile Include="Rendering\bs_ShaderManager.cpp">
+      <Filter>Source Files\Rendering</Filter>
+    </ClCompile>
+    <ClCompile Include="Rendering\bs_Shader.cpp">
+      <Filter>Source Files\Rendering</Filter>
+    </ClCompile>
+    <ClCompile Include="Rendering\bs_ShaderScript.cpp">
+      <Filter>Source Files\Rendering</Filter>
+    </ClCompile>
+    <ClCompile Include="Rendering\bs_VertexBufferObject.cpp">
+      <Filter>Source Files\Rendering</Filter>
+    </ClCompile>
+    <ClCompile Include="Math\bs_Quaternion.cpp">
+      <Filter>Source Files\Math</Filter>
+    </ClCompile>
+    <ClCompile Include="Rendering\bs_Camera.cpp">
+      <Filter>Source Files\Rendering</Filter>
+    </ClCompile>
+    <ClCompile Include="Rendering\bs_Camera3D.cpp">
+      <Filter>Source Files\Rendering</Filter>
+    </ClCompile>
+    <ClCompile Include="External\ImageLoading\LodePng\lodepng.cpp">
+      <Filter>External\ImageLoading</Filter>
+    </ClCompile>
+    <ClCompile Include="Resources\bs_ImageLoader.cpp">
+      <Filter>Source Files\Resources</Filter>
+    </ClCompile>
+    <ClCompile Include="Rendering\bs_Texture2D.cpp">
+      <Filter>Source Files\Rendering</Filter>
+    </ClCompile>
+    <ClCompile Include="Platform\Windows\Input\bs_WindowsInput.cpp">
+      <Filter>Source Files\Platform\Windows\Input</Filter>
+    </ClCompile>
+    <ClCompile Include="Input\bs_InputManager.cpp">
+      <Filter>Source Files\Input</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\Entity\Component\Basic\bs_Transform3D.cpp">
+      <Filter>Source Files\Game\Entity\Component\Basic</Filter>
+    </ClCompile>
+    <ClCompile Include="Rendering\RenderedObjects\Line\bs_Line.cpp">
+      <Filter>Source Files\Rendering\RenderedObjects\Line</Filter>
+    </ClCompile>
+    <ClCompile Include="Physics\3D\Collisions\bs_Ray3D.cpp">
+      <Filter>Source Files\Physics\3D\Collisions</Filter>
+    </ClCompile>
+    <ClCompile Include="Rendering\RenderedObjects\Sprite\bs_Sprite.cpp">
+      <Filter>Source Files\Rendering\RenderedObjects\Sprite</Filter>
+    </ClCompile>
+    <ClCompile Include="Rendering\RenderedObjects\Sprite\bs_SpriteRenderer.cpp">
+      <Filter>Source Files\Rendering\RenderedObjects\Sprite</Filter>
+    </ClCompile>
+    <ClCompile Include="Rendering\RenderedObjects\Debug\bs_DebugRenderer.cpp">
+      <Filter>Source Files\Rendering\RenderedObjects\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="Rendering\RenderedObjects\Debug\bs_DebugShader.cpp">
+      <Filter>Source Files\Rendering\RenderedObjects\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="Rendering\RenderedObjects\Font\bs_FontManager.cpp">
+      <Filter>Source Files\Rendering\RenderedObjects\Font</Filter>
+    </ClCompile>
+    <ClCompile Include="Rendering\RenderedObjects\Font\bs_Font.cpp">
+      <Filter>Source Files\Rendering\RenderedObjects\Font</Filter>
+    </ClCompile>
+    <ClCompile Include="Rendering\RenderedObjects\Font\bs_FontShader.cpp">
+      <Filter>Source Files\Rendering\RenderedObjects\Font</Filter>
+    </ClCompile>
+    <ClCompile Include="Rendering\RenderedObjects\Font\bs_FontRenderer.cpp">
+      <Filter>Source Files\Rendering\RenderedObjects\Font</Filter>
+    </ClCompile>
+    <ClCompile Include="Utilities\bs_Error.cpp">
+      <Filter>Source Files\Utilities</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="resource.rc">
+      <Filter>Resource Files</Filter>
+    </ResourceCompile>
   </ItemGroup>
 </Project>
