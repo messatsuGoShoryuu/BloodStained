@@ -1,0 +1,13 @@
+#version 150
+
+
+in vec2 uvFragment;
+out vec4 outColor;
+
+uniform sampler2D textureContent;
+
+void main()
+{
+	vec4 content = texture(textureContent,uvFragment);
+    outColor = content * vec4(1.0, 1.0, 1.0, 1.0);
+}
