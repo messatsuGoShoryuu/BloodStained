@@ -33,9 +33,9 @@ namespace bs
 	bool gameThreadInitialize()
 	{
 		if (!g_shaderManager.initialize()) return false;
-		if (!g_spriteRenderer.initialize()) return false;
+		if (g_spriteRenderer.initialize() != ERROR_ID::NONE) return false;
 		if (!g_debugRenderer.initialize()) return false;
-		if (!g_fontManager.initialize()) return false;
+		if (g_fontManager.initialize()) return false;
 		return true;
 	}
 
@@ -43,7 +43,7 @@ namespace bs
 	{
 		if (!g_fontManager.shutDown()) return false;
 		if (!g_debugRenderer.shutDown()) return false;
-		if (!g_spriteRenderer.shutDown()) return false;
+		if (g_spriteRenderer.shutDown() != ERROR_ID::NONE) return false;
 		if (!g_inputManager.shutDown()) return false;
 		if (!g_game.shutDown()) return false;
 		if (!g_shaderManager.shutDown()) return false;

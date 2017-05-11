@@ -6,6 +6,7 @@
 #include <Math/bs_Vector3.h>
 #include <Math/bs_Matrix4x4.h>
 #include <Rendering/RenderedObjects/Debug/bs_DebugShader.h>
+#include <Rendering/RenderedObjects/Font/bs_FontShader.h>
 
 #include <thread>
 #include "TestLevel.h"
@@ -48,6 +49,7 @@ void spriteDemo()
 {
 	SpriteShader* spriteShader = new SpriteShader();
 	bs::DebugDrawShader* debugShader = new bs::DebugDrawShader();
+	bs::FontShader*	fontShader = new bs::FontShader();
 
 	bs::initialize();
 

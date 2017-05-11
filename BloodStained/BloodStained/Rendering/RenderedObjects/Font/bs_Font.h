@@ -36,6 +36,7 @@ namespace bs
 
 		inline	const String& name(){ return m_name; }
 		inline const Texture2D& texture(){ return m_texture; }
+		inline FontGlyph		getGlyph(ui16 unicode){ return m_glyphs[unicode]; }
 
 	private:
 		HashMap<ui16, FontGlyph>	m_glyphs;

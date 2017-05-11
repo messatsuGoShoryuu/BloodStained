@@ -19,11 +19,16 @@ namespace bs
 
 	}
 
-	bool	SpriteRenderer::initialize()
+	ERROR_ID	SpriteRenderer::initialize()
 	{
-		if (!m_vao.initialize()) return false;
-		if (!m_ibo.initialize()) return false;
-		if (!m_vbo.initialize()) return false;
+		ERROR_ID err = ERROR_ID::NONE;
+
+		err = m_vao.initialize();
+		if (err != ERROR_ID::NONE) return Error::fatalError(err, "SpriteRenderer Vertex Array Object initialization failed");
+		err = m_ibo.initialize();
+		if (err != ERROR_ID::NONE) return Error::fatalError(err, "SpriteRenderer Index Buffer Object initialization failed");
+		err = m_vbo.initialize();
+		if (err != ERROR_ID::NONE) return Error::fatalError(err, "SpriteRenderer Vertex Buffer Object initialization failed");
 
 		m_vao.bind();
 		m_ibo.bind();
@@ -38,10 +43,10 @@ namespace bs
 		m_ibo.unbind();
 		m_vbo.unbind(); 
 
-		return true;
+		return ERROR_ID::NONE;
 	}
 
-	bool	SpriteRenderer::shutDown()
+	ERROR_ID	SpriteRenderer::shutDown()
 	{
 		m_spriteHandles.reset();
 		m_batches.reset();
@@ -49,7 +54,7 @@ namespace bs
 		m_vbo.shutDown();
 		m_ibo.shutDown();
 
-		return true;
+		return ERROR_ID::NONE;
 	}
 
 	void	SpriteRenderer::_uploadData()

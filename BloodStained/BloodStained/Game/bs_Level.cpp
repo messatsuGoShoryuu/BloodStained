@@ -43,15 +43,22 @@ namespace bs
 		{
 			g_debugRenderer.render(m_cameras2D[i]);
 		}
+
+		for (ui32 i = 0; i < count; i++)
+		{
+			
+		}
 	}
 
-	void Level::initialize()
+	ERROR_ID Level::initialize()
 	{
 		m_cameraAllocator.initialize();
 		if (m_levelScript) m_levelScript->initialize(this);
+
+		return ERROR_ID::NONE;
 	}
 
-	void Level::shutDown()
+	ERROR_ID Level::shutDown()
 	{
 		if (m_levelScript)
 		{
@@ -69,6 +76,8 @@ namespace bs
 
 		m_cameras2D.reset();
 		m_cameraAllocator.shutDown();
+
+		return ERROR_ID::NONE;
 	}
 
 	void Level::update(f32 dt)

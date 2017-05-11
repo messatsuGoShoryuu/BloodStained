@@ -1,5 +1,6 @@
 #include "bs_VertexBufferObject.h"
 
+
 namespace bs
 {
 	VertexBufferObject::VertexBufferObject()
@@ -20,11 +21,11 @@ namespace bs
 		if(m_id != 0) ::glDeleteBuffers(1, &m_id);
 	}
 
-	bool	VertexBufferObject::initialize()
+	ERROR_ID	VertexBufferObject::initialize()
 	{
 		::glGenBuffers(1, &m_id);
-		if (m_id == 0) return false;
-		return true;
+		if (m_id == 0) return ERROR_ID::FAIL_GL_GENBUFFERS;
+		return ERROR_ID::NONE;
 	}
 
 	void	VertexBufferObject::clearData()
@@ -56,11 +57,11 @@ namespace bs
 		if (m_id != 0) ::glDeleteVertexArrays(1, &m_id);
 	}
 
-	bool VertexArrayObject::initialize()
+	ERROR_ID VertexArrayObject::initialize()
 	{
 		if (m_id == 0) ::glGenVertexArrays(1, &m_id);
-		if (m_id == 0) return false;
-		return true;
+		if (m_id == 0) return ERROR_ID::FAIL_GL_GENVERTEXARRAY;
+		return ERROR_ID::NONE;
 	}
 
 
@@ -84,11 +85,11 @@ namespace bs
 		if (m_id != 0) ::glDeleteBuffers(1, &m_id);
 	}
 
-	bool	IndexBufferObject::initialize()
+	ERROR_ID	IndexBufferObject::initialize()
 	{
 		if (m_id == 0) ::glGenBuffers(1, &m_id);
-		if (m_id == 0) return false;
-		return true;
+		if (m_id == 0)  return ERROR_ID::FAIL_GL_GENBUFFERS;
+		return ERROR_ID::NONE;
 	}
 
 	void IndexBufferObject::upload(GLenum drawType)

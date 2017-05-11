@@ -3,6 +3,7 @@
 
 #include <GL/glew.h>
 #include "../Containers/bs_Array.h"
+#include "../Utilities/bs_Error.h"
 
 namespace bs
 {
@@ -20,7 +21,7 @@ namespace bs
 		~VertexBufferObject();
 
 		//Upload buffer to OpenGL.
-		bool	initialize();
+		ERROR_ID	initialize();
 		void	clearData();
 
 		inline	ui32 id(){ return (ui32)m_id; }
@@ -68,7 +69,7 @@ namespace bs
 		inline	void	bind()	{ ::glBindVertexArray(m_id); }
 		inline	void	unbind(){ ::glBindVertexArray(0); }
 
-		bool initialize();
+		ERROR_ID initialize();
 		
 
 		template <class T>
@@ -103,7 +104,7 @@ namespace bs
 		inline	ui32	size(){ return m_data.count(); }
 		inline	ui16*	data(){ return &m_data[0]; }
 
-		bool	initialize();
+		ERROR_ID	initialize();
 
 		inline	void	clearData(){ m_data.clear(); }
 		void	upload(GLenum drawType);

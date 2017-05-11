@@ -46,8 +46,7 @@ namespace bs
 		inline  void	quit(){ m_quit = true; }
 		inline  bool	isRunning() { return !m_quit; }
 
-		inline	const	OpenGLWindow*	window(){ return m_gameWindow; }
-		inline	const	OpenGLWindow*	window() const{ return m_gameWindow; }
+		inline	const	OpenGLWindow*	window() const { return m_gameWindow; }
 
 		inline const Level*	currentLevel() const { return m_currentLevel; }
 

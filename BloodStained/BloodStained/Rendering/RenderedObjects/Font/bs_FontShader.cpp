@@ -2,6 +2,7 @@
 
 #include "../../bs_Shader.h"
 #include "../../../Globals/bs_globals.h"
+#include "../../../Utilities/bs_Error.h"
 
 namespace bs
 {
@@ -41,9 +42,9 @@ namespace bs
 		glGetShaderiv(vertexShader, GL_COMPILE_STATUS, &status);
 		if (status != GL_TRUE)
 		{
-			char buffer[512];
-			glGetShaderInfoLog(vertexShader, 512, NULL, buffer);
-			std::cout << "Tex vertex shader load error : " << buffer << std::endl;
+			char buffer[1024];
+			glGetShaderInfoLog(vertexShader, 1024, NULL, buffer);
+			Error::fatalError(ERROR_ID::FAIL_VERT_SHADER_LOAD, buffer);
 		}
 
 
@@ -52,21 +53,15 @@ namespace bs
 
 		if (status != GL_TRUE)
 		{
-			char buffer[512];
-			glGetShaderInfoLog(fragmentShader, 512, NULL, buffer);
-			std::cout << "Tex fragment shader load error : " << buffer << std::endl;
+			char buffer[1024];
+			glGetShaderInfoLog(fragmentShader, 1024, NULL, buffer);
+			Error::fatalError(ERROR_ID::FAIL_FRAG_SHADER_LOAD, buffer);
 		}
 
 		GLuint shaderProgram = glCreateProgram();
 
 		glAttachShader(shaderProgram, vertexShader);
 		glAttachShader(shaderProgram, fragmentShader);
-
-		{
-			char buffer[512];
-			glGetShaderInfoLog(fragmentShader, 512, NULL, buffer);
-			std::cout << "Tex fragment shader load error : " << buffer << std::endl;
-		}
 
 		glBindFragDataLocation(shaderProgram, 0, "outColor");
 

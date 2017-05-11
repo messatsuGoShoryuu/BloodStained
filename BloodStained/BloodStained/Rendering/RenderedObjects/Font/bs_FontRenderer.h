@@ -7,6 +7,7 @@
 #include "../../../Math/bs_Vector.h"
 #include "../../bs_Color.h"
 #include "bs_Font.h"
+#include "../../bs_Shader.h"
 
 
 namespace bs
@@ -41,7 +42,7 @@ namespace bs
 
 	public:
 
-		bool	initialize();
+		ERROR_ID	initialize();
 		bool	shutDown();
 
 		//More for direct calling
@@ -50,6 +51,8 @@ namespace bs
 		void	drawString(const String& string, const Vector2& position, Font* font, FONT_ALIGNMENT alignment, ui32 size, ColorRGBA32 color);
 
 		void	render(Camera2D* camera);
+
+		void	setShader(Shader* shader);
 
 	private:
 		void	_updateCameraUniforms(Camera2D* camera);
@@ -69,6 +72,7 @@ namespace bs
 
 		Array<FontRegistry>	m_strings;
 		Array<ui32>			m_batches;
+		Shader*				m_shader;
 	};
 }
 #endif // !BS_FONTRENDERER_H

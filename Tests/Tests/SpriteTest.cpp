@@ -76,9 +76,11 @@ void SpriteTest::initialize(bs::Level* l)
 	bs::Font*	font = bs::g_resourceManager.loadFont("Fonts/calibri.ttf");
 
 	if (font == nullptr) std::cout << "Font not found" << std::endl;
-	else m_sprite->setTexture(font->texture());
+	else
+	{
+		m_sprite->setTexture(font->texture());
+	}
 
 	bs::Sprite* sprite2 = bs::g_spriteRenderer.addSprite("FootballPitch-800px.png");
 	sprite2->setPosition(1.0, 1.0);
-	
 }

@@ -143,12 +143,9 @@ namespace bs
 			assert(glyph);
 			assert(glyph->unicode == unicode);
 			assert(face);
-			std::cout << "unicode = " << glyph->unicode << std::endl;
 #endif // BS_ASSERT
 
 			FT_Error error = FT_Load_Char(face, glyph->unicode, FT_LOAD_RENDER);
-
-			std::cout << "Error = " << error << std::endl;
 
 			FT_GlyphSlot glyphSlot = face->glyph;
 

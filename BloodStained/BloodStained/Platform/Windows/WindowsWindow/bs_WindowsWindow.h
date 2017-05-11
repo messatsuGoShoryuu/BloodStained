@@ -79,7 +79,7 @@ namespace bs
 		
 		const WindowMetrics& metrics(){ return m_metrics; }
 
-		HWND hwnd(){ return m_hwnd; }
+		HWND hwnd() const { return m_hwnd; }
 
 		static LRESULT CALLBACK WndProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam);
 

@@ -1,6 +1,7 @@
 #ifndef BS_LEVEL_H
 #define BS_LEVEL_H
 
+#include "../Utilities/bs_Error.h"
 #include "../Utilities/bs_types.h"
 #include "../Utilities/bs_String.h"
 #include "bs_LevelScript.h"
@@ -30,8 +31,8 @@ namespace bs
 		void	removeEntity(Entity* e);
 
 	public:
-		void	initialize();
-		void	shutDown();
+		ERROR_ID	initialize();
+		ERROR_ID	shutDown();
 
 		void	update(real dt);
 		void	render();

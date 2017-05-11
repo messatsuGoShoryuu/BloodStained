@@ -4,6 +4,7 @@
 #include "bs_Sprite.h"
 #include "../../bs_VertexBufferObject.h"
 #include "../../../Containers/bs_LinkedArray.h"
+#include "../../../Utilities/bs_Error.h"
 
 namespace bs
 {
@@ -31,10 +32,10 @@ namespace bs
 
 	public:
 		//Manual init
-		bool	initialize();
+		ERROR_ID	initialize();
 
 		//Manual shut down
-		bool	shutDown();
+		ERROR_ID	shutDown();
 
 
 		//Call render for each camera
