@@ -43,7 +43,7 @@ namespace bs
 	public:
 
 		ERROR_ID	initialize();
-		bool	shutDown();
+		ERROR_ID	shutDown();
 
 		//More for direct calling
 		void	drawString(const char* string, const Vector2& position, const char* font, FONT_ALIGNMENT alignment, ui32 size, ColorRGBA32 color);

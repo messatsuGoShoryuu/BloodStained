@@ -9,6 +9,7 @@
 #include "../Rendering/RenderedObjects/Sprite/bs_SpriteRenderer.h"
 #include "../Rendering/RenderedObjects/Debug/bs_DebugRenderer.h"
 #include "../Rendering/RenderedObjects/Font/bs_FontManager.h"
+#include "../Rendering/RenderedObjects/Font/bs_FontRenderer.h"
 #include "../Input/bs_InputManager.h"
 
 
@@ -27,6 +28,7 @@ namespace bs
 	extern InputManager		g_inputManager;
 	extern SpriteRenderer	g_spriteRenderer;
 	extern DebugRenderer	g_debugRenderer;
+	extern FontRenderer		g_fontRenderer;
 	extern FontManager		g_fontManager;
 }
 

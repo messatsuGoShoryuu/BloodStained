@@ -39,8 +39,8 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <IncludePath>G:\Programming\BloodStained\BloodStained\Libraries\include;G:\Programming\BloodStained\BloodStained\BloodStained;$(IncludePath)</IncludePath>
-    <LibraryPath>G:\Programming\BloodStained\BloodStained\Libraries\lib\Bloodstained_Library;G:\Programming\BloodStained\BloodStained\Libraries\lib;$(LibraryPath)</LibraryPath>
+    <IncludePath>C:\OsOs\BloodStained\BloodStained\BloodStained;C:\OsOs\BloodStained\BloodStained\Libraries\include;G:\Programming\BloodStained\BloodStained\Libraries\include;G:\Programming\BloodStained\BloodStained\BloodStained;$(IncludePath)</IncludePath>
+    <LibraryPath>G:\Programming\BloodStained\BloodStained\Libraries\lib\Bloodstained_Library;C:\OsOs\BloodStained\BloodStained\Libraries\lib;C:\OsOs\BloodStained\BloodStained\Libraries\lib\Bloodstained_Library;G:\Programming\BloodStained\BloodStained\Libraries\lib;$(LibraryPath)</LibraryPath>
     <OutDir>$(SolutionDir)\Debug\</OutDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">

@@ -47,9 +47,9 @@ namespace bs
 		m_shader = shader;
 	}
 
-	bool	FontRenderer::shutDown()
+	ERROR_ID	FontRenderer::shutDown()
 	{
-		return true;
+		return ERROR_ID::NONE;
 	}
 
 	void	FontRenderer::render(Camera2D* camera)
