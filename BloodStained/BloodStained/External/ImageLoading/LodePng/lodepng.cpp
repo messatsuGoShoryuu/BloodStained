@@ -94,7 +94,7 @@ Often in case of an error a value is assigned to a variable and then it breaks
 out of a loop (to go to the cleanup phase of a function). This macro does that.
 It makes the error handling code shorter and more readable.
 
-Example: if(!uivector_resizev(&frequencies_ll, 286, 0)) ERROR_BREAK(83);
+Example: if(!uivector_resizev(&frequenciell, 286, 0)) ERROR_BREAK(83);
 */
 #define CERROR_BREAK(errorvar, code)\
 {\
@@ -1131,16 +1131,16 @@ static unsigned inflateHuffmanBlock(ucvector* out, const unsigned char* in, size
 		else if (code_ll >= FIRST_LENGTH_CODE_INDEX && code_ll <= LAST_LENGTH_CODE_INDEX) /*length code*/
 		{
 			unsigned code_d, distance;
-			unsigned numextrabits_l, numextrabits_d; /*extra bits for length and distance*/
+			unsigned numextrabitl, numextrabitd; /*extra bits for length and distance*/
 			size_t start, forward, backward, length;
 
 			/*part 1: get length base*/
 			length = LENGTHBASE[code_ll - FIRST_LENGTH_CODE_INDEX];
 
 			/*part 2: get extra bits and add the value of that to length*/
-			numextrabits_l = LENGTHEXTRA[code_ll - FIRST_LENGTH_CODE_INDEX];
-			if ((*bp + numextrabits_l) > inbitlength) ERROR_BREAK(51); /*error, bit pointer will jump past memory*/
-			length += readBitsFromStream(bp, in, numextrabits_l);
+			numextrabitl = LENGTHEXTRA[code_ll - FIRST_LENGTH_CODE_INDEX];
+			if ((*bp + numextrabitl) > inbitlength) ERROR_BREAK(51); /*error, bit pointer will jump past memory*/
+			length += readBitsFromStream(bp, in, numextrabitl);
 
 			/*part 3: get distance code*/
 			code_d = huffmanDecodeSymbol(in, bp, &tree_d, inbitlength);
@@ -1158,9 +1158,9 @@ static unsigned inflateHuffmanBlock(ucvector* out, const unsigned char* in, size
 			distance = DISTANCEBASE[code_d];
 
 			/*part 4: get extra bits from distance*/
-			numextrabits_d = DISTANCEEXTRA[code_d];
-			if ((*bp + numextrabits_d) > inbitlength) ERROR_BREAK(51); /*error, bit pointer will jump past memory*/
-			distance += readBitsFromStream(bp, in, numextrabits_d);
+			numextrabitd = DISTANCEEXTRA[code_d];
+			if ((*bp + numextrabitd) > inbitlength) ERROR_BREAK(51); /*error, bit pointer will jump past memory*/
+			distance += readBitsFromStream(bp, in, numextrabitd);
 
 			/*part 5: fill in all the out[n] values based on the length and dist*/
 			start = (*pos);
@@ -1724,9 +1724,9 @@ static unsigned deflateDynamic(ucvector* out, size_t* bp, Hash* hash,
 	HuffmanTree tree_ll; /*tree for lit,len values*/
 	HuffmanTree tree_d; /*tree for distance codes*/
 	HuffmanTree tree_cl; /*tree for encoding the code lengths representing tree_ll and tree_d*/
-	uivector frequencies_ll; /*frequency of lit,len codes*/
-	uivector frequencies_d; /*frequency of dist codes*/
-	uivector frequencies_cl; /*frequency of code length codes*/
+	uivector frequenciell; /*frequency of lit,len codes*/
+	uivector frequencied; /*frequency of dist codes*/
+	uivector frequenciecl; /*frequency of code length codes*/
 	uivector bitlen_lld; /*lit,len,dist code lenghts (int bits), literally (without repeat codes).*/
 	uivector bitlen_lld_e; /*bitlen_lld encoded with repeat codes (this is a rudemtary run length compression)*/
 	/*bitlen_cl is the code length code lengths ("clcl"). The bit lengths of codes to represent tree_cl
@@ -1743,16 +1743,16 @@ static unsigned deflateDynamic(ucvector* out, size_t* bp, Hash* hash,
 	*/
 
 	unsigned BFINAL = final;
-	size_t numcodes_ll, numcodes_d, i;
+	size_t numcodell, numcoded, i;
 	unsigned HLIT, HDIST, HCLEN;
 
 	uivector_init(&lz77_encoded);
 	HuffmanTree_init(&tree_ll);
 	HuffmanTree_init(&tree_d);
 	HuffmanTree_init(&tree_cl);
-	uivector_init(&frequencies_ll);
-	uivector_init(&frequencies_d);
-	uivector_init(&frequencies_cl);
+	uivector_init(&frequenciell);
+	uivector_init(&frequencied);
+	uivector_init(&frequenciecl);
 	uivector_init(&bitlen_lld);
 	uivector_init(&bitlen_lld_e);
 	uivector_init(&bitlen_cl);
@@ -1773,35 +1773,35 @@ static unsigned deflateDynamic(ucvector* out, size_t* bp, Hash* hash,
 			for (i = datapos; i < dataend; ++i) lz77_encoded.data[i] = data[i]; /*no LZ77, but still will be Huffman compressed*/
 		}
 
-		if (!uivector_resizev(&frequencies_ll, 286, 0)) ERROR_BREAK(83 /*alloc fail*/);
-		if (!uivector_resizev(&frequencies_d, 30, 0)) ERROR_BREAK(83 /*alloc fail*/);
+		if (!uivector_resizev(&frequenciell, 286, 0)) ERROR_BREAK(83 /*alloc fail*/);
+		if (!uivector_resizev(&frequencied, 30, 0)) ERROR_BREAK(83 /*alloc fail*/);
 
 		/*Count the frequencies of lit, len and dist codes*/
 		for (i = 0; i != lz77_encoded.size; ++i)
 		{
 			unsigned symbol = lz77_encoded.data[i];
-			++frequencies_ll.data[symbol];
+			++frequenciell.data[symbol];
 			if (symbol > 256)
 			{
 				unsigned dist = lz77_encoded.data[i + 2];
-				++frequencies_d.data[dist];
+				++frequencied.data[dist];
 				i += 3;
 			}
 		}
-		frequencies_ll.data[256] = 1; /*there will be exactly 1 end code, at the end of the block*/
+		frequenciell.data[256] = 1; /*there will be exactly 1 end code, at the end of the block*/
 
 		/*Make both huffman trees, one for the lit and len codes, one for the dist codes*/
-		error = HuffmanTree_makeFromFrequencies(&tree_ll, frequencies_ll.data, 257, frequencies_ll.size, 15);
+		error = HuffmanTree_makeFromFrequencies(&tree_ll, frequenciell.data, 257, frequenciell.size, 15);
 		if (error) break;
 		/*2, not 1, is chosen for mincodes: some buggy PNG decoders require at least 2 symbols in the dist tree*/
-		error = HuffmanTree_makeFromFrequencies(&tree_d, frequencies_d.data, 2, frequencies_d.size, 15);
+		error = HuffmanTree_makeFromFrequencies(&tree_d, frequencied.data, 2, frequencied.size, 15);
 		if (error) break;
 
-		numcodes_ll = tree_ll.numcodes; if (numcodes_ll > 286) numcodes_ll = 286;
-		numcodes_d = tree_d.numcodes; if (numcodes_d > 30) numcodes_d = 30;
+		numcodell = tree_ll.numcodes; if (numcodell > 286) numcodell = 286;
+		numcoded = tree_d.numcodes; if (numcoded > 30) numcoded = 30;
 		/*store the code lengths of both generated trees in bitlen_lld*/
-		for (i = 0; i != numcodes_ll; ++i) uivector_push_back(&bitlen_lld, HuffmanTree_getLength(&tree_ll, (unsigned)i));
-		for (i = 0; i != numcodes_d; ++i) uivector_push_back(&bitlen_lld, HuffmanTree_getLength(&tree_d, (unsigned)i));
+		for (i = 0; i != numcodell; ++i) uivector_push_back(&bitlen_lld, HuffmanTree_getLength(&tree_ll, (unsigned)i));
+		for (i = 0; i != numcoded; ++i) uivector_push_back(&bitlen_lld, HuffmanTree_getLength(&tree_d, (unsigned)i));
 
 		/*run-length compress bitlen_ldd into bitlen_lld_e by using repeat codes 16 (copy length 3-6 times),
 		17 (3-10 zeroes), 18 (11-138 zeroes)*/
@@ -1852,17 +1852,17 @@ static unsigned deflateDynamic(ucvector* out, size_t* bp, Hash* hash,
 
 		/*generate tree_cl, the huffmantree of huffmantrees*/
 
-		if (!uivector_resizev(&frequencies_cl, NUM_CODE_LENGTH_CODES, 0)) ERROR_BREAK(83 /*alloc fail*/);
+		if (!uivector_resizev(&frequenciecl, NUM_CODE_LENGTH_CODES, 0)) ERROR_BREAK(83 /*alloc fail*/);
 		for (i = 0; i != bitlen_lld_e.size; ++i)
 		{
-			++frequencies_cl.data[bitlen_lld_e.data[i]];
+			++frequenciecl.data[bitlen_lld_e.data[i]];
 			/*after a repeat code come the bits that specify the number of repetitions,
-			those don't need to be in the frequencies_cl calculation*/
+			those don't need to be in the frequenciecl calculation*/
 			if (bitlen_lld_e.data[i] >= 16) ++i;
 		}
 
-		error = HuffmanTree_makeFromFrequencies(&tree_cl, frequencies_cl.data,
-			frequencies_cl.size, frequencies_cl.size, 7);
+		error = HuffmanTree_makeFromFrequencies(&tree_cl, frequenciecl.data,
+			frequenciecl.size, frequenciecl.size, 7);
 		if (error) break;
 
 		if (!uivector_resize(&bitlen_cl, tree_cl.numcodes)) ERROR_BREAK(83 /*alloc fail*/);
@@ -1898,8 +1898,8 @@ static unsigned deflateDynamic(ucvector* out, size_t* bp, Hash* hash,
 		addBitToStream(bp, out, 1); /*second bit of BTYPE "dynamic"*/
 
 		/*write the HLIT, HDIST and HCLEN values*/
-		HLIT = (unsigned)(numcodes_ll - 257);
-		HDIST = (unsigned)(numcodes_d - 1);
+		HLIT = (unsigned)(numcodell - 257);
+		HDIST = (unsigned)(numcoded - 1);
 		HCLEN = (unsigned)bitlen_cl.size - 4;
 		/*trim zeroes for HCLEN. HLIT and HDIST were already trimmed at tree creation*/
 		while (!bitlen_cl.data[HCLEN + 4 - 1] && HCLEN > 0) --HCLEN;
@@ -1937,9 +1937,9 @@ static unsigned deflateDynamic(ucvector* out, size_t* bp, Hash* hash,
 	HuffmanTree_cleanup(&tree_ll);
 	HuffmanTree_cleanup(&tree_d);
 	HuffmanTree_cleanup(&tree_cl);
-	uivector_cleanup(&frequencies_ll);
-	uivector_cleanup(&frequencies_d);
-	uivector_cleanup(&frequencies_cl);
+	uivector_cleanup(&frequenciell);
+	uivector_cleanup(&frequencied);
+	uivector_cleanup(&frequenciecl);
 	uivector_cleanup(&bitlen_lld_e);
 	uivector_cleanup(&bitlen_lld);
 	uivector_cleanup(&bitlen_cl);
@@ -2251,7 +2251,7 @@ static unsigned zlib_compress(unsigned char** out, size_t* outsize, const unsign
 /*this is a good tradeoff between speed and compression ratio*/
 #define DEFAULT_WINDOWSIZE 2048
 
-void lodepng_compress_settings_init(LodePNGCompressSettings* settings)
+void lodepng_compressettinginit(LodePNGCompressSettings* settings)
 {
 	/*compress with dynamic huffman tree (not in the mathematical sense, just not the predefined one)*/
 	settings->btype = 2;
@@ -2266,14 +2266,14 @@ void lodepng_compress_settings_init(LodePNGCompressSettings* settings)
 	settings->custom_context = 0;
 }
 
-const LodePNGCompressSettings lodepng_default_compress_settings = { 2, 1, DEFAULT_WINDOWSIZE, 3, 128, 1, 0, 0, 0 };
+const LodePNGCompressSettings lodepng_default_compressettings = { 2, 1, DEFAULT_WINDOWSIZE, 3, 128, 1, 0, 0, 0 };
 
 
 #endif /*LODEPNG_COMPILE_ENCODER*/
 
 #ifdef LODEPNG_COMPILE_DECODER
 
-void lodepng_decompress_settings_init(LodePNGDecompressSettings* settings)
+void lodepng_decompressettinginit(LodePNGDecompressSettings* settings)
 {
 	settings->ignore_adler32 = 0;
 
@@ -2282,7 +2282,7 @@ void lodepng_decompress_settings_init(LodePNGDecompressSettings* settings)
 	settings->custom_context = 0;
 }
 
-const LodePNGDecompressSettings lodepng_default_decompress_settings = { 0, 0, 0, 0 };
+const LodePNGDecompressSettings lodepng_default_decompressettings = { 0, 0, 0, 0 };
 
 #endif /*LODEPNG_COMPILE_DECODER*/
 
@@ -2644,22 +2644,22 @@ unsigned lodepng_get_channels(const LodePNGColorMode* info)
 	return getNumColorChannels(info->colortype);
 }
 
-unsigned lodepng_is_greyscale_type(const LodePNGColorMode* info)
+unsigned lodepng_igreyscale_type(const LodePNGColorMode* info)
 {
 	return info->colortype == LCT_GREY || info->colortype == LCT_GREY_ALPHA;
 }
 
-unsigned lodepng_is_alpha_type(const LodePNGColorMode* info)
+unsigned lodepng_ialpha_type(const LodePNGColorMode* info)
 {
 	return (info->colortype & 4) != 0; /*4 or 6*/
 }
 
-unsigned lodepng_is_palette_type(const LodePNGColorMode* info)
+unsigned lodepng_ipalette_type(const LodePNGColorMode* info)
 {
 	return info->colortype == LCT_PALETTE;
 }
 
-unsigned lodepng_has_palette_alpha(const LodePNGColorMode* info)
+unsigned lodepng_hapalette_alpha(const LodePNGColorMode* info)
 {
 	size_t i;
 	for (i = 0; i != info->palettesize; ++i)
@@ -2672,8 +2672,8 @@ unsigned lodepng_has_palette_alpha(const LodePNGColorMode* info)
 unsigned lodepng_can_have_alpha(const LodePNGColorMode* info)
 {
 	return info->key_defined
-		|| lodepng_is_alpha_type(info)
-		|| lodepng_has_palette_alpha(info);
+		|| lodepng_ialpha_type(info)
+		|| lodepng_hapalette_alpha(info);
 }
 
 size_t lodepng_get_raw_size(unsigned w, unsigned h, const LodePNGColorMode* color)
@@ -2699,24 +2699,24 @@ static size_t lodepng_get_raw_size_idat(unsigned w, unsigned h, const LodePNGCol
 
 #ifdef LODEPNG_COMPILE_ANCILLARY_CHUNKS
 
-static void LodePNGUnknownChunks_init(LodePNGInfo* info)
+static void LodePNGUnknownChunkinit(LodePNGInfo* info)
 {
 	unsigned i;
 	for (i = 0; i != 3; ++i) info->unknown_chunks_data[i] = 0;
 	for (i = 0; i != 3; ++i) info->unknown_chunks_size[i] = 0;
 }
 
-static void LodePNGUnknownChunks_cleanup(LodePNGInfo* info)
+static void LodePNGUnknownChunkcleanup(LodePNGInfo* info)
 {
 	unsigned i;
 	for (i = 0; i != 3; ++i) lodepng_free(info->unknown_chunks_data[i]);
 }
 
-static unsigned LodePNGUnknownChunks_copy(LodePNGInfo* dest, const LodePNGInfo* src)
+static unsigned LodePNGUnknownChunkcopy(LodePNGInfo* dest, const LodePNGInfo* src)
 {
 	unsigned i;
 
-	LodePNGUnknownChunks_cleanup(dest);
+	LodePNGUnknownChunkcleanup(dest);
 
 	for (i = 0; i != 3; ++i)
 	{
@@ -2898,7 +2898,7 @@ void lodepng_info_init(LodePNGInfo* info)
 	info->time_defined = 0;
 	info->phys_defined = 0;
 
-	LodePNGUnknownChunks_init(info);
+	LodePNGUnknownChunkinit(info);
 #endif /*LODEPNG_COMPILE_ANCILLARY_CHUNKS*/
 }
 
@@ -2909,7 +2909,7 @@ void lodepng_info_cleanup(LodePNGInfo* info)
 	LodePNGText_cleanup(info);
 	LodePNGIText_cleanup(info);
 
-	LodePNGUnknownChunks_cleanup(info);
+	LodePNGUnknownChunkcleanup(info);
 #endif /*LODEPNG_COMPILE_ANCILLARY_CHUNKS*/
 }
 
@@ -2924,8 +2924,8 @@ unsigned lodepng_info_copy(LodePNGInfo* dest, const LodePNGInfo* source)
 	CERROR_TRY_RETURN(LodePNGText_copy(dest, source));
 	CERROR_TRY_RETURN(LodePNGIText_copy(dest, source));
 
-	LodePNGUnknownChunks_init(dest);
-	CERROR_TRY_RETURN(LodePNGUnknownChunks_copy(dest, source));
+	LodePNGUnknownChunkinit(dest);
+	CERROR_TRY_RETURN(LodePNGUnknownChunkcopy(dest, source));
 #endif /*LODEPNG_COMPILE_ANCILLARY_CHUNKS*/
 	return 0;
 }
@@ -3248,13 +3248,13 @@ static void getPixelColorRGBA8(unsigned char* r, unsigned char* g,
 /*Similar to getPixelColorRGBA8, but with all the for loops inside of the color
 mode test cases, optimized to convert the colors much faster, when converting
 to RGBA or RGB with 8 bit per cannel. buffer must be RGBA or RGB output with
-enough memory, if has_alpha is true the output is RGBA. mode has the color mode
+enough memory, if haalpha is true the output is RGBA. mode has the color mode
 of the input buffer.*/
 static void getPixelColorsRGBA8(unsigned char* buffer, size_t numpixels,
-	unsigned has_alpha, const unsigned char* in,
+	unsigned haalpha, const unsigned char* in,
 	const LodePNGColorMode* mode)
 {
-	unsigned num_channels = has_alpha ? 4 : 3;
+	unsigned num_channels = haalpha ? 4 : 3;
 	size_t i;
 	if (mode->colortype == LCT_GREY)
 	{
@@ -3263,7 +3263,7 @@ static void getPixelColorsRGBA8(unsigned char* buffer, size_t numpixels,
 			for (i = 0; i != numpixels; ++i, buffer += num_channels)
 			{
 				buffer[0] = buffer[1] = buffer[2] = in[i];
-				if (has_alpha) buffer[3] = mode->key_defined && in[i] == mode->key_r ? 0 : 255;
+				if (haalpha) buffer[3] = mode->key_defined && in[i] == mode->key_r ? 0 : 255;
 			}
 		}
 		else if (mode->bitdepth == 16)
@@ -3271,7 +3271,7 @@ static void getPixelColorsRGBA8(unsigned char* buffer, size_t numpixels,
 			for (i = 0; i != numpixels; ++i, buffer += num_channels)
 			{
 				buffer[0] = buffer[1] = buffer[2] = in[i * 2];
-				if (has_alpha) buffer[3] = mode->key_defined && 256U * in[i * 2 + 0] + in[i * 2 + 1] == mode->key_r ? 0 : 255;
+				if (haalpha) buffer[3] = mode->key_defined && 256U * in[i * 2 + 0] + in[i * 2 + 1] == mode->key_r ? 0 : 255;
 			}
 		}
 		else
@@ -3282,7 +3282,7 @@ static void getPixelColorsRGBA8(unsigned char* buffer, size_t numpixels,
 			{
 				unsigned value = readBitsFromReversedStream(&j, in, mode->bitdepth);
 				buffer[0] = buffer[1] = buffer[2] = (value * 255) / highest;
-				if (has_alpha) buffer[3] = mode->key_defined && value == mode->key_r ? 0 : 255;
+				if (haalpha) buffer[3] = mode->key_defined && value == mode->key_r ? 0 : 255;
 			}
 		}
 	}
@@ -3295,7 +3295,7 @@ static void getPixelColorsRGBA8(unsigned char* buffer, size_t numpixels,
 				buffer[0] = in[i * 3 + 0];
 				buffer[1] = in[i * 3 + 1];
 				buffer[2] = in[i * 3 + 2];
-				if (has_alpha) buffer[3] = mode->key_defined && buffer[0] == mode->key_r
+				if (haalpha) buffer[3] = mode->key_defined && buffer[0] == mode->key_r
 					&& buffer[1] == mode->key_g && buffer[2] == mode->key_b ? 0 : 255;
 			}
 		}
@@ -3306,7 +3306,7 @@ static void getPixelColorsRGBA8(unsigned char* buffer, size_t numpixels,
 				buffer[0] = in[i * 6 + 0];
 				buffer[1] = in[i * 6 + 2];
 				buffer[2] = in[i * 6 + 4];
-				if (has_alpha) buffer[3] = mode->key_defined
+				if (haalpha) buffer[3] = mode->key_defined
 					&& 256U * in[i * 6 + 0] + in[i * 6 + 1] == mode->key_r
 					&& 256U * in[i * 6 + 2] + in[i * 6 + 3] == mode->key_g
 					&& 256U * in[i * 6 + 4] + in[i * 6 + 5] == mode->key_b ? 0 : 255;
@@ -3327,14 +3327,14 @@ static void getPixelColorsRGBA8(unsigned char* buffer, size_t numpixels,
 				/*This is an error according to the PNG spec, but most PNG decoders make it black instead.
 				Done here too, slightly faster due to no error handling needed.*/
 				buffer[0] = buffer[1] = buffer[2] = 0;
-				if (has_alpha) buffer[3] = 255;
+				if (haalpha) buffer[3] = 255;
 			}
 			else
 			{
 				buffer[0] = mode->palette[index * 4 + 0];
 				buffer[1] = mode->palette[index * 4 + 1];
 				buffer[2] = mode->palette[index * 4 + 2];
-				if (has_alpha) buffer[3] = mode->palette[index * 4 + 3];
+				if (haalpha) buffer[3] = mode->palette[index * 4 + 3];
 			}
 		}
 	}
@@ -3345,7 +3345,7 @@ static void getPixelColorsRGBA8(unsigned char* buffer, size_t numpixels,
 			for (i = 0; i != numpixels; ++i, buffer += num_channels)
 			{
 				buffer[0] = buffer[1] = buffer[2] = in[i * 2 + 0];
-				if (has_alpha) buffer[3] = in[i * 2 + 1];
+				if (haalpha) buffer[3] = in[i * 2 + 1];
 			}
 		}
 		else
@@ -3353,7 +3353,7 @@ static void getPixelColorsRGBA8(unsigned char* buffer, size_t numpixels,
 			for (i = 0; i != numpixels; ++i, buffer += num_channels)
 			{
 				buffer[0] = buffer[1] = buffer[2] = in[i * 4 + 0];
-				if (has_alpha) buffer[3] = in[i * 4 + 2];
+				if (haalpha) buffer[3] = in[i * 4 + 2];
 			}
 		}
 	}
@@ -3366,7 +3366,7 @@ static void getPixelColorsRGBA8(unsigned char* buffer, size_t numpixels,
 				buffer[0] = in[i * 4 + 0];
 				buffer[1] = in[i * 4 + 1];
 				buffer[2] = in[i * 4 + 2];
-				if (has_alpha) buffer[3] = in[i * 4 + 3];
+				if (haalpha) buffer[3] = in[i * 4 + 3];
 			}
 		}
 		else
@@ -3376,7 +3376,7 @@ static void getPixelColorsRGBA8(unsigned char* buffer, size_t numpixels,
 				buffer[0] = in[i * 8 + 0];
 				buffer[1] = in[i * 8 + 2];
 				buffer[2] = in[i * 8 + 4];
-				if (has_alpha) buffer[3] = in[i * 8 + 6];
+				if (haalpha) buffer[3] = in[i * 8 + 6];
 			}
 		}
 	}
@@ -3524,11 +3524,11 @@ unsigned lodepng_get_color_profile(LodePNGColorProfile* profile,
 	ColorTree tree;
 	size_t numpixels = w * h;
 
-	unsigned colored_done = lodepng_is_greyscale_type(mode) ? 1 : 0;
+	unsigned colored_done = lodepng_igreyscale_type(mode) ? 1 : 0;
 	unsigned alpha_done = lodepng_can_have_alpha(mode) ? 0 : 1;
-	unsigned numcolors_done = 0;
+	unsigned numcolordone = 0;
 	unsigned bpp = lodepng_get_bpp(mode);
-	unsigned bits_done = bpp == 1 ? 1 : 0;
+	unsigned bitdone = bpp == 1 ? 1 : 0;
 	unsigned maxnumcolors = 257;
 	unsigned sixteen = 0;
 	if (bpp <= 8) maxnumcolors = bpp == 1 ? 2 : (bpp == 2 ? 4 : (bpp == 4 ? 16 : 256));
@@ -3555,7 +3555,7 @@ unsigned lodepng_get_color_profile(LodePNGColorProfile* profile,
 	{
 		unsigned short r = 0, g = 0, b = 0, a = 0;
 		profile->bits = 16;
-		bits_done = numcolors_done = 1; /*counting colors no longer useful, palette doesn't support 16-bit*/
+		bitdone = numcolordone = 1; /*counting colors no longer useful, palette doesn't support 16-bit*/
 
 		for (i = 0; i != numpixels; ++i)
 		{
@@ -3591,7 +3591,7 @@ unsigned lodepng_get_color_profile(LodePNGColorProfile* profile,
 				}
 			}
 
-			if (alpha_done && numcolors_done && colored_done && bits_done) break;
+			if (alpha_done && numcolordone && colored_done && bitdone) break;
 		}
 	}
 	else /* < 16-bit */
@@ -3601,13 +3601,13 @@ unsigned lodepng_get_color_profile(LodePNGColorProfile* profile,
 			unsigned char r = 0, g = 0, b = 0, a = 0;
 			getPixelColorRGBA8(&r, &g, &b, &a, in, i, mode);
 
-			if (!bits_done && profile->bits < 8)
+			if (!bitdone && profile->bits < 8)
 			{
 				/*only r is checked, < 8 bits is only relevant for greyscale*/
 				unsigned bits = getValueRequiredBits(r);
 				if (bits > profile->bits) profile->bits = bits;
 			}
-			bits_done = (profile->bits >= bpp);
+			bitdone = (profile->bits >= bpp);
 
 			if (!colored_done && (r != g || r != b))
 			{
@@ -3641,7 +3641,7 @@ unsigned lodepng_get_color_profile(LodePNGColorProfile* profile,
 				}
 			}
 
-			if (!numcolors_done)
+			if (!numcolordone)
 			{
 				if (!color_tree_has(&tree, r, g, b, a))
 				{
@@ -3656,11 +3656,11 @@ unsigned lodepng_get_color_profile(LodePNGColorProfile* profile,
 						p[n * 4 + 3] = a;
 					}
 					++profile->numcolors;
-					numcolors_done = profile->numcolors >= maxnumcolors;
+					numcolordone = profile->numcolors >= maxnumcolors;
 				}
 			}
 
-			if (alpha_done && numcolors_done && colored_done && bits_done) break;
+			if (alpha_done && numcolordone && colored_done && bitdone) break;
 		}
 
 		/*make the profile's key always 16-bit for consistency - repeat each byte twice*/
@@ -4728,7 +4728,7 @@ unsigned lodepng_decode24_file(unsigned char** out, unsigned* w, unsigned* h, co
 }
 #endif /*LODEPNG_COMPILE_DISK*/
 
-void lodepng_decoder_settings_init(LodePNGDecoderSettings* settings)
+void lodepng_decoder_settinginit(LodePNGDecoderSettings* settings)
 {
 	settings->color_convert = 1;
 #ifdef LODEPNG_COMPILE_ANCILLARY_CHUNKS
@@ -4736,7 +4736,7 @@ void lodepng_decoder_settings_init(LodePNGDecoderSettings* settings)
 	settings->remember_unknown_chunks = 0;
 #endif /*LODEPNG_COMPILE_ANCILLARY_CHUNKS*/
 	settings->ignore_crc = 0;
-	lodepng_decompress_settings_init(&settings->zlibsettings);
+	lodepng_decompressettinginit(&settings->zlibsettings);
 }
 
 #endif /*LODEPNG_COMPILE_DECODER*/
@@ -4746,7 +4746,7 @@ void lodepng_decoder_settings_init(LodePNGDecoderSettings* settings)
 void lodepng_state_init(LodePNGState* state)
 {
 #ifdef LODEPNG_COMPILE_DECODER
-	lodepng_decoder_settings_init(&state->decoder);
+	lodepng_decoder_settinginit(&state->decoder);
 #endif /*LODEPNG_COMPILE_DECODER*/
 #ifdef LODEPNG_COMPILE_ENCODER
 	lodepng_encoder_settings_init(&state->encoder);
@@ -5797,7 +5797,7 @@ unsigned lodepng_encode24_file(const char* filename, const unsigned char* image,
 
 void lodepng_encoder_settings_init(LodePNGEncoderSettings* settings)
 {
-	lodepng_compress_settings_init(&settings->zlibsettings);
+	lodepng_compressettinginit(&settings->zlibsettings);
 	settings->filter_palette_zero = 1;
 	settings->filter_strategy = LFS_MINSUM;
 	settings->auto_convert = 1;

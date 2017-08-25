@@ -1,45 +1,44 @@
 #include "bs_Error.h"
 #include "bs_String.h"
-#include "../Globals/bs_globals.h"
-#include "../Rendering/bs_OpenGLWindow.h"
-
 
 namespace bs
 {
-	ERROR_ID	Error::fatalError(ERROR_ID error, String cause)
-	{
-		String fatalErrorString = "Fatal Error : ";
-		fatalErrorString += errorString(error);
-		MessageBox(g_game.window()->hwnd(), cause.utf8(), fatalErrorString.utf8(), MB_OK | MB_ICONERROR);
-		g_game.quit();
-		return error;
-	}
-
-	const char*	Error::errorString(ERROR_ID id)
+	const char * getErrorString(ERROR_ID id)
 	{
 		switch (id)
 		{
-			case ERROR_ID::FAIL_FRAG_SHADER_LOAD: 
-				return "Failed to load fragment shader";
-			case ERROR_ID::FAIL_SHADER:
-				return "Failed to load shader";
-			case ERROR_ID::FAIL_VERT_SHADER_LOAD:
-				return "Failed to load vertex shader";
-			case ERROR_ID::INVALID_FILE: 
-				return "Invalid file";
-			case ERROR_ID::INVALID_FORMAT:
-				return "Invalid format";
-			case ERROR_ID::INVALID_INDEX:
-				return "Invalid index";
-			case ERROR_ID::FAIL_GL_GENVERTEXARRAY:
-				return "::glGenVertexArray failed";
-			case ERROR_ID::FAIL_GL_GENBUFFERS:
-				return "::glGenBuffers failed";
-			case ERROR_ID::UNDEFINED:
-				return "Undefined error";
-			case ERROR_ID::NONE:
-				return "No error";
-			default: return "No error";
+		case	ERROR_ID::NONE:
+			return "No error.";
+		case	ERROR_ID::WINDOW_CLASS_REGISTRATION_FAILED:
+			return "Window class registration failed.";
+		case	ERROR_ID::WINDOW_CREATION_FAILED:
+			return "Window creation failed.";
+		case	ERROR_ID::DC_NOT_FOUND:
+			return "Device context not found.";
+		case	ERROR_ID::GL_DC_FAIL:
+			return "OpenGL Context creation failed.";
+		case	ERROR_ID::PIXEL_FORMAT_FAIL:
+			return "Pixel format could not be chosen.";
+		case	ERROR_ID::WGL_EXTENSION_LOAD_FAIL:
+			return "WGL extension could not be loaded.";
+		case	ERROR_ID::LOAD_RESOURCE_FAIL:
+			return "Resource could not be loaded.";
+		case	ERROR_ID::FILE_SIZE_0:
+			return "Requested file has a size of 0 bytes.";
+		case	ERROR_ID::SHADER_TEXT_NOT_FOUND:
+			return "Source for shader failed to load.";
+		case	ERROR_ID::SHADER_CREATION_FAIL:
+			return "Shader could not be created.";
+		case	ERROR_ID::SHADER_COMPILATION_FAIL:
+			return "Shader couldn't be compiled.";
 		}
+		return nullptr;
 	}
+
+
+	ERROR_ID fatalError(ERROR_ID id, String info)
+	{
+		return _FATAL_ERROR_INFO_(id, info);
+	}
+
 }

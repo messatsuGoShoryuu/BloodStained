@@ -1,0 +1,28 @@
+﻿  bs_Error.cpp
+g:\programming\bloodstained\bloodstained\bloodstained\containers\bs_array.h(490): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+  bs_OpenGL.cpp
+g:\programming\bloodstained\bloodstained\bloodstained\containers\bs_array.h(490): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+  bs_WindowsOpenGL.cpp
+g:\programming\bloodstained\bloodstained\bloodstained\platform\windows\bs_windowsopengl.cpp(148): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+  bs_WindowsMain.cpp
+  bs_WindowsError.cpp
+g:\programming\bloodstained\bloodstained\bloodstained\containers\bs_array.h(490): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+  bs_Game.cpp
+g:\programming\bloodstained\bloodstained\bloodstained\containers\bs_array.h(490): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+g:\programming\bloodstained\bloodstained\bloodstained\containers\bs_linkedarray.h(539): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+g:\programming\bloodstained\bloodstained\bloodstained\containers\bs_linkedarray.h(1091): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+  Generating Code...
+  Compiling...
+  bs_ShaderManager.cpp
+g:\programming\bloodstained\bloodstained\bloodstained\containers\bs_array.h(490): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+g:\programming\bloodstained\bloodstained\bloodstained\containers\bs_linkedarray.h(539): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+g:\programming\bloodstained\bloodstained\bloodstained\containers\bs_linkedarray.h(1091): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+  bs_ResourceManager.cpp
+g:\programming\bloodstained\bloodstained\bloodstained\containers\bs_array.h(490): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+g:\programming\bloodstained\bloodstained\bloodstained\containers\bs_linkedarray.h(539): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+g:\programming\bloodstained\bloodstained\bloodstained\containers\bs_linkedarray.h(1091): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+  bs_Resource.cpp
+g:\programming\bloodstained\bloodstained\bloodstained\containers\bs_array.h(490): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+  Generating Code...
+  BloodStained.vcxproj -> G:\Programming\BloodStained\BloodStained\Debug\BloodStained.exe
+  BloodStained.vcxproj -> G:\Programming\BloodStained\BloodStained\Debug\BloodStained.pdb (Partial PDB)

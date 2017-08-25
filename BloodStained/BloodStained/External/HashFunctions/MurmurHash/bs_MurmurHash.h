@@ -2,10 +2,10 @@
 // MurmurHash3 was written by Austin Appleby, and is placed in the public
 // domain. The author hereby disclaims copyright to this source code.
 
-#ifndef BS_MURMURHASH3_H
-#define BS_MURMURHASH3_H
+#ifndef _BS_MURMURHASH3_H_
+#define _BS_MURMURHASH3_H_
 
-#include "../../../Utilities/bs_types.h"
+#include <Utilities/bs_types.h>
 
 //-----------------------------------------------------------------------------
 // Platform-specific functions and macros

@@ -1,5 +1,5 @@
-#ifndef BS_ARRAY_H
-#define BS_ARRAY_H
+#ifndef _BS_ARRAY_H_
+#define _BS_ARRAY_H_
 
 #include "../Utilities/bs_arrayOperations.h"
 #include "../Math/bs_math.h"
@@ -217,9 +217,6 @@ namespace bs
 	void Array<T>::resize(ui32 size)
 	{
 		reserve(size);
-#ifdef BS_PROFILE_MEMORY
-		bs::Profiler::addUsedBytes(size * sizeof(T));
-#endif
 		m_count = size;
 	}
 
@@ -393,10 +390,6 @@ namespace bs
 
 		//copy content from a's buffer to this buffer
 		copyArray(a.m_buffer, m_buffer, a.m_count);
-
-#ifdef BS_PROFILE_MEMORY
-		Profiler::addUsedBytes(sizeof(T) * a.m_count);
-#endif
 
 		//update member values
 		m_count = a.m_count;

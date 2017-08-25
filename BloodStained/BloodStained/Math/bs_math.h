@@ -1,5 +1,5 @@
-#ifndef BS_MATH_H
-#define BS_MATH_H
+#ifndef _BS_MATH_H_
+#define _BS_MATH_H_
 
 #include <math.h>
 #include <iostream>

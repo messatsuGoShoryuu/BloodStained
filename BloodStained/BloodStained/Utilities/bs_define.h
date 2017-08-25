@@ -1,11 +1,5 @@
-#ifndef BS_DEFINE_H
-#define BS_DEFINE_H
-
-#define		BS_EDITOR
-
-#ifndef BS_EDITOR
-#define BS_STANDALONE
-#endif // !BS_EDITOR
+#ifndef _BS_DEFINE_H_
+#define _BS_DEFINE_H_
 
 
 //math
@@ -23,7 +17,6 @@
 
 //debug settings
 #define		BS_ASSERT
-#define		BS_PROFILE_MEMORY
 
 //multiple argument templates
 #define MULTIPLE_ARGS_1 Arg0 arg0
@@ -56,19 +49,6 @@
 #if _MSC_VER
 #include <crtdefs.h>
 #define BS_UNDECORATED_FUNCTION __FUNCTION__
-#endif
-
-
-//Architecture
-#if _MSC_VER
-
-#ifdef _WIN32 
-#define BS_ARCHITECTURE_X86
-#endif
-
-#ifdef _WIN64
-#define BS_ARCHITECTURE_X64
-#endif
 #endif
 
 //OGL draw types

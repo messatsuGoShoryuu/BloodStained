@@ -1,7 +1,6 @@
 #include "bs_Pool.h"
 #include "../Utilities/bs_arrayOperations.h"
 #include "../Math/bs_math.h"
-#include "../Profiler/bs_Profiler.h"
 
 #include <assert.h>
 
@@ -53,9 +52,7 @@ namespace bs
 		m_poolByteCount(p.m_poolByteCount)
 	{
 		m_buffer = (byte*)malloc(m_poolByteCount);
-#ifdef BS_PROFILE_MEMORY
-		Profiler::addAllocatedBytes(m_poolByteCount);
-#endif
+
 		copyArray(p.m_buffer, m_buffer, m_poolByteCount);
 	}
 
@@ -81,11 +78,7 @@ namespace bs
 		}
 
 		m_buffer = (byte*)malloc(m_poolByteCount);
-#ifdef BS_PROFILE_MEMORY
-		Profiler::addAllocatedBytes(m_poolByteCount);
-		Profiler::addMallocCount(1);
-		Profiler::addPoolCount();
-#endif
+
 		if (!m_buffer) return false;
 
 		//set next block values
@@ -107,11 +100,6 @@ namespace bs
 			clearArray(m_buffer, m_poolByteCount);
 			free(m_buffer);
 
-#ifdef BS_PROFILE_MEMORY
-			Profiler::removeAllocatedBytes(m_poolByteCount);
-			Profiler::addFreeCount(1);
-			Profiler::removePoolCount();
-#endif
 			m_buffer = nullptr;
 		}
 

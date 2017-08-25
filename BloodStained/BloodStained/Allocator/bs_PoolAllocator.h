@@ -1,11 +1,10 @@
-#ifndef BS_POOLALLOCATOR_H
-#define BS_POOLALLOCATOR_H
+#ifndef _BS_POOLALLOCATOR_H_
+#define _BS_POOLALLOCATOR_H_
 
 #include <assert.h>
 
 #include "bs_Pool.h"
 
-#include "../Profiler/bs_Profiler.h"
 
 namespace bs
 {
@@ -39,9 +38,7 @@ namespace bs
 #ifdef BS_ASSERT
 			assert(p);
 #endif
-#ifdef BS_PROFILE_MEMORY
-			Profiler::addUsedBytes(sizeof(T));
-#endif
+
 			return new(p->allocate()) T(arg0, arg1, arg2, arg3, arg4, arg5);
 		}
 
@@ -52,9 +49,7 @@ namespace bs
 #ifdef BS_ASSERT
 			assert(p);
 #endif
-#ifdef BS_PROFILE_MEMORY
-			Profiler::addUsedBytes(sizeof(T));
-#endif
+
 			return new(p->allocate()) T(arg0, arg1, arg2, arg3, arg4);
 		}
 
@@ -65,9 +60,7 @@ namespace bs
 #ifdef BS_ASSERT
 			assert(p);
 #endif
-#ifdef BS_PROFILE_MEMORY
-			Profiler::addUsedBytes(sizeof(T));
-#endif
+
 			return new(p->allocate()) T(arg0, arg1, arg2, arg3);
 		}
 
@@ -78,9 +71,7 @@ namespace bs
 #ifdef BS_ASSERT
 			assert(p);
 #endif
-#ifdef BS_PROFILE_MEMORY
-			Profiler::addUsedBytes(sizeof(T));
-#endif
+
 			return new(p->allocate()) T(arg0, arg1, arg2);
 		}
 
@@ -91,9 +82,7 @@ namespace bs
 #ifdef BS_ASSERT
 			assert(p);
 #endif
-#ifdef BS_PROFILE_MEMORY
-			Profiler::addUsedBytes(sizeof(T));
-#endif
+
 			return new(p->allocate()) T(arg0, arg1);
 		}
 
@@ -104,9 +93,6 @@ namespace bs
 #ifdef BS_ASSERT
 			assert(p);
 #endif
-#ifdef BS_PROFILE_MEMORY
-			Profiler::addUsedBytes(sizeof(T));
-#endif
 			return new(p->allocate()) T(arg0);
 		}
 
@@ -116,9 +102,7 @@ namespace bs
 #ifdef BS_ASSERT
 			assert(p);
 #endif
-#ifdef BS_PROFILE_MEMORY
-			Profiler::addUsedBytes(sizeof(T));
-#endif
+
 			return new(p->allocate()) T();
 		}
 
@@ -127,9 +111,6 @@ namespace bs
 			Pool* p = _findFirstAvailablePool();
 #ifdef BS_ASSERT
 			assert(p);
-#endif
-#ifdef BS_PROFILE_MEMORY
-			Profiler::addUsedBytes(sizeof(T));
 #endif
 			return new (p->allocate()) T(object);
 		}
@@ -241,9 +222,6 @@ namespace bs
 			p->deallocate(item);
 		}
 
-#ifdef BS_PROFILE_MEMORY
-		Profiler::removeUsedBytes(sizeof(T));
-#endif
 	}
 
 	//Returns the first non empty pool (used for allocation)

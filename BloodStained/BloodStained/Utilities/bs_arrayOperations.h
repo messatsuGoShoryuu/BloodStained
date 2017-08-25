@@ -1,5 +1,5 @@
-#ifndef BS_ARRAYOPERATIONS_H
-#define BS_ARRAYOPERATIONS_H
+#ifndef _BS_ARRAYOPERATIONS_H_
+#define _BS_ARRAYOPERATIONS_H_
 
 #include "bs_types.h"
 

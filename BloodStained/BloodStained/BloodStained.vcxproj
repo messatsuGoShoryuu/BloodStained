@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project DefaultTargets="Build" ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project DefaultTargets="Build" ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
       <Configuration>Debug</Configuration>
@@ -9,28 +9,117 @@
       <Configuration>Release</Configuration>
       <Platform>Win32</Platform>
     </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\..\BloodStained_Old\BloodStained\BloodStained\Math\bs_Matrix3x3.cpp" />
+    <ClCompile Include="..\..\..\BloodStained_Old\BloodStained\BloodStained\Math\bs_Matrix4x4.cpp" />
+    <ClCompile Include="..\..\..\BloodStained_Old\BloodStained\BloodStained\Math\bs_Quaternion.cpp" />
+    <ClCompile Include="..\..\..\BloodStained_Old\BloodStained\BloodStained\Math\bs_Rect.cpp" />
+    <ClCompile Include="..\..\..\BloodStained_Old\BloodStained\BloodStained\Math\bs_Vector2.cpp" />
+    <ClCompile Include="..\..\..\BloodStained_Old\BloodStained\BloodStained\Math\bs_Vector3.cpp" />
+    <ClCompile Include="..\..\..\BloodStained_Old\BloodStained\BloodStained\Math\bs_Vector4.cpp" />
+    <ClCompile Include="Allocator\bs_Memory.cpp" />
+    <ClCompile Include="Allocator\bs_Pool.cpp" />
+    <ClCompile Include="Allocator\bs_StackAllocator.cpp" />
+    <ClCompile Include="Containers\bs_HashMap.cpp" />
+    <ClCompile Include="External\HashFunctions\MurmurHash\bs_MurmurHash.cpp" />
+    <ClCompile Include="External\ImageLoading\LodePng\lodepng.cpp" />
+    <ClCompile Include="FileIO\bs_FileSystem.cpp" />
+    <ClCompile Include="FileIO\bs_Path.cpp" />
+    <ClCompile Include="FileIO\bs_Resource.cpp" />
+    <ClCompile Include="FileIO\bs_ResourceManager.cpp" />
+    <ClCompile Include="Game\bs_Game.cpp" />
+    <ClCompile Include="Platform\Windows\bs_WindowsError.cpp" />
+    <ClCompile Include="Platform\Windows\bs_WindowsFileSystem.cpp" />
+    <ClCompile Include="Platform\Windows\bs_WindowsMain.cpp" />
+    <ClCompile Include="Platform\Windows\bs_WindowsOpenGL.cpp" />
+    <ClCompile Include="Rendering\bs_OpenGL.cpp" />
+    <ClCompile Include="Rendering\bs_ShaderManager.cpp" />
+    <ClCompile Include="Utilities\bs_Error.cpp" />
+    <ClCompile Include="Utilities\bs_String.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\..\BloodStained_Old\BloodStained\BloodStained\Math\bs_Matrix3x3.h" />
+    <ClInclude Include="..\..\..\BloodStained_Old\BloodStained\BloodStained\Math\bs_Matrix4x4.h" />
+    <ClInclude Include="..\..\..\BloodStained_Old\BloodStained\BloodStained\Math\bs_Quaternion.h" />
+    <ClInclude Include="..\..\..\BloodStained_Old\BloodStained\BloodStained\Math\bs_Rect.h" />
+    <ClInclude Include="..\..\..\BloodStained_Old\BloodStained\BloodStained\Math\bs_Vector.h" />
+    <ClInclude Include="..\..\..\BloodStained_Old\BloodStained\BloodStained\Math\bs_Vector2.h" />
+    <ClInclude Include="..\..\..\BloodStained_Old\BloodStained\BloodStained\Math\bs_Vector3.h" />
+    <ClInclude Include="..\..\..\BloodStained_Old\BloodStained\BloodStained\Math\bs_Vector4.h" />
+    <ClInclude Include="Allocator\bs_Memory.h" />
+    <ClInclude Include="Allocator\bs_Pool.h" />
+    <ClInclude Include="Allocator\bs_PoolAllocator.h" />
+    <ClInclude Include="Allocator\bs_StackAllocator.h" />
+    <ClInclude Include="Containers\bs_Array.h" />
+    <ClInclude Include="Containers\bs_HashMap.h" />
+    <ClInclude Include="Containers\bs_LinkedArray.h" />
+    <ClInclude Include="External\HashFunctions\MurmurHash\bs_MurmurHash.h" />
+    <ClInclude Include="External\ImageLoading\LodePng\lodepng.h" />
+    <ClInclude Include="FileIO\bs_FileSystem.h" />
+    <ClInclude Include="FileIO\bs_Folder.h" />
+    <ClInclude Include="FileIO\bs_Path.h" />
+    <ClInclude Include="FileIO\bs_Resource.h" />
+    <ClInclude Include="FileIO\bs_ResourceManager.h" />
+    <ClInclude Include="Game\bs_Game.h" />
+    <ClInclude Include="Math\bs_math.h" />
+    <ClInclude Include="Platform\bs_Platform.h" />
+    <ClInclude Include="Platform\Windows\bs_WindowsError.h" />
+    <ClInclude Include="Platform\Windows\bs_WindowsFileSystem.h" />
+    <ClInclude Include="Platform\Windows\bs_WindowsOpenGL.h" />
+    <ClInclude Include="Rendering\bs_OpenGL.h" />
+    <ClInclude Include="Rendering\bs_Shader.h" />
+    <ClInclude Include="Rendering\bs_ShaderManager.h" />
+    <ClInclude Include="Utilities\bs_arrayOperations.h" />
+    <ClInclude Include="Utilities\bs_define.h" />
+    <ClInclude Include="Utilities\bs_Error.h" />
+    <ClInclude Include="Utilities\bs_String.h" />
+    <ClInclude Include="Utilities\bs_types.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{BFE574EE-8EDD-48B5-91E3-1BCD1DE359E9}</ProjectGuid>
+    <ProjectGuid>{5231931E-9050-4A87-BFDE-B4692BDC8F39}</ProjectGuid>
     <RootNamespace>BloodStained</RootNamespace>
-    <ProjectName>Bloodstained_Lib</ProjectName>
+    <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
-    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v120</PlatformToolset>
+    <PlatformToolset>v140</PlatformToolset>
     <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
-    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
-    <PlatformToolset>v120</PlatformToolset>
+    <PlatformToolset>v140</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v140</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v140</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
   <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="Shared">
   </ImportGroup>
   <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
@@ -38,40 +127,37 @@
   <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <TargetExt>.lib</TargetExt>
-    <IncludePath>$(SolutionDir)Libraries\include;$(IncludePath)</IncludePath>
-    <LibraryPath>$(SolutionDir)Libraries\lib;$(LibraryPath)</LibraryPath>
-    <OutDir>$(SolutionDir)Libraries\lib\Bloodstained_Library\</OutDir>
-    <IntDir>$(SolutionDir)Libraries\lib\Bloodstained_Library\</IntDir>
+    <IncludePath>G:\Programming\BloodStained\Libraries\inc;G:\Programming\BloodStained\BloodStained\BloodStained;$(IncludePath)</IncludePath>
+    <LibraryPath>G:\Programming\BloodStained\Libraries\lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
-    <TargetExt>.lib</TargetExt>
-    <IncludePath>$(SolutionDir)Libraries\include;$(IncludePath)</IncludePath>
-    <LibraryPath>$(SolutionDir)Libraries\lib;$(LibraryPath)</LibraryPath>
-    <OutDir>$(SolutionDir)Libraries\lib\Bloodstained_Library\</OutDir>
-    <IntDir>$(SolutionDir)Libraries\lib\Bloodstained_Library\</IntDir>
+    <IncludePath>G:\Programming\BloodStained\Libraries\inc;G:\Programming\BloodStained\BloodStained\BloodStained;$(IncludePath)</IncludePath>
+    <LibraryPath>G:\Programming\BloodStained\Libraries\lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
-      <ShowIncludes>true</ShowIncludes>
-      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
     </ClCompile>
     <Link>
-      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
-    <Lib>
-      <UseUnicodeResponseFiles>true</UseUnicodeResponseFiles>
-      <OutputFile>$(OutDir)$(TargetName)$(TargetExt)</OutputFile>
-      <AdditionalDependencies>Comctl32.lib;opengl32.lib;glu32.lib;glew32.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;freetype26d.lib;%(AdditionalDependencies)</AdditionalDependencies>
-    </Lib>
-    <ProjectReference>
-      <LinkLibraryDependencies>false</LinkLibraryDependencies>
-    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <SDLCheck>true</SDLCheck>
+    </ClCompile>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
@@ -80,173 +166,26 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <ShowIncludes>true</ShowIncludes>
-      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
     </ClCompile>
     <Link>
-      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalDependencies>opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+    </ClCompile>
+    <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
     </Link>
-    <Lib>
-      <UseUnicodeResponseFiles>true</UseUnicodeResponseFiles>
-      <OutputFile>$(OutDir)$(TargetName)$(TargetExt)</OutputFile>
-      <AdditionalDependencies>Comctl32.lib;opengl32.lib;glu32.lib;glew32.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;freetype26d.lib;%(AdditionalDependencies)</AdditionalDependencies>
-    </Lib>
   </ItemDefinitionGroup>
-  <ItemGroup>
-    <ClInclude Include="Allocator\bs_Memory.h" />
-    <ClInclude Include="Allocator\bs_Pool.h" />
-    <ClInclude Include="Allocator\bs_PoolAllocator.h" />
-    <ClInclude Include="Allocator\bs_StackAllocator.h" />
-    <ClInclude Include="Containers\bs_Array.h" />
-    <ClInclude Include="Containers\bs_HashMap.h" />
-    <ClInclude Include="Containers\bs_LinkedArray.h" />
-    <ClInclude Include="Editor\bs_Editor.h" />
-    <ClInclude Include="Editor\bs_EditorApp.h" />
-    <ClInclude Include="Editor\bs_EditorEnums.h" />
-    <ClInclude Include="Editor\bs_EditorPlatform.h" />
-    <ClInclude Include="Editor\bs_FolderExplorer.h" />
-    <ClInclude Include="Editor\Windows\bs_WindowsEditorWindow.h" />
-    <ClInclude Include="Editor\Windows\bs_WindowsListviewWindow.h" />
-    <ClInclude Include="External\HashFunctions\MurmurHash\bs_MurmurHash.h" />
-    <ClInclude Include="External\ImageLoading\LodePng\lodepng.h" />
-    <ClInclude Include="Functions\bs_BaseMemberFunction.h" />
-    <ClInclude Include="Functions\bs_Function.h" />
-    <ClInclude Include="Functions\bs_FunctionTimer.h" />
-    <ClInclude Include="Functions\bs_MemberFunction.h" />
-    <ClInclude Include="Game\bs_Game.h" />
-    <ClInclude Include="Game\bs_Level.h" />
-    <ClInclude Include="Game\bs_LevelScript.h" />
-    <ClInclude Include="Game\Entity\bs_Entity.h" />
-    <ClInclude Include="Game\Entity\Component\Basic\bs_Transform2D.h" />
-    <ClInclude Include="Game\Entity\Component\Basic\bs_Transform3D.h" />
-    <ClInclude Include="Game\Entity\Component\bs_Component.h" />
-    <ClInclude Include="Game\Entity\Component\bs_ComponentManager.h" />
-    <ClInclude Include="Globals\bs_globals.h" />
-    <ClInclude Include="Input\bs_InputManager.h" />
-    <ClInclude Include="Math\bs_math.h" />
-    <ClInclude Include="Math\bs_Matrix3x3.h" />
-    <ClInclude Include="Math\bs_Matrix4x4.h" />
-    <ClInclude Include="Math\bs_Quaternion.h" />
-    <ClInclude Include="Math\bs_Rect.h" />
-    <ClInclude Include="Math\bs_Vector.h" />
-    <ClInclude Include="Math\bs_Vector2.h" />
-    <ClInclude Include="Math\bs_Vector3.h" />
-    <ClInclude Include="Math\bs_Vector4.h" />
-    <ClInclude Include="Physics\3D\Collisions\bs_Primitives.h" />
-    <ClInclude Include="Physics\3D\Collisions\bs_Ray3D.h" />
-    <ClInclude Include="Platform\Windows\bs_WindowsMain.h" />
-    <ClInclude Include="Platform\Windows\Input\bs_WindowsInput.h" />
-    <ClInclude Include="Platform\Windows\Input\bs_windowsKeyboard.h" />
-    <ClInclude Include="Platform\Windows\WindowsFileSystem\bs_WindowsFileSystem.h" />
-    <ClInclude Include="Platform\Windows\WindowsWindow\bs_WindowsOpenGLWindow.h" />
-    <ClInclude Include="Platform\Windows\WindowsWindow\bs_WindowsWindow.h" />
-    <ClInclude Include="Profiler\bs_Profiler.h" />
-    <ClInclude Include="Rendering\bs_Camera.h" />
-    <ClInclude Include="Rendering\bs_Camera2D.h" />
-    <ClInclude Include="Rendering\bs_Camera3D.h" />
-    <ClInclude Include="Rendering\bs_Color.h" />
-    <ClInclude Include="Rendering\bs_OpenGLWindow.h" />
-    <ClInclude Include="Rendering\bs_Screen.h" />
-    <ClInclude Include="Rendering\bs_ScreenInitializer.h" />
-    <ClInclude Include="Rendering\bs_Shader.h" />
-    <ClInclude Include="Rendering\bs_ShaderManager.h" />
-    <ClInclude Include="Rendering\bs_ShaderScript.h" />
-    <ClInclude Include="Rendering\bs_Texture2D.h" />
-    <ClInclude Include="Rendering\bs_Vertex.h" />
-    <ClInclude Include="Rendering\bs_VertexBufferObject.h" />
-    <ClInclude Include="Rendering\RenderedObjects\Debug\bs_DebugRenderer.h" />
-    <ClInclude Include="Rendering\RenderedObjects\Debug\bs_DebugShader.h" />
-    <ClInclude Include="Rendering\RenderedObjects\Font\bs_Font.h" />
-    <ClInclude Include="Rendering\RenderedObjects\Font\bs_FontManager.h" />
-    <ClInclude Include="Rendering\RenderedObjects\Font\bs_FontRenderer.h" />
-    <ClInclude Include="Rendering\RenderedObjects\Font\bs_FontShader.h" />
-    <ClInclude Include="Rendering\RenderedObjects\Line\bs_Line.h" />
-    <ClInclude Include="Rendering\RenderedObjects\Sprite\bs_Sprite.h" />
-    <ClInclude Include="Rendering\RenderedObjects\Sprite\bs_SpriteRenderer.h" />
-    <ClInclude Include="resource.h" />
-    <ClInclude Include="Resources\bs_FileSystem.h" />
-    <ClInclude Include="Resources\bs_Folder.h" />
-    <ClInclude Include="Resources\bs_ImageLoader.h" />
-    <ClInclude Include="Resources\bs_Path.h" />
-    <ClInclude Include="Resources\bs_Resource.h" />
-    <ClInclude Include="Resources\bs_ResourceManager.h" />
-    <ClInclude Include="Utilities\bs_arrayOperations.h" />
-    <ClInclude Include="Utilities\bs_Clock.h" />
-    <ClInclude Include="Utilities\bs_define.h" />
-    <ClInclude Include="Utilities\bs_Error.h" />
-    <ClInclude Include="Utilities\bs_String.h" />
-    <ClInclude Include="Utilities\bs_types.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="Allocator\bs_Memory.cpp" />
-    <ClCompile Include="Allocator\bs_Pool.cpp" />
-    <ClCompile Include="Allocator\bs_StackAllocator.cpp" />
-    <ClCompile Include="Containers\bs_HashMap.cpp" />
-    <ClCompile Include="Editor\bs_EditorApp.cpp" />
-    <ClCompile Include="Editor\bs_FolderExplorer.cpp" />
-    <ClCompile Include="Editor\Windows\bs_WindowsEditorWindow.cpp" />
-    <ClCompile Include="Editor\Windows\bs_WindowsListviewWindow.cpp" />
-    <ClCompile Include="External\HashFunctions\MurmurHash\bs_MurmurHash.cpp" />
-    <ClCompile Include="External\ImageLoading\LodePng\lodepng.cpp" />
-    <ClCompile Include="Functions\bs_FunctionTimer.cpp" />
-    <ClCompile Include="Game\bs_Game.cpp" />
-    <ClCompile Include="Game\bs_Level.cpp" />
-    <ClCompile Include="Game\bs_LevelScript.cpp" />
-    <ClCompile Include="Game\Entity\bs_Entity.cpp" />
-    <ClCompile Include="Game\Entity\Component\Basic\bs_Transform2D.cpp" />
-    <ClCompile Include="Game\Entity\Component\Basic\bs_Transform3D.cpp" />
-    <ClCompile Include="Game\Entity\Component\bs_Component.cpp" />
-    <ClCompile Include="Game\Entity\Component\bs_ComponentManager.cpp" />
-    <ClCompile Include="Globals\bs_globals.cpp" />
-    <ClCompile Include="Input\bs_InputManager.cpp" />
-    <ClCompile Include="Math\bs_Matrix3x3.cpp" />
-    <ClCompile Include="Math\bs_Matrix4x4.cpp" />
-    <ClCompile Include="Math\bs_Quaternion.cpp" />
-    <ClCompile Include="Math\bs_Rect.cpp" />
-    <ClCompile Include="Math\bs_Vector2.cpp" />
-    <ClCompile Include="Math\bs_Vector3.cpp" />
-    <ClCompile Include="Math\bs_Vector4.cpp" />
-    <ClCompile Include="Physics\3D\Collisions\bs_Ray3D.cpp" />
-    <ClCompile Include="Platform\Windows\bs_WindowsMain.cpp" />
-    <ClCompile Include="Platform\Windows\Input\bs_WindowsInput.cpp" />
-    <ClCompile Include="Platform\Windows\WindowsFileSystem\bs_WindowsFileSystem.cpp" />
-    <ClCompile Include="Platform\Windows\WindowsWindow\bs_WindowsOpenGLWindow.cpp" />
-    <ClCompile Include="Platform\Windows\WindowsWindow\bs_WindowsWindow.cpp" />
-    <ClCompile Include="Profiler\bs_Profiler.cpp" />
-    <ClCompile Include="Rendering\bs_Camera.cpp" />
-    <ClCompile Include="Rendering\bs_Camera2D.cpp" />
-    <ClCompile Include="Rendering\bs_Camera3D.cpp" />
-    <ClCompile Include="Rendering\bs_Color.cpp" />
-    <ClCompile Include="Rendering\bs_OpenGLWindow.cpp" />
-    <ClCompile Include="Rendering\bs_ScreenInitializer.cpp" />
-    <ClCompile Include="Rendering\bs_Shader.cpp" />
-    <ClCompile Include="Rendering\bs_ShaderManager.cpp" />
-    <ClCompile Include="Rendering\bs_ShaderScript.cpp" />
-    <ClCompile Include="Rendering\bs_Texture2D.cpp" />
-    <ClCompile Include="Rendering\bs_VertexBufferObject.cpp" />
-    <ClCompile Include="Rendering\RenderedObjects\Debug\bs_DebugRenderer.cpp" />
-    <ClCompile Include="Rendering\RenderedObjects\Debug\bs_DebugShader.cpp" />
-    <ClCompile Include="Rendering\RenderedObjects\Font\bs_Font.cpp" />
-    <ClCompile Include="Rendering\RenderedObjects\Font\bs_FontManager.cpp" />
-    <ClCompile Include="Rendering\RenderedObjects\Font\bs_FontRenderer.cpp" />
-    <ClCompile Include="Rendering\RenderedObjects\Font\bs_FontShader.cpp" />
-    <ClCompile Include="Rendering\RenderedObjects\Line\bs_Line.cpp" />
-    <ClCompile Include="Rendering\RenderedObjects\Sprite\bs_Sprite.cpp" />
-    <ClCompile Include="Rendering\RenderedObjects\Sprite\bs_SpriteRenderer.cpp" />
-    <ClCompile Include="Resources\bs_FileSystem.cpp" />
-    <ClCompile Include="Resources\bs_ImageLoader.cpp" />
-    <ClCompile Include="Resources\bs_Path.cpp" />
-    <ClCompile Include="Resources\bs_Resource.cpp" />
-    <ClCompile Include="Resources\bs_ResourceManager.cpp" />
-    <ClCompile Include="Utilities\bs_Clock.cpp" />
-    <ClCompile Include="Utilities\bs_Error.cpp" />
-    <ClCompile Include="Utilities\bs_String.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <ResourceCompile Include="resource.rc" />
-  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

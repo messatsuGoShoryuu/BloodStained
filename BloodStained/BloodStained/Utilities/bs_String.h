@@ -1,5 +1,5 @@
-#ifndef BS_STRING_H
-#define BS_STRING_H
+#ifndef _BS_STRING_H_
+#define _BS_STRING_H_
 
 
 #include "../Containers/bs_Array.h"
@@ -44,6 +44,12 @@ namespace bs
 		inline const ui8  floatPrecision() const { return m_floatPrecision; }
 
 		void	setFloatPrecision(ui8 value){ m_floatPrecision = value; }
+
+		String	getNextWord(ui32& current) const;
+		String	getSubString(ui32 startIndex, ui32 endIndex) const;
+		String	getSubString(ui32 startIndex) const;
+		Array<String>	split(const char* splitters);
+		Array<String>	split(const String& splitters);
 	public:
 		//Simple operations:
 

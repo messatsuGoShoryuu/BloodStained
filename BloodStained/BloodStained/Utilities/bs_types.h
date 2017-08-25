@@ -5,7 +5,6 @@
 
 #include "bs_define.h"
 
-
 //define exact size types
 typedef uint8_t				ui8;
 typedef uint8_t				byte;

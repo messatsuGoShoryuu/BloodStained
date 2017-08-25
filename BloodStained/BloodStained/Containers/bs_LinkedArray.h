@@ -1,5 +1,5 @@
-#ifndef BS_LINKEDARRAY_H
-#define BS_LINKEDARRAY_H
+#ifndef _BS_LINKEDARRAY_H_
+#define _BS_LINKEDARRAY_H_
 
 #include "../Allocator/bs_Memory.h"
 #include "../Allocator/bs_PoolAllocator.h"

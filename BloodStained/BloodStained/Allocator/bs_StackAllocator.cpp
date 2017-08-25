@@ -1,6 +1,5 @@
 #include "bs_StackAllocator.h"
 #include "../Math/bs_math.h"
-#include "../Profiler/bs_Profiler.h"
 
 #include<memory>
 
@@ -40,10 +39,6 @@ namespace bs
 		m_stackBase = static_cast<byte*>(malloc((size_t)m_stackSize));
 		if (!m_stackBase) return false;
 
-#ifdef BS_PROFILE_MEMORY
-		Profiler::addAllocatedBytes(m_stackSize);
-#endif
-
 		m_pointer = 0;
 		return true;
 	}
@@ -53,9 +48,7 @@ namespace bs
 		m_pointer = 0;
 		free(m_stackBase);
 		m_stackBase = nullptr;
-#ifdef BS_PROFILE_MEMORY
-		Profiler::removeAllocatedBytes(m_stackSize);
-#endif
+
 		return true;
 	}
 
@@ -73,10 +66,6 @@ namespace bs
 		//store last frame value and move pointer 
 		math::storeUi16ToByteArray(m_stackBase + m_pointer,frame);
 		m_pointer += intSize;
-
-#ifdef BS_PROFILE_MEMORY
-		Profiler::addUsedBytes(size + intSize);
-#endif
 
 		//return last allocated space
 		return m_stackBase + frame;
@@ -98,10 +87,6 @@ namespace bs
 		//reset bits of last allocated space
 		ui32 difference = m_pointer - lastFrame;
 		memset(m_stackBase + lastFrame, 0x00, difference);
-
-#ifdef BS_PROFILE_MEMORY
-		Profiler::removeUsedBytes((difference + intSize));
-#endif
 
 		//move pointer down to last frame and return last frame
 		m_pointer = lastFrame;

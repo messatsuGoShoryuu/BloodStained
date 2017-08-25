@@ -1,5 +1,5 @@
-#ifndef BS_POOL_H
-#define BS_POOL_H
+#ifndef _BS_POOL_H_
+#define _BS_POOL_H_
 
 #include "../Utilities/bs_types.h"
 

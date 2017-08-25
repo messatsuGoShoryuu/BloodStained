@@ -1,5 +1,5 @@
-#ifndef BS_HASHMAP_H
-#define BS_HASHMAP_H
+#ifndef _BS_HASHMAP_H_
+#define _BS_HASHMAP_H_
 
 #include "../Utilities/bs_types.h"
 #include "../External/HashFunctions/MurmurHash/bs_MurmurHash.h"
@@ -242,9 +242,6 @@ namespace bs
 			k = &n->pair;
 			Place(&(k->key), Key, key);
 			m_count++;
-#ifdef BS_PROFILE_MEMORY
-			bs::Profiler::addUsedBytes(sizeof(Value));
-#endif
 		}
 
 		return k->value;

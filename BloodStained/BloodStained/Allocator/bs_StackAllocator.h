@@ -1,5 +1,5 @@
-#ifndef BS_STACKALLOCATOR_H
-#define BS_STACKALLOCATOR_H
+#ifndef _BS_STACKALLOCATOR_H_
+#define _BS_STACKALLOCATOR_H_
 
 #include "../Utilities/bs_types.h"
 
@@ -15,7 +15,7 @@ namespace bs
 		//Copy constcrutor.
 		StackAllocator(const StackAllocator& s);
 
-		//@stackSize size in bytes of the stack
+		//@param stackSize size in bytes of the stack
 		StackAllocator(ui32 stackSize);
 
 		//Manual init and shutDown.

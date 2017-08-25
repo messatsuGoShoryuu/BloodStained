@@ -112,6 +112,133 @@ namespace bs
 		_hash();
 	}
 
+	String String::getNextWord(ui32& current) const
+	{
+		ui32 i = current;
+		
+		char c = m_buffer[i];
+
+		while (c == ' ' || c == '\n' || c == '\r' || c == '\t')
+		{
+			i++;
+			c = m_buffer[i];
+			if (c == NULL_CHARACTER || i >= m_buffer.count()) return String("");
+		}
+
+		ui32 begin = i;
+		
+		while (c != ' ' && c != '\n' && c != '\r' && c != '\t')
+		{
+			i++;
+			c = m_buffer[i];
+			if (c == NULL_CHARACTER || i >= m_buffer.count()) break;
+		}
+
+		current = i;
+	
+		return getSubString(begin, current);
+	}
+
+	String String::getSubString(ui32 startIndex, ui32 endIndex) const
+	{
+		String result;
+
+		//Reserve extra space for the null character
+		ui32 count = endIndex - startIndex + 1;
+
+		//Bounds check
+		count >= m_buffer.count() ? m_buffer.count() : count;
+
+		//Avoid extra allocations
+		result.resize(count);
+		copyArray((char*)(&m_buffer[startIndex]), &result[0], count - 1);
+
+		//Insert null character
+		result[count - 1] = NULL_CHARACTER;
+		return result;
+	}
+
+	String String::getSubString(ui32 startIndex) const
+	{
+		String result;
+		ui32 count = m_buffer.count() - startIndex;
+		result.resize(count);
+		copyArray((char*)(&m_buffer[startIndex]), &result[0], count);
+		result[count] = NULL_CHARACTER;
+		return result;
+	}
+
+	Array<String> String::split(const char * splitters)
+	{
+		ui32 count = m_buffer.count();
+		ui32 splitterCount = strlen(splitters);
+
+		Array<String> result;
+
+		char c = m_buffer[0];
+		bool isInBreak = false;
+
+		int lastIndex = 0;
+
+		for (ui32 i = 0; i < count; i++)
+		{
+			if (lastIndex >= count) break;
+
+			bool splitterHit = false;
+			for (ui32 j = 0; j < splitterCount; j++)
+			{
+				if (m_buffer[i] == splitters[j])
+				{
+					if (!isInBreak)
+					{
+						result.add(getSubString(lastIndex, i));
+						isInBreak = true;
+					}
+					else lastIndex = i+1;
+					splitterHit = true;
+					break;
+				}	
+			}
+			if (!splitterHit) isInBreak = false;
+		}
+
+		return result;
+	}
+
+	Array<String> String::split(const String & splitters)
+	{
+		ui32 count = m_buffer.count();
+		ui32 splitterCount = splitters.length();
+
+		Array<String> result;
+
+		char c = m_buffer[0];
+		bool isInBreak = false;
+
+		int lastIndex = 0;
+
+		for (ui32 i = 0; i < count; i++)
+		{
+			if (lastIndex >= count) break;
+
+			for (ui32 j = 0; j < splitterCount; j++)
+			{
+				if (m_buffer[i] == splitters[j])
+				{
+					if (!isInBreak)
+					{
+						result.add(getSubString(lastIndex, i));
+						isInBreak = true;
+					}
+					else lastIndex = i + 1;
+					break;
+				}
+			}
+		}
+
+		return result;
+	}
+
 	void String::_hash()
 	{
 		MurmurHash3_x86_32(&m_buffer[0], m_buffer.count(), 0, &m_hashedId);
@@ -445,11 +572,24 @@ namespace bs
 	{
 		return !(SELF == other);
 	}
+	bool String::operator!=(const String & other) const
+	{
+		return !(SELF == other);
+	}
 	bool	String::operator!=(const char* other)
 	{
 		return !(SELF == other);
 	}
+	bool String::operator!=(const char * other) const
+	{
+		return !(SELF == other);
+	}
 	bool	String::operator!=(const wchar_t* other)
+	{
+		return !(SELF == other);
+	}
+
+	bool String::operator!=(const wchar_t * other) const
 	{
 		return !(SELF == other);
 	}
