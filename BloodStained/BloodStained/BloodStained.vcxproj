@@ -43,6 +43,7 @@
     <ClCompile Include="Platform\Windows\bs_WindowsOpenGL.cpp" />
     <ClCompile Include="Rendering\bs_OpenGL.cpp" />
     <ClCompile Include="Rendering\bs_ShaderManager.cpp" />
+    <ClCompile Include="Rendering\bs_Shader.cpp" />
     <ClCompile Include="Utilities\bs_Error.cpp" />
     <ClCompile Include="Utilities\bs_String.cpp" />
   </ItemGroup>

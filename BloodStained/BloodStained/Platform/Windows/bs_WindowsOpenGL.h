@@ -27,21 +27,29 @@ namespace bs
 		static bool _loadFunction(const char* procAddress, T& functionPtr);
 
 		//Initialization calls
-		static PFNWGLCHOOSEPIXELFORMATARBPROC	wglChoosePixelFormatARB;
-		static PFNWGLCREATECONTEXTATTRIBSARBPROC wglCreateContextAttribsARB;
+		static PFNWGLCHOOSEPIXELFORMATARBPROC		wglChoosePixelFormatARB;
+		static PFNWGLCREATECONTEXTATTRIBSARBPROC	wglCreateContextAttribsARB;
 
 		//Shader calls
-		static PFNGLCREATESHADERPROC	glCreateShader;
-		static PFNGLSHADERSOURCEPROC	glShaderSource;
-		static PFNGLCOMPILESHADERPROC	glCompileShader;
-		static PFNGLATTACHSHADERPROC	glAttachShader;
-		static PFNGLDETACHSHADERPROC	glDetachShader;
-		static PFNGLDELETESHADERPROC	glDeleteShader;
-
+		static PFNGLCREATESHADERPROC				glCreateShader;
+		static PFNGLSHADERSOURCEPROC				glShaderSource;
+		static PFNGLCOMPILESHADERPROC				glCompileShader;
+		static PFNGLATTACHSHADERPROC				glAttachShader;
+		static PFNGLDETACHSHADERPROC				glDetachShader;
+		static PFNGLDELETESHADERPROC				glDeleteShader;
+		static PFNGLCREATEPROGRAMPROC				glCreateProgram;
+		static PFNGLDELETEPROGRAMPROC				glDeleteProgram;
+		static PFNGLUSEPROGRAMPROC					glUseProgram;
+		static PFNGLBINDATTRIBLOCATIONPROC			glBindAttribLocation;
+		static PFNGLBINDFRAGDATALOCATIONPROC		glBindFragDataLocation;
+		static PFNGLLINKPROGRAMPROC					glLinkProgram;
+		
 
 		//Shader error handling
-		static PFNGLGETSHADERIVPROC		glGetShaderiv;
-		static PFNGLGETSHADERINFOLOGPROC	glGetShaderInfoLog;
+		static PFNGLGETPROGRAMIVPROC				glGetProgramiv;
+		static PFNGLGETPROGRAMINFOLOGPROC			glGetProgramInfoLog;
+		static PFNGLGETSHADERIVPROC					glGetShaderiv;
+		static PFNGLGETSHADERINFOLOGPROC			glGetShaderInfoLog;
 
 	};
 

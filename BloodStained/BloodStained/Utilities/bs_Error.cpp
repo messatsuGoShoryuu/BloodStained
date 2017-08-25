@@ -31,6 +31,10 @@ namespace bs
 			return "Shader could not be created.";
 		case	ERROR_ID::SHADER_COMPILATION_FAIL:
 			return "Shader couldn't be compiled.";
+		case ERROR_ID::GL_PROGRAM_CREATION_FAIL:
+			return "Shader program couldn't be created.";
+		case ERROR_ID::GL_PROGRAM_LINKING_FAIL:
+			return "OpenGL shader program could not be linked.";
 		}
 		return nullptr;
 	}

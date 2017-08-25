@@ -14,7 +14,16 @@ namespace bs
 	PFNGLATTACHSHADERPROC				WindowsOpenGL::glAttachShader;
 	PFNGLDETACHSHADERPROC				WindowsOpenGL::glDetachShader;
 	PFNGLDELETESHADERPROC				WindowsOpenGL::glDeleteShader;
+	PFNGLCREATEPROGRAMPROC				WindowsOpenGL::glCreateProgram;
+	PFNGLDELETEPROGRAMPROC				WindowsOpenGL::glDeleteProgram;
+	PFNGLUSEPROGRAMPROC					WindowsOpenGL::glUseProgram;
+	PFNGLLINKPROGRAMPROC				WindowsOpenGL::glLinkProgram;
 
+	PFNGLBINDATTRIBLOCATIONPROC			WindowsOpenGL::glBindAttribLocation;
+	PFNGLBINDFRAGDATALOCATIONPROC		WindowsOpenGL::glBindFragDataLocation;
+
+	PFNGLGETPROGRAMIVPROC				WindowsOpenGL::glGetProgramiv;
+	PFNGLGETPROGRAMINFOLOGPROC			WindowsOpenGL::glGetProgramInfoLog;
 	PFNGLGETSHADERIVPROC				WindowsOpenGL::glGetShaderiv;
 	PFNGLGETSHADERINFOLOGPROC			WindowsOpenGL::glGetShaderInfoLog;
 
@@ -73,20 +82,25 @@ namespace bs
 		_BS_GL_LOAD_FNC(wglCreateContextAttribsARB);
 
 		//Shader related:
-		//Shader initialization
 		_BS_GL_LOAD_FNC(glCreateShader);
 		_BS_GL_LOAD_FNC(glShaderSource);
 		_BS_GL_LOAD_FNC(glCompileShader);
 		_BS_GL_LOAD_FNC(glAttachShader);
 		_BS_GL_LOAD_FNC(glDetachShader);
 		_BS_GL_LOAD_FNC(glDeleteShader);
-
-
+		_BS_GL_LOAD_FNC(glCreateProgram);
+		_BS_GL_LOAD_FNC(glDeleteProgram);
+		_BS_GL_LOAD_FNC(glUseProgram);
+		_BS_GL_LOAD_FNC(glBindAttribLocation);
+		_BS_GL_LOAD_FNC(glBindFragDataLocation);
+		_BS_GL_LOAD_FNC(glLinkProgram);
+		
 		//Shader debugging
 		_BS_GL_LOAD_FNC(glGetShaderiv);
 		_BS_GL_LOAD_FNC(glGetShaderInfoLog);
+		_BS_GL_LOAD_FNC(glGetProgramiv);
+		_BS_GL_LOAD_FNC(glGetProgramInfoLog);
 		
-
 		//Destroy dummy stuff
 		wglMakeCurrent(NULL, NULL);
 		wglDeleteContext(hglrc);
