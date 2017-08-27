@@ -35,6 +35,8 @@ namespace bs
 			return "Shader program couldn't be created.";
 		case ERROR_ID::GL_PROGRAM_LINKING_FAIL:
 			return "OpenGL shader program could not be linked.";
+		case ERROR_ID::GL_UNIFORM_NOT_FOUND:
+			return "Uniform variable not found in currently bound shader.";
 		}
 		return nullptr;
 	}

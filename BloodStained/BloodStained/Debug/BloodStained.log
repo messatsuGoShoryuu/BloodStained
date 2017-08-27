@@ -1,8 +1,8 @@
-﻿  bs_ShaderManager.cpp
+﻿  bs_WindowsMain.cpp
+  bs_Game.cpp
 g:\programming\bloodstained\bloodstained\bloodstained\containers\bs_array.h(490): warning C4067: unexpected tokens following preprocessor directive - expected a newline
 g:\programming\bloodstained\bloodstained\bloodstained\containers\bs_linkedarray.h(539): warning C4067: unexpected tokens following preprocessor directive - expected a newline
 g:\programming\bloodstained\bloodstained\bloodstained\containers\bs_linkedarray.h(1091): warning C4067: unexpected tokens following preprocessor directive - expected a newline
-g:\programming\bloodstained\bloodstained\bloodstained\rendering\bs_shadermanager.cpp(179): warning C4018: '<': signed/unsigned mismatch
-g:\programming\bloodstained\bloodstained\bloodstained\rendering\bs_shadermanager.cpp(184): warning C4018: '<': signed/unsigned mismatch
+  Generating Code...
   BloodStained.vcxproj -> G:\Programming\BloodStained\BloodStained\Debug\BloodStained.exe
   BloodStained.vcxproj -> G:\Programming\BloodStained\BloodStained\Debug\BloodStained.pdb (Partial PDB)

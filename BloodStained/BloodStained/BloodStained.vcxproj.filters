@@ -78,27 +78,6 @@
     <ClCompile Include="Utilities\bs_String.cpp">
       <Filter>Source Files\Utilities</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\BloodStained_Old\BloodStained\BloodStained\Math\bs_Matrix3x3.cpp">
-      <Filter>Source Files\Math</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\BloodStained_Old\BloodStained\BloodStained\Math\bs_Matrix4x4.cpp">
-      <Filter>Source Files\Math</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\BloodStained_Old\BloodStained\BloodStained\Math\bs_Quaternion.cpp">
-      <Filter>Source Files\Math</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\BloodStained_Old\BloodStained\BloodStained\Math\bs_Rect.cpp">
-      <Filter>Source Files\Math</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\BloodStained_Old\BloodStained\BloodStained\Math\bs_Vector2.cpp">
-      <Filter>Source Files\Math</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\BloodStained_Old\BloodStained\BloodStained\Math\bs_Vector3.cpp">
-      <Filter>Source Files\Math</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\BloodStained_Old\BloodStained\BloodStained\Math\bs_Vector4.cpp">
-      <Filter>Source Files\Math</Filter>
-    </ClCompile>
     <ClCompile Include="External\HashFunctions\MurmurHash\bs_MurmurHash.cpp">
       <Filter>Source Files\External</Filter>
     </ClCompile>
@@ -125,6 +104,30 @@
     </ClCompile>
     <ClCompile Include="Rendering\bs_Shader.cpp">
       <Filter>Source Files\Rendering</Filter>
+    </ClCompile>
+    <ClCompile Include="Rendering\bs_Color.cpp">
+      <Filter>Source Files\Rendering</Filter>
+    </ClCompile>
+    <ClCompile Include="Math\bs_Matrix3x3.cpp">
+      <Filter>Source Files\Math</Filter>
+    </ClCompile>
+    <ClCompile Include="Math\bs_Matrix4x4.cpp">
+      <Filter>Source Files\Math</Filter>
+    </ClCompile>
+    <ClCompile Include="Math\bs_Quaternion.cpp">
+      <Filter>Source Files\Math</Filter>
+    </ClCompile>
+    <ClCompile Include="Math\bs_Rect.cpp">
+      <Filter>Source Files\Math</Filter>
+    </ClCompile>
+    <ClCompile Include="Math\bs_Vector2.cpp">
+      <Filter>Source Files\Math</Filter>
+    </ClCompile>
+    <ClCompile Include="Math\bs_Vector3.cpp">
+      <Filter>Source Files\Math</Filter>
+    </ClCompile>
+    <ClCompile Include="Math\bs_Vector4.cpp">
+      <Filter>Source Files\Math</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -179,30 +182,6 @@
     <ClInclude Include="Utilities\bs_String.h">
       <Filter>Source Files\Utilities</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\BloodStained_Old\BloodStained\BloodStained\Math\bs_Matrix3x3.h">
-      <Filter>Source Files\Math</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\BloodStained_Old\BloodStained\BloodStained\Math\bs_Matrix4x4.h">
-      <Filter>Source Files\Math</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\BloodStained_Old\BloodStained\BloodStained\Math\bs_Quaternion.h">
-      <Filter>Source Files\Math</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\BloodStained_Old\BloodStained\BloodStained\Math\bs_Rect.h">
-      <Filter>Source Files\Math</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\BloodStained_Old\BloodStained\BloodStained\Math\bs_Vector.h">
-      <Filter>Source Files\Math</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\BloodStained_Old\BloodStained\BloodStained\Math\bs_Vector2.h">
-      <Filter>Source Files\Math</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\BloodStained_Old\BloodStained\BloodStained\Math\bs_Vector3.h">
-      <Filter>Source Files\Math</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\BloodStained_Old\BloodStained\BloodStained\Math\bs_Vector4.h">
-      <Filter>Source Files\Math</Filter>
-    </ClInclude>
     <ClInclude Include="Math\bs_math.h">
       <Filter>Source Files\Math</Filter>
     </ClInclude>
@@ -235,6 +214,36 @@
     </ClInclude>
     <ClInclude Include="Rendering\bs_OpenGL.h">
       <Filter>Source Files\Rendering</Filter>
+    </ClInclude>
+    <ClInclude Include="Rendering\bs_Color.h">
+      <Filter>Source Files\Rendering</Filter>
+    </ClInclude>
+    <ClInclude Include="Platform\bs_OpenGLPlatform.h">
+      <Filter>Source Files\Platform</Filter>
+    </ClInclude>
+    <ClInclude Include="Math\bs_Matrix3x3.h">
+      <Filter>Source Files\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="Math\bs_Matrix4x4.h">
+      <Filter>Source Files\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="Math\bs_Quaternion.h">
+      <Filter>Source Files\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="Math\bs_Rect.h">
+      <Filter>Source Files\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="Math\bs_Vector.h">
+      <Filter>Source Files\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="Math\bs_Vector2.h">
+      <Filter>Source Files\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="Math\bs_Vector3.h">
+      <Filter>Source Files\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="Math\bs_Vector4.h">
+      <Filter>Source Files\Math</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

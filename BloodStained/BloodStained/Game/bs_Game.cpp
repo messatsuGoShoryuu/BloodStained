@@ -4,6 +4,10 @@
 #include <FileIO/bs_ResourceManager.h>
 #include <Rendering/bs_ShaderManager.h>
 
+//TODO: move these to a render manager class
+#include <Rendering/bs_Color.h>
+#include <Rendering/bs_OpenGL.h>
+
 namespace bs
 {
 	bool	Game::s_quit;
@@ -32,6 +36,7 @@ namespace bs
 
 	void Game::update()
 	{
-
+		OpenGL::clearColor(ColorRGBA32::red);
+		OpenGL::clear();
 	}
 }

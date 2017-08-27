@@ -31,6 +31,7 @@ namespace bs
 		SHADER_COMPILATION_FAIL,
 		GL_PROGRAM_CREATION_FAIL,
 		GL_PROGRAM_LINKING_FAIL,
+		GL_UNIFORM_NOT_FOUND,
 	};
 
 	inline	ERROR_ID	fatalError(ERROR_ID id) { return _FATAL_ERROR_(id); }

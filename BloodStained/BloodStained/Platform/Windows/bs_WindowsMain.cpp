@@ -6,6 +6,7 @@
 
 LRESULT		CALLBACK	mainWndProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
 {
+	//TODO: add raw input message processing
 	switch (uMsg)
 	{
 	case WM_ACTIVATEAPP:
@@ -79,12 +80,7 @@ int CALLBACK WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance,
 			DispatchMessage(&msg);
 		}
 
-		
-		glClearColor(1.0f, 0.0f, 0.0f, 1.0f);
-		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-
 		bs::Game::update();
-
 		SwapBuffers(GetDC(hWnd));
 		
 	}

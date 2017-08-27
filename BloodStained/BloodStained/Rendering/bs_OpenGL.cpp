@@ -1,27 +1,13 @@
 #include "bs_OpenGL.h"
 
-#include <Platform/bs_Platform.h>
+#include <Platform/bs_OpenGLPlatform.h>
+#include <Utilities/bs_Error.h>
 #include <Utilities/bs_String.h>
+#include "bs_Shader.h"
 
-#ifdef BS_WINDOWS
-	#include <Platform/Windows/bs_WindowsOpenGL.h>
-#define BS_glCreateShader(type)										WindowsOpenGL::glCreateShader(type) 
-#define BS_glShaderSource(shader, count, string, length)			WindowsOpenGL::glShaderSource(shader,count,string,length)
-#define BS_glCompileShader(id)										WindowsOpenGL::glCompileShader(id)
-#define BS_glGetShaderIV(id, type, success)							WindowsOpenGL::glGetShaderiv(id,type, success)
-#define BS_glGetShaderInfoLog(id, bufferSize, length, infoLog)		WindowsOpenGL::glGetShaderInfoLog(id,bufferSize,length,infoLog)
-#define BS_glDeleteShader(id)										WindowsOpenGL::glDeleteShader(id)
-#define BS_glAttachShader(program, shader)							WindowsOpenGL::glAttachShader(program, shader)
-#define BS_glDetachShader(program, shader)							WindowsOpenGL::glDetachShader(program, shader)
-#define BS_glCreateProgram()										WindowsOpenGL::glCreateProgram()
-#define BS_glDeleteProgram(id)										WindowsOpenGL::glDeleteProgram(id)
-#define BS_glUseProgram(id)											WindowsOpenGL::glUseProgram(id)
-#define BS_glBindAttribLocation(program, index, name)				WindowsOpenGL::glBindAttribLocation(program, index, name)
-#define BS_glBindFragDataLocation(program, color, name)				WindowsOpenGL::glBindFragDataLocation(program, color, name)
-#define BS_glLinkProgram(id)										WindowsOpenGL::glLinkProgram(id)
-#define BS_glGetProgramiv(id, type, success)						WindowsOpenGL::glGetProgramiv(id, type, success) 
-#define BS_glGetProgramInfoLog(id, buffersize, length, infoLog)		WindowsOpenGL::glGetProgramInfoLog(id, buffersize, length, infoLog)
-#endif
+#include <Math/bs_Matrix4x4.h>
+
+
 
 namespace bs
 {
@@ -32,7 +18,7 @@ namespace bs
 
 	void OpenGL::shaderSource(ui32 id, int count, const char* source, i32 length)
 	{
-		BS_glShaderSource((GLuint)id, (GLsizei)count, &source, &length);
+		BS_glShaderSource((GLuint)id, count, &source, &length);
 	}
 
 	void OpenGL::compileShader(ui32 id)
@@ -116,6 +102,130 @@ namespace bs
 
 		return result;
 	}
+
+	void OpenGL::clearColor(const ColorRGBAf & color)
+	{
+		glClearColor(color.r, color.g, color.b, color.a);
+	}
+
+	void OpenGL::clearColor(const ColorRGBA32 & color)
+	{
+		ColorRGBAf c = color;
+		clearColor(c);
+	}
+
+	void OpenGL::clear()
+	{
+		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT | GL_STENCIL_BUFFER_BIT);
+	}
+
+	void OpenGL::genBuffers(int count, ui32 * buffers)
+	{
+		BS_glGenBuffers(count, buffers);
+	}
+
+	void OpenGL::deleteBuffers(int count, ui32 * buffers)
+	{
+		BS_glDeleteBuffers(count, buffers);
+	}
+
+	void OpenGL::bindBuffer(OPENGL_BUFFER_TYPE type, ui32 index)
+	{
+		BS_glBindBuffer((GLenum)type, index);
+	}
+
+	void OpenGL::genVertexArrays(int count, ui32 * buffers)
+	{
+		BS_glGenVertexArrays(count, buffers);
+	}
+
+	void OpenGL::deleteVertexArrays(int count, const ui32 * buffers)
+	{
+		BS_glDeleteVertexArrays(count, buffers);
+	}
+
+	void OpenGL::enableVertexAttribArray(ui32 index)
+	{
+		BS_glEnableVertexAttribArray(index);
+	}
+
+	void OpenGL::disableVertexAttribArray(ui32 index)
+	{
+		BS_glDisableVertexAttribArray(index);
+	}
+
+	void OpenGL::vertexAttribPointer(ui32 index, int size, OPENGL_TYPE type, bool normalized, int stride, const void * pointer)
+	{
+		BS_glVertexAttribPointer(index, size, (GLenum)type, normalized, stride, pointer);
+	}
+
+	void OpenGL::drawArrays(OPENGL_PRIMITIVE mode, i32 first, int count)
+	{
+		glDrawArrays((GLenum)mode, first, count);
+	}
+
+	void OpenGL::drawElements(OPENGL_PRIMITIVE mode, int count, OPENGL_TYPE type, const void * indices)
+	{
+		glDrawElements((GLenum)mode, count, (GLenum) type, indices);
+	}
+
+	ERROR_ID OpenGL::uniform(ui32 shaderID, const char * name, SHADER_ATTRIB_TYPE type, void * data, bool transpose)
+	{
+		int location = BS_glGetUniformLocation(shaderID, name);
+
+		if (location == 0) return ERROR_ID::GL_UNIFORM_NOT_FOUND;
+
+		//TODO: Maybe more types in the future?
+		switch (type)
+		{
+		case SHADER_ATTRIB_TYPE::FLOAT:
+		{
+			f32*	d = reinterpret_cast<f32*>(data);
+			BS_glUniform1f(location, *d);
+		}
+		break;
+		case SHADER_ATTRIB_TYPE::INT:
+		{
+			i32*	d = reinterpret_cast<i32*>(data);
+			BS_glUniform1i(location, *d);
+		}
+			break;
+		case SHADER_ATTRIB_TYPE::MATRIX4:
+		{
+			f32	d[16];
+			Matrix4x4* m = reinterpret_cast<Matrix4x4*>(data);
+			m->toFloatArray(d);
+			BS_glUniformMatrix4fv(location, 1, transpose, d);
+		}
+		break;
+		case SHADER_ATTRIB_TYPE::SAMPLER2D:
+		{
+			ui32 i = reinterpret_cast<ui32>(data);
+			BS_glUniform1i(location, i);
+		}
+		break;
+		case SHADER_ATTRIB_TYPE::VECTOR2:
+		{
+			Vector2* d = reinterpret_cast<Vector2*>(data);
+			BS_glUniform2f(location, d->x, d->y);
+		}
+		break;
+		case SHADER_ATTRIB_TYPE::VECTOR3:
+		{
+			Vector3* d = reinterpret_cast<Vector3*>(data);
+			BS_glUniform3f(location, d->x, d->y, d->z);
+		}
+		break;
+		case SHADER_ATTRIB_TYPE::VECTOR4:
+		{
+			Vector4* d = reinterpret_cast<Vector4*>(data);
+			BS_glUniform4f(location, d->x, d->y, d->z, d->w);
+		}
+		break;
+		}
+		return ERROR_ID::NONE;
+	}
+	
 
 	void OpenGL::deleteShader(ui32 id)
 	{
