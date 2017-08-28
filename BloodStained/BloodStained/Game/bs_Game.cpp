@@ -3,10 +3,10 @@
 #include <FileIO/bs_FileSystem.h>
 #include <FileIO/bs_ResourceManager.h>
 #include <Rendering/bs_ShaderManager.h>
+#include <Rendering/bs_RenderManager.h>
 
-//TODO: move these to a render manager class
-#include <Rendering/bs_Color.h>
-#include <Rendering/bs_OpenGL.h>
+
+
 
 namespace bs
 {
@@ -20,9 +20,13 @@ namespace bs
 
 		FileSystem::initialize();
 		error = ResourceManager::initialize();
+		if (error != ERROR_ID::NONE) return fatalError(error);
 		error = ShaderManager::initialize();
+		if (error != ERROR_ID::NONE) return fatalError(error);
+		error = RenderManager::initialize();
+		if (error != ERROR_ID::NONE) return fatalError(error);
 
-		return error;
+		return ERROR_ID::NONE;
 	}
 
 	ERROR_ID Game::shutDown()
@@ -30,8 +34,12 @@ namespace bs
 		ERROR_ID error = ERROR_ID::NONE;
 
 		error = ShaderManager::shutDown();
+		if (error != ERROR_ID::NONE) return fatalError(error);
 		error = ResourceManager::shutDown();
-		return error;
+		if (error != ERROR_ID::NONE) return fatalError(error);
+		error = RenderManager::shutDown();
+		if (error != ERROR_ID::NONE) return fatalError(error);
+		return ERROR_ID::NONE;
 	}
 
 	void Game::update()

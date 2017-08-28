@@ -32,6 +32,7 @@ namespace bs
 		GL_PROGRAM_CREATION_FAIL,
 		GL_PROGRAM_LINKING_FAIL,
 		GL_UNIFORM_NOT_FOUND,
+		QUAD_RENDERER_INIT_FAIL,
 	};
 
 	inline	ERROR_ID	fatalError(ERROR_ID id) { return _FATAL_ERROR_(id); }

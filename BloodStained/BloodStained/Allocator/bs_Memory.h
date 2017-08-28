@@ -18,4 +18,8 @@
 
 		#define Destroy(PTR, TYPE) PTR->~TYPE()
 
+#define BS_KILOBYTE	0x400
+#define BS_MEGABYTE 0x100000
+#define BS_GIGABYTE 0x40000000
+
 #endif // !BS_MEMORY

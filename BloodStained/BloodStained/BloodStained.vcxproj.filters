@@ -43,6 +43,15 @@
     <Filter Include="Source Files\Rendering">
       <UniqueIdentifier>{8b9c103a-eb7e-411f-bb27-b535ffef7111}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Physics">
+      <UniqueIdentifier>{9e7a2f50-3267-4f00-864d-f0fc651f5a68}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Physics\3D">
+      <UniqueIdentifier>{72cc4ca8-35b8-45de-acb5-04c25db5b03c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Physics\3D\Collisions">
+      <UniqueIdentifier>{a5ab526a-f7f4-441b-b52c-da45a8ebd1a2}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Platform\Windows\bs_WindowsError.cpp">
@@ -128,6 +137,30 @@
     </ClCompile>
     <ClCompile Include="Math\bs_Vector4.cpp">
       <Filter>Source Files\Math</Filter>
+    </ClCompile>
+    <ClCompile Include="Rendering\bs_Camera.cpp">
+      <Filter>Source Files\Rendering</Filter>
+    </ClCompile>
+    <ClCompile Include="Rendering\bs_Camera2D.cpp">
+      <Filter>Source Files\Rendering</Filter>
+    </ClCompile>
+    <ClCompile Include="Rendering\bs_Camera3D.cpp">
+      <Filter>Source Files\Rendering</Filter>
+    </ClCompile>
+    <ClCompile Include="Rendering\bs_QuadRenderer.cpp">
+      <Filter>Source Files\Rendering</Filter>
+    </ClCompile>
+    <ClCompile Include="Rendering\bs_Screen.cpp">
+      <Filter>Source Files\Rendering</Filter>
+    </ClCompile>
+    <ClCompile Include="Physics\3D\Collisions\bs_Ray3D.cpp">
+      <Filter>Source Files\Physics\3D\Collisions</Filter>
+    </ClCompile>
+    <ClCompile Include="Rendering\bs_RenderManager.cpp">
+      <Filter>Source Files\Rendering</Filter>
+    </ClCompile>
+    <ClCompile Include="Rendering\bs_Texture2D.cpp">
+      <Filter>Source Files\Rendering</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -244,6 +277,39 @@
     </ClInclude>
     <ClInclude Include="Math\bs_Vector4.h">
       <Filter>Source Files\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="Rendering\bs_Vertex.h">
+      <Filter>Source Files\Rendering</Filter>
+    </ClInclude>
+    <ClInclude Include="Rendering\bs_Camera.h">
+      <Filter>Source Files\Rendering</Filter>
+    </ClInclude>
+    <ClInclude Include="Rendering\bs_Camera2D.h">
+      <Filter>Source Files\Rendering</Filter>
+    </ClInclude>
+    <ClInclude Include="Rendering\bs_Camera3D.h">
+      <Filter>Source Files\Rendering</Filter>
+    </ClInclude>
+    <ClInclude Include="Rendering\bs_Primitive.h">
+      <Filter>Source Files\Rendering</Filter>
+    </ClInclude>
+    <ClInclude Include="Rendering\bs_QuadRenderer.h">
+      <Filter>Source Files\Rendering</Filter>
+    </ClInclude>
+    <ClInclude Include="Rendering\bs_RenderManager.h">
+      <Filter>Source Files\Rendering</Filter>
+    </ClInclude>
+    <ClInclude Include="Rendering\bs_Screen.h">
+      <Filter>Source Files\Rendering</Filter>
+    </ClInclude>
+    <ClInclude Include="Physics\3D\Collisions\bs_Ray3D.h">
+      <Filter>Source Files\Physics\3D\Collisions</Filter>
+    </ClInclude>
+    <ClInclude Include="Physics\3D\Collisions\bs_PhysicsPrimitives.h">
+      <Filter>Source Files\Physics\3D\Collisions</Filter>
+    </ClInclude>
+    <ClInclude Include="Rendering\bs_Texture2D.h">
+      <Filter>Source Files\Rendering</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -2,6 +2,7 @@
 #include <Utilities/bs_Error.h>
 
 #include <Game/bs_Game.h>
+#include <Rendering/bs_Screen.h>
 #include "bs_WindowsOpenGL.h"
 
 LRESULT		CALLBACK	mainWndProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
@@ -19,6 +20,13 @@ LRESULT		CALLBACK	mainWndProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam
 
 		//Create OpenGL context
 		if (bs::WindowsOpenGL::createContext(hWnd) != bs::ERROR_ID::NONE) return -1;
+
+		//Initialize screen
+		{
+			RECT clientRect;
+			GetClientRect(hWnd, &clientRect);
+			bs::ScreenInitializer::initScreen(clientRect.right, clientRect.bottom);
+		}
 
 		return 0;
 	case WM_DESTROY:

@@ -37,6 +37,8 @@ namespace bs
 			return "OpenGL shader program could not be linked.";
 		case ERROR_ID::GL_UNIFORM_NOT_FOUND:
 			return "Uniform variable not found in currently bound shader.";
+		case ERROR_ID::QUAD_RENDERER_INIT_FAIL:
+			return "Quad renderer initialization failed.";
 		}
 		return nullptr;
 	}

@@ -1,8 +1,74 @@
-﻿  bs_WindowsMain.cpp
+﻿  bs_Error.cpp
+g:\programming\bloodstained\bloodstained\bloodstained\containers\bs_array.h(490): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+  bs_RenderManager.cpp
+g:\programming\bloodstained\bloodstained\bloodstained\containers\bs_array.h(490): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+  bs_QuadRenderer.cpp
+g:\programming\bloodstained\bloodstained\bloodstained\containers\bs_array.h(490): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+  bs_OpenGL.cpp
+g:\programming\bloodstained\bloodstained\bloodstained\containers\bs_array.h(490): warning C4067: unexpected tokens following preprocessor directive - expected a newline
   bs_Game.cpp
 g:\programming\bloodstained\bloodstained\bloodstained\containers\bs_array.h(490): warning C4067: unexpected tokens following preprocessor directive - expected a newline
 g:\programming\bloodstained\bloodstained\bloodstained\containers\bs_linkedarray.h(539): warning C4067: unexpected tokens following preprocessor directive - expected a newline
 g:\programming\bloodstained\bloodstained\bloodstained\containers\bs_linkedarray.h(1091): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+  Generating Code...
+  Compiling...
+  bs_String.cpp
+g:\programming\bloodstained\bloodstained\bloodstained\containers\bs_array.h(490): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+g:\programming\bloodstained\bloodstained\bloodstained\utilities\bs_string.cpp(185): warning C4018: '>=': signed/unsigned mismatch
+g:\programming\bloodstained\bloodstained\bloodstained\utilities\bs_string.cpp(222): warning C4018: '>=': signed/unsigned mismatch
+  bs_ShaderManager.cpp
+g:\programming\bloodstained\bloodstained\bloodstained\containers\bs_array.h(490): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+g:\programming\bloodstained\bloodstained\bloodstained\containers\bs_linkedarray.h(539): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+g:\programming\bloodstained\bloodstained\bloodstained\containers\bs_linkedarray.h(1091): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+g:\programming\bloodstained\bloodstained\bloodstained\rendering\bs_shadermanager.cpp(179): warning C4018: '<': signed/unsigned mismatch
+g:\programming\bloodstained\bloodstained\bloodstained\rendering\bs_shadermanager.cpp(184): warning C4018: '<': signed/unsigned mismatch
+  bs_Color.cpp
+g:\programming\bloodstained\bloodstained\bloodstained\containers\bs_array.h(490): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+  bs_WindowsOpenGL.cpp
+g:\programming\bloodstained\bloodstained\bloodstained\platform\windows\bs_windowsopengl.cpp(264): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+  bs_WindowsMain.cpp
+  bs_WindowsFileSystem.cpp
+g:\programming\bloodstained\bloodstained\bloodstained\containers\bs_array.h(490): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+g:\programming\bloodstained\bloodstained\bloodstained\platform\windows\bs_windowsfilesystem.cpp(117): warning C4244: 'return': conversion from 'LONGLONG' to 'ui32', possible loss of data
+  bs_WindowsError.cpp
+g:\programming\bloodstained\bloodstained\bloodstained\containers\bs_array.h(490): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+  bs_Vector4.cpp
+g:\programming\bloodstained\bloodstained\bloodstained\containers\bs_array.h(490): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+  bs_Vector3.cpp
+g:\programming\bloodstained\bloodstained\bloodstained\containers\bs_array.h(490): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+  bs_Vector2.cpp
+g:\programming\bloodstained\bloodstained\bloodstained\containers\bs_array.h(490): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+  bs_Quaternion.cpp
+g:\programming\bloodstained\bloodstained\bloodstained\containers\bs_array.h(490): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+g:\programming\bloodstained\bloodstained\bloodstained\math\bs_quaternion.cpp(104): warning C4244: 'initializing': conversion from 'double' to 'real', possible loss of data
+g:\programming\bloodstained\bloodstained\bloodstained\math\bs_quaternion.cpp(105): warning C4244: 'initializing': conversion from 'double' to 'real', possible loss of data
+g:\programming\bloodstained\bloodstained\bloodstained\math\bs_quaternion.cpp(110): warning C4244: 'initializing': conversion from 'double' to 'real', possible loss of data
+g:\programming\bloodstained\bloodstained\bloodstained\math\bs_quaternion.cpp(111): warning C4244: 'initializing': conversion from 'double' to 'real', possible loss of data
+g:\programming\bloodstained\bloodstained\bloodstained\math\bs_quaternion.cpp(118): warning C4244: 'initializing': conversion from 'double' to 'real', possible loss of data
+g:\programming\bloodstained\bloodstained\bloodstained\math\bs_quaternion.cpp(119): warning C4244: 'initializing': conversion from 'double' to 'real', possible loss of data
+g:\programming\bloodstained\bloodstained\bloodstained\math\bs_quaternion.cpp(120): warning C4244: 'initializing': conversion from 'double' to 'real', possible loss of data
+g:\programming\bloodstained\bloodstained\bloodstained\math\bs_quaternion.cpp(122): warning C4244: 'initializing': conversion from 'double' to 'real', possible loss of data
+g:\programming\bloodstained\bloodstained\bloodstained\math\bs_quaternion.cpp(123): warning C4244: 'initializing': conversion from 'double' to 'real', possible loss of data
+g:\programming\bloodstained\bloodstained\bloodstained\math\bs_quaternion.cpp(124): warning C4244: 'initializing': conversion from 'double' to 'real', possible loss of data
+g:\programming\bloodstained\bloodstained\bloodstained\math\bs_quaternion.cpp(150): warning C4244: '=': conversion from 'double' to 'real', possible loss of data
+g:\programming\bloodstained\bloodstained\bloodstained\math\bs_quaternion.cpp(151): warning C4244: '=': conversion from 'double' to 'real', possible loss of data
+g:\programming\bloodstained\bloodstained\bloodstained\math\bs_quaternion.cpp(152): warning C4244: '=': conversion from 'double' to 'real', possible loss of data
+  bs_Matrix4x4.cpp
+g:\programming\bloodstained\bloodstained\bloodstained\containers\bs_array.h(490): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+  bs_ResourceManager.cpp
+g:\programming\bloodstained\bloodstained\bloodstained\containers\bs_array.h(490): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+g:\programming\bloodstained\bloodstained\bloodstained\containers\bs_linkedarray.h(539): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+g:\programming\bloodstained\bloodstained\bloodstained\containers\bs_linkedarray.h(1091): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+  bs_Resource.cpp
+g:\programming\bloodstained\bloodstained\bloodstained\containers\bs_array.h(490): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+  bs_Path.cpp
+g:\programming\bloodstained\bloodstained\bloodstained\containers\bs_array.h(490): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+g:\programming\bloodstained\bloodstained\bloodstained\fileio\bs_path.cpp(197): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+  bs_FileSystem.cpp
+g:\programming\bloodstained\bloodstained\bloodstained\containers\bs_array.h(490): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+  bs_HashMap.cpp
+g:\programming\bloodstained\bloodstained\bloodstained\containers\bs_array.h(490): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+  bs_Memory.cpp
   Generating Code...
   BloodStained.vcxproj -> G:\Programming\BloodStained\BloodStained\Debug\BloodStained.exe
   BloodStained.vcxproj -> G:\Programming\BloodStained\BloodStained\Debug\BloodStained.pdb (Partial PDB)
