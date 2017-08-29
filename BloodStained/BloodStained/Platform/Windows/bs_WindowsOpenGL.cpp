@@ -75,6 +75,8 @@ namespace bs
 
 	PFNGLGETUNIFORMLOCATIONPROC			WindowsOpenGL::glGetUniformLocation;
 
+	PFNGLACTIVETEXTUREPROC				WindowsOpenGL::glActiveTexture;
+
 	LRESULT CALLBACK dummyWndProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
 	{
 		return DefWindowProc(hWnd, uMsg, wParam, lParam);
@@ -201,6 +203,9 @@ namespace bs
 		_BS_GL_LOAD_FNC(glUniformMatrix4x2fv);
 
 		_BS_GL_LOAD_FNC(glGetUniformLocation);
+
+		//Textures
+		_BS_GL_LOAD_FNC(glActiveTexture);
 
 		//Destroy dummy stuff
 		wglMakeCurrent(NULL, NULL);

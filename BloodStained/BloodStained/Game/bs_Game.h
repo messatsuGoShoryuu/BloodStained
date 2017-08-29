@@ -2,9 +2,12 @@
 #define _BS_GAME_
 
 #include <Utilities/bs_Error.h>
+#include <Containers/bs_Array.h>
+#include "bs_Level.h"
 
 namespace bs
 {
+
 	//Controls the states of the application
 	class Game
 	{
@@ -16,8 +19,16 @@ namespace bs
 		static	void	quit() { s_quit = true; }
 
 		static void		update();
+
+		static void		setCurrentLevel(ui32 index);
+		static Level*	currentLevel() { return &s_levels[s_currentLevel]; }
+
+		static void		addLevel();
+
 	private:
 		static bool	s_quit;
+		static Array<Level>	s_levels;
+		static ui32 s_currentLevel;
 	};
 }
 

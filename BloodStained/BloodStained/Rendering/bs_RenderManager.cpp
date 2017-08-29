@@ -4,6 +4,7 @@
 namespace bs
 {
 	QuadRenderer RenderManager::s_quadRenderer;
+	HashMap<String, Texture2D> RenderManager::s_textureDB;
 
 	ERROR_ID RenderManager::initialize()
 	{

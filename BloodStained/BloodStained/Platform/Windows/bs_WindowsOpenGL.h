@@ -7,7 +7,7 @@
 #include <GL/GL.h>
 #include <GL/glext.h>
 #include <GL/wglext.h>
-
+#include <GL/glcorearb.h>
 
 
 
@@ -106,6 +106,8 @@ namespace bs
 		//Uniform location
 		static PFNGLGETUNIFORMLOCATIONPROC			glGetUniformLocation;
 		
+		//Texture
+		static PFNGLACTIVETEXTUREPROC				glActiveTexture;
 	};
 
 	template<class T>

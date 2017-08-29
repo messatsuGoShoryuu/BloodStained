@@ -7,8 +7,6 @@
 
 #include <Math/bs_Matrix4x4.h>
 
-
-
 namespace bs
 {
 	ui32 OpenGL::createShader(OPENGL_SHADER_TYPE type)
@@ -167,6 +165,42 @@ namespace bs
 	void OpenGL::drawElements(OPENGL_PRIMITIVE mode, int count, OPENGL_TYPE type, const void * indices)
 	{
 		glDrawElements((GLenum)mode, count, (GLenum) type, indices);
+	}
+
+	void OpenGL::genTextures(int count, ui32 * textures)
+	{
+		glGenTextures(count, textures);
+	}
+
+	void OpenGL::bindTexture(OPENGL_TEXTURE type, ui32 index)
+	{
+		glBindTexture((GLenum)type, index);
+	}
+
+	void OpenGL::deleteTextures(int count, ui32 * textures)
+	{
+		glDeleteTextures(count, textures);
+	}
+
+	void OpenGL::activeTexture(ui32 index)
+	{
+		BS_glActiveTexture(GL_TEXTURE0 + index);
+	}
+
+	void OpenGL::texImage2D(OPENGL_TEXTURE type, i32 level, i32 internalFormat, int width, 
+		int height, i32 border, OPENGL_COLOR_FORMAT format, OPENGL_PIXEL_STORAGE pixelStorage, void * data)
+	{
+		glTexImage2D((GLenum)type, level, internalFormat, width, height, border, (GLenum)format, (GLenum)type, data);
+	}
+
+	void OpenGL::pixelStorei(OPENGL_ALIGNMENT alignment, i32 param)
+	{
+		glPixelStorei((GLenum)alignment, param);
+	}
+
+	void OpenGL::texParameteri(OPENGL_TEXTURE type, OPENGL_TEXTURE_PARAMETER_NAME parameter, OPENGL_TEXTURE_PARAMETER param)
+	{
+		glTexParameteri((GLenum)type, (GLenum)parameter, (GLenum)param);
 	}
 
 	ERROR_ID OpenGL::uniform(ui32 shaderID, const char * name, SHADER_ATTRIB_TYPE type, void * data, bool transpose)

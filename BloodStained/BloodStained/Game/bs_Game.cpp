@@ -8,9 +8,12 @@
 
 
 
+
 namespace bs
 {
 	bool	Game::s_quit;
+	Array<Level>	Game::s_levels;
+	ui32 Game::s_currentLevel;
 
 	ERROR_ID Game::initialize()
 	{
@@ -27,10 +30,14 @@ namespace bs
 		if (error != ERROR_ID::NONE) return fatalError(error);
 
 		return ERROR_ID::NONE;
+
+		addLevel();
+		currentLevel()->initialize();
 	}
 
 	ERROR_ID Game::shutDown()
 	{
+		currentLevel()->shutDown();
 		ERROR_ID error = ERROR_ID::NONE;
 
 		error = ShaderManager::shutDown();
@@ -46,5 +53,18 @@ namespace bs
 	{
 		OpenGL::clearColor(ColorRGBA32::red);
 		OpenGL::clear();
+
+		currentLevel()->update();
+	}
+
+	void Game::setCurrentLevel(ui32 index)
+	{
+		if (currentLevel()) currentLevel()->shutDown();
+		s_currentLevel = index;
+		currentLevel()->initialize();
+	}
+	void Game::addLevel()
+	{
+		s_levels.construct();
 	}
 }

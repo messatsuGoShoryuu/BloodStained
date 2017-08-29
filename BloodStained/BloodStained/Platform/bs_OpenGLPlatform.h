@@ -71,5 +71,7 @@
 #define BS_glUniformMatrix4x2fv(location,count,transpose,value)		WindowsOpenGL::glUniformMatrix4x2fv(location,count,transpose,value)
 
 #define	BS_glGetUniformLocation(program, name)						WindowsOpenGL::glGetUniformLocation(program, name)
+#define BS_glActiveTexture(texture)									WindowsOpenGL::glActiveTexture(texture)
+#define BS_glPixelStorei(name, param)								WindowsOpenGL::glPixelStorei(name,param)
 #endif
 #endif // !_BS_OPENGLPLATFORM_H_

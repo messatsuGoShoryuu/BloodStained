@@ -67,14 +67,14 @@ namespace bs
 	template<class T>
 	T* QuadRenderer::_internalAdd(ui32 count, Shader* shader, Texture2D* texture, VERTEX_TYPE type)
 	{
-		T>* pointer = (T>*)m_stackAllocator.getFrame();
+		T* pointer = (T*)m_stackAllocator.getFrame();
 		m_stackAllocator.allocate(sizeof(Vertex2D_PUC) * count, __alignof(Vertex2D_PUC));
 
 		QuadBatch* currentBatch = nullptr;
 		if (m_batches.count() > 0)
 			currentBatch = &m_batches.last();
 
-		if (_shouldBatchChange(currentBatch, type, shader->id()))
+		if (_shouldBatchChange(currentBatch, type, shader->id(),texture->id()))
 		{
 			currentBatch->endPointer = pointer;
 			_createBatch(pointer, type, shader, texture);

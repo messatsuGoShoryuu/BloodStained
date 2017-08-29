@@ -162,6 +162,9 @@
     <ClCompile Include="Rendering\bs_Texture2D.cpp">
       <Filter>Source Files\Rendering</Filter>
     </ClCompile>
+    <ClCompile Include="Game\bs_Level.cpp">
+      <Filter>Source Files\Game</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Platform\Windows\bs_WindowsError.h">
@@ -310,6 +313,12 @@
     </ClInclude>
     <ClInclude Include="Rendering\bs_Texture2D.h">
       <Filter>Source Files\Rendering</Filter>
+    </ClInclude>
+    <ClInclude Include="Rendering\bs_OpenGLEnums.h">
+      <Filter>Source Files\Rendering</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\bs_Level.h">
+      <Filter>Source Files\Game</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -30,6 +30,7 @@
     <ClCompile Include="FileIO\bs_Resource.cpp" />
     <ClCompile Include="FileIO\bs_ResourceManager.cpp" />
     <ClCompile Include="Game\bs_Game.cpp" />
+    <ClCompile Include="Game\bs_Level.cpp" />
     <ClCompile Include="Math\bs_Matrix3x3.cpp" />
     <ClCompile Include="Math\bs_Matrix4x4.cpp" />
     <ClCompile Include="Math\bs_Quaternion.cpp" />
@@ -72,6 +73,7 @@
     <ClInclude Include="FileIO\bs_Resource.h" />
     <ClInclude Include="FileIO\bs_ResourceManager.h" />
     <ClInclude Include="Game\bs_Game.h" />
+    <ClInclude Include="Game\bs_Level.h" />
     <ClInclude Include="Math\bs_math.h" />
     <ClInclude Include="Math\bs_Matrix3x3.h" />
     <ClInclude Include="Math\bs_Matrix4x4.h" />
@@ -93,6 +95,7 @@
     <ClInclude Include="Rendering\bs_Camera3D.h" />
     <ClInclude Include="Rendering\bs_Color.h" />
     <ClInclude Include="Rendering\bs_OpenGL.h" />
+    <ClInclude Include="Rendering\bs_OpenGLEnums.h" />
     <ClInclude Include="Rendering\bs_Primitive.h" />
     <ClInclude Include="Rendering\bs_RenderManager.h" />
     <ClInclude Include="Rendering\bs_Screen.h" />
