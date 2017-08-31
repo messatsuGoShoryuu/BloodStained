@@ -77,6 +77,8 @@ namespace bs
 
 	PFNGLACTIVETEXTUREPROC				WindowsOpenGL::glActiveTexture;
 
+	PFNGLBUFFERDATAPROC					WindowsOpenGL::glBufferData;
+
 	LRESULT CALLBACK dummyWndProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
 	{
 		return DefWindowProc(hWnd, uMsg, wParam, lParam);
@@ -206,6 +208,8 @@ namespace bs
 
 		//Textures
 		_BS_GL_LOAD_FNC(glActiveTexture);
+
+		_BS_GL_LOAD_FNC(glBufferData);
 
 		//Destroy dummy stuff
 		wglMakeCurrent(NULL, NULL);

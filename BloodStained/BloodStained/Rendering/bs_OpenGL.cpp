@@ -203,6 +203,11 @@ namespace bs
 		glTexParameteri((GLenum)type, (GLenum)parameter, (GLenum)param);
 	}
 
+	void OpenGL::bufferData(OPENGL_BUFFER_TYPE type,int size, void * data, OPENGL_BUFFER_STORAGE usage)
+	{
+		BS_glBufferData((GLenum)type, size, data, (GLenum)usage);
+	}
+
 	ERROR_ID OpenGL::uniform(ui32 shaderID, const char * name, SHADER_ATTRIB_TYPE type, void * data, bool transpose)
 	{
 		int location = BS_glGetUniformLocation(shaderID, name);
@@ -258,6 +263,11 @@ namespace bs
 		break;
 		}
 		return ERROR_ID::NONE;
+	}
+
+	ui32 OpenGL::getError()
+	{
+		return glGetError();
 	}
 	
 

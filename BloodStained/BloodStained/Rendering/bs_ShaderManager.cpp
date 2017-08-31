@@ -48,6 +48,8 @@ namespace bs
 
 	const Shader * ShaderManager::getShader(const String & key)
 	{
+		if(!s_shaderDB.isEmptyAt(key))
+			return &s_shaderDB[key];
 		return nullptr;
 	}
 
@@ -199,7 +201,7 @@ namespace bs
 		OpenGL::detachShader(programID, fragment);
 
 		String newKey = data.key.getSubString(8, data.key.length() - 7);
-		if (s_shaderDB.isEmptyAt(data.key)) s_shaderDB[newKey] = Shader(programID);
+		if (s_shaderDB.isEmptyAt(newKey)) s_shaderDB[newKey] = Shader(programID);
 
 		return ERROR_ID::NONE;
 	}

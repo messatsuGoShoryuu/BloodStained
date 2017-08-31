@@ -26,12 +26,12 @@ namespace bs
 
 	}
 
-	void Shader::bind()
+	void Shader::bind() const
 	{
 		OpenGL::useProgram(m_id);
 	}
 
-	void Shader::unbind()
+	void Shader::unbind() const
 	{
 		OpenGL::useProgram(0);
 	}

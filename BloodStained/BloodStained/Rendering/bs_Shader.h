@@ -28,8 +28,8 @@ namespace bs
 		~Shader();
 
 		inline	ui32	id() const {	return m_id; };
-		void	bind();
-		void	unbind();
+		void	bind() const;
+		void	unbind() const;
 
 	private:
 		ui32 m_id;

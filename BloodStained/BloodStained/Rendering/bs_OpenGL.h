@@ -70,8 +70,12 @@ namespace bs
 		static void		pixelStorei(OPENGL_ALIGNMENT alignment, i32 param);
 		static void		texParameteri(OPENGL_TEXTURE type, OPENGL_TEXTURE_PARAMETER_NAME parameterName, OPENGL_TEXTURE_PARAMETER param);
 
+		static void		bufferData(OPENGL_BUFFER_TYPE type, int size, void* data, OPENGL_BUFFER_STORAGE usage);
+
 		//@param transpose only available for matrices.
 		static ERROR_ID	uniform(ui32 shaderID, const char* name, SHADER_ATTRIB_TYPE type, void* data, bool transpose);
+
+		static ui32		getError();
 	};
 }
 #endif // !_BS_OPENGL_H_

@@ -76,6 +76,7 @@ int CALLBACK WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance,
 	bs::ERROR_ID err = bs::Game::initialize();
 	if (err != bs::ERROR_ID::NONE) return -1;
 
+	SwapBuffers(GetDC(hWnd));
 	MSG msg;
 
 	
@@ -89,7 +90,7 @@ int CALLBACK WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance,
 		}
 
 		bs::Game::update();
-		SwapBuffers(GetDC(hWnd));
+	//	SwapBuffers(GetDC(hWnd));
 		
 	}
 	

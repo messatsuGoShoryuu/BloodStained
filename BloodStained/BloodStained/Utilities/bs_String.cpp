@@ -155,6 +155,8 @@ namespace bs
 
 		//Insert null character
 		result[count - 1] = NULL_CHARACTER;
+
+		result._hash();
 		return result;
 	}
 
@@ -165,6 +167,7 @@ namespace bs
 		result.resize(count);
 		copyArray((char*)(&m_buffer[startIndex]), &result[0], count);
 		result[count] = NULL_CHARACTER;
+		result._hash();
 		return result;
 	}
 

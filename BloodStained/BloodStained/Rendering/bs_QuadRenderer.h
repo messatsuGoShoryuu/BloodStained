@@ -7,6 +7,7 @@
 #include "bs_Vertex.h"
 #include "bs_Shader.h"
 #include "bs_Texture2D.h"
+#include "bs_RenderBufferObjects.h"
 
 namespace bs
 {
@@ -50,7 +51,7 @@ namespace bs
 		Quad<Vertex3D_PC>*	add<Quad<Vertex3D_PC>>(ui32 count, Shader* shader, Texture2D* texture);
 
 		template<>
-		Quad<Vertex3D_PU>*	add<Quad<Vertex3D_PU>>(ui32 count, Shader* shade, Texture2D* texturer);
+		Quad<Vertex3D_PU>*	add<Quad<Vertex3D_PU>>(ui32 count, Shader* shader, Texture2D* texture);
 
 	private:
 		template <class T> 
@@ -62,6 +63,7 @@ namespace bs
 	private:
 		StackAllocator		m_stackAllocator;
 		Array<QuadBatch>	m_batches;
+		VertexBufferObject	m_vbo;
 	};
 
 	template<class T>

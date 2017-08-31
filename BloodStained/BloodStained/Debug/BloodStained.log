@@ -1,7 +1,7 @@
 ﻿  bs_Level.cpp
+g:\programming\bloodstained\bloodstained\bloodstained\containers\bs_array.h(490): warning C4067: unexpected tokens following preprocessor directive - expected a newline
 g:\programming\bloodstained\bloodstained\bloodstained\containers\bs_linkedarray.h(539): warning C4067: unexpected tokens following preprocessor directive - expected a newline
 g:\programming\bloodstained\bloodstained\bloodstained\containers\bs_linkedarray.h(1091): warning C4067: unexpected tokens following preprocessor directive - expected a newline
-g:\programming\bloodstained\bloodstained\bloodstained\containers\bs_array.h(490): warning C4067: unexpected tokens following preprocessor directive - expected a newline
-g:\programming\bloodstained\bloodstained\bloodstained\game\bs_level.cpp(24): warning C4101: 'i': unreferenced local variable
+g:\programming\bloodstained\bloodstained\bloodstained\game\bs_level.cpp(88): warning C4018: '<': signed/unsigned mismatch
   BloodStained.vcxproj -> G:\Programming\BloodStained\BloodStained\Debug\BloodStained.exe
   BloodStained.vcxproj -> G:\Programming\BloodStained\BloodStained\Debug\BloodStained.pdb (Partial PDB)

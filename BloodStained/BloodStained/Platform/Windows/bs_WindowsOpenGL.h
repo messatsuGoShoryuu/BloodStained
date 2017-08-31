@@ -108,6 +108,8 @@ namespace bs
 		
 		//Texture
 		static PFNGLACTIVETEXTUREPROC				glActiveTexture;
+		static PFNGLBUFFERDATAPROC					glBufferData;
+	
 	};
 
 	template<class T>

@@ -50,6 +50,7 @@
     <ClCompile Include="Rendering\bs_Color.cpp" />
     <ClCompile Include="Rendering\bs_OpenGL.cpp" />
     <ClCompile Include="Rendering\bs_QuadRenderer.cpp" />
+    <ClCompile Include="Rendering\bs_RenderBufferObjects.cpp" />
     <ClCompile Include="Rendering\bs_RenderManager.cpp" />
     <ClCompile Include="Rendering\bs_Screen.cpp" />
     <ClCompile Include="Rendering\bs_ShaderManager.cpp" />
@@ -99,6 +100,7 @@
     <ClInclude Include="Rendering\bs_OpenGL.h" />
     <ClInclude Include="Rendering\bs_OpenGLEnums.h" />
     <ClInclude Include="Rendering\bs_Primitive.h" />
+    <ClInclude Include="Rendering\bs_RenderBufferObjects.h" />
     <ClInclude Include="Rendering\bs_RenderManager.h" />
     <ClInclude Include="Rendering\bs_Screen.h" />
     <ClInclude Include="Rendering\bs_Shader.h" />

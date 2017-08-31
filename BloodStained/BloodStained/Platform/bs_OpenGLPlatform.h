@@ -73,5 +73,7 @@
 #define	BS_glGetUniformLocation(program, name)						WindowsOpenGL::glGetUniformLocation(program, name)
 #define BS_glActiveTexture(texture)									WindowsOpenGL::glActiveTexture(texture)
 #define BS_glPixelStorei(name, param)								WindowsOpenGL::glPixelStorei(name,param)
+#define BS_glBufferData(type, size, data, usage)					WindowsOpenGL::glBufferData(type, size, data,usage)
+#define BS_glGetError()												WindowsOpeNGL::glGetError()
 #endif
 #endif // !_BS_OPENGLPLATFORM_H_

@@ -50,10 +50,10 @@ namespace bs
 
 	void Game::update()
 	{
-		OpenGL::clearColor(ColorRGBA32::red);
-		OpenGL::clear();
+//		OpenGL::clearColor(ColorRGBA32::red);
+//		OpenGL::clear();
 
-		currentLevel()->update();
+//		currentLevel()->update();
 	}
 
 	void Game::setCurrentLevel(ui32 index)

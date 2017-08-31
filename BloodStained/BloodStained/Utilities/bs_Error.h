@@ -37,6 +37,7 @@ namespace bs
 		QUAD_RENDERER_INIT_FAIL,
 		IMAGE_LOADING_FAIL,
 		IMAGE_FORMAT_NOT_SUPPORTED,
+		VBO_INIT_FAIL,
 	};
 
 	inline	ERROR_ID	fatalError(ERROR_ID id) { return _FATAL_ERROR_(id); }

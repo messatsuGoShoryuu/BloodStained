@@ -2,7 +2,9 @@
 #define _BS_LEVEL_H_
 
 #include <Utilities/bs_types.h>
-
+#include <Rendering/bs_Camera2D.h>
+#include <Rendering/bs_Camera3D.h>
+#include <Containers/bs_Array.h>
 namespace bs
 {
 	class Level
@@ -18,6 +20,7 @@ namespace bs
 
 	private:
 		ui32 m_id;
+		Array<Camera*>m_cameras;
 	};
 }
 

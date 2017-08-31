@@ -47,6 +47,8 @@ namespace bs
 			return "Image could not be loaded.";
 		case ERROR_ID::IMAGE_FORMAT_NOT_SUPPORTED:
 			return "Image format not supported.";
+		case ERROR_ID::VBO_INIT_FAIL:
+			return "Vertex buffer object couldn't be created.";
 		}
 		return nullptr;
 	}

@@ -16,16 +16,37 @@ namespace bs
 	{
 		m_stackAllocator.initialize();
 		return ERROR_ID();
+
+
+		ERROR_ID err = m_vbo.initialize();
+		if (err != ERROR_ID::NONE) return err;
+
+		return ERROR_ID::NONE;
 	}
 
 	ERROR_ID QuadRenderer::shutDown()
 	{
+		ERROR_ID err = m_vbo.shutDown();
+		if (err != ERROR_ID::NONE) return err;
+
 		return ERROR_ID();
 	}
 
 	void QuadRenderer::render(const Array<Camera*> cameras)
 	{
+		m_vbo.bind();
+
+		ui32 batchCount = m_batches.count();
+
+		for (ui32 i = 0; i < batchCount; i++)
+		{
+			byte* b = (byte*)m_batches[i].startPointer;
+			ui32 count = (byte*)m_batches[i].endPointer - (byte*)m_batches[i].startPointer;
+		}
+
 		m_stackAllocator.deallocate();
+
+		m_vbo.unbind();
 	}
 
 	bool QuadRenderer::_shouldBatchChange(const QuadBatch * current, VERTEX_TYPE type, ui32 shaderID, ui32 textureID)

@@ -171,6 +171,9 @@
     <ClCompile Include="FileIO\ImageLoader\bs_ImageLoader.cpp">
       <Filter>Source Files\FileIO\ImageLoader</Filter>
     </ClCompile>
+    <ClCompile Include="Rendering\bs_RenderBufferObjects.cpp">
+      <Filter>Source Files\Rendering</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Platform\Windows\bs_WindowsError.h">
@@ -328,6 +331,9 @@
     </ClInclude>
     <ClInclude Include="FileIO\ImageLoader\bs_ImageLoader.h">
       <Filter>Source Files\FileIO\ImageLoader</Filter>
+    </ClInclude>
+    <ClInclude Include="Rendering\bs_RenderBufferObjects.h">
+      <Filter>Source Files\Rendering</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
