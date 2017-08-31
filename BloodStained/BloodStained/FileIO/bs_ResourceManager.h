@@ -7,6 +7,7 @@
 #include "bs_Folder.h"
 
 
+
 namespace bs
 {
 	enum class ERROR_ID;
@@ -17,6 +18,7 @@ namespace bs
 	class ImageResource;
 	class FontResource;
 	class ShaderScriptResource;
+	class Texture2DResource;
 
 	class Texture2D;
 	class Mesh;
@@ -48,20 +50,28 @@ namespace bs
 		static	void	_importFiles(Folder* f);
 
 	public:
+		static bool hasResource(const String& key) { return !s_resources.isEmptyAt(key); }
+
 		//Load functions have 3 different overloads for each potential implicit constructors of String.
 		static	String	loadText(const String& fileName);
 		static	String  loadText(const char* fileName);
 		static	String  loadText(const wchar_t* fileName);
 
+		static	const	Texture2D*	loadTexture2D(const String& fileName);
+		static	const	Texture2D*	loadTexture2D(const char* fileName);
+		static	const	Texture2D*	loadTexture2D(const wchar_t* fileName);
+
 		static void unload(const String& fileName);
 		static void unload(const char* fileName);
 		static void unload(const wchar_t* fileName);
+		
 	public:
-		const Folder& rootFolder() const { return s_rootFolder; }
+		static	const Folder& rootFolder() { return s_rootFolder; }
 
 	private:
 		//Each type of resource has its own array.
 		static	PoolAllocator<TextResource>	s_texts;
+		static	PoolAllocator<Texture2DResource>	s_textures;
 		static  Array<ShaderScriptResource> s_shaderScripts;
 
 		static	HashMap<String, Resource*>	s_resources;

@@ -1,12 +1,34 @@
 #include "bs_Resource.h"
 #include "bs_ResourceManager.h"
 #include "bs_FileSystem.h"
+
 #include <Utilities/bs_Error.h>
 
+
+#define ADD_FILE_TO_MAP(type, allocator) if (s_resources.isEmptyAt(fileName.string()))\
+{\
+	type* res = allocator.allocate();\
+	s_resources[fileName.utf8()] = res;\
+	fileName = f->fullPath;\
+	fileName.toFileName(f->list[i]);\
+	res->_setFileName(fileName.utf8());\
+}
+
+#define LOAD_RESOURCE(resourceType, returnFail) if (s_resources.isEmptyAt(fileName)) return returnFail;\
+resourceType* res = dynamic_cast<resourceType*>(s_resources[fileName]);\
+ERROR_ID error = ERROR_ID::NONE;\
+if (!res->isLoaded()) error = res->load();\
+if (error != ERROR_ID::NONE)\
+{\
+	warning(error);\
+	return returnFail;\
+}\
+return res->getData();
 
 namespace bs
 {
 	PoolAllocator<TextResource>	ResourceManager::s_texts;
+	PoolAllocator<Texture2DResource>	ResourceManager::s_textures;
 
 	Array<ShaderScriptResource> ResourceManager::s_shaderScripts;
 	HashMap<String, Resource*>	ResourceManager::s_resources;
@@ -29,6 +51,7 @@ namespace bs
 		_destroyFolders();
 
 		s_texts.shutDown();
+		s_textures.shutDown();
 		s_resources.~HashMap();
 
 	
@@ -48,8 +71,6 @@ namespace bs
 		ERROR_ID error = ERROR_ID::NONE;
 		if (!text->isLoaded()) error = text->load();
 
-
-
 		//If loading has failed return empty string
 		if (error != ERROR_ID::NONE)
 		{
@@ -63,38 +84,27 @@ namespace bs
 
 	String ResourceManager::loadText(const char* fileName)
 	{
-		if (s_resources.isEmptyAt(fileName)) return String("Text not found");
-		TextResource* text = dynamic_cast<TextResource*>(s_resources[fileName]);
-
-		ERROR_ID error = ERROR_ID::NONE;
-		if (!text->isLoaded()) error = text->load();
-
-		//If loading has failed return empty string
-		if (error != ERROR_ID::NONE)
-		{
-			warning(error);
-			return String("");
-		}
-
-		return text->getData();
+		LOAD_RESOURCE(TextResource, String(""));
 	}
 
 	String ResourceManager::loadText(const wchar_t* fileName)
 	{
-		if (s_resources.isEmptyAt(fileName)) return String("Text not found");
-		TextResource* text = dynamic_cast<TextResource*>(s_resources[fileName]);
+		LOAD_RESOURCE(TextResource, String(""));
+	}
 
-		ERROR_ID error = ERROR_ID::NONE;
-		if (!text->isLoaded()) error = text->load();
+	const	Texture2D* ResourceManager::loadTexture2D(const String & fileName)
+	{
+		LOAD_RESOURCE(Texture2DResource, nullptr);
+	}
 
-		//If loading has failed return empty string
-		if (error != ERROR_ID::NONE)
-		{
-			warning(error);
-			return String("");
-		}
+	const	Texture2D* ResourceManager::loadTexture2D(const char * fileName)
+	{
+		LOAD_RESOURCE(Texture2DResource, nullptr);
+	}
 
-		return text->getData();
+	const	Texture2D* ResourceManager::loadTexture2D(const wchar_t * fileName)
+	{
+		LOAD_RESOURCE(Texture2DResource, nullptr);
 	}
 
 	void ResourceManager::unload(const String & fileName)
@@ -155,26 +165,6 @@ namespace bs
 			extension = extensionArray;
 
 			//Parse by extension.
-
-			//Text
-			if (extension == "txt" || extension == ".txt")
-			{
-				//Check if hashmap is empty
-				if (s_resources.isEmptyAt(fileName.string()))
-				{
-					//Add text resource.
-					TextResource* t = s_texts.allocate();
-
-					//Add to hashmap.
-					s_resources[fileName.utf8()] = t;
-
-					//Create full path
-					fileName = f->fullPath;
-					fileName.toFileName(f->list[i]);
-					t->_setFileName(fileName.utf8());
-				}
-			}
-
 			//Shader script
 			if (extension == "shader" || extension == ".shader")
 			{
@@ -187,7 +177,7 @@ namespace bs
 						break;
 					}
 				}
-		
+
 				if (!hasShader)
 				{
 					//Add text resource.
@@ -200,6 +190,11 @@ namespace bs
 					s->_setFileName(fileName.utf8());
 				}
 			}
+
+			if (extension == "txt" || extension == ".txt")		
+				ADD_FILE_TO_MAP(TextResource, s_texts);
+			if (extension == "png" || extension == ".png")
+				ADD_FILE_TO_MAP(Texture2DResource, s_textures);
 		}
 	}
 
@@ -296,3 +291,6 @@ namespace bs
 
 
 }
+
+#undef ADD_FILE_TO_MAP(type, allocator) 
+#undef LOAD_RESOURCE(resourceType, returnFail)

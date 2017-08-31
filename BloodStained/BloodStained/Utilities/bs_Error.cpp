@@ -37,8 +37,16 @@ namespace bs
 			return "OpenGL shader program could not be linked.";
 		case ERROR_ID::GL_UNIFORM_NOT_FOUND:
 			return "Uniform variable not found in currently bound shader.";
+		case ERROR_ID::GL_TEXTURE_CREATION_FAIL:
+			return "OpenGL texture couldn't be created";
+		case ERROR_ID::TEXTURE_CREATION_FAIL:
+			return "Texture2D::create has returned with error.";
 		case ERROR_ID::QUAD_RENDERER_INIT_FAIL:
 			return "Quad renderer initialization failed.";
+		case ERROR_ID::IMAGE_LOADING_FAIL:
+			return "Image could not be loaded.";
+		case ERROR_ID::IMAGE_FORMAT_NOT_SUPPORTED:
+			return "Image format not supported.";
 		}
 		return nullptr;
 	}

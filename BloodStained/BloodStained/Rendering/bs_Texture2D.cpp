@@ -1,11 +1,11 @@
 #include "bs_Texture2D.h"
 #include "bs_RenderManager.h"
+#include <Utilities/bs_Error.h>
 
 namespace bs
 {
 	Texture2D::Texture2D()
-		:m_key(""),
-		m_id(0),
+		:m_id(0),
 		m_width(0),
 		m_height(0)
 	{
@@ -14,9 +14,7 @@ namespace bs
 
 
 	Texture2D::Texture2D(const Texture2D& t)
-		:
-		m_id(t.m_id),
-		m_key(t.m_key),
+		:m_id(t.m_id),
 		m_width(t.m_width),
 		m_height(t.m_height)
 	{
@@ -40,21 +38,12 @@ namespace bs
 		OpenGL::bindTexture(OPENGL_TEXTURE::_2D, texIndex);
 	}
 
-	Texture2D* Texture2D::create(byte * data, ui32 width, ui32 height, const String & name, 
+	ERROR_ID Texture2D::create(Texture2D* tex, byte * data, ui32 width, ui32 height,
 		OPENGL_COLOR_FORMAT colorFormat)
 	{
-		Texture2D* t = &RenderManager::s_textureDB[name];
-
-		if (!RenderManager::s_textureDB.isEmptyAt(name))
-		{
-			ui32 id = t->id();
-			OpenGL::deleteTextures(1, &id);
-			t->m_id = 0;
-		}
-
 		ui32 id = 0;
 		OpenGL::genTextures(1, &id);
-		if (id == 0) return nullptr;
+		if (id == 0) return ERROR_ID::GL_TEXTURE_CREATION_FAIL;
 
 		OpenGL::activeTexture(0);
 		OpenGL::bindTexture(OPENGL_TEXTURE::_2D, id);
@@ -83,14 +72,20 @@ namespace bs
 
 		OpenGL::bindTexture(OPENGL_TEXTURE::_2D, 0);
 
-		RenderManager::s_textureDB[name] = Texture2D();
+		tex->m_id = id;
+		tex->m_width = width;
+		tex->m_height = height;
 
-		t->m_id = id;
-		t->m_key = name;
-		t->m_width = width;
-		t->m_height = height;
+		ERROR_ID::NONE;
+	}
 
-		return t;
+	void Texture2D::destroy(Texture2D * tex)
+	{
+		ui32 id = tex->m_id;
+		OpenGL::deleteTextures(1, &id);
+		tex->m_id = 0;
+		tex->m_width = 0;
+		tex->m_height = 0;
 	}
 
 	void Texture2D::setClamped(bool value)
@@ -99,6 +94,7 @@ namespace bs
 			: OPENGL_TEXTURE_PARAMETER::REPEAT;
 
 		OpenGL::texParameteri(OPENGL_TEXTURE::_2D, OPENGL_TEXTURE_PARAMETER_NAME::WRAP_S, p);
+		OpenGL::texParameteri(OPENGL_TEXTURE::_2D, OPENGL_TEXTURE_PARAMETER_NAME::WRAP_T, p);
 	}
 
 }

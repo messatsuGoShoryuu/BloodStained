@@ -29,6 +29,7 @@
     <ClCompile Include="FileIO\bs_Path.cpp" />
     <ClCompile Include="FileIO\bs_Resource.cpp" />
     <ClCompile Include="FileIO\bs_ResourceManager.cpp" />
+    <ClCompile Include="FileIO\ImageLoader\bs_ImageLoader.cpp" />
     <ClCompile Include="Game\bs_Game.cpp" />
     <ClCompile Include="Game\bs_Level.cpp" />
     <ClCompile Include="Math\bs_Matrix3x3.cpp" />
@@ -72,6 +73,7 @@
     <ClInclude Include="FileIO\bs_Path.h" />
     <ClInclude Include="FileIO\bs_Resource.h" />
     <ClInclude Include="FileIO\bs_ResourceManager.h" />
+    <ClInclude Include="FileIO\ImageLoader\bs_ImageLoader.h" />
     <ClInclude Include="Game\bs_Game.h" />
     <ClInclude Include="Game\bs_Level.h" />
     <ClInclude Include="Math\bs_math.h" />

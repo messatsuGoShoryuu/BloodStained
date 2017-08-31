@@ -2,10 +2,11 @@
 #define _BS_RESOURCE_H_
 
 #include "../Utilities/bs_String.h"
-
+#include <Rendering/bs_Texture2D.h>
 namespace bs
 {
 	enum class ERROR_ID;
+
 
 	//Nature of our resource
 	enum class RESOURCE_TYPE
@@ -80,9 +81,23 @@ namespace bs
 	{
 	public:
 		ShaderScriptResource();
-		ShaderScriptResource(const ShaderScriptResource& s);
+		ShaderScriptResource(const ShaderScriptResource& s);	
+	};
 
-		void	compile();		
+	class Texture2DResource : public Resource
+	{
+	public:
+		Texture2DResource();
+		Texture2DResource(const Texture2DResource& r);
+		virtual	~Texture2DResource() override;
+
+		virtual ERROR_ID load() override;
+		virtual ERROR_ID unload() override;
+
+		inline const Texture2D*		getData() { return &m_data; }
+
+	private:
+		Texture2D	m_data;
 	};
 }
 

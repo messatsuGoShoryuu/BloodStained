@@ -9,6 +9,7 @@
 
 namespace bs
 {
+	enum class ERROR_ID;
 	class Texture2D
 	{
 	public:
@@ -24,14 +25,15 @@ namespace bs
 		void	unbind(ui32 texIndex) const; 
 
 	public:
-		static Texture2D* create(byte* data, ui32 width, ui32 height, const String& name, 
+		static ERROR_ID create(Texture2D* tex, byte* data, ui32 width, ui32 height, 
 			OPENGL_COLOR_FORMAT colorFormat);
+
+		static void destroy(Texture2D* tex);
 
 		static void setClamped(bool value);
 		
 
 	private:
-		String	m_key;
 		ui32	m_id;
 		ui32	m_width;
 		ui32	m_height;

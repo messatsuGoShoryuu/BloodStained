@@ -29,10 +29,9 @@ namespace bs
 		error = RenderManager::initialize();
 		if (error != ERROR_ID::NONE) return fatalError(error);
 
-		return ERROR_ID::NONE;
-
 		addLevel();
 		currentLevel()->initialize();
+		return ERROR_ID::NONE;
 	}
 
 	ERROR_ID Game::shutDown()
