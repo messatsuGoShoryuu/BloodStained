@@ -37,15 +37,15 @@ namespace bs
 		//Parameter constructors:
 
 		//@param size preallocation size
-		Array(const ui32 size);
+		Array(const ptrsize size);
 
 	public:
 
 		//Add existing item.
-		ui32 add(const T& item);
+		ptrsize add(const T& item);
 		
 		//Construct directly in the array
-		ui32 construct()
+		ptrsize construct()
 		{
 			ui32 index = m_count;
 			if (m_count + 1 >= m_bufferSize) reserve(m_bufferSize * 2);
@@ -67,22 +67,22 @@ namespace bs
 		**@param index1 first item
 		**@param index2 second item
 		*/
-		void swap(ui32 index1, ui32 index2);
+		void swap(ptrsize index1, ptrsize index2);
 
 		//Pre-allocate bytes
 		//@param size preallocation size
-		void reserve(ui32 size);
+		void reserve(ptrsize size);
 
 		//Pre-allocate bytes and set the count
 		//@param size preallocation size;
-		void resize(ui32 size);
+		void resize(ptrsize size);
 
 		//Remove 1 item from the end
 		void pop();
 
 		//Remove first item and return its index.
 		//@param item item to remove
-		ui32 remove(const T& item);
+		void remove(const T& item);
 
 		//Remove all items, return false if no item is found.
 		//@param item item to remove
@@ -92,7 +92,7 @@ namespace bs
 		//@param item item to remove
 		bool swapAndRemove(const T& item);
 		//@param index index of the item to remove
-		bool swapAndRemove(ui32 index);
+		bool swapAndRemove(ptrsize index);
 
 		//Set size to 0.
 		void clear();
@@ -106,7 +106,7 @@ namespace bs
 
 	private:
 		//Allocate and clone data.
-		T* _allocate(ui32 size);
+		T* _allocate(ptrsize size);
 
 		//Call destructors of all members
 		void _destroyMembers();
@@ -116,20 +116,20 @@ namespace bs
 
 		//Find index of a certain item.
 		//@param item item to be found
-		ui32 _findIndex(const T& item);
+		ptrsize _findIndex(const T& item);
 
 		/*Find index of a certain item with offset.
 		**@param item item to be found
 		**@param offset start search from this index
 		*/
-		ui32 _findIndex(const T& item, ui32 offset);
+		ptrsize _findIndex(const T& item, ptrsize offset);
 
 	public:
 		//Accessors
-		inline	const	ui32	count()					{ return m_count; }
-		inline	const	ui32	count()			const	{ return m_count; }
-		inline	const	ui32	bufferSize()			{ return m_bufferSize; }
-		inline	const	ui32	bufferSize()	const 	{ return m_bufferSize; }
+		inline	const	ptrsize	count()					{ return m_count; }
+		inline	const	ptrsize	count()			const	{ return m_count; }
+		inline	const	ptrsize	bufferSize()			{ return m_bufferSize; }
+		inline	const	ptrsize	bufferSize()	const 	{ return m_bufferSize; }
 		inline			T&		first()					{ return m_buffer[0]; }
 		inline	const	T&		first()			const	{ return m_buffer[0]; }
 		inline			T&		last()					{ return m_buffer[m_count - 1]; }
@@ -139,8 +139,8 @@ namespace bs
 		//operators
 
 		//random access
-		inline	T&			operator[](ui32 index)			{ return m_buffer[index]; }
-		inline	const T&	operator[](ui32 index)	const	{ return m_buffer[index]; }
+		inline	T&			operator[](ptrsize index)			{ return m_buffer[index]; }
+		inline	const T&	operator[](ptrsize index)	const	{ return m_buffer[index]; }
 
 		//assignment
 		void		operator=(const Array& a);
@@ -152,8 +152,8 @@ namespace bs
 
 	private:
 		T*		m_buffer;
-		ui32	m_count;
-		ui32	m_bufferSize;
+		ptrsize	m_count;
+		ptrsize	m_bufferSize;
 	};
 
 
@@ -182,7 +182,7 @@ namespace bs
 	}
 
 	template<class T>
-	Array<T>::Array(ui32 size)
+	Array<T>::Array(ptrsize size)
 		:m_buffer(nullptr),
 		m_count(0),
 		m_bufferSize(0)
@@ -191,9 +191,9 @@ namespace bs
 	}
 
 	template<class T>
-	ui32 Array<T>::add(const T& item)
+	ptrsize Array<T>::add(const T& item)
 	{
-		ui32 index = m_count;
+		ptrsize index = m_count;
 		if (m_count + 1 >= m_bufferSize) reserve(m_bufferSize * 2);
 		Place((m_buffer + index), T, item);
 		m_count++;
@@ -201,7 +201,7 @@ namespace bs
 	}
 
 	template <class T>
-	void Array<T>::swap(ui32 index1, ui32 index2)
+	void Array<T>::swap(ptrsize index1, ptrsize index2)
 	{
 		T temp;
 		new(&temp) T(m_buffer[index1]);
@@ -214,14 +214,14 @@ namespace bs
 	}
 
 	template <class T>
-	void Array<T>::resize(ui32 size)
+	void Array<T>::resize(ptrsize size)
 	{
 		reserve(size);
 		m_count = size;
 	}
 
 	template <class T>
-	void Array<T>::reserve(ui32 size)
+	void Array<T>::reserve(ptrsize size)
 	{
 		//if the requested size if smaller then we already have, return
 		if (m_bufferSize != 0 && size <= m_bufferSize) return;
@@ -254,15 +254,15 @@ namespace bs
 	}
 
 	template <class T>
-	ui32 Array<T>::remove(const T& item)
+	void Array<T>::remove(const T& item)
 	{
 		//if count == 0 there is no item to be found
-		if (m_count == 0) return BS_INVALID_INDEX;
+		if (m_count == 0) return;
 
 		ui32 index = _findIndex(item);
 
 		//if no index is found return 
-		if (index == BS_INVALID_INDEX) return index;
+		if (index == BS_INVALID_INDEX) return;
 
 		
 		//if item is found overwrite all items onwards with the next item
@@ -275,7 +275,7 @@ namespace bs
 
 		//destroy the last item
 		pop();
-		return item;
+
 		
 	}
 
@@ -286,7 +286,7 @@ namespace bs
 		if (m_count == 0) return false;
 
 
-		ui32 index = 0;
+		ptrsize index = 0;
 
 		while (true)
 		{
@@ -297,7 +297,7 @@ namespace bs
 
 
 			//if item is found overwrite all items onwards with the next item
-			for (ui32 i = index; i < m_count; i++)
+			for (ptrsize i = index; i < m_count; i++)
 			{
 				T* p = &m_buffer[i];
 				Destroy(p, T);
@@ -314,14 +314,14 @@ namespace bs
 	template<class T>
 	bool Array<T>::swapAndRemove(const T& item)
 	{
-		ui32 index = _findIndex(item);
+		ptrsize index = _findIndex(item);
 		if (index == BS_INVALID_INDEX) return false;
 
 		return swapAndRemove(index);
 	}
 
 	template<class T>
-	bool Array<T>::swapAndRemove(ui32 index)
+	bool Array<T>::swapAndRemove(ptrsize index)
 	{
 		//check if index is valid
 		if (index >= m_count) return false;
@@ -359,7 +359,7 @@ namespace bs
 	}
 
 	template <class T>
-	T* Array<T>::_allocate(ui32 size)
+	T* Array<T>::_allocate(ptrsize size)
 	{
 		//allocate new buffer
 		T* ptr = (T*)BS_Malloc(size * sizeof(T));
@@ -375,7 +375,7 @@ namespace bs
 	void Array<T>::_destroyMembers()
 	{
 		if (m_count == 0) return;
-		for (ui32 i = 0; i < m_count; i++)
+		for (ptrsize i = 0; i < m_count; i++)
 		{
 			T* p = &m_buffer[i];
 			Destroy(p, T);
@@ -397,9 +397,9 @@ namespace bs
 	}
 
 	template <class T>
-	ui32 Array<T>::_findIndex(const T& item)
+	ptrsize Array<T>::_findIndex(const T& item)
 	{
-		for (ui32 i = 0; i < m_count; i++)
+		for (ptrsize i = 0; i < m_count; i++)
 		{
 			if (m_buffer[i] == item) return i;
 		}
@@ -407,9 +407,9 @@ namespace bs
 	}
 
 	template <class T>
-	ui32 Array<T>::_findIndex(const T& item, ui32 offset)
+	ptrsize Array<T>::_findIndex(const T& item, ptrsize offset)
 	{
-		for (ui32 i = offset; i < m_count; i++)
+		for (ptrsize i = offset; i < m_count; i++)
 		{
 			if (m_buffer[i] == item) return i;
 		}
@@ -433,16 +433,16 @@ namespace bs
 		//Preallocate enough space for all the content.
 		result.reserve(this->m_bufferSize + a->m_bufferSize);
 
-		ui32 count1 = this->m_count;
-		ui32 otherCount = a.m_count;
+		ptrsize count1 = this->m_count;
+		ptrsize otherCount = a.m_count;
 
 		//Add all array content.
-		for (ui32 i = 0; i < count1; i++)
+		for (ptrsize i = 0; i < count1; i++)
 		{
 			result.add(SELF[i]);
 		}
 
-		for (ui32 i = 0; i < count2; i++)
+		for (ptrsize i = 0; i < count2; i++)
 		{
 			result.add(a[i]);
 		}
@@ -458,16 +458,16 @@ namespace bs
 		//Preallocate enough space for all the content.
 		result.reserve(this->m_count + a.m_count);
 
-		ui32 count1 = this->m_count;
-		ui32 otherCount = a.m_count;
+		ptrsize count1 = this->m_count;
+		ptrsize otherCount = a.m_count;
 
 		//Add all array content.
-		for (ui32 i = 0; i < count1; i++)
+		for (ptrsize i = 0; i < count1; i++)
 		{
 			result.add(SELF[i]);
 		}
 
-		for (ui32 i = 0; i < count2; i++)
+		for (ptrsize i = 0; i < count2; i++)
 		{
 			result.add(a[i]);
 		}
@@ -478,11 +478,11 @@ namespace bs
 	template <class T>
 	void Array<T>::operator+=(const Array& a)
 	{
-		ui32 totalBufferSize = this->m_count + a.m_bufferSize;
+		ptrsize totalBufferSize = this->m_count + a.m_bufferSize;
 		if (totalBufferSize > m_bufferSize) reserve(totalBufferSize);
 
-		ui32 count = a.m_count;
-		for (ui32 i = 0; i < count; i++) add(a[i]);
+		ptrsize count = a.m_count;
+		for (ptrsize i = 0; i < count; i++) add(a[i]);
 	}
 }
 

@@ -49,6 +49,14 @@ namespace bs
 			return "Image format not supported.";
 		case ERROR_ID::VBO_INIT_FAIL:
 			return "Vertex buffer object couldn't be created.";
+		case ERROR_ID::VAO_INIT_FAIL:
+			return "Vertex array object couldn't be created.";
+		case ERROR_ID::IBO_INIT_FAIL:
+			return "Index buffer object couldn't be created.";
+		case ERROR_ID::SPRITERENDERER_INIT_FAIL:
+			return "SpriteRenderer initalization failed.";
+		case ERROR_ID::SPRITERENDERER_SHUTDOWN_FAIL:
+			return "SpriteRenderer shut down failed.";
 		}
 		return nullptr;
 	}

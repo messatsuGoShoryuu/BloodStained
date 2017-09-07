@@ -44,6 +44,8 @@ namespace bs
 		m_view[1][0] = math::sin(m_orientation);
 		m_view[0][1] = -math::sin(m_orientation);
 		m_view[1][1] = m_view[0][0];
+
+		m_isDirty = true;
 	}
 
 	void	Camera2D::_constructProjectionMatrix()
@@ -71,6 +73,8 @@ namespace bs
 		m_projection[3][0] = -(r + l) / (r - l);
 		m_projection[3][1] = -(t + b) / (t - b);
 		m_projection[3][2] = -(f + n) / (f - n);
+
+		m_isDirty = true;
 	}
 
 

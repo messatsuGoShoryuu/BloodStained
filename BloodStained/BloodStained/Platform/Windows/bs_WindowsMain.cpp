@@ -76,10 +76,19 @@ int CALLBACK WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance,
 	bs::ERROR_ID err = bs::Game::initialize();
 	if (err != bs::ERROR_ID::NONE) return -1;
 
-	SwapBuffers(GetDC(hWnd));
+	
 	MSG msg;
 
-	
+	LARGE_INTEGER performanceFrequency;
+	QueryPerformanceFrequency(&performanceFrequency);
+	f32 cyclesPerSecond = 1.0f / (f32)performanceFrequency.QuadPart;
+
+
+	LARGE_INTEGER performanceCounter;
+	QueryPerformanceCounter(&performanceCounter);
+
+	f32 now = (f32)((f64)performanceCounter.QuadPart / (f64)performanceFrequency.QuadPart);
+	f32 lastFrame = now;
 	//Main loop
 	while (bs::Game::isRunning())
 	{
@@ -89,9 +98,17 @@ int CALLBACK WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance,
 			DispatchMessage(&msg);
 		}
 
-		bs::Game::update();
-	//	SwapBuffers(GetDC(hWnd));
+		QueryPerformanceCounter(&performanceCounter);
+
 		
+		now = (f32)((f64)performanceCounter.QuadPart / (f64)performanceFrequency.QuadPart);
+		f32 dt = now - lastFrame;
+		if (dt >= 1.0f / 60.0f)
+		{
+			lastFrame = now;
+			bs::Game::update(dt, now);
+			SwapBuffers(GetDC(hWnd));
+		}
 	}
 	
 	bs::Game::shutDown();

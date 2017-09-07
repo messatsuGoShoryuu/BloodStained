@@ -60,6 +60,7 @@ namespace bs
 		static PFNGLENABLEVERTEXATTRIBARRAYPROC		glEnableVertexAttribArray;
 		static PFNGLDISABLEVERTEXATTRIBARRAYPROC	glDisableVertexAttribArray;
 		static PFNGLVERTEXATTRIBPOINTERPROC			glVertexAttribPointer;
+		static PFNGLBINDVERTEXARRAYPROC				glBindVertexArray;
 
 		//Uniforms
 		//float
@@ -109,6 +110,7 @@ namespace bs
 		//Texture
 		static PFNGLACTIVETEXTUREPROC				glActiveTexture;
 		static PFNGLBUFFERDATAPROC					glBufferData;
+		static PFNGLGENERATEMIPMAPPROC				glGenerateMipmap;
 	
 	};
 

@@ -5,6 +5,7 @@
 #include <Rendering/bs_ShaderManager.h>
 #include <Rendering/bs_RenderManager.h>
 
+#include <Time/bs_Clock.h>
 
 
 
@@ -48,12 +49,14 @@ namespace bs
 		return ERROR_ID::NONE;
 	}
 
-	void Game::update()
+	void Game::update(f32 dt, f32 now)
 	{
-//		OpenGL::clearColor(ColorRGBA32::red);
-//		OpenGL::clear();
+		Clock::update(dt, now);
 
-//		currentLevel()->update();
+		OpenGL::clearColor(ColorRGBA32(245,250,255,255));
+		OpenGL::clear();
+
+		currentLevel()->update(dt);
 	}
 
 	void Game::setCurrentLevel(ui32 index)

@@ -54,6 +54,7 @@ namespace bs
 		static	void	disableVertexAttribArray(ui32 index);
 		static	void	vertexAttribPointer(ui32 index, int size, OPENGL_TYPE type,
 			bool normalized, int stride, const void* pointer);
+		static  void	bindVertexArray(ui32 index);
 
 		static	void	drawArrays(OPENGL_PRIMITIVE mode, i32 first, int count);
 		static	void	drawElements(OPENGL_PRIMITIVE mode, int count, OPENGL_TYPE type,
@@ -64,12 +65,12 @@ namespace bs
 		static void		deleteTextures(int count, ui32* textures);
 
 		static void		activeTexture(ui32 index);
-		static void		texImage2D(OPENGL_TEXTURE type, i32 level, i32 internalFormat, int width,
-			int height, i32 border, OPENGL_COLOR_FORMAT format, OPENGL_PIXEL_STORAGE pixelStorage, void* data);
+		static void		texImage2D(OPENGL_TEXTURE type, i32 level, OPENGL_COLOR_FORMAT internalFormat, 
+			int width, int height, i32 border, OPENGL_COLOR_FORMAT format, OPENGL_PIXEL_STORAGE pixelStorage, void* data);
 
 		static void		pixelStorei(OPENGL_ALIGNMENT alignment, i32 param);
 		static void		texParameteri(OPENGL_TEXTURE type, OPENGL_TEXTURE_PARAMETER_NAME parameterName, OPENGL_TEXTURE_PARAMETER param);
-
+		static void		generateMipmap(OPENGL_TEXTURE textureID);
 		static void		bufferData(OPENGL_BUFFER_TYPE type, int size, void* data, OPENGL_BUFFER_STORAGE usage);
 
 		//@param transpose only available for matrices.

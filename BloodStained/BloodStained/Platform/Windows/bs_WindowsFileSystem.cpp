@@ -11,12 +11,11 @@ namespace bs
 {
 	void* WindowsFileSystem::open(const char* filename)
 	{
-		HANDLE h =  CreateFileA(filename, GENERIC_WRITE | GENERIC_READ, FILE_SHARE_WRITE | FILE_SHARE_READ, NULL, OPEN_ALWAYS, FILE_ATTRIBUTE_NORMAL, NULL);
+		HANDLE h =  CreateFileA(filename, GENERIC_WRITE | GENERIC_READ, FILE_SHARE_READ, NULL, OPEN_ALWAYS, FILE_ATTRIBUTE_NORMAL, NULL);
 		if (h == INVALID_HANDLE_VALUE)
 		{
 			DWORD error = GetLastError();
-
-			std::cout << "Error : invalid handle" << std::endl;
+			//TODO: error here
 		}
 		return h;
 	}
@@ -26,7 +25,7 @@ namespace bs
 		CloseHandle(handle);
 	}
 
-	bool WindowsFileSystem::read(void* handle, void* buffer, size_t size)
+	bool WindowsFileSystem::read(void* handle, void* buffer, ptrsize size)
 	{
 		//Empty DWORD to store read bytes.
 		DWORD bytesRead;
@@ -40,7 +39,7 @@ namespace bs
 		return success;
 	}
 
-	bool WindowsFileSystem::read(void* handle, char* buffer, size_t size)
+	bool WindowsFileSystem::read(void* handle, char* buffer, ptrsize size)
 	{
 		//Empty DWORD to store read bytes.
 		DWORD bytesRead;
@@ -55,23 +54,23 @@ namespace bs
 		return success;
 	}
 
-	ui32	WindowsFileSystem::write(void* handle, const void* buffer, ui32 length)
+	ptrsize	WindowsFileSystem::write(void* handle, const void* buffer, ptrsize length)
 	{
 		DWORD bytesWritten;
 
 		WriteFile(handle, buffer, length, &bytesWritten, NULL);
-		return (ui32)bytesWritten;
+		return (ptrsize)bytesWritten;
 	}
 
-	ui32	WindowsFileSystem::writeBuffered(void* handle, const void* buffer, ui32 length)
+	ptrsize	WindowsFileSystem::writeBuffered(void* handle, const void* buffer, ptrsize length)
 	{
 		DWORD bytesWritten;
 		WriteFile(handle, buffer, length, &bytesWritten, NULL);
 		SetFilePointer(handle, bytesWritten, NULL, FILE_CURRENT);
-		return (ui32)bytesWritten;
+		return (ptrsize)bytesWritten;
 	}
 
-	bool	WindowsFileSystem::readLine(void* handle, char* buffer, size_t size)
+	bool	WindowsFileSystem::readLine(void* handle, char* buffer, ptrsize size)
 	{
 		DWORD bytesRead;
 		bool success = false;
@@ -108,14 +107,12 @@ namespace bs
 		return success;
 	}
 
-	ui32	WindowsFileSystem::getFileSize(void* handle)
+	ptrsize	WindowsFileSystem::getFileSize(void* handle)
 	{
 		LARGE_INTEGER i;
 		GetFileSizeEx((HANDLE)handle, &i);
-		std::cout << "Size = " << i.QuadPart << std::endl;
 
 		return i.QuadPart;
-	//	return GetFileSize(handle, NULL);
 	}
 
 	void	WindowsFileSystem::createDirectory(const char* fileName)

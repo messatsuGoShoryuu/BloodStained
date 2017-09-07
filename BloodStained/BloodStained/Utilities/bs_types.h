@@ -24,6 +24,8 @@ typedef double				f64;
 //variable float (for physics etc)
 typedef BS_REAL				real;
 
+typedef size_t				ptrsize;
+
 //for variadic templates
 struct nothing{ };
 

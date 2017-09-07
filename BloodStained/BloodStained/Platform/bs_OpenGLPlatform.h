@@ -30,6 +30,7 @@
 #define BS_glEnableVertexAttribArray(index)							WindowsOpenGL::glEnableVertexAttribArray(index)
 #define BS_glDisableVertexAttribArray(index)						WindowsOpenGL::glDisableVertexAttribArray(index)
 #define BS_glVertexAttribPointer(index,size,type,normalized,stride,pointer)			WindowsOpenGL::glVertexAttribPointer(index,size,type,normalized,stride,pointer)
+#define BS_glBindVertexArray(index)									WindowsOpenGL::glBindVertexArray(index)
 
 #define BS_glUniform1f(location, v0)								WindowsOpenGL::glUniform1f(location, v0)
 #define BS_glUniform2f(location, v0, v1)							WindowsOpenGL::glUniform2f(location, v0, v1)
@@ -74,6 +75,8 @@
 #define BS_glActiveTexture(texture)									WindowsOpenGL::glActiveTexture(texture)
 #define BS_glPixelStorei(name, param)								WindowsOpenGL::glPixelStorei(name,param)
 #define BS_glBufferData(type, size, data, usage)					WindowsOpenGL::glBufferData(type, size, data,usage)
-#define BS_glGetError()												WindowsOpeNGL::glGetError()
+#define BS_glGetError()												WindowsOpenGL::glGetError()
+#define BS_glGenerateMipmap(id)										WindowsOpenGL::glGenerateMipmap(id)
+
 #endif
 #endif // !_BS_OPENGLPLATFORM_H_

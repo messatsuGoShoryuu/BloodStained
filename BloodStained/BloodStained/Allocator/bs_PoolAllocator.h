@@ -146,7 +146,7 @@ namespace bs
 		Pool*	m_poolIterator;
 		Pool*	m_lastPool;
 		//Item count per pool.
-		ui32 m_poolSize;
+		size_t m_poolSize;
 	};
 
 

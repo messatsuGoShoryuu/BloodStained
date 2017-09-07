@@ -4,10 +4,13 @@
 #include <FileIO/bs_ResourceManager.h>
 #include <Rendering/bs_Texture2D.h>
 
+#include <Rendering/bs_RenderManager.h>
 #include <Rendering/bs_RenderBufferObjects.h>
 #include <Rendering/bs_Primitive.h>
 #include <Rendering/bs_ShaderManager.h>
 #include <Rendering/bs_Shader.h>
+#include <Time/bs_Clock.h>
+#include <Math/bs_math.h>
 namespace bs
 {
 	Level::Level()
@@ -25,62 +28,20 @@ namespace bs
 	{
 	}
 
+	Sprite* sprite[2];
+
 	void Level::initialize()
 	{
-		const Texture2D* tex = ResourceManager::loadTexture2D("x23.png");
 		m_cameras.add(new Camera2D());
+		Texture2D::setCreationMethod(true, true, OPENGL_COLOR_FORMAT::RGBA);
 
-		VertexBufferObject vbo;
-		OpenGL::clearColor(ColorRGBA32::red);
-		OpenGL::clear();
+		Shader* s = (Shader*)ShaderManager::getShader("DefaultSprite/DefaultSprite");
 
-//		const Shader* s = ShaderManager::getShader("DefaultSprite/DefaultSprite");
-//		s->bind();
+		Texture2D* t = (Texture2D*)ResourceManager::loadTexture2D("x23.png");
+		Texture2D* t2 = (Texture2D*)ResourceManager::loadTexture2D("ken.png");
 
-		vbo.initialize();
-		
-
-		Quad<Vertex2D_PUC> q;
-
-		Vertex2D_PUC v[6];
-		
-		q.topLeft.color = ColorRGBA32::white;
-		q.topLeft.position = Vector2(-0.5f, 0.5f);
-
-		q.bottomLeft.color = ColorRGBA32::blue;
-		q.bottomLeft.position = Vector2(-0.5f, -0.5f);
-
-		q.bottomRight.color = ColorRGBA32::white;
-		q.bottomRight.position = Vector2(0.5f, -0.5f);
-
-		q.topRight.color = ColorRGBA32::white;
-		q.topRight.position = Vector2(0.5f, 0.5f);
-
-
-		v[0] = q[0];
-		v[1] = q[1];
-		v[2] = q[2];
-		v[3] = q[2];
-		v[4] = q[3];
-		v[5] = q[0];
-
-
-		vbo.bind();
-
-		ui32 code = OpenGL::getError();
-
-		vbo.upload((byte*)v, 6 * sizeof(Vertex2D_PUC));
-		OpenGL::enableVertexAttribArray(0);
-		OpenGL::vertexAttribPointer(0, 2, OPENGL_TYPE::FLOAT, false, sizeof(Vertex2D_PUC), 0);
-		OpenGL::enableVertexAttribArray(1);
-		OpenGL::vertexAttribPointer(1, 2, OPENGL_TYPE::FLOAT, false, sizeof(Vertex2D_PUC), (void*)offsetof(Vertex2D_PUC, uv));
-		OpenGL::enableVertexAttribArray(2);
-		OpenGL::vertexAttribPointer(2, 4, OPENGL_TYPE::FLOAT, true, sizeof(Vertex2D_PUC), (void*)offsetof(Vertex2D_PUC, color));
-		code = OpenGL::getError();
-
-		OpenGL::drawArrays(OPENGL_PRIMITIVE::TRIANGLES, 0, 6);
-		code = OpenGL::getError();
-		
+		sprite[0] = RenderManager::addSprite(t, s);
+		sprite[1] = RenderManager::addSprite(t2, s);
 	}
 
 	void Level::shutDown()
@@ -89,8 +50,19 @@ namespace bs
 		m_cameras.~Array();
 	}
 
-	void Level::update()
+	void Level::update(f32 dt)
 	{
+		
+		
+		Vector2 pos = sprite[1]->position();
+		f32 now = Clock::now();
+
+		pos.y = math::sin(now);
+
+		sprite[1]->setPosition(pos);
+
+		RenderManager::render(m_cameras);
+		
 	}
 }
 

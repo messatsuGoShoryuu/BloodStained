@@ -78,6 +78,7 @@ namespace bs
 		RG = 0x8227,
 		RGB = 0x1907,
 		RGBA = 0x1908,
+		RGBA8 = 0x8058,
 		BGR = 0x80E0,
 		BGRA = 0x80E1,
 		R_INT = 0x8D94,

@@ -11,7 +11,7 @@ namespace bs
 	class PNGLoader
 	{
 	public:
-		static	byte*	load(byte* buffer, ui32& width, ui32& height, size_t size);
+		static	byte*	load(byte* buffer, ui32& width, ui32& height, ptrsize size);
 	};
 
 	class ImageLoader

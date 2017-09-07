@@ -55,7 +55,10 @@
     <ClCompile Include="Rendering\bs_Screen.cpp" />
     <ClCompile Include="Rendering\bs_ShaderManager.cpp" />
     <ClCompile Include="Rendering\bs_Shader.cpp" />
+    <ClCompile Include="Rendering\bs_Sprite.cpp" />
+    <ClCompile Include="Rendering\bs_SpriteRenderer.cpp" />
     <ClCompile Include="Rendering\bs_Texture2D.cpp" />
+    <ClCompile Include="Time\bs_Clock.cpp" />
     <ClCompile Include="Utilities\bs_Error.cpp" />
     <ClCompile Include="Utilities\bs_String.cpp" />
   </ItemGroup>
@@ -67,6 +70,7 @@
     <ClInclude Include="Containers\bs_Array.h" />
     <ClInclude Include="Containers\bs_HashMap.h" />
     <ClInclude Include="Containers\bs_LinkedArray.h" />
+    <ClInclude Include="Containers\bs_LinkedList.h" />
     <ClInclude Include="External\HashFunctions\MurmurHash\bs_MurmurHash.h" />
     <ClInclude Include="External\ImageLoading\LodePng\lodepng.h" />
     <ClInclude Include="FileIO\bs_FileSystem.h" />
@@ -106,8 +110,11 @@
     <ClInclude Include="Rendering\bs_Shader.h" />
     <ClInclude Include="Rendering\bs_ShaderManager.h" />
     <ClInclude Include="Rendering\bs_QuadRenderer.h" />
+    <ClInclude Include="Rendering\bs_Sprite.h" />
     <ClInclude Include="Rendering\bs_Texture2D.h" />
     <ClInclude Include="Rendering\bs_Vertex.h" />
+    <ClInclude Include="Rendering\bs_SpriteRenderer.h" />
+    <ClInclude Include="Time\bs_Clock.h" />
     <ClInclude Include="Utilities\bs_arrayOperations.h" />
     <ClInclude Include="Utilities\bs_define.h" />
     <ClInclude Include="Utilities\bs_Error.h" />
@@ -172,6 +179,14 @@
     <IncludePath>G:\Programming\BloodStained\Libraries\inc;G:\Programming\BloodStained\BloodStained\BloodStained;$(IncludePath)</IncludePath>
     <LibraryPath>G:\Programming\BloodStained\Libraries\lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <IncludePath>G:\Programming\BloodStained\Libraries\inc;G:\Programming\BloodStained\BloodStained\BloodStained;$(IncludePath)</IncludePath>
+    <LibraryPath>G:\Programming\BloodStained\Libraries\lib;$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <IncludePath>G:\Programming\BloodStained\Libraries\inc;G:\Programming\BloodStained\BloodStained\BloodStained;$(IncludePath)</IncludePath>
+    <LibraryPath>G:\Programming\BloodStained\Libraries\lib;$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
@@ -188,6 +203,9 @@
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
     </ClCompile>
+    <Link>
+      <AdditionalDependencies>opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
@@ -214,6 +232,7 @@
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalDependencies>opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

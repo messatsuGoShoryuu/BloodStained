@@ -18,8 +18,9 @@ namespace bs
 	{
 		void*	startPointer;
 		void*	endPointer;
-		Shader*	shader;
-		Texture2D* texture;
+		ptrsize	count;
+		const Shader*	shader;
+		const Texture2D* texture;
 		VERTEX_TYPE type;
 	};
 
@@ -42,61 +43,78 @@ namespace bs
 		a VERTEX_TYPE enum will determine which type of vertex we are using. 
 		*/
 		template<class T> 
-		T*	add(ui32 count, Shader* shader, Texture2D* texture){}
+		T*	add(ui32 count,const Shader* shader, const Texture2D* texture){}
 
 		template<>
-		Quad<Vertex2D_PUC>*	add<Quad<Vertex2D_PUC>>(ui32 count, Shader* shader, Texture2D* texture);
+		Quad<Vertex2D_PUC>*	add<Quad<Vertex2D_PUC>>(ui32 count, const  Shader* shader, const  Texture2D* texture);
 
 		template<>
-		Quad<Vertex3D_PC>*	add<Quad<Vertex3D_PC>>(ui32 count, Shader* shader, Texture2D* texture);
+		Quad<Vertex3D_PC>*	add<Quad<Vertex3D_PC>>(ui32 count, const  Shader* shader, const  Texture2D* texture);
 
 		template<>
-		Quad<Vertex3D_PU>*	add<Quad<Vertex3D_PU>>(ui32 count, Shader* shader, Texture2D* texture);
+		Quad<Vertex3D_PU>*	add<Quad<Vertex3D_PU>>(ui32 count, const  Shader* shader, const  Texture2D* texture);
 
 	private:
 		template <class T> 
-		T* _internalAdd(ui32 count, Shader* shader, Texture2D* texture, VERTEX_TYPE type);
+		T* _internalAdd(ui32 count, const  Shader* shader, const  Texture2D* texture, VERTEX_TYPE type);
 
-		bool	_shouldBatchChange(const QuadBatch* current, VERTEX_TYPE type, ui32 shaderID, ui32 textureID);
-		void	_createBatch(void* startPointer, VERTEX_TYPE type, Shader* shader, Texture2D* texture);
+		void _updateCameraUniforms(Camera* camera,const Shader* shader);
+
+		bool	_shouldBatchChange(const QuadBatch* current, VERTEX_TYPE type, 
+			const Shader* shader, const  Texture2D* texture);
+		void	_createBatch(void* startPointer, VERTEX_TYPE type, const Shader* shader, const Texture2D* texture);
+
+		ERROR_ID	_initVaos();
 
 	private:
 		StackAllocator		m_stackAllocator;
 		Array<QuadBatch>	m_batches;
 		VertexBufferObject	m_vbo;
+		Array<VertexArrayObject> m_vaos;
 	};
 
 	template<class T>
-	T* QuadRenderer::_internalAdd(ui32 count, Shader* shader, Texture2D* texture, VERTEX_TYPE type)
+	T* QuadRenderer::_internalAdd(ui32 count, const  Shader* shader, const  Texture2D* texture, VERTEX_TYPE type)
 	{
 		T* pointer = (T*)m_stackAllocator.getFrame();
-		m_stackAllocator.allocate(sizeof(Vertex2D_PUC) * count, __alignof(Vertex2D_PUC));
+		m_stackAllocator.allocate(sizeof(Vertex2D_PUC) * count * 6, __alignof(Vertex2D_PUC));
 
 		QuadBatch* currentBatch = nullptr;
-		if (m_batches.count() > 0)
-			currentBatch = &m_batches.last();
-
-		if (_shouldBatchChange(currentBatch, type, shader->id(),texture->id()))
+		if (m_batches.count() == 0)
 		{
-			currentBatch->endPointer = pointer;
 			_createBatch(pointer, type, shader, texture);
+			currentBatch = &m_batches.last();
 		}
+		else 
+		{
+			currentBatch = &m_batches.last();
+			if (_shouldBatchChange(currentBatch, type, shader, texture))
+			{
+				currentBatch->endPointer = pointer;
+				_createBatch(pointer, type, shader, texture);
+				currentBatch = &m_batches.last();
+			}
+		}
+
+		currentBatch->count += count;
+
+		return pointer;
 	}
 
 	template<>
-	Quad<Vertex2D_PUC>*	QuadRenderer::add<Quad<Vertex2D_PUC>>(ui32 count, Shader* shader, Texture2D* texture)
+	Quad<Vertex2D_PUC>*	QuadRenderer::add<Quad<Vertex2D_PUC>>(ui32 count, const  Shader* shader, const  Texture2D* texture)
 	{
 		return _internalAdd<Quad<Vertex2D_PUC>>(count, shader, texture, VERTEX_TYPE::PUC_2D);
 	}
 
 	template<>
-	Quad<Vertex3D_PC>*	QuadRenderer::add<Quad<Vertex3D_PC>>(ui32 count, Shader* shader, Texture2D* texture)
+	Quad<Vertex3D_PC>*	QuadRenderer::add<Quad<Vertex3D_PC>>(ui32 count, const Shader* shader, const Texture2D* texture)
 	{
 		return _internalAdd<Quad<Vertex3D_PC>>(count, shader, texture,VERTEX_TYPE::PC_3D);
 	}
 
 	template<>
-	Quad<Vertex3D_PU>*	QuadRenderer::add<Quad<Vertex3D_PU>>(ui32 count, Shader* shader, Texture2D* texture)
+	Quad<Vertex3D_PU>*	QuadRenderer::add<Quad<Vertex3D_PU>>(ui32 count, const Shader* shader, const  Texture2D* texture)
 	{
 		return _internalAdd<Quad<Vertex3D_PU>>(count, shader, texture, VERTEX_TYPE::PU_3D);
 	}

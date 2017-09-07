@@ -72,12 +72,12 @@ namespace bs
 		return READ_LINE(info.handle, buffer, info.size);
 	}
 
-	ui32	FileSystem::write(const FileInfo& info, const void* buffer, ui32 length)
+	ptrsize	FileSystem::write(const FileInfo& info, const void* buffer, ptrsize length)
 	{
 		return WRITE(info.handle, buffer, info.size);
 	}
 
-	ui32	FileSystem::writeBuffered(const FileInfo& info, const void* buffer, ui32 length)
+	ptrsize	FileSystem::writeBuffered(const FileInfo& info, const void* buffer, ptrsize length)
 	{
 		return	WRITE_BUFFERED(info.handle, buffer, info.size);
 	}

@@ -32,8 +32,8 @@ namespace bs
 
 		inline const	f32			aspectRatio()			{ return m_aspectRatio; }
 		inline const	f32			aspectRatio()	const	{ return m_aspectRatio; }
-
-
+		inline const	bool		isDirty()		const { return m_isDirty; }
+		inline void		setDirty(bool value) { m_isDirty = false; }
 
 		void	setNearPlane(f32 nearPlane);
 
@@ -59,6 +59,8 @@ namespace bs
 		f32			m_farPlane;
 		f32			m_aspectRatio;
 		Rectf32		m_viewPort;
+
+		bool		m_isDirty;
 	};
 }
 #endif // !BS_CAMERA_H

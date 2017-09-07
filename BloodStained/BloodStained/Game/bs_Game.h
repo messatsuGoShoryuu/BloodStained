@@ -18,7 +18,7 @@ namespace bs
 		static	bool	isRunning() { return !s_quit; }
 		static	void	quit() { s_quit = true; }
 
-		static void		update();
+		static void		update(f32 dt, f32 now);
 
 		static void		setCurrentLevel(ui32 index);
 		static Level*	currentLevel() { return &s_levels[s_currentLevel]; }

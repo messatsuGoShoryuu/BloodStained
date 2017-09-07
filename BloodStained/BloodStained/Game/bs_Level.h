@@ -16,7 +16,7 @@ namespace bs
 
 		void	initialize();
 		void	shutDown();
-		void	update();
+		void	update(f32 dt);
 
 	private:
 		ui32 m_id;

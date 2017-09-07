@@ -6,7 +6,10 @@
 #include "bs_QuadRenderer.h"
 #include "bs_Texture2D.h"
 #include <Containers/bs_HashMap.h>
-
+#include <Rendering/bs_RenderBufferObjects.h>
+#include <Rendering/bs_SpriteRenderer.h>
+#include <Rendering/bs_Sprite.h>
+#include <Rendering/bs_Shader.h>
 
 namespace bs
 {
@@ -22,10 +25,11 @@ namespace bs
 
 		static void	render(const Array<Camera*> m_cameras);
 
-		template <class T>
-		static Quad<T>* addQuad(ui32 count, Shader* shader, Texture2D* texture);
+		static Sprite* addSprite(const Texture2D* texture, const Shader* shader);
+
 	private:
 		static QuadRenderer s_quadRenderer;
+		static SpriteRenderer s_spriteRenderer;
 		static HashMap<String, Texture2D> s_textureDB;
 
 	};

@@ -140,10 +140,11 @@ namespace bs
 			return ERROR_ID::LOAD_RESOURCE_FAIL;
 		}
 
-		Texture2D::create(&m_data, decodedBuffer, width, height, OPENGL_COLOR_FORMAT::RGBA);
+		Texture2D::create(&m_data, decodedBuffer, width, height);
 
 		m_isLoaded = true;
 
+		free(decodedBuffer);
 		BS_Free(buffer);
 		return ERROR_ID::NONE;
 	}

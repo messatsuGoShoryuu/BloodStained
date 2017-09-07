@@ -18,7 +18,7 @@ namespace bs
 	{
 		Path	path;
 		char	extension[8];
-		size_t	size;
+		ptrsize	size;
 		FileHandle handle;
 	};
 
@@ -54,14 +54,14 @@ namespace bs
 		**@param buffer Bytes to write.
 		**@param length Byte count.
 		*/
-		static ui32		write(const FileInfo& info, const void* buffer, ui32 length);
+		static ptrsize		write(const FileInfo& info, const void* buffer, ptrsize length);
 
 		/*Write to file and set the pointer to the end of the write.
 		**@param info Holder of the file handle.
 		**@param buffer Bytes to write.
 		**@param length Byte count.
 		*/
-		static ui32		writeBuffered(const FileInfo& info, const void* buffer, ui32 length);
+		static ptrsize		writeBuffered(const FileInfo& info, const void* buffer, ptrsize length);
 
 		/*Create a new directory at pathName if it doesn't exist.
 		**@param pathName New path

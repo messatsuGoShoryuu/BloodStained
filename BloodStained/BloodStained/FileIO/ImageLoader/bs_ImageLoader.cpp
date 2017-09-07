@@ -6,7 +6,7 @@
 
 namespace bs
 {
-	byte*	PNGLoader::load(byte* buffer, ui32& width, ui32& height, size_t size)
+	byte*	PNGLoader::load(byte* buffer, ui32& width, ui32& height, ptrsize size)
 	{
 		byte* result = NULL;
 		ui32 error = lodepng_decode32(&result, &width, &height, buffer, size);

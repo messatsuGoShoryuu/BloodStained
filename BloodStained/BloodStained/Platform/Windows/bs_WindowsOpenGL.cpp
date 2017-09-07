@@ -35,6 +35,7 @@ namespace bs
 	PFNGLENABLEVERTEXATTRIBARRAYPROC	WindowsOpenGL::glEnableVertexAttribArray;
 	PFNGLDISABLEVERTEXATTRIBARRAYPROC	WindowsOpenGL::glDisableVertexAttribArray;
 	PFNGLVERTEXATTRIBPOINTERPROC		WindowsOpenGL::glVertexAttribPointer;
+	PFNGLBINDVERTEXARRAYPROC			WindowsOpenGL::glBindVertexArray;
 
 	PFNGLUNIFORM1FPROC					WindowsOpenGL::glUniform1f;
 	PFNGLUNIFORM2FPROC					WindowsOpenGL::glUniform2f;
@@ -78,6 +79,7 @@ namespace bs
 	PFNGLACTIVETEXTUREPROC				WindowsOpenGL::glActiveTexture;
 
 	PFNGLBUFFERDATAPROC					WindowsOpenGL::glBufferData;
+	PFNGLGENERATEMIPMAPPROC				WindowsOpenGL::glGenerateMipmap;
 
 	LRESULT CALLBACK dummyWndProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
 	{
@@ -88,7 +90,7 @@ namespace bs
 	{
 		//Create dummy window
 		WNDCLASSEX wc = { 0 };
-		
+
 		wc.cbSize = sizeof(WNDCLASSEX);
 		wc.hInstance = hInstance;
 		wc.style = CS_HREDRAW | CS_VREDRAW | CS_OWNDC;
@@ -163,6 +165,7 @@ namespace bs
 		_BS_GL_LOAD_FNC(glEnableVertexAttribArray);
 		_BS_GL_LOAD_FNC(glDisableVertexAttribArray);
 		_BS_GL_LOAD_FNC(glVertexAttribPointer);
+		_BS_GL_LOAD_FNC(glBindVertexArray);
 
 		//Uniforms
 		_BS_GL_LOAD_FNC(glUniform1f);
@@ -210,12 +213,15 @@ namespace bs
 		_BS_GL_LOAD_FNC(glActiveTexture);
 
 		_BS_GL_LOAD_FNC(glBufferData);
+		_BS_GL_LOAD_FNC(glGenerateMipmap);
 
 		//Destroy dummy stuff
 		wglMakeCurrent(NULL, NULL);
 		wglDeleteContext(hglrc);
 		DestroyWindow(hWnd);
 		UnregisterClass(wc.lpszClassName, hInstance);
+
+
 
 		return ERROR_ID::NONE;
 	}
@@ -266,6 +272,9 @@ namespace bs
 		if (!hglrc) return fatalError(ERROR_ID::GL_DC_FAIL);
 
 		if(!wglMakeCurrent(hdc, hglrc)) return fatalError(ERROR_ID::GL_DC_FAIL);
+
+		glEnable(GL_BLEND);
+		glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
 		return ERROR_ID::NONE;
 	}

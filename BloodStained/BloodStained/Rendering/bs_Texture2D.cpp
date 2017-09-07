@@ -4,6 +4,8 @@
 
 namespace bs
 {
+	TEXTURE2D_CREATION_METHOD	Texture2D::s_creationMethod;
+
 	Texture2D::Texture2D()
 		:m_id(0),
 		m_width(0),
@@ -29,25 +31,32 @@ namespace bs
 	void Texture2D::bind(ui32 texIndex)	const
 	{
 		OpenGL::activeTexture(texIndex);
-		OpenGL::bindTexture(OPENGL_TEXTURE::_2D, texIndex);
+		OpenGL::bindTexture(OPENGL_TEXTURE::_2D, m_id);
 	}
 
 	void Texture2D::unbind(ui32 texIndex)	const
 	{
 		OpenGL::activeTexture(texIndex);
-		OpenGL::bindTexture(OPENGL_TEXTURE::_2D, texIndex);
+		OpenGL::bindTexture(OPENGL_TEXTURE::_2D, 0);
 	}
 
-	ERROR_ID Texture2D::create(Texture2D* tex, byte * data, ui32 width, ui32 height,
-		OPENGL_COLOR_FORMAT colorFormat)
+	ERROR_ID Texture2D::create(Texture2D* tex, byte * data, ui32 width, ui32 height)
 	{
+		//Create empty texture object
 		ui32 id = 0;
 		OpenGL::genTextures(1, &id);
+		
 		if (id == 0) return ERROR_ID::GL_TEXTURE_CREATION_FAIL;
 
-		OpenGL::activeTexture(0);
-		OpenGL::bindTexture(OPENGL_TEXTURE::_2D, id);
+		//Update the passed texture object
+		tex->m_id = id;
+		tex->bind(0);
 
+		//Retrieve method creation options
+		OPENGL_COLOR_FORMAT colorFormat = s_creationMethod.colorFormat;
+		OPENGL_COLOR_FORMAT internalColorFormat = s_creationMethod.colorFormat;
+		
+		//Setup pixel storage and internal color format according to input color format
 		switch (colorFormat)
 		{
 		case OPENGL_COLOR_FORMAT::BGR:
@@ -60,23 +69,55 @@ namespace bs
 		case OPENGL_COLOR_FORMAT::RGB_INT:
 		case OPENGL_COLOR_FORMAT::R_INT:
 			OpenGL::pixelStorei(OPENGL_ALIGNMENT::UNPACK, 4);
+			internalColorFormat = OPENGL_COLOR_FORMAT::RGBA8;
 			break;
 		case OPENGL_COLOR_FORMAT::R:
+			internalColorFormat = colorFormat;
 			OpenGL::pixelStorei(OPENGL_ALIGNMENT::UNPACK, 1);
 			break;
 		case OPENGL_COLOR_FORMAT::RG:
+			internalColorFormat = colorFormat;
 			OpenGL::pixelStorei(OPENGL_ALIGNMENT::UNPACK, 2);
 		default:
 			OpenGL::pixelStorei(OPENGL_ALIGNMENT::UNPACK, 4);
 		}
+				
+		//Apply creation method changes
+		OpenGL::texParameteri(OPENGL_TEXTURE::_2D, OPENGL_TEXTURE_PARAMETER_NAME::MAG_FILTER, 
+			OPENGL_TEXTURE_PARAMETER::LINEAR);
+		OPENGL_TEXTURE_PARAMETER mipmapParameter = OPENGL_TEXTURE_PARAMETER::LINEAR;
+		
+		if (s_creationMethod.generateMipmap)
+			mipmapParameter = OPENGL_TEXTURE_PARAMETER::LINEAR_MIPMAP_NEAREST;
 
-		OpenGL::bindTexture(OPENGL_TEXTURE::_2D, 0);
+		OpenGL::texParameteri(OPENGL_TEXTURE::_2D, OPENGL_TEXTURE_PARAMETER_NAME::MIN_FILTER, 
+			mipmapParameter);
 
-		tex->m_id = id;
+		setClamped(s_creationMethod.clampToEdge);
+
+		//Upload texture data
+		OpenGL::texImage2D(OPENGL_TEXTURE::_2D, 0, internalColorFormat, width, height, 0, colorFormat, 
+			OPENGL_PIXEL_STORAGE::UBYTE, data);
+
+		//Generate mipmaps if necessary
+		if (s_creationMethod.generateMipmap) OpenGL::generateMipmap(OPENGL_TEXTURE::_2D);
+		
+		//update last bit of supplied Texture2D object
 		tex->m_width = width;
 		tex->m_height = height;
 
-		ERROR_ID::NONE;
+		//clean up
+		tex->unbind(0);
+
+		return ERROR_ID::NONE;
+	}
+
+	void Texture2D::setCreationMethod(bool generateMipmap, bool clampToEdge, 
+		OPENGL_COLOR_FORMAT colorFormat)
+	{
+		s_creationMethod.generateMipmap = generateMipmap;
+		s_creationMethod.clampToEdge = clampToEdge;
+		s_creationMethod.colorFormat = colorFormat;
 	}
 
 	void Texture2D::destroy(Texture2D * tex)

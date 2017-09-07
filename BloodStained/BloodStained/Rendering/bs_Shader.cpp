@@ -4,19 +4,22 @@
 namespace bs
 {
 	Shader::Shader()
-		:m_id(0)
+		:m_id(0),
+		m_matrixFlags(SHADER_MATRIX_FLAGS::NONE)
 	{
 
 	}
 
-	Shader::Shader(ui32 id)
-		:m_id(id)
+	Shader::Shader(ui32 id, SHADER_MATRIX_FLAGS matrixFlags)
+		:m_id(id),
+		m_matrixFlags(matrixFlags)
 	{
 
 	}
 
 	Shader::Shader(const Shader& s)
-		:m_id(s.m_id)
+		:m_id(s.m_id),
+		m_matrixFlags(s.m_matrixFlags)
 	{
 
 	}

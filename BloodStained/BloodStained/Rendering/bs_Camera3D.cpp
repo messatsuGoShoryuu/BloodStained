@@ -54,6 +54,8 @@ namespace bs
 		m_view[3][0] = -m_right.dot(m_position);
 		m_view[3][1] = -m_up.dot(m_position);
 		m_view[3][2] = -m_forward.dot(m_position);
+
+		m_isDirty = true;
 	}
 
 	void	Camera3D::_constructProjectionMatrix()
@@ -80,6 +82,8 @@ namespace bs
 		//Fourth column:
 		m_projection[3][2] = -(2.0 * f * n) / (f - n);
 		m_projection[3][3] = 0.0;
+
+		m_isDirty = true;
 	}
 
 	Ray3D Camera3D::screenToWorld(const Vector2& screenPoint)

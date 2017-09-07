@@ -16,25 +16,33 @@ namespace bs
 		StackAllocator(const StackAllocator& s);
 
 		//@param stackSize size in bytes of the stack
-		StackAllocator(ui32 stackSize);
+		//@param seamless -> seamless means we don't align and the data has no holes
+		//in it.
+		StackAllocator(ptrsize stackSize, bool seamless);
 
 		//Manual init and shutDown.
 		bool initialize();
 		bool shutDown();
 
 		//Allocates chunk.
-		void*	allocate(ui32 size, ui32 align);
+		void*	allocate(ptrsize size, ptrsize align);
 
 		void*	getFrame(){ return m_stackBase + m_pointer; }
 
-		//Deallocates until last frame.
+		//Deallocates last frame.
 		void*	deallocate();
+		//Deallocates all
+		void	deallocateWhole();
+
+		inline	ptrsize	size() { return m_pointer; }
+		inline	byte*	base() { return m_stackBase; }
 
 
 	private:
-		ui64	m_stackSize;
-		ui32	m_pointer;
+		ptrsize	m_stackSize;
+		ptrsize	m_pointer;
 		byte*	m_stackBase;
+		bool	m_seamless;
 	};
 }
 

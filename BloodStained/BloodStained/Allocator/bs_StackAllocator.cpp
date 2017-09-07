@@ -8,15 +8,17 @@ namespace bs
 	StackAllocator::StackAllocator()
 		:m_pointer(0),
 		m_stackBase(nullptr),
-		m_stackSize(65536)
+		m_stackSize(65536),
+		m_seamless(false)
 	{
 
 	}
 
-	StackAllocator::StackAllocator(ui32 stackSize)
+	StackAllocator::StackAllocator(ptrsize stackSize, bool seamless)
 		:m_pointer(0),
 		m_stackBase(nullptr),
-		m_stackSize(stackSize)
+		m_stackSize(stackSize),
+		m_seamless(seamless)
 	{
 
 	}
@@ -24,7 +26,8 @@ namespace bs
 	StackAllocator::StackAllocator(const StackAllocator& s)
 		:m_pointer(s.m_pointer),
 		m_stackBase(s.m_stackBase),
-		m_stackSize(s.m_stackSize)
+		m_stackSize(s.m_stackSize),
+		m_seamless(s.m_seamless)
 	{
 
 	}
@@ -53,19 +56,26 @@ namespace bs
 	}
 
 	//Allocates chunk.
-	void*	StackAllocator::allocate(ui32 size, ui32 align)
+	void*	StackAllocator::allocate(ptrsize size, ptrsize align)
 	{
-		ui32 intSize = sizeof(ui32);
-		if (m_pointer + size + intSize >= m_stackSize) return NULL;
+		ptrsize intSize = sizeof(ptrsize);
+		if (m_pointer + size + intSize >= m_stackSize) return nullptr;
 
 		//move pointer by aligned size
-		ui32 frame = m_pointer;
-		size = math::nearest2PowMultipleOf(size, align);
+		ptrsize frame = m_pointer;
+		if(!m_seamless)size = math::nearest2PowMultipleOf(size, align);
 		m_pointer += size;
 
-		//store last frame value and move pointer 
-		math::storeUi16ToByteArray(m_stackBase + m_pointer,frame);
-		m_pointer += intSize;
+		if (!m_seamless)
+		{
+			//store last frame value and move pointer 
+			if (sizeof(ptrsize) == 4)
+				math::storeUi32ToByteArray(m_stackBase + m_pointer, frame);
+			else if (sizeof(ptrsize) == 8)
+				math::storUi64ToByteArray(m_stackBase + m_pointer, frame);
+
+			m_pointer += intSize;
+		}
 
 		//return last allocated space
 		return m_stackBase + frame;
@@ -74,22 +84,33 @@ namespace bs
 	//Deallocates until last frame.
 	void*	StackAllocator::deallocate()
 	{
-		ui32 intSize = sizeof(ui32);
+		if (m_seamless)
+		{
+			deallocateWhole();
+			return m_stackBase;
+		}
+		ptrsize intSize = sizeof(ptrsize);
 
 		//if the pointer is at head return pointer
 		if (m_pointer == 0) return m_stackBase;
 		
 		//read header to get last pointer value
 		m_pointer -= intSize;
-		ui32* lastFramePtr = reinterpret_cast<ui32*>(m_stackBase + m_pointer);
-		ui32 lastFrame = *lastFramePtr;
+		ptrsize* lastFramePtr = reinterpret_cast<ptrsize*>(m_stackBase + m_pointer);
+		ptrsize lastFrame = *lastFramePtr;
 
 		//reset bits of last allocated space
-		ui32 difference = m_pointer - lastFrame;
+		ptrsize difference = m_pointer - lastFrame;
 		memset(m_stackBase + lastFrame, 0x00, difference);
 
 		//move pointer down to last frame and return last frame
 		m_pointer = lastFrame;
+
 		return m_stackBase + lastFrame;
+	}
+	void StackAllocator::deallocateWhole()
+	{
+		memset(m_stackBase, 0x00, m_pointer);
+		m_pointer = 0;
 	}
 }

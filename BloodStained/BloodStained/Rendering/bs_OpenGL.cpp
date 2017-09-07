@@ -157,6 +157,11 @@ namespace bs
 		BS_glVertexAttribPointer(index, size, (GLenum)type, normalized, stride, pointer);
 	}
 
+	void OpenGL::bindVertexArray(ui32 index)
+	{
+		BS_glBindVertexArray(index);
+	}
+
 	void OpenGL::drawArrays(OPENGL_PRIMITIVE mode, i32 first, int count)
 	{
 		glDrawArrays((GLenum)mode, first, count);
@@ -174,7 +179,7 @@ namespace bs
 
 	void OpenGL::bindTexture(OPENGL_TEXTURE type, ui32 index)
 	{
-		glBindTexture((GLenum)type, index);
+		glBindTexture((GLenum)type, GL_TEXTURE0 + index);
 	}
 
 	void OpenGL::deleteTextures(int count, ui32 * textures)
@@ -187,10 +192,10 @@ namespace bs
 		BS_glActiveTexture(GL_TEXTURE0 + index);
 	}
 
-	void OpenGL::texImage2D(OPENGL_TEXTURE type, i32 level, i32 internalFormat, int width, 
+	void OpenGL::texImage2D(OPENGL_TEXTURE type, i32 level, OPENGL_COLOR_FORMAT internalFormat, int width,
 		int height, i32 border, OPENGL_COLOR_FORMAT format, OPENGL_PIXEL_STORAGE pixelStorage, void * data)
 	{
-		glTexImage2D((GLenum)type, level, internalFormat, width, height, border, (GLenum)format, (GLenum)type, data);
+		glTexImage2D((GLenum)type, level, (GLenum)internalFormat, width, height, border, (GLenum)format, (GLenum)pixelStorage, data);
 	}
 
 	void OpenGL::pixelStorei(OPENGL_ALIGNMENT alignment, i32 param)
@@ -203,6 +208,11 @@ namespace bs
 		glTexParameteri((GLenum)type, (GLenum)parameter, (GLenum)param);
 	}
 
+	void OpenGL::generateMipmap(OPENGL_TEXTURE textureID)
+	{
+		BS_glGenerateMipmap((GLenum)textureID);
+	}
+
 	void OpenGL::bufferData(OPENGL_BUFFER_TYPE type,int size, void * data, OPENGL_BUFFER_STORAGE usage)
 	{
 		BS_glBufferData((GLenum)type, size, data, (GLenum)usage);
@@ -212,7 +222,7 @@ namespace bs
 	{
 		int location = BS_glGetUniformLocation(shaderID, name);
 
-		if (location == 0) return ERROR_ID::GL_UNIFORM_NOT_FOUND;
+		if (location < 0) return ERROR_ID::GL_UNIFORM_NOT_FOUND;
 
 		//TODO: Maybe more types in the future?
 		switch (type)

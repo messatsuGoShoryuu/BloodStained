@@ -30,6 +30,7 @@ namespace bs
 		Array<ShaderAttribute> fragDataList;
 		Array<ShaderAttribute> uniformList;
 		ui16 flags;
+		SHADER_MATRIX_FLAGS		matrixFlags;
 	};
 
 	HashMap<String, Shader>	ShaderManager::s_shaderDB;
@@ -67,7 +68,7 @@ namespace bs
 			s = r.getData();
 			
 			//Prepare compilation data struct
-			ShaderCompilationData compilationData;
+			ShaderCompilationData compilationData = {};
 			compilationData.key = r.fileName().getSubString(Path::data().length());
 			compilationData.flags = 0;
 
@@ -95,7 +96,7 @@ namespace bs
 					 compilationData.flags |= BS_SHADER_COMPILE_VERTEX_BIT;
 				}
 
-				if (keyword == "in" || keyword == "out")
+				else if (keyword == "in" || keyword == "out")
 				{
 					String type = splittedString[j].getNextWord(current);
 					ShaderAttribute attrib;
@@ -111,6 +112,12 @@ namespace bs
 					attrib.name = splittedString[j].getNextWord(current);
 					if (keyword == "in") compilationData.attribList.add(attrib);
 					else compilationData.fragDataList.add(attrib);
+				}
+				else if (keyword == "cam")
+				{
+					String type = splittedString[j].getNextWord(current);
+					if (type == "v") compilationData.matrixFlags |= SHADER_MATRIX_FLAGS::V;
+					if (type == "p") compilationData.matrixFlags |= SHADER_MATRIX_FLAGS::P;
 				}
 			}
 
@@ -201,7 +208,7 @@ namespace bs
 		OpenGL::detachShader(programID, fragment);
 
 		String newKey = data.key.getSubString(8, data.key.length() - 7);
-		if (s_shaderDB.isEmptyAt(newKey)) s_shaderDB[newKey] = Shader(programID);
+		if (s_shaderDB.isEmptyAt(newKey)) s_shaderDB[newKey] = Shader(programID, data.matrixFlags);
 
 		return ERROR_ID::NONE;
 	}

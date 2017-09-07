@@ -55,6 +55,9 @@
     <Filter Include="Source Files\FileIO\ImageLoader">
       <UniqueIdentifier>{1f6f21bd-e74d-4286-8291-e902a1c6ea6c}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Time">
+      <UniqueIdentifier>{e9cd3a04-53ef-4d7d-bd7f-a09238959676}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Platform\Windows\bs_WindowsError.cpp">
@@ -172,6 +175,15 @@
       <Filter>Source Files\FileIO\ImageLoader</Filter>
     </ClCompile>
     <ClCompile Include="Rendering\bs_RenderBufferObjects.cpp">
+      <Filter>Source Files\Rendering</Filter>
+    </ClCompile>
+    <ClCompile Include="Time\bs_Clock.cpp">
+      <Filter>Source Files\Time</Filter>
+    </ClCompile>
+    <ClCompile Include="Rendering\bs_Sprite.cpp">
+      <Filter>Source Files\Rendering</Filter>
+    </ClCompile>
+    <ClCompile Include="Rendering\bs_SpriteRenderer.cpp">
       <Filter>Source Files\Rendering</Filter>
     </ClCompile>
   </ItemGroup>
@@ -333,6 +345,18 @@
       <Filter>Source Files\FileIO\ImageLoader</Filter>
     </ClInclude>
     <ClInclude Include="Rendering\bs_RenderBufferObjects.h">
+      <Filter>Source Files\Rendering</Filter>
+    </ClInclude>
+    <ClInclude Include="Time\bs_Clock.h">
+      <Filter>Source Files\Time</Filter>
+    </ClInclude>
+    <ClInclude Include="Rendering\bs_Sprite.h">
+      <Filter>Source Files\Rendering</Filter>
+    </ClInclude>
+    <ClInclude Include="Containers\bs_LinkedList.h">
+      <Filter>Source Files\Containers</Filter>
+    </ClInclude>
+    <ClInclude Include="Rendering\bs_SpriteRenderer.h">
       <Filter>Source Files\Rendering</Filter>
     </ClInclude>
   </ItemGroup>
