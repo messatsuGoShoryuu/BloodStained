@@ -1,45 +1,7 @@
-﻿  bs_SpriteRenderer.cpp
-g:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(207): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
-g:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(209): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
-g:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(210): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
-g:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(211): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
-g:\programming\bloodstained\bloodstained\bloodstained\containers\bs_array.h(490): warning C4067: unexpected tokens following preprocessor directive - expected a newline
-g:\programming\bloodstained\bloodstained\bloodstained\utilities\bs_string.h(36): warning C4267: 'return': conversion from 'size_t' to 'const ui32', possible loss of data
-g:\programming\bloodstained\bloodstained\bloodstained\utilities\bs_string.h(37): warning C4267: 'return': conversion from 'size_t' to 'const ui32', possible loss of data
-g:\programming\bloodstained\bloodstained\bloodstained\rendering\bs_spriterenderer.cpp(37): warning C4267: 'initializing': conversion from 'size_t' to 'ui32', possible loss of data
-g:\programming\bloodstained\bloodstained\bloodstained\containers\bs_array.h(262): warning C4267: 'initializing': conversion from 'size_t' to 'ui32', possible loss of data
-  g:\programming\bloodstained\bloodstained\bloodstained\containers\bs_array.h(258): note: while compiling class template member function 'void bs::Array<bs::Sprite *>::remove(const T &)'
-          with
-          [
-              T=bs::Sprite *
-          ]
-  g:\programming\bloodstained\bloodstained\bloodstained\rendering\bs_spriterenderer.cpp(87): note: see reference to function template instantiation 'void bs::Array<bs::Sprite *>::remove(const T &)' being compiled
-          with
-          [
-              T=bs::Sprite *
-          ]
-  g:\programming\bloodstained\bloodstained\bloodstained\rendering\bs_spriterenderer.h(33): note: see reference to class template instantiation 'bs::Array<bs::Sprite *>' being compiled
-g:\programming\bloodstained\bloodstained\bloodstained\containers\bs_array.h(230): warning C4267: 'argument': conversion from 'size_t' to 'ui32', possible loss of data
-  g:\programming\bloodstained\bloodstained\bloodstained\containers\bs_array.h(225): note: while compiling class template member function 'void bs::Array<bs::Sprite *>::reserve(ptrsize)'
-  g:\programming\bloodstained\bloodstained\bloodstained\containers\bs_array.h(197): note: see reference to function template instantiation 'void bs::Array<bs::Sprite *>::reserve(ptrsize)' being compiled
-  g:\programming\bloodstained\bloodstained\bloodstained\containers\bs_array.h(177): note: while compiling class template member function 'bs::Array<bs::Sprite *>::Array(const bs::Array<bs::Sprite *> &)'
-  g:\programming\bloodstained\bloodstained\bloodstained\rendering\bs_spriterenderer.cpp(14): note: see reference to function template instantiation 'bs::Array<bs::Sprite *>::Array(const bs::Array<bs::Sprite *> &)' being compiled
-g:\programming\bloodstained\bloodstained\bloodstained\containers\bs_array.h(392): warning C4267: 'argument': conversion from 'size_t' to 'ui32', possible loss of data
-  g:\programming\bloodstained\bloodstained\bloodstained\containers\bs_array.h(387): note: while compiling class template member function 'void bs::Array<bs::Sprite *>::_copy(const bs::Array<bs::Sprite *> &)'
-  g:\programming\bloodstained\bloodstained\bloodstained\containers\bs_array.h(181): note: see reference to function template instantiation 'void bs::Array<bs::Sprite *>::_copy(const bs::Array<bs::Sprite *> &)' being compiled
-g:\programming\bloodstained\bloodstained\bloodstained\allocator\bs_poolallocator.h(276): warning C4267: 'argument': conversion from 'size_t' to 'ui16', possible loss of data
-  g:\programming\bloodstained\bloodstained\bloodstained\allocator\bs_poolallocator.h(271): note: while compiling class template member function 'bs::Pool *bs::PoolAllocator<bs::Sprite>::_addPool(void)'
-  g:\programming\bloodstained\bloodstained\bloodstained\allocator\bs_poolallocator.h(234): note: see reference to function template instantiation 'bs::Pool *bs::PoolAllocator<bs::Sprite>::_addPool(void)' being compiled
-  g:\programming\bloodstained\bloodstained\bloodstained\allocator\bs_poolallocator.h(230): note: while compiling class template member function 'bs::Pool *bs::PoolAllocator<bs::Sprite>::_findFirstAvailablePool(void)'
-  g:\programming\bloodstained\bloodstained\bloodstained\allocator\bs_poolallocator.h(196): note: see reference to function template instantiation 'bs::Pool *bs::PoolAllocator<bs::Sprite>::_findFirstAvailablePool(void)' being compiled
-  g:\programming\bloodstained\bloodstained\bloodstained\allocator\bs_poolallocator.h(184): note: while compiling class template member function 'bs::PoolAllocator<bs::Sprite>::PoolAllocator(ui32)'
-  g:\programming\bloodstained\bloodstained\bloodstained\rendering\bs_spriterenderer.cpp(9): note: see reference to function template instantiation 'bs::PoolAllocator<bs::Sprite>::PoolAllocator(ui32)' being compiled
-  g:\programming\bloodstained\bloodstained\bloodstained\rendering\bs_spriterenderer.h(30): note: see reference to class template instantiation 'bs::PoolAllocator<bs::Sprite>' being compiled
-g:\programming\bloodstained\bloodstained\bloodstained\allocator\bs_poolallocator.h(295): warning C4267: 'argument': conversion from 'size_t' to 'ui16', possible loss of data
-g:\programming\bloodstained\bloodstained\bloodstained\containers\bs_array.h(368): warning C4267: 'argument': conversion from 'size_t' to 'ui32', possible loss of data
-  g:\programming\bloodstained\bloodstained\bloodstained\containers\bs_array.h(363): note: while compiling class template member function 'bs::Sprite *bs::Array<bs::Sprite *>::_allocate(ptrsize)'
-  g:\programming\bloodstained\bloodstained\bloodstained\containers\bs_array.h(234): note: see reference to function template instantiation 'bs::Sprite *bs::Array<bs::Sprite *>::_allocate(ptrsize)' being compiled
-  g:\programming\bloodstained\bloodstained\bloodstained\containers\bs_array.h(225): note: while compiling class template member function 'void bs::Array<bs::Sprite *>::reserve(ptrsize)'
-  g:\programming\bloodstained\bloodstained\bloodstained\containers\bs_array.h(197): note: see reference to function template instantiation 'void bs::Array<bs::Sprite *>::reserve(ptrsize)' being compiled
+﻿  bs_Physics2D.cpp
+g:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(213): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
+g:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(215): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
+g:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(216): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
+g:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(217): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
   BloodStained.vcxproj -> G:\Programming\BloodStained\BloodStained\x64\Debug\BloodStained.exe
   BloodStained.vcxproj -> G:\Programming\BloodStained\BloodStained\x64\Debug\BloodStained.pdb (Partial PDB)

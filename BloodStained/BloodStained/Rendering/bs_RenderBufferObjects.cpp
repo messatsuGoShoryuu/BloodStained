@@ -38,9 +38,9 @@ namespace bs
 		OpenGL::bindBuffer(OPENGL_BUFFER_TYPE::ARRAY, 0);
 	}
 
-	void VertexBufferObject::upload(byte* pointer, ui32 size)
+	void VertexBufferObject::upload(byte* pointer, ui32 size, OPENGL_BUFFER_STORAGE storage)
 	{
-		OpenGL::bufferData(OPENGL_BUFFER_TYPE::ARRAY, size, pointer, OPENGL_BUFFER_STORAGE::STATIC_DRAW);
+		OpenGL::bufferData(OPENGL_BUFFER_TYPE::ARRAY, size, pointer, storage);
 	}
 
 	VertexArrayObject::VertexArrayObject()
@@ -95,7 +95,7 @@ namespace bs
 	{
 		if (m_id != 0) shutDown();
 		OpenGL::genVertexArrays(1, &m_id);
-		if (m_id != 0) return ERROR_ID::VAO_INIT_FAIL;
+		if (m_id == 0) return ERROR_ID::VAO_INIT_FAIL;
 		return ERROR_ID::NONE;
 	}
 
@@ -124,5 +124,47 @@ namespace bs
 		OpenGL::enableVertexAttribArray(m_enabledAttribArrays);
 		OpenGL::vertexAttribPointer(m_enabledAttribArrays, count, type, isNormalized, sizeOf, offset);		
 		m_enabledAttribArrays++;
+	}
+
+	ElementBufferObject::ElementBufferObject()
+		:m_id(0)
+	{
+	}
+	ElementBufferObject::ElementBufferObject(const ElementBufferObject & e)
+		:m_id(e.m_id),
+		m_data(e.m_data)
+	{
+	}
+	ElementBufferObject::~ElementBufferObject()
+	{
+		if (m_id != 0) shutDown();
+	}
+
+	ERROR_ID ElementBufferObject::initialize()
+	{
+		if (m_id != 0) shutDown();
+		OpenGL::genBuffers(1, &m_id);
+		if (m_id == 0) return ERROR_ID::EBO_INIT_FAIL;
+		return ERROR_ID::NONE;
+	}
+	ERROR_ID ElementBufferObject::shutDown()
+	{
+		m_data.~Array();
+
+		OpenGL::deleteBuffers(1, &m_id);
+		m_id = 0;
+		return ERROR_ID::NONE;
+	}
+	void ElementBufferObject::upload(OPENGL_BUFFER_STORAGE storage)
+	{
+		OpenGL::bufferData(OPENGL_BUFFER_TYPE::ELEMENT_ARRAY, m_data.count() * sizeof(ui16), &m_data[0], storage);
+	}
+	void ElementBufferObject::bind()
+	{
+		OpenGL::bindBuffer(OPENGL_BUFFER_TYPE::ELEMENT_ARRAY, m_id);
+	}
+	void ElementBufferObject::unbind()
+	{
+		OpenGL::bindBuffer(OPENGL_BUFFER_TYPE::ELEMENT_ARRAY, 0);
 	}
 }

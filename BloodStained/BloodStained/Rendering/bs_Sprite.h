@@ -2,10 +2,13 @@
 #define _BS_SPRITE_H_
 
 #include <Math/bs_Vector.h>
+#include <Math/bs_Rect.h>
+#include "bs_Color.h"
 namespace bs
 {
 	class Texture2D;
 	class Shader;
+	
 
 	class Sprite
 	{
@@ -32,14 +35,21 @@ namespace bs
 		inline	void				setShader(Shader* shader)				{ m_shader = shader; }
 		inline const Shader*		shader()	const						{ return m_shader; }
 
+		inline const ColorRGBAf&	color()		const						{ return m_color; }
+		inline void					setColor(const ColorRGBAf& color)		{ m_color = color; }
 		
+		inline const Rectf32&		uvRect()	const						{ return m_uvRect; }
+		inline void					setUvRect(const Rectf32& rect)			{ m_uvRect = rect; }
 
 	private:
 		const	Texture2D*	m_texture;
 		const	Shader*		m_shader;
+
+		ColorRGBAf	m_color;
 		Vector2 m_position;
 		Vector2 m_scale;
 		f32		m_orientation;
+		Rectf32 m_uvRect;
 	};
 }
 

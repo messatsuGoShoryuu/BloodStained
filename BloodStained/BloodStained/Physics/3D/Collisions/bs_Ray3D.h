@@ -12,6 +12,6 @@ namespace bs
 
 	class Plane;
 
-	Vector3	hitTest(const Ray3D& ray, const Plane& p);
+	Vector3	hitTest3D(const Ray3D& ray, const Plane& p);
 }
 #endif // !BS_RAY3D_H

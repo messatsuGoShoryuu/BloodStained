@@ -45,6 +45,17 @@ namespace bs
 	ColorRGB24 ColorRGB24::magenta = initializeColor24(255, 0, 255);
 	ColorRGB24 ColorRGB24::yellow = initializeColor24(255, 255, 0);
 
+	
+
+	ColorRGBAf ColorRGBAf::white = ColorRGBAf(ColorRGBA32::white);
+	ColorRGBAf ColorRGBAf::black = ColorRGBAf(ColorRGBA32::black);
+	ColorRGBAf ColorRGBAf::red = ColorRGBAf(ColorRGBA32::red);
+	ColorRGBAf ColorRGBAf::green = ColorRGBAf(ColorRGBA32::green);
+	ColorRGBAf ColorRGBAf::blue = ColorRGBAf(ColorRGBA32::blue);
+	ColorRGBAf ColorRGBAf::cyan = ColorRGBAf(ColorRGBA32::cyan);
+	ColorRGBAf ColorRGBAf::magenta = ColorRGBAf(ColorRGBA32::magenta);
+	ColorRGBAf ColorRGBAf::yellow = ColorRGBAf(ColorRGBA32::yellow);
+
 	String	ColorRGBAf::toString() const
 	{
 		String result;

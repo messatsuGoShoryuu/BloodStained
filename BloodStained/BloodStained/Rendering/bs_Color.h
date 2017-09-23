@@ -61,13 +61,22 @@ namespace bs
 			a = (f32)c.a / 255.0f;
 		}
 		ColorRGBAf(f32 r, f32 g, f32 b, f32 a) :r(r), g(g), b(b), a(a){}
-		ColorRGBAf(ui8 r, ui8 g, ui8 b) :r(r), g(g), b(b), a(255){}
+		ColorRGBAf(ui8 r, ui8 g, ui8 b) :r(r), g(g), b(b), a(1.0f){}
 		ColorRGBAf(const ColorRGBAf& c) :r(c.r), g(c.g), b(c.b), a(c.a){}
 
 		f32	r;
 		f32 g;
 		f32 b;
 		f32 a;
+
+		static ColorRGBAf white;
+		static ColorRGBAf black;
+		static ColorRGBAf red;
+		static ColorRGBAf green;
+		static ColorRGBAf blue;
+		static ColorRGBAf cyan;
+		static ColorRGBAf magenta;
+		static ColorRGBAf yellow;
 
 		class String	toString() const;
 	};

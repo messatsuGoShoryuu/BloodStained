@@ -1,0 +1,19 @@
+#version 150
+
+in vec3 positionVertex;
+in vec4 colorVertex;
+
+out vec4 colorFragment;
+
+uniform	mat4 projection;
+uniform mat4 view;
+
+
+void main()
+{
+	mat4 vp = projection * view;
+
+    gl_Position = vp * vec4(positionVertex, 1.0);
+
+	colorFragment = colorVertex;
+} 

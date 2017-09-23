@@ -21,6 +21,8 @@ namespace bs
 		inline	const	Vector2&	position()				{ return m_position; }
 		inline	const	Vector2&	position()		const	{ return m_position; }
 
+		inline	const	real		scale()			const	{ return m_scale; }
+
 		inline	void	setOrientation(real orientation)
 		{ 
 			m_orientation = orientation; 
@@ -52,7 +54,17 @@ namespace bs
 			_updateViewMatrix();
 		}
 
+		inline void setScale(real scale)
+		{
+			m_scale = scale;
+			_constructProjectionMatrix();
+		}
+
 		inline real		depth() const	{ return m_depth; }
+
+
+		Vector2		screenToWorld(const Vector2& screenPoint);
+		Vector2		pixelsToNDC(const Vector2& pixels);
 
 	protected:
 		//Helpers
@@ -60,10 +72,11 @@ namespace bs
 		void	_updateViewMatrix();
 
 	private:
-		//Rotation of the camera.
-		real		m_orientation;
+		
 		Vector2		m_position;
+		real		m_orientation;
 		real		m_depth;
+		real		m_scale;
 	};
 }
 #endif // !BS_CAMERA2D_H

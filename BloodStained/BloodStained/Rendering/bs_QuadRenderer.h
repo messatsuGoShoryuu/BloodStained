@@ -43,7 +43,9 @@ namespace bs
 		a VERTEX_TYPE enum will determine which type of vertex we are using. 
 		*/
 		template<class T> 
-		T*	add(ui32 count,const Shader* shader, const Texture2D* texture){}
+		T*	add(ui32 count,const Shader* shader, const Texture2D* texture)
+		{
+		}
 
 		template<>
 		Quad<Vertex2D_PUC>*	add<Quad<Vertex2D_PUC>>(ui32 count, const  Shader* shader, const  Texture2D* texture);
@@ -70,6 +72,7 @@ namespace bs
 		StackAllocator		m_stackAllocator;
 		Array<QuadBatch>	m_batches;
 		VertexBufferObject	m_vbo;
+		ElementBufferObject m_ebo;
 		Array<VertexArrayObject> m_vaos;
 	};
 
@@ -78,6 +81,16 @@ namespace bs
 	{
 		T* pointer = (T*)m_stackAllocator.getFrame();
 		m_stackAllocator.allocate(sizeof(Vertex2D_PUC) * count * 6, __alignof(Vertex2D_PUC));
+		ui16 offset = m_ebo.count();
+		for (ui32 i = 0; i < count; i++)
+		{
+			m_ebo.add(offset);
+			m_ebo.add(offset + 1);
+			m_ebo.add(offset + 2);
+			m_ebo.add(offset + 2);
+			m_ebo.add(offset + 3);
+			m_ebo.add(offset);
+		}
 
 		QuadBatch* currentBatch = nullptr;
 		if (m_batches.count() == 0)

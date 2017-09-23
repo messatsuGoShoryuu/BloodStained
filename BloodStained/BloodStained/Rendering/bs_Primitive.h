@@ -27,6 +27,25 @@ namespace bs
 			return *(v + index);
 		}
 	};
+
+	template <class VertexType>
+	struct Segment
+	{
+		VertexType a;
+		VertexType b;
+
+		VertexType& operator[](ui32 index)
+		{
+			VertexType* v = reinterpret_cast<VertexType*>(this);
+			return *(v + index);
+		}
+
+		const	VertexType& operator[](ui32 index) const
+		{
+			VertexType* v = reinterpret_cast<VertexType*>(this);
+			return *(v + index);
+		}
+	};
 }
 
 #endif // !_BS_PRIMITIVE_H_

@@ -4,11 +4,8 @@
 #include <FileIO/bs_ResourceManager.h>
 #include <Rendering/bs_ShaderManager.h>
 #include <Rendering/bs_RenderManager.h>
-
+#include <Input/bs_InputManager.h>
 #include <Time/bs_Clock.h>
-
-
-
 
 namespace bs
 {
@@ -52,11 +49,12 @@ namespace bs
 	void Game::update(f32 dt, f32 now)
 	{
 		Clock::update(dt, now);
-
+		
 		OpenGL::clearColor(ColorRGBA32(245,250,255,255));
 		OpenGL::clear();
 
 		currentLevel()->update(dt);
+		InputManager::update();
 	}
 
 	void Game::setCurrentLevel(ui32 index)

@@ -11,6 +11,10 @@
 #include <Rendering/bs_Shader.h>
 #include <Time/bs_Clock.h>
 #include <Math/bs_math.h>
+#include <Input/bs_InputManager.h>
+
+#include <Physics/2D/bs_Physics2D.h>
+
 namespace bs
 {
 	Level::Level()
@@ -28,20 +32,9 @@ namespace bs
 	{
 	}
 
-	Sprite* sprite[2];
-
 	void Level::initialize()
 	{
 		m_cameras.add(new Camera2D());
-		Texture2D::setCreationMethod(true, true, OPENGL_COLOR_FORMAT::RGBA);
-
-		Shader* s = (Shader*)ShaderManager::getShader("DefaultSprite/DefaultSprite");
-
-		Texture2D* t = (Texture2D*)ResourceManager::loadTexture2D("x23.png");
-		Texture2D* t2 = (Texture2D*)ResourceManager::loadTexture2D("ken.png");
-
-		sprite[0] = RenderManager::addSprite(t, s);
-		sprite[1] = RenderManager::addSprite(t2, s);
 	}
 
 	void Level::shutDown()
@@ -52,15 +45,70 @@ namespace bs
 
 	void Level::update(f32 dt)
 	{
+		static Transform2D transform = Transform2D();
+
+		Camera2D* cam = dynamic_cast<Camera2D*>(m_cameras[0]);
+
+		Vector2 pos2 = cam->screenToWorld(Vector2(InputManager::mouse.getX(), InputManager::mouse.getY()));
+
+		static Shape2D shape;
+
+		if (InputManager::keyboard.isKeyPressed(KB_R)) shape = Shape2D();
+
+		if (InputManager::mouse.isButtonPressed(MOUSE_BUTTON_1))
+		{
+			shape.addVertex(makeVector2RelativeToBasis(transform, pos2));
+		}
+
+		if (InputManager::keyboard.isKeyHeld(KB_RIGHTARROW)) transform.translate(Vector2::right * (dt));
+		if (InputManager::keyboard.isKeyHeld(KB_LEFTARROW)) transform.translate(Vector2::right * (-dt));
+		if (InputManager::keyboard.isKeyHeld(KB_UPARROW)) transform.translate(Vector2::up * dt);
+		if (InputManager::keyboard.isKeyHeld(KB_DOWNARROW)) transform.translate(Vector2::up * (-dt));
+
+		if (InputManager::keyboard.isKeyHeld(KB_S)) transform.multScale(Vector2(1.1f, 1.1f));
+		if (InputManager::keyboard.isKeyHeld(KB_W)) transform.multScale(Vector2(0.9f, 0.9f));
+
+		if (InputManager::keyboard.isKeyHeld(KB_A)) transform.rotate(-(BS_PI / 180.0f));
+		if (InputManager::keyboard.isKeyHeld(KB_D)) transform.rotate(BS_PI / 180.0f);
 		
-		
-		Vector2 pos = sprite[1]->position();
-		f32 now = Clock::now();
+		Shape2D attshape = attachShapeToBasis(transform, shape);
+		Shape2D relshape = makeShapeRelativeToBasis(transform, shape);
+ 
+		RenderManager::drawDebugShape(shape.getVertices(), shape.vertexCount(), ColorRGBAf::green);
+		RenderManager::drawDebugShape(relshape.getVertices(), shape.vertexCount(), ColorRGBAf::blue);
+		RenderManager::drawDebugShape(attshape.getVertices(), shape.vertexCount(), ColorRGBAf::black);
+		for (int i = 0; i < relshape.vertexCount(); i++)
+		{
+			i32 id = i + 1;
+			id %= relshape.vertexCount();
+			Vector2 face = relshape.getVertices()[id] - relshape.getVertices()[i];
+			face = relshape.getVertices()[i] + face / 2.0f;
 
-		pos.y = math::sin(now);
+			Vector2 reducedNormal = relshape.getNormals()[i];
+			reducedNormal *= 0.2f;
 
-		sprite[1]->setPosition(pos);
+			RenderManager::drawDebugLine(face ,face
+				+ reducedNormal, ColorRGBAf::red);
 
+			Vector2 normalFace = Vector2::cross(-1.0f, relshape.getNormals()[i]);
+			normalFace.normalize();
+			normalFace *= 0.01f;
+
+			Vector2 head[3];
+			head[0] = face + reducedNormal * 1.07f;
+			head[1] = face + reducedNormal + normalFace;
+			head[2] = face + reducedNormal - normalFace;
+
+			RenderManager::drawDebugShape(head, 3, ColorRGBAf::red);
+			RenderManager::drawDebugCircle(relshape.center(), 0.008f, 8, ColorRGBAf::blue);
+
+			face = transform.position();
+			RenderManager::drawDebugLine(transform.position(), transform.position() + transform.basis().x(), ColorRGBAf::magenta);
+			RenderManager::drawDebugLine(transform.position(), transform.position() + transform.basis().y(), ColorRGBAf::cyan);
+			RenderManager::drawDebugLine(Vector2::zero, Vector2::up, ColorRGBAf::yellow);
+			RenderManager::drawDebugLine(Vector2::zero, Vector2::right, ColorRGBAf::yellow);
+			
+		}
 		RenderManager::render(m_cameras);
 		
 	}

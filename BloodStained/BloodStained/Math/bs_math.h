@@ -57,7 +57,10 @@ namespace bs
 
 		inline f32 sin(f32 angle)
 		{
-			return std::sinf(angle);
+			f32 result = std::sinf(angle);
+			if (result < BS_FLOAT_0 && result > -BS_FLOAT_0) result = 0.0f;
+
+			return result;
 		}
 
 		inline f64 sin(f64 angle)
@@ -67,7 +70,10 @@ namespace bs
 
 		inline f32 cos(f32 angle)
 		{
-			return std::cosf(angle);
+			f32 result = std::cosf(angle);
+			if (result < BS_FLOAT_0 && result > -BS_FLOAT_0) result = 0.0f;
+
+			return result;
 		}
 
 		inline f32 tan(f32 angle)

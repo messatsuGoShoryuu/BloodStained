@@ -3,6 +3,7 @@
 
 #include <Game/bs_Game.h>
 #include <Rendering/bs_Screen.h>
+#include "bs_WindowsInput.h"
 #include "bs_WindowsOpenGL.h"
 
 LRESULT		CALLBACK	mainWndProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
@@ -28,7 +29,15 @@ LRESULT		CALLBACK	mainWndProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam
 			bs::ScreenInitializer::initScreen(clientRect.right, clientRect.bottom);
 		}
 
+		//Initialize Windows Input
+		bs::WindowsInput::initialize();
+
 		return 0;
+	case WM_INPUT:
+	{
+		bs::WindowsInput::getRawInput(hWnd, lParam);
+		return 0;
+	}
 	case WM_DESTROY:
 		bs::Game::quit();
 		return 0;
@@ -52,7 +61,7 @@ int CALLBACK WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance,
 	wc.lpfnWndProc = mainWndProc;
 	wc.hIcon =	LoadIcon(hInstance, IDI_APPLICATION);
 	wc.hIconSm = LoadIcon(hInstance, IDI_APPLICATION);
-	wc.hCursor = LoadCursor(hInstance, IDC_ARROW);
+	wc.hCursor = LoadCursor(NULL, IDC_ARROW);
 	wc.lpszClassName = "Blooadstained_Game_Window_Class";
 	
 	//Register window

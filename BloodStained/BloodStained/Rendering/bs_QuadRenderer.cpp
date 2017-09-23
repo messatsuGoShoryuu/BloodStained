@@ -22,6 +22,9 @@ namespace bs
 		ERROR_ID err = m_vbo.initialize();
 		if (err != ERROR_ID::NONE) return err;
 
+		err = m_ebo.initialize();
+		if (err != ERROR_ID::NONE) return err;
+
 		err = _initVaos();
 		if (err != ERROR_ID::NONE) return err;
 
@@ -33,6 +36,9 @@ namespace bs
 		ERROR_ID err = m_vbo.shutDown();
 		if (err != ERROR_ID::NONE) return err;
 
+		err = m_ebo.shutDown();
+		if (err != ERROR_ID::NONE) return err;
+
 		err = VertexArrayObject::shutDownMultiple(&m_vaos[0], m_vaos.count());
 
 		return ERROR_ID();
@@ -42,11 +48,13 @@ namespace bs
 	{
 
 		m_vbo.bind();
+		m_ebo.bind();
 
 		if (m_stackAllocator.size() > 0)
 		{
 			OpenGL::bufferData(OPENGL_BUFFER_TYPE::ARRAY, m_stackAllocator.size(),
 				m_stackAllocator.base(), OPENGL_BUFFER_STORAGE::DYNAMIC_DRAW);
+			m_ebo.upload(OPENGL_BUFFER_STORAGE::DYNAMIC_DRAW);
 		}
 
 		ui32 batchCount = m_batches.count();
@@ -74,7 +82,9 @@ namespace bs
 				_updateCameraUniforms(cameras[0], m_batches[i].shader);
 				OpenGL::uniform(m_batches[i].shader->id(), "textureContent", SHADER_ATTRIB_TYPE::INT, &textureNo, false);
 			}
-			OpenGL::drawArrays(OPENGL_PRIMITIVE::TRIANGLES, lastIndex, m_batches[i].count * 6);
+			
+			OpenGL::drawElements(OPENGL_PRIMITIVE::TRIANGLES, m_batches[i].count * 6, OPENGL_TYPE::USHORT,
+				m_ebo.data() + lastIndex);
 
 			lastVaoID = vaoID;
 			lastShader = m_batches[i].shader;
@@ -87,6 +97,7 @@ namespace bs
 
 		m_vaos[vaoID].unbind();
 		m_vbo.unbind();
+		m_ebo.reset();
 	}
 
 	void QuadRenderer::_updateCameraUniforms(Camera * camera,const  Shader * shader)
@@ -104,7 +115,6 @@ namespace bs
 				camera->view().toFloatArray(m);
 				OpenGL::uniform(shader->id(), "view", SHADER_ATTRIB_TYPE::MATRIX4, m, false);
 			}
-			camera->setDirty(false);
 		}
 	}
 
@@ -134,6 +144,7 @@ namespace bs
 		if (err != ERROR_ID::NONE) return err;
 
 		m_vbo.bind();
+		m_ebo.bind();
 
 		//Init 2D position, uv, color
 		ui32 index = (int)VERTEX_TYPE::PUC_2D;

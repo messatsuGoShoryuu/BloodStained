@@ -27,6 +27,12 @@ namespace bs
 		ColorRGBAf	color;
 	};
 
+	struct Vertex2D_PC
+	{
+		Vector2 position;
+		ColorRGBAf color;
+	};
+
 	struct Vertex2D_PUC
 	{
 		Vector2			position;
@@ -37,8 +43,10 @@ namespace bs
 	enum class VERTEX_TYPE
 	{
 		PUC_2D,
+		PC_2D,
 		PU_3D,
 		PC_3D,
+		
 	};
 }
 #endif // !BS_VERTEX_H

@@ -5,7 +5,7 @@
 
 namespace bs
 {
-	Vector3	hitTest(const Ray3D& ray, const Plane& plane)
+	Vector3	hitTest3D(const Ray3D& ray, const Plane& plane)
 	{
 		real dotRay = ray.origin.dot(plane.normal);
 		real dotPlane = -plane.point.dot(plane.normal);

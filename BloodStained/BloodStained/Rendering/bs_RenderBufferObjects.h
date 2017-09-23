@@ -1,12 +1,13 @@
 #ifndef _BS_RENDERBUFFEROBJECTS_H_
 #define _BS_RENDERBUFFEROBJECTS_H_
 #include <Utilities/bs_types.h>
-
+#include <Containers/bs_Array.h>
 namespace bs
 {
 	enum class ERROR_ID;
 
 	enum class OPENGL_TYPE;
+	enum class OPENGL_BUFFER_STORAGE;
 
 	class VertexBufferObject
 	{
@@ -25,7 +26,7 @@ namespace bs
 		inline	ui32	id() { return m_id; }
 
 		//Upload using glBufferData
-		void	upload(byte* pointer, ui32 size);
+		void	upload(byte* pointer, ui32 size, OPENGL_BUFFER_STORAGE storage);
 
 	private:
 		ui32 m_id;
@@ -56,6 +57,34 @@ namespace bs
 	private:
 		ui32 m_id;
 		ui32 m_enabledAttribArrays;
+	};
+
+	class ElementBufferObject
+	{
+	public:
+		ElementBufferObject();
+		ElementBufferObject(const ElementBufferObject& e);
+		~ElementBufferObject();
+
+	public:
+		ERROR_ID initialize();
+		ERROR_ID shutDown();
+
+		inline	ui32	id() { return m_id; }
+
+		inline ui32 count() { return m_data.count(); }
+		inline void add(ui16 index) { m_data.add(index); }
+
+		void upload(OPENGL_BUFFER_STORAGE storage);
+		inline	void reset() { m_data.clear(); }
+		ui16*	data() { return &m_data[0]; }
+
+		void	bind();
+		void	unbind();
+		
+	private:
+		ui32 m_id;
+		Array<ui16>	m_data;
 	};
 }
 

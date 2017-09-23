@@ -58,6 +58,12 @@
     <Filter Include="Source Files\Time">
       <UniqueIdentifier>{e9cd3a04-53ef-4d7d-bd7f-a09238959676}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Input">
+      <UniqueIdentifier>{38080d45-2c3c-442c-8e6f-5a5dca3748bc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Physics\2D">
+      <UniqueIdentifier>{b3df22fe-fa61-44aa-84df-f97d36eb094b}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Platform\Windows\bs_WindowsError.cpp">
@@ -183,8 +189,32 @@
     <ClCompile Include="Rendering\bs_Sprite.cpp">
       <Filter>Source Files\Rendering</Filter>
     </ClCompile>
-    <ClCompile Include="Rendering\bs_SpriteRenderer.cpp">
+    <ClCompile Include="Rendering\bs_DebugRenderer.cpp">
       <Filter>Source Files\Rendering</Filter>
+    </ClCompile>
+    <ClCompile Include="Rendering\bs_SpriteManager.cpp">
+      <Filter>Source Files\Rendering</Filter>
+    </ClCompile>
+    <ClCompile Include="Platform\Windows\bs_WindowsInput.cpp">
+      <Filter>Source Files\Platform\Windows</Filter>
+    </ClCompile>
+    <ClCompile Include="Input\bs_Keyboard.cpp">
+      <Filter>Source Files\Input</Filter>
+    </ClCompile>
+    <ClCompile Include="Input\bs_InputManager.cpp">
+      <Filter>Source Files\Input</Filter>
+    </ClCompile>
+    <ClCompile Include="Input\bs_Mouse.cpp">
+      <Filter>Source Files\Input</Filter>
+    </ClCompile>
+    <ClCompile Include="Physics\2D\Collisions\bs_Shape2D.cpp">
+      <Filter>Source Files\Physics\2D</Filter>
+    </ClCompile>
+    <ClCompile Include="Physics\2D\bs_Transform2D.cpp">
+      <Filter>Source Files\Physics\2D</Filter>
+    </ClCompile>
+    <ClCompile Include="Physics\2D\bs_Physics2D.cpp">
+      <Filter>Source Files\Physics\2D</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -356,8 +386,35 @@
     <ClInclude Include="Containers\bs_LinkedList.h">
       <Filter>Source Files\Containers</Filter>
     </ClInclude>
-    <ClInclude Include="Rendering\bs_SpriteRenderer.h">
+    <ClInclude Include="Rendering\bs_DebugRenderer.h">
       <Filter>Source Files\Rendering</Filter>
+    </ClInclude>
+    <ClInclude Include="Rendering\bs_SpriteManager.h">
+      <Filter>Source Files\Rendering</Filter>
+    </ClInclude>
+    <ClInclude Include="Platform\Windows\bs_WindowsKeyboard.h">
+      <Filter>Source Files\Platform\Windows</Filter>
+    </ClInclude>
+    <ClInclude Include="Platform\Windows\bs_WindowsInput.h">
+      <Filter>Source Files\Platform\Windows</Filter>
+    </ClInclude>
+    <ClInclude Include="Input\bs_InputManager.h">
+      <Filter>Source Files\Input</Filter>
+    </ClInclude>
+    <ClInclude Include="Input\bs_Keyboard.h">
+      <Filter>Source Files\Input</Filter>
+    </ClInclude>
+    <ClInclude Include="Input\bs_Mouse.h">
+      <Filter>Source Files\Input</Filter>
+    </ClInclude>
+    <ClInclude Include="Physics\2D\Collisions\bs_Shape2D.h">
+      <Filter>Source Files\Physics\2D</Filter>
+    </ClInclude>
+    <ClInclude Include="Physics\2D\bs_Transform2D.h">
+      <Filter>Source Files\Physics\2D</Filter>
+    </ClInclude>
+    <ClInclude Include="Physics\2D\bs_Physics2D.h">
+      <Filter>Source Files\Physics\2D</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

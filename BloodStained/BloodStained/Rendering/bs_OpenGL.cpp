@@ -96,6 +96,7 @@ namespace bs
 		BS_glGetProgramiv(id, GL_INFO_LOG_LENGTH, &logLength);
 
 		String result;
+		result.resize(logLength);
 		BS_glGetProgramInfoLog(id, logLength, 0, &result[0]);
 
 		return result;
