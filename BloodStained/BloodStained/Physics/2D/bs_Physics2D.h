@@ -15,6 +15,8 @@ namespace bs
 	Vector2 makeVector2RelativeToBasis(const Transform2D& transform, const Vector2& v);
 
 	Shape2D attachShapeToBasis(const Transform2D& transform, const Shape2D& shape);
+
+	bool intersect(const Vector2& a1, const Vector2& a2, const Vector2& b1, const Vector2& b2, Vector2& out);
 }
 
 #endif // !_BS_PHYSICS2D_H_

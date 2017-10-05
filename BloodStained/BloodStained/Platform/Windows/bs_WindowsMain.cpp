@@ -96,7 +96,8 @@ int CALLBACK WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance,
 	LARGE_INTEGER performanceCounter;
 	QueryPerformanceCounter(&performanceCounter);
 
-	f32 now = (f32)((f64)performanceCounter.QuadPart / (f64)performanceFrequency.QuadPart);
+	f32 start = (f32)((f64)performanceCounter.QuadPart / (f64)performanceFrequency.QuadPart);
+	f32 now = 0.0;
 	f32 lastFrame = now;
 	//Main loop
 	while (bs::Game::isRunning())
@@ -111,6 +112,7 @@ int CALLBACK WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance,
 
 		
 		now = (f32)((f64)performanceCounter.QuadPart / (f64)performanceFrequency.QuadPart);
+		now = now - start;
 		f32 dt = now - lastFrame;
 		if (dt >= 1.0f / 60.0f)
 		{

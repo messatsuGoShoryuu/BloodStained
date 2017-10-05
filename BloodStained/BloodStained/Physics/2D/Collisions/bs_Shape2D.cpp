@@ -5,13 +5,15 @@ namespace bs
 {
 	Shape2D::Shape2D()
 		:m_vertexCount(0),
-		m_center(Vector2::zero)
+		m_center(Vector2::zero),
+		m_radius(0)
 	{
 	}
 
 	Shape2D::Shape2D(const Shape2D & s)
 		:m_vertexCount(s.m_vertexCount),
-		m_center(s.m_center)
+		m_center(s.m_center),
+		m_radius(s.m_radius)
 	{
 		copyArray((Vector2*)s.m_vertices, m_vertices, s.m_vertexCount);
 		copyArray((Vector2*)s.m_normals, m_normals, s.m_vertexCount);
@@ -44,6 +46,13 @@ namespace bs
 		m_vertexCount++;
 		
 		return true;
+	}
+	Segment2D Shape2D::getEdgeFromNormal(ui32 normalIndex) const
+	{
+		Segment2D result;
+		result.a = m_vertices[normalIndex];
+		result.b = m_vertices[(normalIndex + 1) % m_vertexCount];
+		return result;
 	}
 	void Shape2D::calculateNormals()
 	{
@@ -83,5 +92,39 @@ namespace bs
 		sum /= (real)m_vertexCount;
 
 		m_center = sum;
+
+		m_radius = 0.0f;
+		
+		for (ui32 i = 0; i < m_vertexCount; i++)
+		{
+			real radius = (m_vertices[i] - m_center).squareMagnitude();
+			if (radius > m_radius) m_radius = radius;
+		}
+
+		m_radius = math::sqrt(m_radius);
+	}
+
+	Vector2 Shape2D::getSupportPoint(const Vector2 & direction) const
+	{
+		ui32 index = getSupportIndex(direction);
+		if (index == -1) return Vector2::zero;
+		return m_vertices[index];
+	}
+
+	ui32 Shape2D::getSupportIndex(const Vector2 & direction) const
+	{
+		real bestDistance = -BS_MAX_FLOAT;
+		ui32 index = -1;
+
+		for (ui32 i = 0; i < m_vertexCount; i++)
+		{
+			real dot = m_vertices[i].dot(direction);
+			if (dot > bestDistance)
+			{
+				bestDistance = dot;
+				index = i;
+			}
+		}
+		return index;
 	}
 }

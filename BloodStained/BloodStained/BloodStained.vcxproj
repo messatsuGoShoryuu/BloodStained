@@ -44,6 +44,7 @@
     <ClCompile Include="Math\bs_Vector4.cpp" />
     <ClCompile Include="Physics\2D\bs_Physics2D.cpp" />
     <ClCompile Include="Physics\2D\bs_Transform2D.cpp" />
+    <ClCompile Include="Physics\2D\Collisions\bs_GJK2D.cpp" />
     <ClCompile Include="Physics\2D\Collisions\bs_Shape2D.cpp" />
     <ClCompile Include="Physics\3D\Collisions\bs_Ray3D.cpp" />
     <ClCompile Include="Platform\Windows\bs_WindowsError.cpp" />
@@ -103,6 +104,7 @@
     <ClInclude Include="Math\bs_Vector4.h" />
     <ClInclude Include="Physics\2D\bs_Physics2D.h" />
     <ClInclude Include="Physics\2D\bs_Transform2D.h" />
+    <ClInclude Include="Physics\2D\Collisions\bs_GJK2D.h" />
     <ClInclude Include="Physics\2D\Collisions\bs_Shape2D.h" />
     <ClInclude Include="Physics\3D\Collisions\bs_PhysicsPrimitives.h" />
     <ClInclude Include="Physics\3D\Collisions\bs_Ray3D.h" />

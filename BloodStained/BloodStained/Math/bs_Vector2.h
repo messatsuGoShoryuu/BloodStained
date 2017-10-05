@@ -135,6 +135,14 @@ namespace bs
 			return result;
 		}
 
+		inline Vector2 operator-() const
+		{
+			Vector2 result;
+			result.x = -x;
+			result.y = -y;
+			return result;
+		}
+
 		inline	Vector2		operator*(const real& f)
 		{
 			Vector2 result;

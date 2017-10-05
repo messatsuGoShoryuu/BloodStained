@@ -6,6 +6,11 @@ namespace bs
 {
 #define	BS_SHAPE_VERTEX_COUNT 8
 
+	struct Segment2D
+	{
+		Vector2 a;
+		Vector2 b;
+	};
 
 	class Shape2D
 	{
@@ -24,18 +29,28 @@ namespace bs
 		inline	const	Vector2* getVertices() const { return m_vertices; }
 		inline	const	Vector2* getNormals() const	{ return m_normals; }
 
+		inline	Vector2 getVertex(ui32 index) const { return index == -1 ? Vector2::zero : m_vertices[index]; }
+		inline	Vector2 getNormal(ui32 index) const { return m_normals[index]; }
+
+		Segment2D	getEdgeFromNormal(ui32 normalIndex) const;
+
 		inline ui32 vertexCount() const { return m_vertexCount; }
 
 		void	calculateNormals();
 		void	calculateCenter();
 
-		inline const Vector2& center() { return m_center; }
+		inline const Vector2& center() const { return m_center; }
 		
+		inline real radius() { return m_radius; }
+
+		Vector2 getSupportPoint(const Vector2& direction) const;
+		ui32 getSupportIndex(const Vector2& direction) const;
 
 	private:
 		Vector2 m_vertices[BS_SHAPE_VERTEX_COUNT];
 		Vector2 m_normals[BS_SHAPE_VERTEX_COUNT];
 		Vector2 m_center;
+		real	m_radius;
 		ui32 m_vertexCount;
 	};
 

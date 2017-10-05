@@ -1,7 +1,37 @@
-﻿  bs_Physics2D.cpp
+﻿  bs_Level.cpp
 g:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(213): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
 g:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(215): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
 g:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(216): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
 g:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(217): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
+g:\programming\bloodstained\bloodstained\bloodstained\containers\bs_array.h(490): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+g:\programming\bloodstained\bloodstained\bloodstained\containers\bs_hashmap.h(39): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+g:\programming\bloodstained\bloodstained\bloodstained\containers\bs_hashmap.h(48): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+g:\programming\bloodstained\bloodstained\bloodstained\containers\bs_linkedarray.h(539): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+g:\programming\bloodstained\bloodstained\bloodstained\containers\bs_linkedarray.h(1091): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+g:\programming\bloodstained\bloodstained\bloodstained\utilities\bs_string.h(36): warning C4267: 'return': conversion from 'size_t' to 'const ui32', possible loss of data
+g:\programming\bloodstained\bloodstained\bloodstained\utilities\bs_string.h(37): warning C4267: 'return': conversion from 'size_t' to 'const ui32', possible loss of data
+g:\programming\bloodstained\bloodstained\bloodstained\fileio\bs_resourcemanager.h(84): warning C4267: 'return': conversion from 'size_t' to 'ui32', possible loss of data
+g:\programming\bloodstained\bloodstained\bloodstained\rendering\bs_renderbufferobjects.h(75): warning C4267: 'return': conversion from 'size_t' to 'ui32', possible loss of data
+g:\programming\bloodstained\bloodstained\bloodstained\rendering\bs_rendermanager.h(20): warning C4099: 'bs::ColorRGBAf': type name first seen using 'struct' now seen using 'class'
+  g:\programming\bloodstained\bloodstained\bloodstained\rendering\bs_color.h(54): note: see declaration of 'bs::ColorRGBAf'
+g:\programming\bloodstained\bloodstained\bloodstained\game\bs_level.cpp(53): warning C4244: 'argument': conversion from 'ui32' to 'real', possible loss of data
+g:\programming\bloodstained\bloodstained\bloodstained\game\bs_level.cpp(72): warning C4305: 'argument': truncation from 'double' to 'real'
+g:\programming\bloodstained\bloodstained\bloodstained\game\bs_level.cpp(73): warning C4305: 'argument': truncation from 'double' to 'real'
+g:\programming\bloodstained\bloodstained\bloodstained\game\bs_level.cpp(96): warning C4305: 'argument': truncation from 'double' to 'f32'
+g:\programming\bloodstained\bloodstained\bloodstained\game\bs_level.cpp(103): warning C4018: '<': signed/unsigned mismatch
+g:\programming\bloodstained\bloodstained\bloodstained\containers\bs_array.h(230): warning C4267: 'argument': conversion from 'size_t' to 'ui32', possible loss of data
+  g:\programming\bloodstained\bloodstained\bloodstained\containers\bs_array.h(225): note: while compiling class template member function 'void bs::Array<bs::Camera *>::reserve(ptrsize)'
+  g:\programming\bloodstained\bloodstained\bloodstained\containers\bs_array.h(197): note: see reference to function template instantiation 'void bs::Array<bs::Camera *>::reserve(ptrsize)' being compiled
+  g:\programming\bloodstained\bloodstained\bloodstained\containers\bs_array.h(177): note: while compiling class template member function 'bs::Array<bs::Camera *>::Array(const bs::Array<bs::Camera *> &)'
+  g:\programming\bloodstained\bloodstained\bloodstained\game\bs_level.cpp(27): note: see reference to function template instantiation 'bs::Array<bs::Camera *>::Array(const bs::Array<bs::Camera *> &)' being compiled
+  g:\programming\bloodstained\bloodstained\bloodstained\game\bs_level.h(23): note: see reference to class template instantiation 'bs::Array<bs::Camera *>' being compiled
+g:\programming\bloodstained\bloodstained\bloodstained\containers\bs_array.h(392): warning C4267: 'argument': conversion from 'size_t' to 'ui32', possible loss of data
+  g:\programming\bloodstained\bloodstained\bloodstained\containers\bs_array.h(387): note: while compiling class template member function 'void bs::Array<bs::Camera *>::_copy(const bs::Array<bs::Camera *> &)'
+  g:\programming\bloodstained\bloodstained\bloodstained\containers\bs_array.h(181): note: see reference to function template instantiation 'void bs::Array<bs::Camera *>::_copy(const bs::Array<bs::Camera *> &)' being compiled
+g:\programming\bloodstained\bloodstained\bloodstained\containers\bs_array.h(368): warning C4267: 'argument': conversion from 'size_t' to 'ui32', possible loss of data
+  g:\programming\bloodstained\bloodstained\bloodstained\containers\bs_array.h(363): note: while compiling class template member function 'bs::Camera *bs::Array<bs::Camera *>::_allocate(ptrsize)'
+  g:\programming\bloodstained\bloodstained\bloodstained\containers\bs_array.h(234): note: see reference to function template instantiation 'bs::Camera *bs::Array<bs::Camera *>::_allocate(ptrsize)' being compiled
+  g:\programming\bloodstained\bloodstained\bloodstained\containers\bs_array.h(225): note: while compiling class template member function 'void bs::Array<bs::Camera *>::reserve(ptrsize)'
+  g:\programming\bloodstained\bloodstained\bloodstained\containers\bs_array.h(197): note: see reference to function template instantiation 'void bs::Array<bs::Camera *>::reserve(ptrsize)' being compiled
   BloodStained.vcxproj -> G:\Programming\BloodStained\BloodStained\x64\Debug\BloodStained.exe
   BloodStained.vcxproj -> G:\Programming\BloodStained\BloodStained\x64\Debug\BloodStained.pdb (Partial PDB)

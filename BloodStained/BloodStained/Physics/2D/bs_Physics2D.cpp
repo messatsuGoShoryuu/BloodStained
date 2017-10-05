@@ -37,6 +37,56 @@ namespace bs
 		return result;
 	}
 
+	bool intersect(const Vector2 & a1, const Vector2 & a2, const Vector2 & b1, const Vector2 & b2, Vector2 & out)
+	{
+		//Calculate slopes
+		Vector2 diffA = a2 - a1;
+		Vector2 diffB = b2 - b1;
+		real sA = diffA.y / diffA.x;
+		real sB = diffB.y / diffB.x;
+
+		if (sA - sB < 0.0001f && sA - sB > -0.0001f)
+		{
+			out = a1 + diffA / 2.0f;
+			if(a1 == b1 && a2 == b2) return true;
+			if (a2 == b1 && b2 == a1) return true;
+			return false;
+		}
+
+		/*
+		yA = sA*x + a
+		yB = sB*x + b
+
+		sA*x + a = sB*x + b
+		sA*x - sB * x = b - a
+		x(sA - sB) = b - a
+		x = (b - a) / (sA - sB)
+
+		*/
+
+		real a = a1.y - sA * a1.x;
+		real b = b1.y - sB * b1.x;
+
+		real c = b - a;
+		real s = sA - sB;
+
+		out.x = c / s;
+		out.y = sA * out.x + a;	
+
+		Vector2 diffOutA = out - a1;
+		Vector2 diffOutB = out - b1;
+
+		real dotA = diffA.dot(diffOutA);
+		if (dotA < 0) return false;
+		real dotB = diffB.dot(diffOutB);
+		if (dotB < 0) return false;
+
+		if (diffOutA.squareMagnitude() > diffA.squareMagnitude()) return false;
+		if (diffOutB.squareMagnitude() > diffB.squareMagnitude()) return false;
+		
+		return true;
+	}
+
 	Shape2D makeShapeRelativeToBasis(const Transform2D & transform, const Shape2D & shape)
 	{
 		const	Basis2D* basis = &transform.basis();

@@ -64,6 +64,9 @@
     <Filter Include="Source Files\Physics\2D">
       <UniqueIdentifier>{b3df22fe-fa61-44aa-84df-f97d36eb094b}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Physics\2D\Collisions">
+      <UniqueIdentifier>{eeb3612f-88de-4895-bc62-6e7d9bf68442}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Platform\Windows\bs_WindowsError.cpp">
@@ -215,6 +218,9 @@
     </ClCompile>
     <ClCompile Include="Physics\2D\bs_Physics2D.cpp">
       <Filter>Source Files\Physics\2D</Filter>
+    </ClCompile>
+    <ClCompile Include="Physics\2D\Collisions\bs_GJK2D.cpp">
+      <Filter>Source Files\Physics\2D\Collisions</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -415,6 +421,9 @@
     </ClInclude>
     <ClInclude Include="Physics\2D\bs_Physics2D.h">
       <Filter>Source Files\Physics\2D</Filter>
+    </ClInclude>
+    <ClInclude Include="Physics\2D\Collisions\bs_GJK2D.h">
+      <Filter>Source Files\Physics\2D\Collisions</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
