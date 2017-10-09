@@ -6,6 +6,7 @@
 #include <Rendering/bs_RenderManager.h>
 #include <Input/bs_InputManager.h>
 #include <Time/bs_Clock.h>
+#include <Physics/2D/bs_Physics2D.h>
 
 namespace bs
 {
@@ -26,7 +27,8 @@ namespace bs
 		if (error != ERROR_ID::NONE) return fatalError(error);
 		error = RenderManager::initialize();
 		if (error != ERROR_ID::NONE) return fatalError(error);
-
+		error = PhysicsManager2D::initialize();
+		if (error != ERROR_ID::NONE) return fatalError(error);
 		addLevel();
 		currentLevel()->initialize();
 		return ERROR_ID::NONE;
@@ -37,13 +39,17 @@ namespace bs
 		currentLevel()->shutDown();
 		ERROR_ID error = ERROR_ID::NONE;
 
+		error = RenderManager::shutDown();
+		if (error != ERROR_ID::NONE) return fatalError(error);
+		error = PhysicsManager2D::shutDown();
+		if (error != ERROR_ID::NONE) return fatalError(error);
 		error = ShaderManager::shutDown();
 		if (error != ERROR_ID::NONE) return fatalError(error);
 		error = ResourceManager::shutDown();
 		if (error != ERROR_ID::NONE) return fatalError(error);
-		error = RenderManager::shutDown();
-		if (error != ERROR_ID::NONE) return fatalError(error);
+		
 		return ERROR_ID::NONE;
+
 	}
 
 	void Game::update(f32 dt, f32 now)

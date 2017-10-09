@@ -16,6 +16,7 @@
 #include <Physics/2D/bs_Physics2D.h>
 #include <Physics/2D/Collisions/bs_GJK2D.h>
 
+
 namespace bs
 {
 	Level::Level()
@@ -46,58 +47,141 @@ namespace bs
 
 	void Level::update(f32 dt)
 	{
-		static Transform2D transform = Transform2D();
+		static	PhysicalObject2D* player = PhysicsManager2D::addPhysicalObject();
+		static  PhysicalObject2D* ground = PhysicsManager2D::addPhysicalObject();
+
 
 		Camera2D* cam = dynamic_cast<Camera2D*>(m_cameras[0]);
 
 		Vector2 pos2 = cam->screenToWorld(Vector2(InputManager::mouse.getX(), InputManager::mouse.getY()));
 
-		static Shape2D shape;
 
-		if (InputManager::keyboard.isKeyPressed(KB_R)) shape = Shape2D();
+		if (InputManager::keyboard.isKeyPressed(KB_R)) player->shape() = Shape2D();
 
 		if (InputManager::mouse.isButtonPressed(MOUSE_BUTTON_1))
 		{
-			shape.addVertex(makeVector2RelativeToBasis(transform, pos2));
+			player->shape().addVertex(makeVector2RelativeToBasis(player->body()->transform(), pos2));
+
 		}
 
-		if (InputManager::keyboard.isKeyHeld(KB_RIGHTARROW)) transform.translate(Vector2::right * (dt));
-		if (InputManager::keyboard.isKeyHeld(KB_LEFTARROW)) transform.translate(Vector2::right * (-dt));
-		if (InputManager::keyboard.isKeyHeld(KB_UPARROW)) transform.translate(Vector2::up * dt);
-		if (InputManager::keyboard.isKeyHeld(KB_DOWNARROW)) transform.translate(Vector2::up * (-dt));
-
-		if (InputManager::keyboard.isKeyHeld(KB_S)) transform.multScale(Vector2(1.1f, 1.1f));
-		if (InputManager::keyboard.isKeyHeld(KB_W)) transform.multScale(Vector2(0.9f, 0.9f));
-
-		if (InputManager::keyboard.isKeyHeld(KB_A)) transform.rotate(-(BS_PI / 180.0f));
-		if (InputManager::keyboard.isKeyHeld(KB_D)) transform.rotate(BS_PI / 180.0f);
-		
-		Shape2D staticShape = Shape2D();
-		staticShape.addVertex(-0.8f, -0.3f);
-		staticShape.addVertex(-0.9f, 0.5);
-		staticShape.addVertex(-0.7f, 0.5f);
-		staticShape.addVertex(-0.6f, -0.5f);
-		staticShape.calculateNormals();
-		staticShape.calculateCenter();
-
-		Shape2D attShape = attachShapeToBasis(transform, shape);
- 
-		gjk2D::Collision collision = gjk2D::testCollision(staticShape, attShape);
-		if (collision.collided)
+		if (InputManager::mouse.isButtonPressed(MOUSE_BUTTON_2))
 		{
-			transform.translate(collision.contact.mtd[0].normal * collision.contact.mtd[0].penetration * 0.8f);
+			PhysicalObject2D* box = PhysicsManager2D::addPhysicalObject();
+			box->shape().addVertex(Vector2(-0.2f,0.3f));
+			box->shape().addVertex(Vector2(0.2f, 0.3f));
+			box->shape().addVertex(Vector2(0.2f, -0.3f));
+			box->shape().addVertex(Vector2(-0.2f, -0.3f));
+
+			box->shape().calculateNormals();
+			box->shape().calculateCenter();
+			box->body()->setInertia(0.5f);
+			box->body()->setGravityScale(1.0f);
+
+			box->body()->transform().setPosition(Vector2::zero);
 		}
-		attShape = attachShapeToBasis(transform, shape);
-	//	if (collision.collided)
-	//		transform.translate(collision.contact.mtd[0].normal * collision.contact.mtd[0].penetration/2.0f);
+
+
+		if (InputManager::keyboard.isKeyHeld(KB_RIGHTARROW))
+		{
+			if (InputManager::keyboard.isKeyHeld(KB_SHIFT))
+			{
+				player->body()->addAcceleration(Vector2::right * 0.1f);
+			}
+			else
+			{
+				player->body()->setVelocity(Vector2::zero);
+				player->body()->transform().translate(Vector2::right * (dt));
+			}
+		}
+		if (InputManager::keyboard.isKeyHeld(KB_LEFTARROW))
+		{
+			if (InputManager::keyboard.isKeyHeld(KB_SHIFT))
+			{
+				player->body()->addAcceleration(Vector2::right * -0.1f);
+			}
+			else
+			{
+				player->body()->setVelocity(Vector2::zero);
+				player->body()->transform().translate(Vector2::right * (-dt));
+			}
+			
+		}
+		if (InputManager::keyboard.isKeyHeld(KB_UPARROW))
+		{
+			if (InputManager::keyboard.isKeyHeld(KB_SHIFT))
+			{
+				player->body()->addAcceleration(Vector2::up * 0.1f);
+			}
+			else
+			{
+				player->body()->setVelocity(Vector2::zero);
+				player->body()->transform().translate(Vector2::up * dt);
+			}
+			
+		}
+		if (InputManager::keyboard.isKeyHeld(KB_DOWNARROW))
+		{
+			if (InputManager::keyboard.isKeyHeld(KB_SHIFT))
+			{
+				player->body()->addAcceleration(Vector2::up * -0.1f);
+			}
+			else
+			{
+				player->body()->setVelocity(Vector2::zero);
+				player->body()->transform().translate(Vector2::up * (-dt));
+			}
+			
+		}
+
+		if (InputManager::keyboard.isKeyHeld(KB_S)) player->body()->transform().multScale(Vector2(1.1f, 1.1f));
+		if (InputManager::keyboard.isKeyHeld(KB_W)) player->body()->transform().multScale(Vector2(0.9f, 0.9f));
+
+		if (InputManager::keyboard.isKeyHeld(KB_A)) player->body()->transform().rotate(-(BS_PI / 180.0f));
+		if (InputManager::keyboard.isKeyHeld(KB_D)) player->body()->transform().rotate(BS_PI / 180.0f);
+
+		if (InputManager::keyboard.isKeyHeld(KB_E)) player->body()->addTorque(0.1f);
+		if (InputManager::keyboard.isKeyHeld(KB_Q)) player->body()->addTorque(-0.1f);
+
+		if (InputManager::keyboard.isKeyPressed(KB_C))
+		{
+			player->body()->setGravityScale(1.0f);
+			player->shape().calculateCenter();
+			player->shape().calculateNormals();
+			player->body()->setInertia(0.6f);
+		}
+
+		if (InputManager::keyboard.isKeyPressed(KB_G))
+		{
+			ground->shape().addVertex(-2.0f, -0.5f);
+			ground->shape().addVertex(1.0f, -0.5f);
+			ground->shape().addVertex(2.0f, -1.0f);
+			ground->shape().addVertex(-3.0f, -3.0f);
+
+			ground->shape().calculateNormals();
+			ground->shape().calculateCenter();
+			ground->body()->setInertia(0.0f);
+			ground->body()->transform().setPosition(ground->shape().centerOfGravity());
+		}
+	
+
+		PhysicsManager2D::update(dt);
+
+		cam->setPosition(player->body()->transform().position());
+		
+
+		Shape2D attShape = *player->relativeShape();
 
 //		RenderManager::drawDebugShape(shape.getVertices(), shape.vertexCount(), ColorRGBAf::green);
-		RenderManager::drawDebugShape(attShape.getVertices(), shape.vertexCount(), ColorRGBAf::blue);
-		RenderManager::drawDebugShape(staticShape.getVertices(), staticShape.vertexCount(), collision.collided ? ColorRGBAf(1.0,0.4,0.2,1.0) : ColorRGBAf(0.5,0.5,0.0,1.0));
+		RenderManager::drawDebugShape(attShape.getVertices(), attShape.vertexCount(), ColorRGBAf::blue);
+		
 		
 	//	RenderManager::drawDebugCircle(relshape.center(), relshape.radius(), 32, ColorRGBAf::blue);
-		RenderManager::drawDebugCircle(attShape.center(), 0.008f, 8, ColorRGBAf::blue);
+		RenderManager::drawDebugCircle(attShape.centerOfGravity(), 0.008f, 8, ColorRGBAf::blue);
+		RenderManager::drawDebugCircle(attShape.center(), 0.008f, 8, ColorRGBAf::red);
 		RenderManager::drawDebugCircle(attShape.getSupportPoint(Vector2::up), 0.008f, 32, ColorRGBAf::magenta);
+		RenderManager::drawDebugShape((Vector2*)ground->relativeShape()->getVertices(), ground->relativeShape()->vertexCount(), ColorRGBAf::red);
+
+		
 
 
 		for (int i = 0; i < attShape.vertexCount(); i++)
@@ -125,15 +209,16 @@ namespace bs
 			RenderManager::drawDebugShape(head, 3, ColorRGBAf::red);
 			
 
-			face = transform.position();
-			RenderManager::drawDebugLine(transform.position(), transform.position() + transform.basis().x(), ColorRGBAf::magenta);
-			RenderManager::drawDebugLine(transform.position(), transform.position() + transform.basis().y(), ColorRGBAf::cyan);
+			face = player->body()->transform().position();
+			RenderManager::drawDebugLine(player->body()->transform().position(), 
+				player->body()->transform().position() + player->body()->transform().basis().x(), ColorRGBAf::magenta);
+			RenderManager::drawDebugLine(player->body()->transform().position(), 
+				player->body()->transform().position() + player->body()->transform().basis().y(), ColorRGBAf::cyan);
 			RenderManager::drawDebugLine(Vector2::zero, Vector2::up, ColorRGBAf::black);
 			RenderManager::drawDebugLine(Vector2::zero, Vector2::right, ColorRGBAf::black);
 			
 		}
 		RenderManager::render(m_cameras);
-		
 	}
 }
 

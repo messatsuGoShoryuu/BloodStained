@@ -20,8 +20,13 @@ namespace bs
 		{
 			Vector2 vertex = sourceVertices[i];
 
-			vertex.x = sourceVertices[i].x * basis->cos() + sourceVertices[i].y * basis->sin();
-			vertex.y = -sourceVertices[i].x * basis->sin() + sourceVertices[i].y* basis->cos();
+			vertex.x = (sourceVertices[i].x - shape.centerOfGravity().x)
+				* basis->cos() + (sourceVertices[i].y -
+				shape.centerOfGravity().y) * basis->sin();
+			vertex.y = -(sourceVertices[i].x - shape.centerOfGravity().x)
+				* basis->sin() 
+				+ (sourceVertices[i].y - shape.centerOfGravity().y)
+				* basis->cos();
 
 			vertex.x *= scale.x;
 			vertex.y *= scale.y;
@@ -33,6 +38,7 @@ namespace bs
 
 		result.calculateNormals();
 		result.calculateCenter();
+		result.getInertiaMoment();
 
 		return result;
 	}
@@ -116,6 +122,7 @@ namespace bs
 
 		result.calculateNormals();
 		result.calculateCenter();
+		result.getInertiaMoment();
 
 		return result;
 	}
@@ -148,4 +155,9 @@ namespace bs
 
 		return result;
 	}
+
+
+
+
+
 }

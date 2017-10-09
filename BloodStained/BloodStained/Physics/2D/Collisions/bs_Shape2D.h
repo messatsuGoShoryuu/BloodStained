@@ -38,20 +38,28 @@ namespace bs
 
 		void	calculateNormals();
 		void	calculateCenter();
+		real	getInertiaMoment();
 
 		inline const Vector2& center() const { return m_center; }
+		inline const Vector2& centerOfGravity() const { return m_centerOfGravity; }
 		
 		inline real radius() { return m_radius; }
 
 		Vector2 getSupportPoint(const Vector2& direction) const;
 		ui32 getSupportIndex(const Vector2& direction) const;
-
+		 
+		
+		inline	void* owner() { return m_owner; }
+		inline	void	setOwner(void* owner) { m_owner = owner; }
 	private:
 		Vector2 m_vertices[BS_SHAPE_VERTEX_COUNT];
 		Vector2 m_normals[BS_SHAPE_VERTEX_COUNT];
 		Vector2 m_center;
+		Vector2 m_centerOfGravity;
 		real	m_radius;
 		ui32 m_vertexCount;
+
+		void* m_owner;
 	};
 
 

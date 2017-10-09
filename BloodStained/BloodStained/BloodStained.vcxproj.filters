@@ -222,6 +222,12 @@
     <ClCompile Include="Physics\2D\Collisions\bs_GJK2D.cpp">
       <Filter>Source Files\Physics\2D\Collisions</Filter>
     </ClCompile>
+    <ClCompile Include="Physics\2D\bs_Body2D.cpp">
+      <Filter>Source Files\Physics\2D</Filter>
+    </ClCompile>
+    <ClCompile Include="Physics\2D\bs_PhysicsManager2D.cpp">
+      <Filter>Source Files\Physics\2D</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Platform\Windows\bs_WindowsError.h">
@@ -423,6 +429,18 @@
       <Filter>Source Files\Physics\2D</Filter>
     </ClInclude>
     <ClInclude Include="Physics\2D\Collisions\bs_GJK2D.h">
+      <Filter>Source Files\Physics\2D\Collisions</Filter>
+    </ClInclude>
+    <ClInclude Include="Physics\2D\bs_Body2D.h">
+      <Filter>Source Files\Physics\2D</Filter>
+    </ClInclude>
+    <ClInclude Include="Physics\2D\bs_PhysicalObject2D.h">
+      <Filter>Source Files\Physics\2D</Filter>
+    </ClInclude>
+    <ClInclude Include="Containers\bs_Stack.h">
+      <Filter>Source Files\Containers</Filter>
+    </ClInclude>
+    <ClInclude Include="Physics\2D\Collisions\bs_Collision2D.h">
       <Filter>Source Files\Physics\2D\Collisions</Filter>
     </ClInclude>
   </ItemGroup>

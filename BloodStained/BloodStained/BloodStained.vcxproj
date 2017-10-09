@@ -42,7 +42,9 @@
     <ClCompile Include="Math\bs_Vector2.cpp" />
     <ClCompile Include="Math\bs_Vector3.cpp" />
     <ClCompile Include="Math\bs_Vector4.cpp" />
+    <ClCompile Include="Physics\2D\bs_Body2D.cpp" />
     <ClCompile Include="Physics\2D\bs_Physics2D.cpp" />
+    <ClCompile Include="Physics\2D\bs_PhysicsManager2D.cpp" />
     <ClCompile Include="Physics\2D\bs_Transform2D.cpp" />
     <ClCompile Include="Physics\2D\Collisions\bs_GJK2D.cpp" />
     <ClCompile Include="Physics\2D\Collisions\bs_Shape2D.cpp" />
@@ -80,6 +82,7 @@
     <ClInclude Include="Containers\bs_HashMap.h" />
     <ClInclude Include="Containers\bs_LinkedArray.h" />
     <ClInclude Include="Containers\bs_LinkedList.h" />
+    <ClInclude Include="Containers\bs_Stack.h" />
     <ClInclude Include="External\HashFunctions\MurmurHash\bs_MurmurHash.h" />
     <ClInclude Include="External\ImageLoading\LodePng\lodepng.h" />
     <ClInclude Include="FileIO\bs_FileSystem.h" />
@@ -102,8 +105,11 @@
     <ClInclude Include="Math\bs_Vector2.h" />
     <ClInclude Include="Math\bs_Vector3.h" />
     <ClInclude Include="Math\bs_Vector4.h" />
+    <ClInclude Include="Physics\2D\bs_Body2D.h" />
+    <ClInclude Include="Physics\2D\bs_PhysicalObject2D.h" />
     <ClInclude Include="Physics\2D\bs_Physics2D.h" />
     <ClInclude Include="Physics\2D\bs_Transform2D.h" />
+    <ClInclude Include="Physics\2D\Collisions\bs_Collision2D.h" />
     <ClInclude Include="Physics\2D\Collisions\bs_GJK2D.h" />
     <ClInclude Include="Physics\2D\Collisions\bs_Shape2D.h" />
     <ClInclude Include="Physics\3D\Collisions\bs_PhysicsPrimitives.h" />

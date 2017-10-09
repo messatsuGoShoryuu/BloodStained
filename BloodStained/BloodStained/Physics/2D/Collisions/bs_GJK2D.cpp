@@ -3,6 +3,7 @@
 #include  <Rendering/bs_RenderManager.h>
 #include <Physics/2D/bs_Physics2D.h>
 
+#define BS_PENETRATION_CLIP_TOLERANCE 0.00005
 
 namespace bs
 {
@@ -14,10 +15,15 @@ namespace bs
 			ui32 b;
 			Vector2 point;
 		};
+		struct SupportSegment
+		{
+			SupportPoint a;
+			SupportPoint b;
+		};
 
 		struct PolytopeSegment
 		{
-			Segment2D s;
+			SupportSegment s;
 			Vector2 normal;
 			PolytopeSegment* previous;
 			PolytopeSegment* next;
@@ -59,7 +65,7 @@ namespace bs
 			}
 
 
-			PolytopeSegment* addVertex(Vector2& point, PolytopeSegment* face)
+			PolytopeSegment* addVertex(SupportPoint& point, PolytopeSegment* face)
 			{
 				if (count == 0)
 				{
@@ -71,7 +77,7 @@ namespace bs
 					else
 					{
 						first->s.b = point;
-						first->normal = getPerpTowardsOrigin(first->s.a, first->s.b);
+						first->normal = getPerpTowardsOrigin(first->s.a.point, first->s.b.point);
 						first->normal.normalize();
 						count++;
 					}
@@ -85,7 +91,7 @@ namespace bs
 					ns->previous = prev;
 					ns->s.a = prev->s.b;
 					ns->s.b = point;
-					ns->normal = getPerpTowardsOrigin(ns->s.a, ns->s.b);
+					ns->normal = getPerpTowardsOrigin(ns->s.a.point, ns->s.b.point);
 					ns->normal.normalize();
 					count++;
 					PolytopeSegment* ns2 = newSegment();
@@ -93,7 +99,7 @@ namespace bs
 					ns2->previous = ns;
 					ns2->s.a = ns->s.b;
 					ns2->s.b = prev->s.a;
-					ns2->normal = getPerpTowardsOrigin(ns2->s.a, ns2->s.b);
+					ns2->normal = getPerpTowardsOrigin(ns2->s.a.point, ns2->s.b.point);
 					ns2->normal.normalize();
 					ns2->next = first;
 					first->previous = ns2;
@@ -124,8 +130,8 @@ namespace bs
 				r->s.a = point;
 				r->s.b = face->s.b;
 
-				l->normal = getPerpTowardsOrigin(l->s.a, l->s.b);
-				r->normal = getPerpTowardsOrigin(r->s.a, r->s.b);
+				l->normal = getPerpTowardsOrigin(l->s.a.point, l->s.b.point);
+				r->normal = getPerpTowardsOrigin(r->s.a.point, r->s.b.point);
 
 				l->normal.normalize();
 				r->normal.normalize();
@@ -174,7 +180,7 @@ namespace bs
 				PolytopeSegment* result = nullptr;
 				do
 				{
-					dot = s->s.a.dot(s->normal);
+					dot = s->s.a.point.dot(s->normal);
 					if (dot < bestDot)
 					{
 						bestDot = dot;
@@ -209,23 +215,150 @@ namespace bs
 		}
 
 		//ease of use
-		inline	Collision falseCollision()
+		inline	Collision2D falseCollision()
 		{
-			Collision c = {};
+			Collision2D c = {};
 			return c;
 		}
 
-		
-
-
-		Contact findContactByEPA(const Shape2D& a, const Shape2D& b, SupportPoint s[3])
+            
+		void clip(Manifold2D& m,const Shape2D& pointShape,const Shape2D& edgeShape, ui32 pointIndex, ui32 edgeA, ui32 edgeB, real tol)
 		{
+			
+		/*
+			TODO: add more cases?
+			 R         
+			  \       
+			   \     
+			  A-----------B
+			 /   \         \
+			/	  P---------\----Q
+		   D-----------------C
+
+		1-	if abs((AB . PQ)) > tolerance && abs((AB . RP)) > tolerance, P is the only point.
+		2-	if abs(AB . PQ) < tolerance, 
+				if(AB . PQ < 0) the point closest to P between A and Q is the second point.
+				else the point closest t P between B and Q is the second point.
+		3-  repeat 2 for (AB . PR) 
+		
+		*/        
+
+			ui32 pointCount = pointShape.vertexCount();
+			ui32 edgeCount = edgeShape.vertexCount();
+
+			if (pointCount == 0) return;
+
+			ui32 ai = edgeA;
+			ui32 bi = edgeB;
+			ui32 pi = pointIndex;
+
+			ui32 ri = pi == 0 ? pointCount - 1 : pi-1;
+			ui32 qi = (pi + 1) % pointCount;
+
+
+			Vector2 a = edgeShape.getVertex(ai);
+			Vector2 b = edgeShape.getVertex(bi);
+			
+			
+			Vector2 p = pointShape.getVertex(pi);
+			Vector2 q = pointShape.getVertex(qi);
+			Vector2 r = pointShape.getVertex(ri);
+
+			Vector2 ab = b - a;
+			Vector2 pq = q - p;
+			Vector2 pr = r - p;
+
+
+			Vector2 abNormal = ab.getNormalized();
+			Vector2 pqNormal = pq.getNormalized();
+			Vector2 prNormal = pr.getNormalized();
+
+			real ab_pq = abNormal.dot(pqNormal);
+			real ab_pr = abNormal.dot(prNormal);
+
+			real pqMag = pq.magnitude();
+			real prMag = pr.magnitude();
+
+			
+
+			bool pqPass = math::abs(ab_pq) > 1.0f - tol && math::abs(ab_pq) < 1.0f + tol;
+			bool prPass = math::abs(ab_pr) > 1.0f - tol && math::abs(ab_pr) < 1.0f + tol;
+
+			m.contact[1] = m.contact[0];
+
+			m.point[1] = p;
+			m.pointCount = 1;
+
+			if (pqPass)
+			{
+				if (ab_pq < 0)
+				{
+					Vector2 pa = a - p;
+					real pa_pq = pa.dot(pqNormal);
+					if (pa_pq > 0 && pa_pq < pqMag)
+					{
+						m.point[1] = a;
+						m.contact[1].normal = -m.contact[0].normal;
+						m.contact[1].tangent = -m.contact[0].tangent;
+					}
+					else m.point[1] = q;
+				}
+				else
+				{
+					Vector2 pb = b - p;
+					real pb_pq = pb.dot(pqNormal);
+					if (pb_pq > 0 &&  pb_pq < pqMag)
+					{
+						m.point[1] = b;
+						m.contact[1].normal = -m.contact[0].normal;
+						m.contact[1].tangent = -m.contact[0].tangent;
+					}
+					else m.point[1] = q;
+				}
+				m.pointCount = 2;
+			}
+			else if (prPass)
+			{
+				if (ab_pr < 0)
+				{
+					Vector2 pa = a - p;
+
+					real pa_pr = pa.dot(prNormal);
+					if (pa_pr > 0 && pa_pr < prMag)
+					{
+						m.point[1] = a;
+						m.contact[1].normal = -m.contact[0].normal;
+						m.contact[1].tangent = -m.contact[0].tangent;
+					}
+					else m.point[1] = r;
+				}
+				else
+				{
+					Vector2 pb = b - p;
+
+					real pb_pr = pb.dot(prNormal);
+					if (pb_pr > 0 && pb_pr < prMag)
+					{
+						m.point[1] = b;
+						m.contact[1].normal = -m.contact[0].normal;
+						m.contact[1].tangent = -m.contact[0].tangent;
+					}
+					else m.point[1] = r;
+				}
+				m.pointCount = 2;
+			}
+		}
+
+
+		Manifold2D findContactByEPA(const Shape2D& a, const Shape2D& b, SupportPoint s[3])
+		{
+			if (s == nullptr) return Manifold2D();
 			Polytope p;
 
 			PolytopeSegment* ps = nullptr;
 			for (ui32 i = 0; i < 3; i++)
 			{
-				ps = p.addVertex(s[i].point, ps);
+				ps = p.addVertex(s[i], ps);
 			}
 			ps = p.first;
 
@@ -236,26 +369,80 @@ namespace bs
 			
 			do
 			{
+				if (!newClosest) return Manifold2D();
 				closest = newClosest;
 
 				SupportPoint lastsp;
 				lastsp = sp;
 				sp = getSupportPoint(a, b, closest->normal);
 
-				if (sp.point != lastsp.point) p.addVertex(sp.point, closest);
+				if (sp.point != lastsp.point) p.addVertex(sp, closest);
 				newClosest = p.findClosestEdge(penetration);
 
 			} while (closest != newClosest);
+
+			Vector2 a1 = a.getVertex(closest->s.a.a);
+			Vector2 b1 = b.getVertex(closest->s.a.b);
+
+			Manifold2D manifold = {};
 			
-			Contact contact = {};	
-			contact.mtd[0].normal = closest->normal;
-			contact.mtd[0].penetration = penetration;
-			contact.point[0] = a.getVertex(sp.a);
-			contact.point[1] = b.getVertex(sp.b);
-			return contact;
+			if (closest->s.a.b == closest->s.b.b)
+			{
+				manifold.contact[0].normal = closest->normal;
+				manifold.contact[0].penetration = penetration;
+				manifold.contact[0].tangent = Vector2::cross(1, closest->normal);
+				manifold.point[0] = b1;
+
+				clip(manifold, b, a,
+					closest->s.a.b,
+					closest->s.a.a,
+					closest->s.b.a,
+					BS_PENETRATION_CLIP_TOLERANCE);
+				manifold.flip = false;
+
+				RenderManager::drawDebugCircle(b1, 0.01f, 32, ColorRGBAf::blue);
+				RenderManager::drawDebugCircle(manifold.point[1], 0.01f, 32, ColorRGBAf::blue);
+			}
+			else
+			{
+
+				manifold.contact[0].normal = -closest->normal;
+				manifold.contact[0].penetration = penetration;
+				manifold.contact[0].tangent = Vector2::cross(1,-closest->normal);
+				manifold.point[0] = a1;
+				
+
+
+				clip(manifold, a, b,
+					closest->s.a.a,
+					closest->s.a.b,
+					closest->s.b.b,
+					BS_PENETRATION_CLIP_TOLERANCE);
+
+				manifold.flip = true;
+
+				RenderManager::drawDebugCircle(a1, 0.01f, 32, ColorRGBAf::red);
+				RenderManager::drawDebugCircle(manifold.point[1], 0.01f, 32, ColorRGBAf::red);
+			}
+
+			return manifold;
 		}
 
+
+		struct DebugTestSimplexStruct
+		{
+			ui32 hits;
+			ui32 failCount2a;
+			ui32 failCount2b;
+			ui32 failCount3a;
+			ui32 failCount3b;
+			ui32 failCount3c;
+			ui32 failCountend;
+			const char* lastHit;
+		};
 		
+		static DebugTestSimplexStruct debugStruct;
+
 		/*
 		simplex:		Simplex containing 3 Miknowski points
 		simplexCount:	How many points the simplex has
@@ -267,10 +454,8 @@ namespace bs
 		bool testSimplex(SupportPoint simplex[3], ui32& simplexCount, 
 			Vector2& direction, ui32 index)
 		{
-			if (simplexCount == 3)
-			{
-				int j = 12;
-			}
+			debugStruct.hits++;
+
 			//Helper variables
 			ui32 nextIndex = index == 0 ? 2 : index - 1;
 			ui32 prevIndex = nextIndex == 0 ? 2 : nextIndex - 1;
@@ -288,19 +473,27 @@ namespace bs
 				if (dot > 0)
 				{
 					direction = getPerpTowardsOrigin(a, b);
+					debugStruct.failCount2a++;
+					debugStruct.lastHit = "failCount2a";
 				}
 				else
 				{
 					//Need to look further.
 					simplexCount--;
 					direction = AO;
+					debugStruct.failCount2b++;
+					debugStruct.lastHit = "failCount2b";
 				}
 				return false;
 			}
 			if (simplexCount == 3)
 			{
+
 				Vector2 BA = a - b;
 				Vector2 CA = a - c;
+
+
+				Vector2 AB = b - a;
 				Vector2 BC = c - b;
 
 				Vector2 normAB = getPerpTowardsOutside(c, a, b);
@@ -316,6 +509,11 @@ namespace bs
 				{
 					simplexCount--;
 					direction = normBC;
+					debugStruct.failCount3a++;
+					debugStruct.lastHit = "failCount3a";
+
+					Vector2 shape[3];
+					for (ui32 i = 0; i < 3; i++)shape[i] = simplex[i].point;
 					return false;
 				}
 
@@ -325,6 +523,11 @@ namespace bs
 				{
 					simplexCount--;
 					direction = normAB;
+					debugStruct.failCount3b++;
+					debugStruct.lastHit = "failCount3b";
+
+					Vector2 shape[3];
+					for (ui32 i = 0; i < 3; i++)shape[i] = simplex[i].point;
 					return false;
 				}
 
@@ -334,37 +537,37 @@ namespace bs
 				{
 					simplexCount--;
 					direction = normCA;
+					debugStruct.failCount3c++;
+					debugStruct.lastHit = "failCount3c";
+
+					Vector2 shape[3];
+					for (ui32 i = 0; i < 3; i++)shape[i] = simplex[i].point;
 					return false;
 				}
 
-				Vector2 shape[3];
-				shape[0] = simplex[0].point;
-				shape[1] = simplex[1].point;
-				shape[2] = simplex[2].point;
-
 				return true;
 			}
-			return false;
+			debugStruct.failCountend++;
+			return true;
 		}
 
-		Collision testCollision(const Shape2D & a, const Shape2D & b)
+		Collision2D testCollision(const Shape2D & a, const Shape2D & b)
 		{
 			ui32 maxIterations = a.vertexCount() + b.vertexCount();
 
 			if (maxIterations < 6) return falseCollision();
 			//Initialize
-			Collision result = {};
+			Collision2D result = {};
 
-			SupportPoint simplexPoint = getSupportPoint(a, b, - (a.center() - b.center()));
+			SupportPoint simplexPoint = getSupportPoint(a, b, Vector2::up);
 			Vector2 direction = -simplexPoint.point;
 			SupportPoint simplex[3];
 			simplex[0] = simplexPoint;
 			
 			ui32 simplexCount = 1;
 			ui32 index = 1;
-			
-			
-			maxIterations *= 3;
+
+			debugStruct = {};
 			//loop
 			for(int i = 0; i<maxIterations;i++)
 			{
@@ -372,18 +575,6 @@ namespace bs
 
 				if (simplexPoint.point.dot(direction) < 0)
 				{
-					result.collided = false;
-					result.contact.point[0] = simplex[index].point;
-					result.contact.point[1] = simplex[(index + 1) % 3].point;
-					for (ui32 j = 0; j < 3; j++)
-					{
-						result.simplex[j] = simplex[j].point;
-						int newIndex = j == 0 ? 2 : j - 1;
-						Vector2 previousface = simplex[newIndex].point;
-						Vector2 face = simplex[(j + 1) % 3].point;
-						result.simplexNormals[j] = getPerpTowardsOutside(previousface, face,simplex[j].point);
-					}
-					
 					return result;
 				}
 				simplex[index] = simplexPoint;
@@ -395,51 +586,19 @@ namespace bs
 				if (testSimplex(simplex, simplexCount, direction, index))
 				{
 					result.collided = true;
-
-					result.contact = findContactByEPA(a, b, simplex);
-					RenderManager::drawDebugLine(result.contact.point[0],
-						result.contact.point[0] + result.contact.mtd[0].normal 
-						* result.contact.mtd[0].penetration,ColorRGBAf::blue);
-					RenderManager::drawDebugLine(result.contact.point[1], 
-						result.contact.point[1] + result.contact.mtd[0].normal 
-						* result.contact.mtd[0].penetration, ColorRGBAf::red);
-					result.contact.point[0] = simplex[index].point;
-					result.contact.point[1] = simplex[(index + 1) % 3].point;
-					
-					for (ui32 j = 0; j < 3; j++)
-					{
-						result.simplex[j] = simplex[j].point;
-						int newIndex = j == 0 ? 2 : j - 1;
-						Vector2 previousface = simplex[newIndex].point;
-						Vector2 face = simplex[(j + 1) % 3].point;
-						result.simplexNormals[j] = getPerpTowardsOutside(previousface, face, simplex[j].point);
-					}
+					result.manifold = findContactByEPA(a, b, simplex);
 					return result;
 				}
 
 				index++;
 				index %= 3;
 			}
-
-
-			{
-				result.collided = false;
-				result.contact.point[0] = simplex[index].point;
-				result.contact.point[1] = simplex[(index + 1) % 3].point;
-				for (ui32 j = 0; j < 3; j++)
-				{
-					result.simplex[j] = simplex[j].point;
-					int newIndex = j == 0 ? 2 : j - 1;
-					Vector2 previousface = simplex[newIndex].point;
-					Vector2 face = simplex[(j + 1) % 3].point;
-					result.simplexNormals[j] = getPerpTowardsOutside(previousface, face, simplex[j].point);
-				}
-				return result;
-			}
+			result.collided = true;
+			result.manifold.pointCount = 1;
+			result.breakPoint = true;
+			return result;
 		}
-
 	}
-	
 }
 
 

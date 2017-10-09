@@ -6,14 +6,18 @@ namespace bs
 	Shape2D::Shape2D()
 		:m_vertexCount(0),
 		m_center(Vector2::zero),
-		m_radius(0)
+		m_centerOfGravity(Vector2::zero),
+		m_radius(0),
+		m_owner(nullptr)
 	{
 	}
 
 	Shape2D::Shape2D(const Shape2D & s)
 		:m_vertexCount(s.m_vertexCount),
 		m_center(s.m_center),
-		m_radius(s.m_radius)
+		m_centerOfGravity(s.m_centerOfGravity),
+		m_radius(s.m_radius),
+		m_owner(s.m_owner)
 	{
 		copyArray((Vector2*)s.m_vertices, m_vertices, s.m_vertexCount);
 		copyArray((Vector2*)s.m_normals, m_normals, s.m_vertexCount);
@@ -102,6 +106,37 @@ namespace bs
 		}
 
 		m_radius = math::sqrt(m_radius);
+
+		getInertiaMoment();
+	}
+
+	//Just like in box2D ;)
+	real Shape2D::getInertiaMoment()
+	{
+		real inertia = 0.0f;
+
+		Vector2 c = Vector2::zero;
+
+		for (ui32 i = 0; i < m_vertexCount; i++)
+		{
+			Vector2 triA = m_vertices[i] - m_center;
+			Vector2 triB = m_vertices[(i + 1) % m_vertexCount] - m_center;
+
+			real sumX = triA.x * triA.x + triA.x * triB.x + triB.x * triB.x;
+			real sumY = triA.y * triA.y + triA.y * triB.y + triB.y * triB.y;
+
+			real j = Vector2::cross(triA, triB);
+
+			real triangleArea = 0.5f * j;
+
+			// Area weighted centroid
+			c += (triA + triB) * triangleArea * 1.0f/3.0f;
+
+			inertia +=  j  * (sumX + sumY);
+		}
+
+		m_centerOfGravity = m_center + c;
+		return inertia;
 	}
 
 	Vector2 Shape2D::getSupportPoint(const Vector2 & direction) const
