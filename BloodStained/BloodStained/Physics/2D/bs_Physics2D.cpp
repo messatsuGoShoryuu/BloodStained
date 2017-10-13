@@ -19,14 +19,10 @@ namespace bs
 		for (ui32 i = 0; i < count; i++)
 		{
 			Vector2 vertex = sourceVertices[i];
+			Vector2 pivot = sourceVertices[i] - shape.center();
 
-			vertex.x = (sourceVertices[i].x - shape.centerOfGravity().x)
-				* basis->cos() + (sourceVertices[i].y -
-				shape.centerOfGravity().y) * basis->sin();
-			vertex.y = -(sourceVertices[i].x - shape.centerOfGravity().x)
-				* basis->sin() 
-				+ (sourceVertices[i].y - shape.centerOfGravity().y)
-				* basis->cos();
+			vertex.x = pivot.x * basis->cos() - pivot.y * basis->sin();
+			vertex.y = pivot.x * basis->sin() + pivot.y * basis->cos();
 
 			vertex.x *= scale.x;
 			vertex.y *= scale.y;

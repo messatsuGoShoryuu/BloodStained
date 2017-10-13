@@ -35,13 +35,13 @@ bs::Body2D::~Body2D()
 void bs::Body2D::addForceAtPosition(const Vector2 & force, const Vector2 & position)
 {
 	m_acceleration += force;
-	m_torque -= Vector2::cross(position, force);
+	m_torque += Vector2::cross(position, force);
 }
 
 void bs::Body2D::addImpulseAtPosition(const Vector2 & force, const Vector2 & position)
 {
 	m_velocity += force;
-	m_angularVelocity -= Vector2::cross(position, force);
+	m_angularVelocity += Vector2::cross(position, force);
 
 }
 

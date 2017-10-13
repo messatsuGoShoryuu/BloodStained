@@ -7,14 +7,15 @@ namespace bs
 {
 	struct Contact2D
 	{
+		Vector2 point;
 		Vector2 normal;
 		Vector2 tangent;
 		real penetration;
+		bool incident;
 	};
 
 	struct Manifold2D
 	{
-		Vector2 point[2];
 		Contact2D contact[2];
 		ui32 pointCount;
 		bool flip;

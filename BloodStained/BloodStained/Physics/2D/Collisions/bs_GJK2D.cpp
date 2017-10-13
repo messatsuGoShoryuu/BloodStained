@@ -3,7 +3,7 @@
 #include  <Rendering/bs_RenderManager.h>
 #include <Physics/2D/bs_Physics2D.h>
 
-#define BS_PENETRATION_CLIP_TOLERANCE 0.00005
+#define BS_PENETRATION_CLIP_TOLERANCE 0.0005
 
 namespace bs
 {
@@ -180,6 +180,7 @@ namespace bs
 				PolytopeSegment* result = nullptr;
 				do
 				{
+					if (!s) return nullptr;
 					dot = s->s.a.point.dot(s->normal);
 					if (dot < bestDot)
 					{
@@ -268,6 +269,7 @@ namespace bs
 			Vector2 pq = q - p;
 			Vector2 pr = r - p;
 
+			
 
 			Vector2 abNormal = ab.getNormalized();
 			Vector2 pqNormal = pq.getNormalized();
@@ -286,7 +288,7 @@ namespace bs
 
 			m.contact[1] = m.contact[0];
 
-			m.point[1] = p;
+			m.contact[1].point = p;
 			m.pointCount = 1;
 
 			if (pqPass)
@@ -297,11 +299,25 @@ namespace bs
 					real pa_pq = pa.dot(pqNormal);
 					if (pa_pq > 0 && pa_pq < pqMag)
 					{
-						m.point[1] = a;
+						m.contact[1].point = a;
 						m.contact[1].normal = -m.contact[0].normal;
 						m.contact[1].tangent = -m.contact[0].tangent;
+						m.contact[1].incident = false;
 					}
-					else m.point[1] = q;
+					else
+					{
+						m.contact[1].point = q;	
+					}
+
+					Vector2 pb = b - p;
+					real pb_pq = pb.dot(pqNormal);
+					if (pb_pq > 0 && pb_pq < pqMag)
+					{
+						m.contact[0].point = b;
+						m.contact[0].normal = -m.contact[0].normal;
+						m.contact[0].tangent = -m.contact[0].tangent;
+						m.contact[0].incident = false;
+					}
 				}
 				else
 				{
@@ -309,11 +325,25 @@ namespace bs
 					real pb_pq = pb.dot(pqNormal);
 					if (pb_pq > 0 &&  pb_pq < pqMag)
 					{
-						m.point[1] = b;
+						m.contact[1].point = b;
 						m.contact[1].normal = -m.contact[0].normal;
 						m.contact[1].tangent = -m.contact[0].tangent;
+						m.contact[1].incident = false;
 					}
-					else m.point[1] = q;
+					else
+					{
+						m.contact[1].point = q;
+					}
+
+					Vector2 pa = a - p;
+					real pa_pq = pa.dot(pqNormal);
+					if (pa_pq > 0 && pa_pq < pqMag)
+					{
+						m.contact[0].point = a;
+						m.contact[0].normal = -m.contact[0].normal;
+						m.contact[0].tangent = -m.contact[0].tangent;
+						m.contact[0].incident = false;
+					}
 				}
 				m.pointCount = 2;
 			}
@@ -326,11 +356,26 @@ namespace bs
 					real pa_pr = pa.dot(prNormal);
 					if (pa_pr > 0 && pa_pr < prMag)
 					{
-						m.point[1] = a;
+						m.contact[1].point = a;
 						m.contact[1].normal = -m.contact[0].normal;
 						m.contact[1].tangent = -m.contact[0].tangent;
+						m.contact[1].incident = false;
 					}
-					else m.point[1] = r;
+					else
+					{
+						m.contact[1].point = r;
+					}
+
+					Vector2 pb = b - p;
+
+					real pb_pr = pb.dot(prNormal);
+					if (pb_pr > 0 && pb_pr < prMag)
+					{
+						m.contact[0].point = b;
+						m.contact[0].normal = -m.contact[0].normal;
+						m.contact[0].tangent = -m.contact[0].tangent;
+						m.contact[0].incident = false;
+					}
 				}
 				else
 				{
@@ -339,11 +384,26 @@ namespace bs
 					real pb_pr = pb.dot(prNormal);
 					if (pb_pr > 0 && pb_pr < prMag)
 					{
-						m.point[1] = b;
+						m.contact[1].point = b;
 						m.contact[1].normal = -m.contact[0].normal;
 						m.contact[1].tangent = -m.contact[0].tangent;
+						m.contact[1].incident = false;
 					}
-					else m.point[1] = r;
+					else
+					{
+						m.contact[1].point = r;
+					}
+
+					Vector2 pa = a - p;
+
+					real pa_pr = pa.dot(prNormal);
+					if (pa_pr > 0 && pa_pr < prMag)
+					{
+						m.contact[0].point = a;
+						m.contact[0].normal = -m.contact[0].normal;
+						m.contact[0].tangent = -m.contact[0].tangent;
+						m.contact[0].incident = false;
+					}
 				}
 				m.pointCount = 2;
 			}
@@ -385,13 +445,14 @@ namespace bs
 			Vector2 b1 = b.getVertex(closest->s.a.b);
 
 			Manifold2D manifold = {};
-			
+
 			if (closest->s.a.b == closest->s.b.b)
 			{
 				manifold.contact[0].normal = closest->normal;
 				manifold.contact[0].penetration = penetration;
 				manifold.contact[0].tangent = Vector2::cross(1, closest->normal);
-				manifold.point[0] = b1;
+				manifold.contact[0].point = b1;
+				manifold.contact[0].incident = true;
 
 				clip(manifold, b, a,
 					closest->s.a.b,
@@ -399,19 +460,16 @@ namespace bs
 					closest->s.b.a,
 					BS_PENETRATION_CLIP_TOLERANCE);
 				manifold.flip = false;
-
-				RenderManager::drawDebugCircle(b1, 0.01f, 32, ColorRGBAf::blue);
-				RenderManager::drawDebugCircle(manifold.point[1], 0.01f, 32, ColorRGBAf::blue);
+				if (!manifold.contact[0].incident) manifold.flip = !manifold.flip;
 			}
 			else
 			{
 
 				manifold.contact[0].normal = -closest->normal;
 				manifold.contact[0].penetration = penetration;
-				manifold.contact[0].tangent = Vector2::cross(1,-closest->normal);
-				manifold.point[0] = a1;
-				
-
+				manifold.contact[0].tangent = Vector2::cross(1, -closest->normal);
+				manifold.contact[0].point = a1;
+				manifold.contact[0].incident = true;
 
 				clip(manifold, a, b,
 					closest->s.a.a,
@@ -420,9 +478,7 @@ namespace bs
 					BS_PENETRATION_CLIP_TOLERANCE);
 
 				manifold.flip = true;
-
-				RenderManager::drawDebugCircle(a1, 0.01f, 32, ColorRGBAf::red);
-				RenderManager::drawDebugCircle(manifold.point[1], 0.01f, 32, ColorRGBAf::red);
+				if (!manifold.contact[0].incident) manifold.flip = !manifold.flip;
 			}
 
 			return manifold;

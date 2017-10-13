@@ -41,7 +41,7 @@ namespace bs
 		_integrate(dt);
 		_syncShapes();
 		_collideShapes();
-		_resolveCollisions();
+		_resolveCollisions(dt);
 		_correctPositions();
 		_syncShapes();
 #ifdef BS_DEBUG_PHYSICS
@@ -114,22 +114,28 @@ namespace bs
 
 		for (ptrsize a = 0; a < countA; a++)
 		{
-			for (ptrsize b = 1; b < countB; b++)
+			for (ptrsize b = a+1; b < countB; b++)
 			{
-				CollisionPair2D* p = (CollisionPair2D*)s_collisionPairs.getFrame();
+				Collision2D col = gjk2D::testCollision(*s_shapes[a], *s_shapes[b]);
 
-				s_collisionPairs.allocate(sizeof(CollisionPair2D), alignof(CollisionPair2D));
-				s_collisionPairCount++;
+				if (col.collided)
+				{
+					CollisionPair2D* p = (CollisionPair2D*)s_collisionPairs.getFrame();
 
-				p->a = (PhysicalObject2D*)s_shapes[a]->owner();
-				p->b = (PhysicalObject2D*)s_shapes[b]->owner();
+					s_collisionPairs.allocate(sizeof(CollisionPair2D), alignof(CollisionPair2D));
+					s_collisionPairCount++;
+					p->r = (PhysicalObject2D*)s_shapes[a]->owner();
+					p->i = (PhysicalObject2D*)s_shapes[b]->owner();
 
-				p->collision = gjk2D::testCollision(*s_shapes[a], *s_shapes[b]);
+					p->collision = col;
+					RenderManager::drawDebugLine(p->collision.manifold.contact[0].point, p->collision.manifold.contact[0].point + p->collision.manifold.contact[0].normal * 3, ColorRGBAf::green);
+					RenderManager::drawDebugLine(p->collision.manifold.contact[1].point, p->collision.manifold.contact[1].point + p->collision.manifold.contact[1].normal * 3, ColorRGBAf::green);
+				}
 			}
 		}
 	}
 
-	void PhysicsManager2D::_resolveCollisions()
+	void PhysicsManager2D::_resolveCollisions(real dt)
 	{
 		ptrsize n = s_collisionPairCount;
 		for (ptrsize k = 0; k < n; k++)
@@ -137,57 +143,65 @@ namespace bs
 			CollisionPair2D* pair = (CollisionPair2D*)s_collisionPairs.base();
 			pair += k;
 
+			ptrsize pointCount = pair->collision.manifold.pointCount;
+
 			if (pair->collision.collided)
 			{
 				bool flip = pair->collision.manifold.flip;
 
-				Body2D* a = flip ? pair->b->body() : pair->a->body();
-				Body2D* b = flip ? pair->a->body() : pair->b->body();
+				Body2D* ref = flip ? pair->i->body() : pair->r->body();
+				Body2D* inc = flip ? pair->r->body() : pair->i->body();
+
 
 				for (ptrsize i = 0; i < pair->collision.manifold.pointCount; i++)
 				{
 
 					Vector2 n = pair->collision.manifold.contact[i].normal;
 
-					Vector2 A = pair->collision.manifold.point[i] - a->transform().position();
-					Vector2 B = pair->collision.manifold.point[i] - b->transform().position();
+					Vector2 posRef = pair->collision.manifold.contact[i].point - ref->transform().position();
+					Vector2 posInc = pair->collision.manifold.contact[i].point - inc->transform().position();
 
-					Vector2 vA = a->velocity();
-					Vector2 vB = b->velocity();
+					Vector2 vRef = ref->velocity();
+					Vector2 vInc = inc->velocity();
 
-					real iA = a->inertia();
-					real iB = b->inertia();
+					real iRef = ref->inertia();
+					real iInc = inc->inertia();
 
-					iA = iA == 0.0f ? 0.0f : 1.0f / iA;
-					iB = iB == 0.0f ? 0.0f : 1.0f / iB;
+					iRef = iRef == 0.0f ? 0.0f : 1.0f / iRef;
+					iInc = iInc == 0.0f ? 0.0f : 1.0f / iInc;
 
-					real wA = a->angularVelocity();
-					real wB = b->angularVelocity();
+					real wRef = ref->angularVelocity();
+					real wInc = inc->angularVelocity();
 
-					Vector2 relV = vA + Vector2::cross(wA, A) - (vB + Vector2::cross(wB, B));
+					Vector2 relV = vInc + Vector2::cross(-wInc, posInc) - vRef - Vector2::cross(-wRef, posRef);
+					real contactV = relV.dot(n);
 
-					real impulseScalar = relV.dot(n);
+					real e = 0.0f;
+					real impulseScalar = -(1.0f - e) * contactV;
+					impulseScalar /= (real)pair->collision.manifold.pointCount;
+					real refXn = Vector2::cross(posRef, n);
+					real incXn = Vector2::cross(posInc, n);
+					real divisor = 1.0f + refXn * refXn * iRef + incXn * incXn * iInc;
+					impulseScalar /= divisor;
 
-
-					if (pair->collision.manifold.pointCount == 2 || impulseScalar > 0)
 					{
 						Vector2 impulse = n * impulseScalar;
-						vA -= impulse;
-						vB += impulse;
+						vRef -= impulse;
+						vInc += impulse;
 
-						wA += iA * Vector2::cross(A, impulse);
-						wB -= iB * Vector2::cross(B, impulse);
+						wRef -= iRef * Vector2::cross(posRef, impulse);
+						wInc += iInc * Vector2::cross(posInc, impulse);
 
-						if (a->inertia() > 0.0f)
+						if (ref->inertia() > 0.0f)
 						{
-							a->setAngularVelocity(wA);
-							a->setVelocity(vA);
+							ref->setAngularVelocity(wRef);
+							ref->setVelocity(vRef);
 						}
 
-						if (b->inertia() > 0.0f)
+						if (inc->inertia() > 0.0f)
 						{
-							b->setAngularVelocity(wB);
-							b->setVelocity(vB);
+							inc->setAngularVelocity(wInc);
+							inc->setVelocity(vInc);
 						}
 					}
 				}
@@ -206,8 +220,8 @@ namespace bs
 			{
 				bool flip = pair->collision.manifold.flip;
 
-				Body2D* a = flip ? pair->b->body() : pair->a->body();
-				Body2D* b = flip ? pair->a->body() : pair->b->body();
+				Body2D* a = flip ? pair->i->body() : pair->r->body();
+				Body2D* b = flip ? pair->r->body() : pair->i->body();
 
 				bool inverse = pair->collision.manifold.contact[0].normal == -pair->collision.manifold.contact[1].normal;
 				real p = pair->collision.manifold.contact[0].penetration;
@@ -216,8 +230,8 @@ namespace bs
 				for (int i = 0; i < pair->collision.manifold.pointCount; i++)
 				{
 
-					real coef = math::maximum(p - 0.0008f, 0.0f);
-					Vector2 correction = pair->collision.manifold.contact[i].normal * (coef * 0.2f / c);
+					real coef = math::maximum(p - 0.000005f, 0.0f);
+					Vector2 correction = pair->collision.manifold.contact[i].normal * (coef * 1.0f / c);
 					real scalar = 1.0f;
 					if (i == 1 && inverse)scalar *= -1.0f;
 
@@ -225,15 +239,10 @@ namespace bs
 					if (a->inertia() > 0.0f) a->transform().translate(-correction * scalar);
 					if (b->inertia() > 0.0f) b->transform().translate(correction * scalar);
 
-#ifdef BS_DEBUG_PHYSICS
-					ColorRGBAf flipColor = pair->collision.manifold.flip ? ColorRGBAf::black : ColorRGBAf::red;
-					RenderManager::drawDebugCircle(Vector2(-0.5f + 0.2f*i, 0.5f), 0.1f, 32, flipColor);
-#endif
 				}
 			}
 		}
 	}
-
 	void PhysicsManager2D::_integrate(real dt)
 	{
 		ptrsize count = s_bodies.count();

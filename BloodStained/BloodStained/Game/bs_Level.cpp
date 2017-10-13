@@ -67,17 +67,18 @@ namespace bs
 		if (InputManager::mouse.isButtonPressed(MOUSE_BUTTON_2))
 		{
 			PhysicalObject2D* box = PhysicsManager2D::addPhysicalObject();
-			box->shape().addVertex(Vector2(-0.2f,0.3f));
-			box->shape().addVertex(Vector2(0.2f, 0.3f));
-			box->shape().addVertex(Vector2(0.2f, -0.3f));
-			box->shape().addVertex(Vector2(-0.2f, -0.3f));
+			box->shape().addVertex(Vector2(-0.5f,0.7f));
+			box->shape().addVertex(Vector2(0.5f, 0.7f));
+			box->shape().addVertex(Vector2(0.5f, -0.7f));
+			box->shape().addVertex(Vector2(-0.5f, -0.7f));
 
 			box->shape().calculateNormals();
 			box->shape().calculateCenter();
-			box->body()->setInertia(0.5f);
+			real inertia = box->shape().getInertiaMoment();
+			box->body()->setInertia(inertia);
 			box->body()->setGravityScale(1.0f);
 
-			box->body()->transform().setPosition(Vector2::zero);
+			box->body()->transform().setPosition(pos2);
 		}
 
 
@@ -133,8 +134,8 @@ namespace bs
 			
 		}
 
-		if (InputManager::keyboard.isKeyHeld(KB_S)) player->body()->transform().multScale(Vector2(1.1f, 1.1f));
-		if (InputManager::keyboard.isKeyHeld(KB_W)) player->body()->transform().multScale(Vector2(0.9f, 0.9f));
+		if (InputManager::keyboard.isKeyHeld(KB_S)) cam->setScale(cam->scale() * 0.9);
+		if (InputManager::keyboard.isKeyHeld(KB_W)) cam->setScale(cam->scale() * 1.1);
 
 		if (InputManager::keyboard.isKeyHeld(KB_A)) player->body()->transform().rotate(-(BS_PI / 180.0f));
 		if (InputManager::keyboard.isKeyHeld(KB_D)) player->body()->transform().rotate(BS_PI / 180.0f);
@@ -145,22 +146,41 @@ namespace bs
 		if (InputManager::keyboard.isKeyPressed(KB_C))
 		{
 			player->body()->setGravityScale(1.0f);
-			player->shape().calculateCenter();
 			player->shape().calculateNormals();
-			player->body()->setInertia(0.6f);
+			player->shape().calculateCenter();
+			player->shape().getInertiaMoment();
+			player->body()->setInertia(player->shape().getInertiaMoment());
+			
 		}
 
 		if (InputManager::keyboard.isKeyPressed(KB_G))
 		{
-			ground->shape().addVertex(-2.0f, -0.5f);
-			ground->shape().addVertex(1.0f, -0.5f);
-			ground->shape().addVertex(2.0f, -1.0f);
-			ground->shape().addVertex(-3.0f, -3.0f);
+			ground->shape().addVertex(-20.0f, 5.5f);
+			ground->shape().calculateNormals();
+			ground->shape().calculateCenter();
+			ground->shape().getInertiaMoment();
+
+			ground->shape().addVertex(5.0f, 5.5f);
+			ground->shape().calculateNormals();
+			ground->shape().calculateCenter();
+			ground->shape().getInertiaMoment();
+
+			ground->shape().addVertex(10.0f, -10.0f);
+			ground->shape().calculateNormals();
+			ground->shape().calculateCenter();
+			ground->shape().getInertiaMoment();
+
+			ground->shape().addVertex(-20.0f, -10.0f);
+			ground->shape().calculateNormals();
+			ground->shape().calculateCenter();
+			ground->shape().getInertiaMoment();
 
 			ground->shape().calculateNormals();
 			ground->shape().calculateCenter();
+			ground->shape().getInertiaMoment();
 			ground->body()->setInertia(0.0f);
-			ground->body()->transform().setPosition(ground->shape().centerOfGravity());
+
+			ground->body()->transform().setPosition(Vector2(0.0f, -10.0f));
 		}
 	
 

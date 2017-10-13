@@ -11,7 +11,7 @@ g:\programming\bloodstained\bloodstained\bloodstained\containers\bs_hashmap.h(39
 g:\programming\bloodstained\bloodstained\bloodstained\containers\bs_hashmap.h(48): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
 g:\programming\bloodstained\bloodstained\bloodstained\rendering\bs_rendermanager.h(20): warning C4099: 'bs::ColorRGBAf': type name first seen using 'struct' now seen using 'class'
   g:\programming\bloodstained\bloodstained\bloodstained\rendering\bs_color.h(54): note: see declaration of 'bs::ColorRGBAf'
-g:\programming\bloodstained\bloodstained\bloodstained\physics\2d\bs_physicsmanager2d.cpp(216): warning C4018: '<': signed/unsigned mismatch
+g:\programming\bloodstained\bloodstained\bloodstained\physics\2d\bs_physicsmanager2d.cpp(230): warning C4018: '<': signed/unsigned mismatch
 g:\programming\bloodstained\bloodstained\bloodstained\containers\bs_array.h(262): warning C4267: 'initializing': conversion from 'size_t' to 'ui32', possible loss of data
   g:\programming\bloodstained\bloodstained\bloodstained\containers\bs_array.h(258): note: while compiling class template member function 'void bs::Array<bs::PhysicalObject2D *>::remove(const T &)'
           with

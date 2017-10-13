@@ -132,11 +132,11 @@ namespace bs
 			// Area weighted centroid
 			c += (triA + triB) * triangleArea * 1.0f/3.0f;
 
-			inertia +=  j  * (sumX + sumY);
+			inertia +=  (0.25f * 1.0f / 3.0f) * j  * (sumX + sumY);
 		}
 
 		m_centerOfGravity = m_center + c;
-		return inertia;
+		return math::abs(inertia);
 	}
 
 	Vector2 Shape2D::getSupportPoint(const Vector2 & direction) const

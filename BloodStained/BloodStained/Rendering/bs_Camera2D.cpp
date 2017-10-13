@@ -8,7 +8,7 @@ namespace bs
 		m_orientation(0.0f),
 		m_position(Vector2::zero),
 		m_depth(-10.0),
-		m_scale(1.0f)
+		m_scale(10.0f)
 	{
 		m_viewPort.w = static_cast<f32>(Screen::width());
 		m_viewPort.h = static_cast<f32>(Screen::height());
@@ -53,13 +53,13 @@ namespace bs
 	Vector2 Camera2D::screenToWorld(const Vector2 & screenPoint)
 	{
 		Vector2 coordinates = screenPoint;
-		coordinates.x /= static_cast<f32>(Screen::width());
-		coordinates.y /= static_cast<f32>(-(i32)Screen::height());
+		coordinates.x /= static_cast<f32>(Screen::width()) / m_scale;
+		coordinates.y /= static_cast<f32>(-(i32)Screen::height()) / m_scale;
 
-		coordinates.x -= 0.5f;
-		coordinates.x *= 2.0f * Screen::aspectRatio() / m_scale;
-		coordinates.y += 0.5f;
-		coordinates.y *= 2.0f / m_scale;
+		coordinates.x -= 0.5f * m_scale;
+		coordinates.x *= 2.0f * Screen::aspectRatio();
+		coordinates.y += 0.5f * m_scale;
+		coordinates.y *= 2.0f;
 
 		coordinates += m_position;
 
@@ -78,8 +78,8 @@ namespace bs
 	void	Camera2D::_constructProjectionMatrix()
 	{
 		//Left, Right, Top, Bottom, Near, Far.
-		f32 l = -m_aspectRatio;
-		f32 r = m_aspectRatio;
+		f32 l = -m_scale * m_aspectRatio;
+		f32 r = m_scale * m_aspectRatio;
 		f32 t = m_scale;
 		f32 b = -m_scale;
 		f32 n = m_nearPlane;

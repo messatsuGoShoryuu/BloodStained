@@ -15,7 +15,7 @@ namespace bs
 
 		inline Shape2D& shape()		{ return m_shape; }
 		inline const Shape2D& shape() const { return m_shape; }
-		inline const Shape2D*	relativeShape() const { return m_relativeShape; }
+		inline Shape2D*	relativeShape() { return m_relativeShape; }
 
 	private:
 		Shape2D		m_shape;

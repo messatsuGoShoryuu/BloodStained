@@ -24,7 +24,7 @@ namespace bs
 
 		//For being explicit
 		inline  const real cos() const	{ return m_x.x; }
-		inline  const real sin() const	{ return m_y.x; }
+		inline  const real sin() const	{ return m_x.y; }
 
 	private:
 		//Right vector

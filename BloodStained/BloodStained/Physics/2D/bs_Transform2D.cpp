@@ -29,9 +29,9 @@ namespace bs
 		real sin = math::sin(t.m_orientation);		
 
 		m_x.x = cos;
-		m_x.y = -sin;
+		m_x.y = sin;
 
-		m_y.x = sin;
+		m_y.x = -sin;
 		m_y.y = cos;
 	}
 

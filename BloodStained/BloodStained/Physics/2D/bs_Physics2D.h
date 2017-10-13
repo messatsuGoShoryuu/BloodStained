@@ -29,8 +29,8 @@ namespace bs
 
 	struct CollisionPair2D
 	{
-		PhysicalObject2D* a;
-		PhysicalObject2D* b;
+		PhysicalObject2D* r;
+		PhysicalObject2D* i;
 		Collision2D collision;
 	};
 
@@ -57,7 +57,7 @@ namespace bs
 
 	private :
 		static	void	_collideShapes();
-		static	void	_resolveCollisions();
+		static	void	_resolveCollisions(real dt);
 		static	void	_correctPositions();
 		static	void	_integrate(real dt);
 		static  void	_syncShapes();
