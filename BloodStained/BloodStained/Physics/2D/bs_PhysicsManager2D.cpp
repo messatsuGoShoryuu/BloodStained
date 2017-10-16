@@ -38,12 +38,17 @@ namespace bs
 	}
 	void PhysicsManager2D::update(real dt)
 	{
-		_integrate(dt);
-		_syncShapes();
-		_collideShapes();
-		_resolveCollisions(dt);
-		_correctPositions();
-		_syncShapes();
+			_integrate(dt);
+			_syncShapes();
+			_collideShapes();
+			_resolveCollisions(0.2f);
+			_resolveCollisions(0.2f);
+			_resolveCollisions(0.2f);
+			_resolveCollisions(0.2f);
+			_resolveCollisions(0.2f);
+			_correctPositions();
+			_syncShapes();
+		
 #ifdef BS_DEBUG_PHYSICS
 		ptrsize n = s_shapes.count();
 		for (ui32 i = 0; i < n; i++)
@@ -59,6 +64,7 @@ namespace bs
 	PhysicalObject2D * PhysicsManager2D::addPhysicalObject()
 	{
 		PhysicalObject2D* p = s_physicalObjectPool.allocate();
+//		PhysicalObject2D* p = new PhysicalObject2D();
 		s_physicalObjects.add(p);
 		p->m_body = _addBody();
 		p->m_relativeShape = _addShape();
@@ -81,6 +87,7 @@ namespace bs
 	Shape2D * PhysicsManager2D::_addShape()
 	{
 		Shape2D* s = s_shapePool.allocate();
+	//	Shape2D* s = new Shape2D();
 		s_shapes.add(s);
 		return s;
 	}
@@ -88,6 +95,7 @@ namespace bs
 	Body2D * PhysicsManager2D::_addBody()
 	{
 		Body2D* b = s_bodyPool.allocate();
+	//	Body2D* b = new Body2D();
 		s_bodies.add(b);
 		return b;
 	}
@@ -157,6 +165,7 @@ namespace bs
 				{
 
 					Vector2 n = pair->collision.manifold.contact[i].normal;
+					Vector2 t = pair->collision.manifold.contact[i].tangent;
 
 					Vector2 posRef = pair->collision.manifold.contact[i].point - ref->transform().position();
 					Vector2 posInc = pair->collision.manifold.contact[i].point - inc->transform().position();
@@ -164,41 +173,45 @@ namespace bs
 					Vector2 vRef = ref->velocity();
 					Vector2 vInc = inc->velocity();
 
-					real iRef = ref->inertia();
-					real iInc = inc->inertia();
-
-					iRef = iRef == 0.0f ? 0.0f : 1.0f / iRef;
-					iInc = iInc == 0.0f ? 0.0f : 1.0f / iInc;
+					real iRef = ref->inverseInertia();
+					real iInc = inc->inverseInertia();
 
 					real wRef = ref->angularVelocity();
 					real wInc = inc->angularVelocity();
 
+					real mRef = ref->inverseMass();
+					real mInc = inc->inverseMass();
+
 					Vector2 relV = vInc + Vector2::cross(-wInc, posInc) - vRef - Vector2::cross(-wRef, posRef);
 					real contactV = relV.dot(n);
+					
 
 					real e = 0.0f;
 					real impulseScalar = -(1.0f - e) * contactV;
 					impulseScalar /= (real)pair->collision.manifold.pointCount;
 					real refXn = Vector2::cross(posRef, n);
 					real incXn = Vector2::cross(posInc, n);
-					real divisor = 1.0f + refXn * refXn * iRef + incXn * incXn * iInc;
+					real divisor = mRef + mInc + refXn * refXn * iRef + incXn * incXn * iInc;
 					impulseScalar /= divisor;
 
+					
+
+					if (contactV > 0) continue;
 					{
 						Vector2 impulse = n * impulseScalar;
-						vRef -= impulse;
-						vInc += impulse;
+						vRef -= impulse * mRef;
+						vInc += impulse * mInc;
 
 						wRef -= iRef * Vector2::cross(posRef, impulse);
 						wInc += iInc * Vector2::cross(posInc, impulse);
 
-						if (ref->inertia() > 0.0f)
+						if (ref->inverseMass() > 0.0f)
 						{
 							ref->setAngularVelocity(wRef);
 							ref->setVelocity(vRef);
 						}
 
-						if (inc->inertia() > 0.0f)
+						if (inc->inverseMass() > 0.0f)
 						{
 							inc->setAngularVelocity(wInc);
 							inc->setVelocity(vInc);
@@ -226,18 +239,27 @@ namespace bs
 				bool inverse = pair->collision.manifold.contact[0].normal == -pair->collision.manifold.contact[1].normal;
 				real p = pair->collision.manifold.contact[0].penetration;
 				real c = (real)pair->collision.manifold.pointCount;
+				real inverseMassSum = a->inverseMass() + b->inverseMass();
+
+				real aMass = a->inverseMass();
+				real bMass = b->inverseMass();
+				if (aMass == bMass)
+				{
+					aMass += 0.01f;
+					bMass -= 0.01f;
+				}
 
 				for (int i = 0; i < pair->collision.manifold.pointCount; i++)
 				{
 
-					real coef = math::maximum(p - 0.000005f, 0.0f);
-					Vector2 correction = pair->collision.manifold.contact[i].normal * (coef * 1.0f / c);
+					real coef = math::maximum(p - 0.0001f, 0.0f);
+					Vector2 correction = pair->collision.manifold.contact[i].normal * (coef / (c * inverseMassSum));
 					real scalar = 1.0f;
 					if (i == 1 && inverse)scalar *= -1.0f;
 
 					//TODO: add mass and calculate this correctly
-					if (a->inertia() > 0.0f) a->transform().translate(-correction * scalar);
-					if (b->inertia() > 0.0f) b->transform().translate(correction * scalar);
+					if (a->inverseMass() > 0.0f) a->transform().translate(-correction * scalar * aMass);
+					if (b->inverseMass() > 0.0f) b->transform().translate(correction * scalar * bMass);
 
 				}
 			}
@@ -263,6 +285,7 @@ namespace bs
 			*p->m_relativeShape =
 				attachShapeToBasis(p->m_body->transform(), p->m_shape);
 			p->m_relativeShape->setOwner(p);
+			p->m_relativeShape->getInertiaMoment(p->m_body->mass());
 			p->m_body->setOwner(p);
 		}
 	}

@@ -20,7 +20,7 @@ namespace bs
 		*	@itemSize: what is the size of an item in bytes
 		*	@what is the alignment in bytes
 		*/
-		Pool(ui16 poolSize, ui16 itemSize, ui8 alignment);
+		Pool(ptrsize poolSize, ptrsize itemSize, ui8 alignment);
 
 		//copy constructor
 		Pool(const Pool& p);
@@ -42,10 +42,10 @@ namespace bs
 
 	public:
 		//accessors
-		ui16 itemSize(){ return m_itemSize; }
-		ui16 poolSize(){ return m_poolSize; }
-		ui16 alignment(){ return m_alignment; }
-		ui16 itemCount(){ return m_itemCount; }
+		ptrsize itemSize(){ return m_itemSize; }
+		ptrsize poolSize(){ return m_poolSize; }
+		ptrsize alignment(){ return m_alignment; }
+		ptrsize itemCount(){ return m_itemCount; }
 		Pool*	next(){ return m_next; }
 
 		bool isEmpty(){ return m_itemCount == 0; }
@@ -60,22 +60,16 @@ namespace bs
 		//Calculates the item size with the alignment.
 		void _calculateItemSize();
 
-		//Read ui16 from byte array.
-		//@index: index to read from the buffer
-		ui16 _readUi16FromBuffer(ui32 index);
-
-		/*Put ui16 to byte array.
-		**@value: value to store
-		**@index: index in buffer
-		*/
-		void _putUi16ToBuffer(ui16 value, ui32 index);
+		void _putPtrSizeToBuffer(ptrsize value, ptrsize index);
+		ptrsize _readPtrSizeFromBuffer(ptrsize index);
 
 	private:
-		ui16 m_nextAvailableBlock;
-		ui16 m_itemCount;
-		ui16 m_itemSize;
-		ui16 m_poolSize;
-		ui16 m_poolByteCount;
+		
+		ptrsize m_itemCount;
+		ptrsize m_itemSize;
+		ptrsize m_poolSize;
+		ptrsize m_poolByteCount;
+		ptrsize m_nextAvailableBlock;
 		byte*	m_buffer;
 		ui8		m_alignment;
 

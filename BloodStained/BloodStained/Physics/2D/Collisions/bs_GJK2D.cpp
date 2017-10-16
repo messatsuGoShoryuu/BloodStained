@@ -3,7 +3,7 @@
 #include  <Rendering/bs_RenderManager.h>
 #include <Physics/2D/bs_Physics2D.h>
 
-#define BS_PENETRATION_CLIP_TOLERANCE 0.0005
+#define BS_PENETRATION_CLIP_TOLERANCE 0.00005
 
 namespace bs
 {
@@ -169,18 +169,19 @@ namespace bs
 					}
 				}
 				freeList[--freeTop] = s->index;
+				*s = {};
 				count--;
 			}
 
 			PolytopeSegment* findClosestEdge(real& out)
 			{
 				PolytopeSegment* s = first;
+				if (!s) return nullptr;
 				real dot = 0.0f;
 				real bestDot = BS_MAX_FLOAT;
 				PolytopeSegment* result = nullptr;
 				do
 				{
-					if (!s) return nullptr;
 					dot = s->s.a.point.dot(s->normal);
 					if (dot < bestDot)
 					{
@@ -413,7 +414,7 @@ namespace bs
 		Manifold2D findContactByEPA(const Shape2D& a, const Shape2D& b, SupportPoint s[3])
 		{
 			if (s == nullptr) return Manifold2D();
-			Polytope p;
+			Polytope p = {};
 
 			PolytopeSegment* ps = nullptr;
 			for (ui32 i = 0; i < 3; i++)
@@ -437,6 +438,7 @@ namespace bs
 				sp = getSupportPoint(a, b, closest->normal);
 
 				if (sp.point != lastsp.point) p.addVertex(sp, closest);
+				if (p.count >= 16) break;
 				newClosest = p.findClosestEdge(penetration);
 
 			} while (closest != newClosest);
@@ -609,6 +611,8 @@ namespace bs
 
 		Collision2D testCollision(const Shape2D & a, const Shape2D & b)
 		{
+			if (a.vertexCount() > BS_SHAPE_VERTEX_COUNT) return falseCollision();
+			if (b.vertexCount() > BS_SHAPE_VERTEX_COUNT) return falseCollision();
 			ui32 maxIterations = a.vertexCount() + b.vertexCount();
 
 			if (maxIterations < 6) return falseCollision();

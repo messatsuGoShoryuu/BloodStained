@@ -10,5 +10,6 @@ uniform sampler2D textureContent;
 void main()
 {
 	vec4 content = texture(textureContent,uvFragment);
-    outColor = content * colorFragment;
+	content = content * colorFragment;
+	outColor = content;
 }

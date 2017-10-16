@@ -19,6 +19,7 @@ namespace bs
 		m_radius(s.m_radius),
 		m_owner(s.m_owner)
 	{
+		BS_ASSERT(m_vertexCount <= BS_SHAPE_VERTEX_COUNT);
 		copyArray((Vector2*)s.m_vertices, m_vertices, s.m_vertexCount);
 		copyArray((Vector2*)s.m_normals, m_normals, s.m_vertexCount);
 	}
@@ -29,7 +30,11 @@ namespace bs
 
 	bool Shape2D::addVertex(const Vector2 & vertex)
 	{
-		if (m_vertexCount >= BS_SHAPE_VERTEX_COUNT) return false;
+		if (m_vertexCount >= BS_SHAPE_VERTEX_COUNT)
+		{
+			m_vertexCount = BS_SHAPE_VERTEX_COUNT;
+			return false;
+		}
 		m_vertices[m_vertexCount] = vertex;
 
 		if (m_vertexCount > 1)
@@ -43,7 +48,11 @@ namespace bs
 
 	bool Shape2D::addVertex(real x, real y)
 	{
-		if (m_vertexCount >= BS_SHAPE_VERTEX_COUNT) return false;
+		if (m_vertexCount >= BS_SHAPE_VERTEX_COUNT)
+		{
+			m_vertexCount = BS_SHAPE_VERTEX_COUNT;
+			return false;
+		}
 		m_vertices[m_vertexCount].x = x;
 		m_vertices[m_vertexCount].y = y;
 
@@ -106,16 +115,15 @@ namespace bs
 		}
 
 		m_radius = math::sqrt(m_radius);
-
-		getInertiaMoment();
 	}
 
 	//Just like in box2D ;)
-	real Shape2D::getInertiaMoment()
+	real Shape2D::getInertiaMoment(real mass)
 	{
 		real inertia = 0.0f;
 
 		Vector2 c = Vector2::zero;
+		real area = 0.0f;
 
 		for (ui32 i = 0; i < m_vertexCount; i++)
 		{
@@ -128,6 +136,7 @@ namespace bs
 			real j = Vector2::cross(triA, triB);
 
 			real triangleArea = 0.5f * j;
+			area += triangleArea;
 
 			// Area weighted centroid
 			c += (triA + triB) * triangleArea * 1.0f/3.0f;
@@ -135,8 +144,11 @@ namespace bs
 			inertia +=  (0.25f * 1.0f / 3.0f) * j  * (sumX + sumY);
 		}
 
+		real density = mass / area;
+
+		c *= 1.0f / area;
 		m_centerOfGravity = m_center + c;
-		return math::abs(inertia);
+		return density * inertia;
 	}
 
 	Vector2 Shape2D::getSupportPoint(const Vector2 & direction) const

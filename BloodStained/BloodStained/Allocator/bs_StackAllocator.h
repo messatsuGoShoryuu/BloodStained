@@ -17,7 +17,7 @@ namespace bs
 
 		//@param stackSize size in bytes of the stack
 		//@param seamless -> seamless means we don't align and the data has no holes
-		//in it.
+		//in it, so basically an array.
 		StackAllocator(ptrsize stackSize, bool seamless);
 
 		//Manual init and shutDown.

@@ -72,7 +72,7 @@ namespace bs
 			if (sizeof(ptrsize) == 4)
 				math::storeUi32ToByteArray(m_stackBase + m_pointer, frame);
 			else if (sizeof(ptrsize) == 8)
-				math::storUi64ToByteArray(m_stackBase + m_pointer, frame);
+				math::storeUi64ToByteArray(m_stackBase + m_pointer, frame);
 
 			m_pointer += intSize;
 		}

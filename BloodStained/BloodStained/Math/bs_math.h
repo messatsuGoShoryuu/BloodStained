@@ -206,7 +206,7 @@ namespace bs
 			array[3] = (value & 0XFF000000) >> 24;
 		}
 
-		inline void storUi64ToByteArray(byte* array, ui64 value)
+		inline void storeUi64ToByteArray(byte* array, ui64 value)
 		{
 			array[0] = value & 0x00000000000000FF;
 			array[1] = (value & 0x000000000000FF00) >> 8;

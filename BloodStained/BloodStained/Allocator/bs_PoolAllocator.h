@@ -146,7 +146,7 @@ namespace bs
 		Pool*	m_poolIterator;
 		Pool*	m_lastPool;
 		//Item count per pool.
-		size_t m_poolSize;
+		ptrsize m_poolSize;
 	};
 
 
@@ -273,12 +273,11 @@ namespace bs
 		if (!m_poolList)
 		{
 			//if pool list is empty create new pool
-			m_poolList = new Pool(m_poolSize, sizeof(T), __alignof(T));
+			m_poolList = new Pool(m_poolSize, sizeof(T), alignof(T));
 
 			//if initialization failed return null
 			if (!m_poolList->initialize())
 			{
-				std::cout << "Pool List initialization failed!" << std::endl;
 				return nullptr;
 			}
 
@@ -292,13 +291,12 @@ namespace bs
 #endif
 
 			//create new pool at the end
-			Pool* ptr = new Pool(m_poolSize, sizeof(T), __alignof(T));
+			Pool* ptr = new Pool(m_poolSize, sizeof(T), alignof(T));
 			m_lastPool->setNext(ptr);
 
 			//if initialization failed return null
 			if (!ptr->initialize())
 			{
-				std::cout << "Pool List initialization failed!" << std::endl;
 				return nullptr;
 			}
 

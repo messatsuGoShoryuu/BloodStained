@@ -3,6 +3,8 @@
 bs::Body2D::Body2D()
 	:m_mass(0),
 	m_inertia(0),
+	m_inverseMass(0),
+	m_inverseInertia(0),
 	m_angularVelocity(0),
 	m_torque(0),
 	m_owner(nullptr),
@@ -14,6 +16,8 @@ bs::Body2D::Body2D()
 bs::Body2D::Body2D(const Body2D & b)
 	:m_mass(b.m_mass),
 	m_inertia(b.m_inertia),
+	m_inverseMass(b.m_inverseMass),
+	m_inverseInertia(b.m_inverseInertia),
 	m_transform(b.m_transform),
 	m_velocity(b.m_velocity),
 	m_acceleration(b.m_acceleration),

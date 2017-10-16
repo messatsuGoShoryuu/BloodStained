@@ -25,7 +25,7 @@ namespace bs
 	*	@itemSize: what is the size of an item in bytes
 	*	@what is the alignment in bytes
 	*/
-	Pool::Pool(ui16 poolSize, ui16 itemSize, ui8 alignment)
+	Pool::Pool(ptrsize poolSize, ptrsize itemSize, ui8 alignment)
 		:m_buffer(nullptr),
 		m_alignment(alignment),
 		m_itemCount(0),
@@ -85,7 +85,7 @@ namespace bs
 		memset(m_buffer, 0, m_poolByteCount);
 		for (ui32 i = 0; i < m_poolByteCount; i += m_itemSize)
 		{
-			_putUi16ToBuffer(i+m_itemSize,i);
+			_putPtrSizeToBuffer(i+m_itemSize,i);
 		}
 
 		return true;
@@ -122,7 +122,7 @@ namespace bs
 		if (m_itemCount >= m_poolSize) return nullptr;
 
 		//store address of next available block
-		ui16 next = _readUi16FromBuffer(m_nextAvailableBlock);
+		ptrsize next = _readPtrSizeFromBuffer(m_nextAvailableBlock);
 
 		//store empty pointer to return
 		byte* result = m_buffer + m_nextAvailableBlock;
@@ -151,7 +151,7 @@ namespace bs
 #endif
  
 		//calculate item index
-		ui16 itemIndex = (ui16)((byte*)item - m_buffer);
+		ptrsize itemIndex = (ptrsize)((byte*)item - m_buffer);
 
 		memset(item, 0, m_itemSize);
 		
@@ -159,13 +159,13 @@ namespace bs
 		if (isFull())
 		{
 			m_nextAvailableBlock = itemIndex;
-			_putUi16ToBuffer(m_nextAvailableBlock, itemIndex);
+			_putPtrSizeToBuffer(m_nextAvailableBlock, itemIndex);
 		}
 		else
 		{
 			//else make current available block the next one, 
 			//set the locator to the last freed one
-			_putUi16ToBuffer(m_nextAvailableBlock,itemIndex);
+			_putPtrSizeToBuffer(m_nextAvailableBlock,itemIndex);
 			m_nextAvailableBlock = itemIndex;
 		}
 		
@@ -181,21 +181,48 @@ namespace bs
 		m_itemSize = math::nearest2PowMultipleOf(m_itemSize, m_alignment);
 	}
 
-	//Read ui16 from byte array.
-	//@index: index to read from the buffer
-	ui16 Pool::_readUi16FromBuffer(ui32 index)
+
+	//TODO: optimize
+	void Pool::_putPtrSizeToBuffer(ptrsize value, ptrsize index)
 	{
-		if (m_itemSize == 1) return static_cast<ui16>(m_buffer[index]);
-		return *(reinterpret_cast<ui16*>(m_buffer + index));
+		if (m_itemSize == 1)
+		{
+			m_buffer[index] = static_cast<byte>(value);
+			return;
+		}
+		if (m_itemSize == 2)
+		{
+			if (m_itemSize == 1) m_buffer[index] = static_cast<byte>(value);
+			else math::storeUi16ToByteArray(m_buffer + index, value);
+		}
+		else 
+		{
+			ptrsize size = sizeof(ptrsize);
+			if (size == 4)
+			{
+				if (m_itemSize == 1) m_buffer[index] = static_cast<byte>(value);
+				else math::storeUi32ToByteArray(m_buffer + index, value);
+			}
+			else if (size == 8)
+			{
+				if (m_itemSize == 1) m_buffer[index] = static_cast<byte>(value);
+				else math::storeUi64ToByteArray(m_buffer + index, value);
+			}
+		}
 	}
 
-	/*Put ui16 to byte array.
-	**@value: value to store
-	**@index: index in buffer
-	*/
-	void Pool::_putUi16ToBuffer(ui16 value, ui32 index)
+	ptrsize Pool::_readPtrSizeFromBuffer(ptrsize index)
 	{
-		if (m_itemSize == 1) m_buffer[index] = static_cast<byte>(value);
-		else math::storeUi16ToByteArray(m_buffer + index, value);
+		if (m_itemSize == 1) return static_cast<ptrsize>(m_buffer[index]);
+		else if(m_itemSize == 2)
+		{
+			return (ptrsize)*(reinterpret_cast<ui16*>(m_buffer + index));
+		}
+		else
+		{
+			return *(reinterpret_cast<ptrsize*>(m_buffer + index));
+		}
+
 	}
+
 }

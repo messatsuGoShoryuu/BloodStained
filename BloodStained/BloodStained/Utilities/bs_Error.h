@@ -3,9 +3,10 @@
 
 
 #include <Platform/bs_Platform.h>
-#include <Platform/Windows/bs_WindowsError.h>
+
 
 #ifdef BS_WINDOWS
+#include <Platform/Windows/bs_WindowsError.h>
 #define	_FATAL_ERROR_(id) winFatalError(id);
 #define _FATAL_ERROR_INFO_(id,info) winFatalError(id,info);
 #define _WARNING_(id) winWarning(id);

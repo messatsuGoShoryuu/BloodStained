@@ -38,7 +38,7 @@ namespace bs
 
 		void	calculateNormals();
 		void	calculateCenter();
-		real	getInertiaMoment();
+		real	getInertiaMoment(real mass);
 
 		inline const Vector2& center() const { return m_center; }
 		inline const Vector2& centerOfGravity() const { return m_centerOfGravity; }
@@ -51,6 +51,11 @@ namespace bs
 		
 		inline	void* owner() { return m_owner; }
 		inline	void	setOwner(void* owner) { m_owner = owner; }
+
+		inline void operator=(const Shape2D& other)
+		{
+			new(this)Shape2D(other);
+		}
 	private:
 		Vector2 m_vertices[BS_SHAPE_VERTEX_COUNT];
 		Vector2 m_normals[BS_SHAPE_VERTEX_COUNT];

@@ -19,7 +19,7 @@ namespace bs
 		for (ui32 i = 0; i < count; i++)
 		{
 			Vector2 vertex = sourceVertices[i];
-			Vector2 pivot = sourceVertices[i] - shape.center();
+			Vector2 pivot = sourceVertices[i] - shape.centerOfGravity();
 
 			vertex.x = pivot.x * basis->cos() - pivot.y * basis->sin();
 			vertex.y = pivot.x * basis->sin() + pivot.y * basis->cos();
@@ -34,7 +34,6 @@ namespace bs
 
 		result.calculateNormals();
 		result.calculateCenter();
-		result.getInertiaMoment();
 
 		return result;
 	}
@@ -118,7 +117,6 @@ namespace bs
 
 		result.calculateNormals();
 		result.calculateCenter();
-		result.getInertiaMoment();
 
 		return result;
 	}

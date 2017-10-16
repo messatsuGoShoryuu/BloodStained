@@ -37,6 +37,7 @@ namespace bs
 	void Level::initialize()
 	{
 		m_cameras.add(new Camera2D());
+		PhysicsManager2D::setGravity(-Vector2::up * 9.8f);
 	}
 
 	void Level::shutDown()
@@ -67,20 +68,22 @@ namespace bs
 		if (InputManager::mouse.isButtonPressed(MOUSE_BUTTON_2))
 		{
 			PhysicalObject2D* box = PhysicsManager2D::addPhysicalObject();
-			box->shape().addVertex(Vector2(-0.5f,0.7f));
-			box->shape().addVertex(Vector2(0.5f, 0.7f));
-			box->shape().addVertex(Vector2(0.5f, -0.7f));
-			box->shape().addVertex(Vector2(-0.5f, -0.7f));
+			box->shape().addVertex(Vector2(-0.8f,0.7f));
+			box->shape().addVertex(Vector2(0.8f, 0.7f));
+			box->shape().addVertex(Vector2(0.8f, -0.7f));
+			box->shape().addVertex(Vector2(-0.8f, -0.7f));
 
 			box->shape().calculateNormals();
 			box->shape().calculateCenter();
-			real inertia = box->shape().getInertiaMoment();
+			real inertia = box->shape().getInertiaMoment(2.0f);
 			box->body()->setInertia(inertia);
 			box->body()->setGravityScale(1.0f);
+			box->body()->setMass(2.0f);
 
 			box->body()->transform().setPosition(pos2);
 		}
 
+	
 
 		if (InputManager::keyboard.isKeyHeld(KB_RIGHTARROW))
 		{
@@ -111,7 +114,7 @@ namespace bs
 		{
 			if (InputManager::keyboard.isKeyHeld(KB_SHIFT))
 			{
-				player->body()->addAcceleration(Vector2::up * 0.1f);
+				player->body()->addAcceleration(Vector2::up * 0.7f);
 			}
 			else
 			{
@@ -133,10 +136,10 @@ namespace bs
 			}
 			
 		}
-
+		
 		if (InputManager::keyboard.isKeyHeld(KB_S)) cam->setScale(cam->scale() * 0.9);
 		if (InputManager::keyboard.isKeyHeld(KB_W)) cam->setScale(cam->scale() * 1.1);
-
+		
 		if (InputManager::keyboard.isKeyHeld(KB_A)) player->body()->transform().rotate(-(BS_PI / 180.0f));
 		if (InputManager::keyboard.isKeyHeld(KB_D)) player->body()->transform().rotate(BS_PI / 180.0f);
 
@@ -148,36 +151,37 @@ namespace bs
 			player->body()->setGravityScale(1.0f);
 			player->shape().calculateNormals();
 			player->shape().calculateCenter();
-			player->shape().getInertiaMoment();
-			player->body()->setInertia(player->shape().getInertiaMoment());
-			
+
+			player->body()->setInertia(player->shape().getInertiaMoment(10.0f));
+			player->body()->setMass(10.0f);
 		}
 
+		
 		if (InputManager::keyboard.isKeyPressed(KB_G))
 		{
 			ground->shape().addVertex(-20.0f, 5.5f);
 			ground->shape().calculateNormals();
 			ground->shape().calculateCenter();
-			ground->shape().getInertiaMoment();
+			ground->shape().getInertiaMoment(0);
 
 			ground->shape().addVertex(5.0f, 5.5f);
 			ground->shape().calculateNormals();
 			ground->shape().calculateCenter();
-			ground->shape().getInertiaMoment();
+			ground->shape().getInertiaMoment(0);
 
 			ground->shape().addVertex(10.0f, -10.0f);
 			ground->shape().calculateNormals();
 			ground->shape().calculateCenter();
-			ground->shape().getInertiaMoment();
+			ground->shape().getInertiaMoment(0);
 
 			ground->shape().addVertex(-20.0f, -10.0f);
 			ground->shape().calculateNormals();
 			ground->shape().calculateCenter();
-			ground->shape().getInertiaMoment();
+			ground->shape().getInertiaMoment(0);
 
 			ground->shape().calculateNormals();
 			ground->shape().calculateCenter();
-			ground->shape().getInertiaMoment();
+			ground->shape().getInertiaMoment(0);
 			ground->body()->setInertia(0.0f);
 
 			ground->body()->transform().setPosition(Vector2(0.0f, -10.0f));
@@ -185,8 +189,6 @@ namespace bs
 	
 
 		PhysicsManager2D::update(dt);
-
-		cam->setPosition(player->body()->transform().position());
 		
 
 		Shape2D attShape = *player->relativeShape();
@@ -238,6 +240,7 @@ namespace bs
 			RenderManager::drawDebugLine(Vector2::zero, Vector2::right, ColorRGBAf::black);
 			
 		}
+		
 		RenderManager::render(m_cameras);
 	}
 }

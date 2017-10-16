@@ -1,50 +1,93 @@
 ﻿  bs_Error.cpp
-g:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(207): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
-g:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(209): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
-g:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(210): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
-g:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(211): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
+g:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(213): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
+g:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(215): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
+g:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(216): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
+g:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(217): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
 g:\programming\bloodstained\bloodstained\bloodstained\containers\bs_array.h(490): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+  bs_Clock.cpp
   bs_Texture2D.cpp
-g:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(207): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
-g:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(209): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
-g:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(210): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
-g:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(211): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
+g:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(213): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
+g:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(215): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
+g:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(216): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
+g:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(217): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
+g:\programming\bloodstained\bloodstained\bloodstained\containers\bs_array.h(490): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+g:\programming\bloodstained\bloodstained\bloodstained\rendering\bs_rendermanager.h(20): warning C4099: 'bs::ColorRGBAf': type name first seen using 'struct' now seen using 'class'
+  g:\programming\bloodstained\bloodstained\bloodstained\rendering\bs_color.h(54): note: see declaration of 'bs::ColorRGBAf'
+  bs_SpriteManager.cpp
+g:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(213): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
+g:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(215): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
+g:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(216): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
+g:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(217): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
+g:\programming\bloodstained\bloodstained\bloodstained\containers\bs_array.h(490): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+g:\programming\bloodstained\bloodstained\bloodstained\allocator\bs_poolallocator.h(276): warning C4267: 'argument': conversion from 'size_t' to 'ui16', possible loss of data
+  g:\programming\bloodstained\bloodstained\bloodstained\allocator\bs_poolallocator.h(271): note: while compiling class template member function 'bs::Pool *bs::PoolAllocator<bs::Sprite>::_addPool(void)'
+  g:\programming\bloodstained\bloodstained\bloodstained\allocator\bs_poolallocator.h(234): note: see reference to function template instantiation 'bs::Pool *bs::PoolAllocator<bs::Sprite>::_addPool(void)' being compiled
+  g:\programming\bloodstained\bloodstained\bloodstained\allocator\bs_poolallocator.h(230): note: while compiling class template member function 'bs::Pool *bs::PoolAllocator<bs::Sprite>::_findFirstAvailablePool(void)'
+  g:\programming\bloodstained\bloodstained\bloodstained\allocator\bs_poolallocator.h(196): note: see reference to function template instantiation 'bs::Pool *bs::PoolAllocator<bs::Sprite>::_findFirstAvailablePool(void)' being compiled
+  g:\programming\bloodstained\bloodstained\bloodstained\allocator\bs_poolallocator.h(184): note: while compiling class template member function 'bs::PoolAllocator<bs::Sprite>::PoolAllocator(ui32)'
+  g:\programming\bloodstained\bloodstained\bloodstained\rendering\bs_spritemanager.cpp(10): note: see reference to function template instantiation 'bs::PoolAllocator<bs::Sprite>::PoolAllocator(ui32)' being compiled
+  g:\programming\bloodstained\bloodstained\bloodstained\rendering\bs_spritemanager.h(30): note: see reference to class template instantiation 'bs::PoolAllocator<bs::Sprite>' being compiled
+g:\programming\bloodstained\bloodstained\bloodstained\allocator\bs_poolallocator.h(295): warning C4267: 'argument': conversion from 'size_t' to 'ui16', possible loss of data
+  bs_Sprite.cpp
+g:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(213): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
+g:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(215): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
+g:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(216): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
+g:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(217): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
 g:\programming\bloodstained\bloodstained\bloodstained\containers\bs_array.h(490): warning C4067: unexpected tokens following preprocessor directive - expected a newline
   bs_ShaderManager.cpp
-g:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(207): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
-g:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(209): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
-g:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(210): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
-g:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(211): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
+g:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(213): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
+g:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(215): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
+g:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(216): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
+g:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(217): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
 g:\programming\bloodstained\bloodstained\bloodstained\containers\bs_array.h(490): warning C4067: unexpected tokens following preprocessor directive - expected a newline
 g:\programming\bloodstained\bloodstained\bloodstained\containers\bs_linkedarray.h(539): warning C4067: unexpected tokens following preprocessor directive - expected a newline
 g:\programming\bloodstained\bloodstained\bloodstained\containers\bs_linkedarray.h(1091): warning C4067: unexpected tokens following preprocessor directive - expected a newline
 g:\programming\bloodstained\bloodstained\bloodstained\rendering\bs_shadermanager.cpp(188): warning C4018: '<': signed/unsigned mismatch
 g:\programming\bloodstained\bloodstained\bloodstained\rendering\bs_shadermanager.cpp(193): warning C4018: '<': signed/unsigned mismatch
-  bs_Shader.cpp
   bs_RenderManager.cpp
-g:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(207): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
-g:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(209): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
-g:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(210): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
-g:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(211): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
+g:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(213): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
+g:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(215): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
+g:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(216): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
+g:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(217): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
 g:\programming\bloodstained\bloodstained\bloodstained\containers\bs_array.h(490): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+g:\programming\bloodstained\bloodstained\bloodstained\rendering\bs_rendermanager.h(20): warning C4099: 'bs::ColorRGBAf': type name first seen using 'struct' now seen using 'class'
+  g:\programming\bloodstained\bloodstained\bloodstained\rendering\bs_color.h(54): note: see declaration of 'bs::ColorRGBAf'
   bs_RenderBufferObjects.cpp
+g:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(213): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
+g:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(215): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
+g:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(216): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
+g:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(217): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
+g:\programming\bloodstained\bloodstained\bloodstained\containers\bs_array.h(490): warning C4067: unexpected tokens following preprocessor directive - expected a newline
   bs_QuadRenderer.cpp
-g:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(207): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
-g:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(209): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
-g:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(210): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
-g:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(211): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
+g:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(213): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
+g:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(215): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
+g:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(216): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
+g:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(217): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
 g:\programming\bloodstained\bloodstained\bloodstained\containers\bs_array.h(490): warning C4067: unexpected tokens following preprocessor directive - expected a newline
   bs_OpenGL.cpp
-g:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(207): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
-g:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(209): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
-g:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(210): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
-g:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(211): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
+g:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(213): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
+g:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(215): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
+g:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(216): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
+g:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(217): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
+g:\programming\bloodstained\bloodstained\bloodstained\containers\bs_array.h(490): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+  bs_DebugRenderer.cpp
+g:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(213): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
+g:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(215): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
+g:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(216): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
+g:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(217): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
+g:\programming\bloodstained\bloodstained\bloodstained\containers\bs_array.h(490): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+g:\programming\bloodstained\bloodstained\bloodstained\rendering\bs_debugrenderer.cpp(93): warning C4244: 'initializing': conversion from 'double' to 'f32', possible loss of data
+  bs_Color.cpp
+g:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(213): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
+g:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(215): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
+g:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(216): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
+g:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(217): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
 g:\programming\bloodstained\bloodstained\bloodstained\containers\bs_array.h(490): warning C4067: unexpected tokens following preprocessor directive - expected a newline
   bs_Camera3D.cpp
-g:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(207): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
-g:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(209): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
-g:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(210): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
-g:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(211): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
+g:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(213): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
+g:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(215): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
+g:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(216): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
+g:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(217): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
 g:\programming\bloodstained\bloodstained\bloodstained\physics\3d\collisions\bs_ray3d.h(8): warning C4099: 'bs::Ray3D': type name first seen using 'class' now seen using 'struct'
   g:\programming\bloodstained\bloodstained\bloodstained\physics\3d\collisions\bs_ray3d.h(7): note: see declaration of 'bs::Ray3D'
 g:\programming\bloodstained\bloodstained\bloodstained\rendering\bs_camera3d.cpp(67): warning C4244: 'initializing': conversion from 'f64' to 'f32', possible loss of data
@@ -52,129 +95,93 @@ g:\programming\bloodstained\bloodstained\bloodstained\rendering\bs_camera3d.cpp(
 g:\programming\bloodstained\bloodstained\bloodstained\rendering\bs_camera3d.cpp(75): warning C4244: '=': conversion from 'double' to 'real', possible loss of data
 g:\programming\bloodstained\bloodstained\bloodstained\rendering\bs_camera3d.cpp(83): warning C4244: '=': conversion from 'double' to 'real', possible loss of data
   bs_Camera2D.cpp
-g:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(207): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
-g:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(209): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
-g:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(210): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
-g:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(211): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
+g:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(213): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
+g:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(215): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
+g:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(216): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
+g:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(217): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
   bs_WindowsOpenGL.cpp
-g:\programming\bloodstained\bloodstained\bloodstained\platform\windows\bs_windowsopengl.cpp(275): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+g:\programming\bloodstained\bloodstained\bloodstained\platform\windows\bs_windowsopengl.cpp(282): warning C4067: unexpected tokens following preprocessor directive - expected a newline
   bs_WindowsMain.cpp
-g:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(207): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
-g:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(209): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
-g:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(210): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
-g:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(211): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
+g:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(213): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
+g:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(215): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
+g:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(216): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
+g:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(217): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
 g:\programming\bloodstained\bloodstained\bloodstained\containers\bs_array.h(490): warning C4067: unexpected tokens following preprocessor directive - expected a newline
-  bs_WindowsFileSystem.cpp
-g:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(207): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
-g:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(209): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
-g:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(210): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
-g:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(211): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
+  bs_WindowsInput.cpp
+g:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(213): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
+g:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(215): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
+g:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(216): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
+g:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(217): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
 g:\programming\bloodstained\bloodstained\bloodstained\containers\bs_array.h(490): warning C4067: unexpected tokens following preprocessor directive - expected a newline
-g:\programming\bloodstained\bloodstained\bloodstained\platform\windows\bs_windowsfilesystem.cpp(115): warning C4244: 'return': conversion from 'LONGLONG' to 'ptrsize', possible loss of data
-  bs_Level.cpp
-g:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(207): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
-g:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(209): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
-g:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(210): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
-g:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(211): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
-g:\programming\bloodstained\bloodstained\bloodstained\containers\bs_array.h(490): warning C4067: unexpected tokens following preprocessor directive - expected a newline
-g:\programming\bloodstained\bloodstained\bloodstained\containers\bs_linkedarray.h(539): warning C4067: unexpected tokens following preprocessor directive - expected a newline
-g:\programming\bloodstained\bloodstained\bloodstained\containers\bs_linkedarray.h(1091): warning C4067: unexpected tokens following preprocessor directive - expected a newline
-g:\programming\bloodstained\bloodstained\bloodstained\game\bs_level.cpp(38): warning C4018: '<': signed/unsigned mismatch
-  bs_Game.cpp
-g:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(207): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
-g:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(209): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
-g:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(210): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
-g:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(211): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
-g:\programming\bloodstained\bloodstained\bloodstained\containers\bs_array.h(490): warning C4067: unexpected tokens following preprocessor directive - expected a newline
-g:\programming\bloodstained\bloodstained\bloodstained\containers\bs_linkedarray.h(539): warning C4067: unexpected tokens following preprocessor directive - expected a newline
-g:\programming\bloodstained\bloodstained\bloodstained\containers\bs_linkedarray.h(1091): warning C4067: unexpected tokens following preprocessor directive - expected a newline
-  bs_Resource.cpp
-g:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(207): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
-g:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(209): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
-g:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(210): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
-g:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(211): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
-g:\programming\bloodstained\bloodstained\bloodstained\containers\bs_array.h(490): warning C4067: unexpected tokens following preprocessor directive - expected a newline
-  bs_FileSystem.cpp
-g:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(207): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
-g:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(209): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
-g:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(210): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
-g:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(211): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
-g:\programming\bloodstained\bloodstained\bloodstained\containers\bs_array.h(490): warning C4067: unexpected tokens following preprocessor directive - expected a newline
-  bs_ImageLoader.cpp
-g:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(207): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
-g:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(209): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
-g:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(210): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
-g:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(211): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
-g:\programming\bloodstained\bloodstained\bloodstained\containers\bs_array.h(490): warning C4067: unexpected tokens following preprocessor directive - expected a newline
-  bs_StackAllocator.cpp
-g:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(207): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
-g:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(209): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
-g:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(210): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
-g:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(211): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
-  Generating Code...
-g:\programming\bloodstained\bloodstained\bloodstained\rendering\bs_texture2d.cpp(89): warning C4715: 'bs::Texture2D::create': not all control paths return a value
-  Compiling...
-  bs_String.cpp
-g:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(207): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
-g:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(209): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
-g:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(210): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
-g:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(211): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
-g:\programming\bloodstained\bloodstained\bloodstained\containers\bs_array.h(490): warning C4067: unexpected tokens following preprocessor directive - expected a newline
-g:\programming\bloodstained\bloodstained\bloodstained\utilities\bs_string.cpp(188): warning C4018: '>=': signed/unsigned mismatch
-g:\programming\bloodstained\bloodstained\bloodstained\utilities\bs_string.cpp(225): warning C4018: '>=': signed/unsigned mismatch
-  bs_Screen.cpp
-  bs_Color.cpp
-g:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(207): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
-g:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(209): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
-g:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(210): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
-g:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(211): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
-g:\programming\bloodstained\bloodstained\bloodstained\containers\bs_array.h(490): warning C4067: unexpected tokens following preprocessor directive - expected a newline
-  bs_Camera.cpp
-g:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(207): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
-g:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(209): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
-g:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(210): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
-g:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(211): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
-  bs_WindowsError.cpp
-g:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(207): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
-g:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(209): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
-g:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(210): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
-g:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(211): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
-g:\programming\bloodstained\bloodstained\bloodstained\containers\bs_array.h(490): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+g:\programming\bloodstained\bloodstained\bloodstained\platform\windows\bs_windowsinput.cpp(70): warning C4800: 'BOOL': forcing value to bool 'true' or 'false' (performance warning)
   bs_Ray3D.cpp
-g:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(207): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
-g:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(209): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
-g:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(210): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
-g:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(211): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
+g:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(213): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
+g:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(215): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
+g:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(216): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
+g:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(217): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
 g:\programming\bloodstained\bloodstained\bloodstained\physics\3d\collisions\bs_physicsprimitives.h(9): warning C4099: 'bs::Plane': type name first seen using 'class' now seen using 'struct'
   g:\programming\bloodstained\bloodstained\bloodstained\physics\3d\collisions\bs_physicsprimitives.h(8): note: see declaration of 'bs::Plane'
-  bs_Vector4.cpp
-g:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(207): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
-g:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(209): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
-g:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(210): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
-g:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(211): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
+  bs_Shape2D.cpp
+g:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(213): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
+g:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(215): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
+g:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(216): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
+g:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(217): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
+  bs_GJK2D.cpp
+g:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(213): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
+g:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(215): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
+g:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(216): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
+g:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(217): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
 g:\programming\bloodstained\bloodstained\bloodstained\containers\bs_array.h(490): warning C4067: unexpected tokens following preprocessor directive - expected a newline
-  bs_Vector3.cpp
-g:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(207): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
-g:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(209): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
-g:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(210): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
-g:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(211): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
+g:\programming\bloodstained\bloodstained\bloodstained\rendering\bs_rendermanager.h(20): warning C4099: 'bs::ColorRGBAf': type name first seen using 'struct' now seen using 'class'
+  g:\programming\bloodstained\bloodstained\bloodstained\rendering\bs_color.h(54): note: see declaration of 'bs::ColorRGBAf'
+g:\programming\bloodstained\bloodstained\bloodstained\physics\2d\collisions\bs_gjk2d.cpp(462): warning C4305: 'argument': truncation from 'double' to 'real'
+g:\programming\bloodstained\bloodstained\bloodstained\physics\2d\collisions\bs_gjk2d.cpp(479): warning C4305: 'argument': truncation from 'double' to 'real'
+g:\programming\bloodstained\bloodstained\bloodstained\physics\2d\collisions\bs_gjk2d.cpp(631): warning C4018: '<': signed/unsigned mismatch
+  Generating Code...
+  Compiling...
+  bs_Transform2D.cpp
+g:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(213): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
+g:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(215): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
+g:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(216): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
+g:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(217): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
+  bs_PhysicsManager2D.cpp
+g:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(213): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
+g:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(215): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
+g:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(216): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
+g:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(217): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
 g:\programming\bloodstained\bloodstained\bloodstained\containers\bs_array.h(490): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+g:\programming\bloodstained\bloodstained\bloodstained\rendering\bs_rendermanager.h(20): warning C4099: 'bs::ColorRGBAf': type name first seen using 'struct' now seen using 'class'
+  g:\programming\bloodstained\bloodstained\bloodstained\rendering\bs_color.h(54): note: see declaration of 'bs::ColorRGBAf'
+g:\programming\bloodstained\bloodstained\bloodstained\physics\2d\bs_physicsmanager2d.cpp(232): warning C4018: '<': signed/unsigned mismatch
+g:\programming\bloodstained\bloodstained\bloodstained\allocator\bs_poolallocator.h(276): warning C4267: 'argument': conversion from 'size_t' to 'ui16', possible loss of data
+  g:\programming\bloodstained\bloodstained\bloodstained\allocator\bs_poolallocator.h(271): note: while compiling class template member function 'bs::Pool *bs::PoolAllocator<bs::Shape2D>::_addPool(void)'
+  g:\programming\bloodstained\bloodstained\bloodstained\allocator\bs_poolallocator.h(234): note: see reference to function template instantiation 'bs::Pool *bs::PoolAllocator<bs::Shape2D>::_addPool(void)' being compiled
+  g:\programming\bloodstained\bloodstained\bloodstained\allocator\bs_poolallocator.h(184): note: while compiling class template member function 'bs::PoolAllocator<bs::Shape2D>::PoolAllocator(ui32)'
+  g:\programming\bloodstained\bloodstained\bloodstained\physics\2d\bs_physicsmanager2d.cpp(28): note: see reference to function template instantiation 'bs::PoolAllocator<bs::Shape2D>::PoolAllocator(ui32)' being compiled
+  g:\programming\bloodstained\bloodstained\bloodstained\physics\2d\bs_physicsmanager2d.cpp(10): note: see reference to class template instantiation 'bs::PoolAllocator<bs::Shape2D>' being compiled
+g:\programming\bloodstained\bloodstained\bloodstained\allocator\bs_poolallocator.h(295): warning C4267: 'argument': conversion from 'size_t' to 'ui16', possible loss of data
+  bs_Physics2D.cpp
+g:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(213): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
+g:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(215): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
+g:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(216): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
+g:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(217): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
+g:\programming\bloodstained\bloodstained\bloodstained\containers\bs_array.h(490): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+  bs_Body2D.cpp
+g:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(213): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
+g:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(215): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
+g:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(216): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
+g:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(217): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
   bs_Vector2.cpp
-g:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(207): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
-g:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(209): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
-g:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(210): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
-g:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(211): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
+g:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(213): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
+g:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(215): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
+g:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(216): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
+g:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(217): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
 g:\programming\bloodstained\bloodstained\bloodstained\containers\bs_array.h(490): warning C4067: unexpected tokens following preprocessor directive - expected a newline
-  bs_Rect.cpp
-g:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(207): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
-g:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(209): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
-g:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(210): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
-g:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(211): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
   bs_Quaternion.cpp
-g:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(207): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
-g:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(209): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
-g:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(210): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
-g:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(211): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
+g:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(213): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
+g:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(215): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
+g:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(216): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
+g:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(217): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
 g:\programming\bloodstained\bloodstained\bloodstained\containers\bs_array.h(490): warning C4067: unexpected tokens following preprocessor directive - expected a newline
 g:\programming\bloodstained\bloodstained\bloodstained\math\bs_quaternion.cpp(104): warning C4244: 'initializing': conversion from 'double' to 'real', possible loss of data
 g:\programming\bloodstained\bloodstained\bloodstained\math\bs_quaternion.cpp(105): warning C4244: 'initializing': conversion from 'double' to 'real', possible loss of data
@@ -189,22 +196,130 @@ g:\programming\bloodstained\bloodstained\bloodstained\math\bs_quaternion.cpp(124
 g:\programming\bloodstained\bloodstained\bloodstained\math\bs_quaternion.cpp(150): warning C4244: '=': conversion from 'double' to 'real', possible loss of data
 g:\programming\bloodstained\bloodstained\bloodstained\math\bs_quaternion.cpp(151): warning C4244: '=': conversion from 'double' to 'real', possible loss of data
 g:\programming\bloodstained\bloodstained\bloodstained\math\bs_quaternion.cpp(152): warning C4244: '=': conversion from 'double' to 'real', possible loss of data
+  bs_Mouse.cpp
+g:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(213): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
+g:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(215): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
+g:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(216): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
+g:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(217): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
+g:\programming\bloodstained\bloodstained\bloodstained\containers\bs_array.h(490): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+g:\programming\bloodstained\bloodstained\bloodstained\input\bs_mouse.cpp(14): warning C4244: 'argument': conversion from 'float' to 'ui32', possible loss of data
+  bs_Keyboard.cpp
+g:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(213): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
+g:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(215): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
+g:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(216): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
+g:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(217): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
+g:\programming\bloodstained\bloodstained\bloodstained\containers\bs_array.h(490): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+g:\programming\bloodstained\bloodstained\bloodstained\input\bs_keyboard.cpp(63): warning C4800: 'ui64': forcing value to bool 'true' or 'false' (performance warning)
+  bs_InputManager.cpp
+g:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(213): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
+g:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(215): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
+g:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(216): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
+g:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(217): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
+g:\programming\bloodstained\bloodstained\bloodstained\containers\bs_array.h(490): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+  bs_Level.cpp
+g:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(213): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
+g:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(215): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
+g:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(216): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
+g:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(217): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
+g:\programming\bloodstained\bloodstained\bloodstained\containers\bs_array.h(490): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+g:\programming\bloodstained\bloodstained\bloodstained\containers\bs_linkedarray.h(539): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+g:\programming\bloodstained\bloodstained\bloodstained\containers\bs_linkedarray.h(1091): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+g:\programming\bloodstained\bloodstained\bloodstained\rendering\bs_rendermanager.h(20): warning C4099: 'bs::ColorRGBAf': type name first seen using 'struct' now seen using 'class'
+  g:\programming\bloodstained\bloodstained\bloodstained\rendering\bs_color.h(54): note: see declaration of 'bs::ColorRGBAf'
+g:\programming\bloodstained\bloodstained\bloodstained\game\bs_level.cpp(44): warning C4018: '<': signed/unsigned mismatch
+g:\programming\bloodstained\bloodstained\bloodstained\game\bs_level.cpp(56): warning C4244: 'argument': conversion from 'ui32' to 'real', possible loss of data
+g:\programming\bloodstained\bloodstained\bloodstained\game\bs_level.cpp(138): warning C4244: 'argument': conversion from 'double' to 'real', possible loss of data
+g:\programming\bloodstained\bloodstained\bloodstained\game\bs_level.cpp(139): warning C4244: 'argument': conversion from 'double' to 'real', possible loss of data
+  bs_Game.cpp
+g:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(213): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
+g:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(215): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
+g:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(216): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
+g:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(217): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
+g:\programming\bloodstained\bloodstained\bloodstained\containers\bs_array.h(490): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+g:\programming\bloodstained\bloodstained\bloodstained\containers\bs_linkedarray.h(539): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+g:\programming\bloodstained\bloodstained\bloodstained\containers\bs_linkedarray.h(1091): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+g:\programming\bloodstained\bloodstained\bloodstained\rendering\bs_rendermanager.h(20): warning C4099: 'bs::ColorRGBAf': type name first seen using 'struct' now seen using 'class'
+  g:\programming\bloodstained\bloodstained\bloodstained\rendering\bs_color.h(54): note: see declaration of 'bs::ColorRGBAf'
+  bs_Resource.cpp
+g:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(213): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
+g:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(215): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
+g:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(216): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
+g:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(217): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
+g:\programming\bloodstained\bloodstained\bloodstained\containers\bs_array.h(490): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+  bs_StackAllocator.cpp
+g:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(213): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
+g:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(215): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
+g:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(216): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
+g:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(217): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
+  Generating Code...
+  Compiling...
+  bs_String.cpp
+g:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(213): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
+g:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(215): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
+g:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(216): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
+g:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(217): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
+g:\programming\bloodstained\bloodstained\bloodstained\containers\bs_array.h(490): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+g:\programming\bloodstained\bloodstained\bloodstained\utilities\bs_string.cpp(188): warning C4018: '>=': signed/unsigned mismatch
+g:\programming\bloodstained\bloodstained\bloodstained\utilities\bs_string.cpp(225): warning C4018: '>=': signed/unsigned mismatch
+  bs_Shader.cpp
+  bs_Screen.cpp
+  bs_Camera.cpp
+g:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(213): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
+g:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(215): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
+g:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(216): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
+g:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(217): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
+  bs_WindowsFileSystem.cpp
+g:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(213): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
+g:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(215): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
+g:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(216): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
+g:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(217): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
+g:\programming\bloodstained\bloodstained\bloodstained\containers\bs_array.h(490): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+g:\programming\bloodstained\bloodstained\bloodstained\platform\windows\bs_windowsfilesystem.cpp(115): warning C4244: 'return': conversion from 'LONGLONG' to 'ptrsize', possible loss of data
+  bs_WindowsError.cpp
+g:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(213): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
+g:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(215): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
+g:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(216): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
+g:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(217): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
+g:\programming\bloodstained\bloodstained\bloodstained\containers\bs_array.h(490): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+  bs_Vector4.cpp
+g:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(213): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
+g:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(215): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
+g:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(216): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
+g:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(217): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
+g:\programming\bloodstained\bloodstained\bloodstained\containers\bs_array.h(490): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+  bs_Vector3.cpp
+g:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(213): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
+g:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(215): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
+g:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(216): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
+g:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(217): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
+g:\programming\bloodstained\bloodstained\bloodstained\containers\bs_array.h(490): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+  bs_Rect.cpp
+g:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(213): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
+g:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(215): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
+g:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(216): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
+g:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(217): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
   bs_Matrix4x4.cpp
-g:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(207): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
-g:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(209): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
-g:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(210): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
-g:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(211): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
+g:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(213): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
+g:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(215): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
+g:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(216): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
+g:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(217): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
 g:\programming\bloodstained\bloodstained\bloodstained\containers\bs_array.h(490): warning C4067: unexpected tokens following preprocessor directive - expected a newline
   bs_Matrix3x3.cpp
-g:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(207): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
-g:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(209): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
-g:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(210): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
-g:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(211): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
+g:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(213): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
+g:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(215): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
+g:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(216): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
+g:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(217): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
+  bs_ImageLoader.cpp
+g:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(213): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
+g:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(215): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
+g:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(216): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
+g:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(217): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
+g:\programming\bloodstained\bloodstained\bloodstained\containers\bs_array.h(490): warning C4067: unexpected tokens following preprocessor directive - expected a newline
   bs_ResourceManager.cpp
-g:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(207): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
-g:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(209): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
-g:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(210): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
-g:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(211): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
+g:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(213): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
+g:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(215): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
+g:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(216): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
+g:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(217): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
 g:\programming\bloodstained\bloodstained\bloodstained\containers\bs_array.h(490): warning C4067: unexpected tokens following preprocessor directive - expected a newline
 g:\programming\bloodstained\bloodstained\bloodstained\containers\bs_linkedarray.h(539): warning C4067: unexpected tokens following preprocessor directive - expected a newline
 g:\programming\bloodstained\bloodstained\bloodstained\containers\bs_linkedarray.h(1091): warning C4067: unexpected tokens following preprocessor directive - expected a newline
@@ -218,29 +333,35 @@ g:\programming\bloodstained\bloodstained\bloodstained\allocator\bs_poolallocator
   g:\programming\bloodstained\bloodstained\bloodstained\fileio\bs_resourcemanager.cpp(30): note: see reference to class template instantiation 'bs::PoolAllocator<bs::TextResource>' being compiled
 g:\programming\bloodstained\bloodstained\bloodstained\allocator\bs_poolallocator.h(295): warning C4267: 'argument': conversion from 'size_t' to 'ui16', possible loss of data
   bs_Path.cpp
-g:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(207): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
-g:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(209): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
-g:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(210): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
-g:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(211): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
+g:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(213): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
+g:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(215): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
+g:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(216): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
+g:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(217): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
 g:\programming\bloodstained\bloodstained\bloodstained\containers\bs_array.h(490): warning C4067: unexpected tokens following preprocessor directive - expected a newline
 g:\programming\bloodstained\bloodstained\bloodstained\fileio\bs_path.cpp(197): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+  bs_FileSystem.cpp
+g:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(213): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
+g:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(215): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
+g:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(216): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
+g:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(217): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
+g:\programming\bloodstained\bloodstained\bloodstained\containers\bs_array.h(490): warning C4067: unexpected tokens following preprocessor directive - expected a newline
   bs_MurmurHash.cpp
   bs_HashMap.cpp
-g:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(207): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
-g:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(209): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
-g:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(210): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
-g:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(211): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
+g:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(213): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
+g:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(215): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
+g:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(216): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
+g:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(217): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
 g:\programming\bloodstained\bloodstained\bloodstained\containers\bs_array.h(490): warning C4067: unexpected tokens following preprocessor directive - expected a newline
   bs_Pool.cpp
-g:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(207): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
-g:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(209): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
-g:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(210): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
-g:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(211): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
+g:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(213): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
+g:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(215): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
+g:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(216): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
+g:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(217): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
   bs_Memory.cpp
-g:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(207): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
-g:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(209): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
-g:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(210): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
-g:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(211): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
+g:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(213): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
+g:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(215): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
+g:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(216): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
+g:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(217): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
   Generating Code...
   BloodStained.vcxproj -> G:\Programming\BloodStained\BloodStained\Debug\BloodStained.exe
   BloodStained.vcxproj -> G:\Programming\BloodStained\BloodStained\Debug\BloodStained.pdb (Partial PDB)

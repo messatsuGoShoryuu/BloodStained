@@ -13,8 +13,18 @@ namespace bs
 		~Body2D();
 
 	public:
-		inline	void	setMass(real mass) { m_mass = mass; }
-		inline	void	setInertia(real inertia) { m_inertia = inertia; }
+		inline	void	setMass(real mass) 
+		{ 
+			m_mass = mass; 
+			m_inverseMass = mass == 0.0f ? 0.0f : 1.0f / mass; 
+		}
+
+		inline	void	setInertia(real inertia) 
+		{ 
+			m_inertia = inertia; 
+			m_inverseInertia = inertia == 0.0f ?  0.0f : 1.0f / inertia; 
+		}
+
 		inline  void	addAcceleration(const Vector2& amount) { m_acceleration += amount; }
 		inline  void	addVelocity(const Vector2& amount) { m_velocity += amount; }
 		inline  void	setVelocity(const Vector2& newVelocity) { m_velocity = newVelocity; }
@@ -30,6 +40,8 @@ namespace bs
 
 		inline real					mass()				const { return m_mass; }
 		inline real					inertia()			const { return m_inertia; }
+		inline real					inverseMass()		const { return m_inverseMass; }
+		inline real					inverseInertia()		const { return m_inverseInertia; }
 		inline Transform2D&	transform()					{ return m_transform; }
 		inline Vector2				velocity()			const { return m_velocity; }
 		inline Vector2				acceleration()		const { return m_acceleration; }
@@ -63,7 +75,9 @@ namespace bs
 		real m_timeScale;
 
 		real m_mass;
+		real m_inverseMass;
 		real m_inertia;
+		real m_inverseInertia;
 
 		void* m_owner;
 
