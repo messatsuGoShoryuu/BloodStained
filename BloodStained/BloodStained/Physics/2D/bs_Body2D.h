@@ -34,6 +34,9 @@ namespace bs
 		inline	void	setGravityScale(real newScale) { m_gravityScale = newScale; }
 		inline	void	setTimeScale(real newScale) { m_timeScale = newScale; }
 		inline  void	multTimeScale(real multiplier) { m_timeScale *= multiplier; }
+		inline void		setStaticFriction(real value) { m_staticFriction = value; }
+		inline void		setDynamicFrictioN(real value) { m_dynamicFriction = value; }
+		inline void		setRestitution(real value) { m_restitution = value; }
 
 		void addForceAtPosition(const Vector2& force, const Vector2& position);
 		void addImpulseAtPosition(const Vector2& force, const Vector2& position);
@@ -49,6 +52,9 @@ namespace bs
 		inline real					torque()			const { return m_torque; }
 		inline real					gravityScale()		const { return m_gravityScale; }
 		inline real					timeScale()			const { return m_timeScale; }
+		inline real					staticFriction()	const { return m_staticFriction; }
+		inline real					dynamicFriction()	const { return m_dynamicFriction; }
+		inline real					setRestitution()	const { return m_restitution; }
 
 
 		inline	void	setOwner(void* owner) { m_owner = owner; }
@@ -78,6 +84,11 @@ namespace bs
 		real m_inverseMass;
 		real m_inertia;
 		real m_inverseInertia;
+
+		//Material
+		real m_staticFriction;
+		real m_dynamicFriction;
+		real m_restitution;
 
 		void* m_owner;
 

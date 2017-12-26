@@ -9,7 +9,10 @@ bs::Body2D::Body2D()
 	m_torque(0),
 	m_owner(nullptr),
 	m_gravityScale(0.0f),
-	m_timeScale(1.0f)
+	m_timeScale(1.0f),
+	m_staticFriction(0.1f),
+	m_dynamicFriction(0.1f),
+	m_restitution(0.0f)
 {
 }
 
@@ -25,7 +28,10 @@ bs::Body2D::Body2D(const Body2D & b)
 	m_torque(b.m_torque),
 	m_owner(b.m_owner),
 	m_gravityScale(b.m_gravityScale),
-	m_timeScale(b.m_timeScale)
+	m_timeScale(b.m_timeScale),
+	m_staticFriction(b.m_staticFriction),
+	m_dynamicFriction(b.m_dynamicFriction),
+	m_restitution(b.m_restitution)
 {
 }
 

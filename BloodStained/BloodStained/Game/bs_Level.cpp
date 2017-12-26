@@ -50,6 +50,8 @@ namespace bs
 	{
 		static	PhysicalObject2D* player = PhysicsManager2D::addPhysicalObject();
 		static  PhysicalObject2D* ground = PhysicsManager2D::addPhysicalObject();
+		static  PhysicalObject2D* wall1 = PhysicsManager2D::addPhysicalObject();
+		static  PhysicalObject2D* wall2 = PhysicsManager2D::addPhysicalObject();
 
 
 		Camera2D* cam = dynamic_cast<Camera2D*>(m_cameras[0]);
@@ -152,8 +154,8 @@ namespace bs
 			player->shape().calculateNormals();
 			player->shape().calculateCenter();
 
-			player->body()->setInertia(player->shape().getInertiaMoment(10.0f));
-			player->body()->setMass(10.0f);
+			player->body()->setInertia(player->shape().getInertiaMoment(100.0f));
+			player->body()->setMass(100.0f);
 		}
 
 		
@@ -185,10 +187,74 @@ namespace bs
 			ground->body()->setInertia(0.0f);
 
 			ground->body()->transform().setPosition(Vector2(0.0f, -10.0f));
+
+			wall1->shape().addVertex(1, 10.0f);
+			wall1->shape().calculateNormals();
+			wall1->shape().calculateCenter();
+			wall1->shape().getInertiaMoment(0);
+
+			wall1->shape().addVertex(-1, 10.0f);
+			wall1->shape().calculateNormals();
+			wall1->shape().calculateCenter();
+			wall1->shape().getInertiaMoment(0);
+
+			wall1->shape().addVertex(-1, -10.0f);
+			wall1->shape().calculateNormals();
+			wall1->shape().calculateCenter();
+			wall1->shape().getInertiaMoment(0);
+
+			wall1->shape().addVertex(1, -10.0f);
+			wall1->shape().calculateNormals();
+			wall1->shape().calculateCenter();
+			wall1->shape().getInertiaMoment(0);
+
+			wall1->shape().calculateNormals();
+			wall1->shape().calculateCenter();
+			wall1->shape().getInertiaMoment(0);
+			wall1->body()->setInertia(0.0f);
+
+			wall1->body()->transform().setPosition(Vector2(10.0f, 0.0f));
+
+
+			wall2->shape().addVertex(1, 10.0f);
+			wall2->shape().calculateNormals();
+			wall2->shape().calculateCenter();
+			wall2->shape().getInertiaMoment(0);
+
+			wall2->shape().addVertex(-1, 10.0f);
+			wall2->shape().calculateNormals();
+			wall2->shape().calculateCenter();
+			wall2->shape().getInertiaMoment(0);
+
+			wall2->shape().addVertex(-1, -10.0f);
+			wall2->shape().calculateNormals();
+			wall2->shape().calculateCenter();
+			wall2->shape().getInertiaMoment(0);
+
+			wall2->shape().addVertex(1, -10.0f);
+			wall2->shape().calculateNormals();
+			wall2->shape().calculateCenter();
+			wall2->shape().getInertiaMoment(0);
+
+			wall2->shape().calculateNormals();
+			wall2->shape().calculateCenter();
+			wall2->shape().getInertiaMoment(0);
+			wall2->body()->setInertia(0.0f);
+
+			wall2->body()->transform().setPosition(Vector2(-10.0f, 0.0f));
+
+			
 		}
 	
+		static real accumulator = 0.0f;
+		real physicsStep = 1.0f / 60.0f;
+		accumulator += dt;
 
-		PhysicsManager2D::update(dt);
+		while (accumulator > physicsStep)
+		{
+			PhysicsManager2D::update(physicsStep);
+			accumulator -= dt;
+		}
 		
 
 		Shape2D attShape = *player->relativeShape();
@@ -201,7 +267,7 @@ namespace bs
 		RenderManager::drawDebugCircle(attShape.centerOfGravity(), 0.008f, 8, ColorRGBAf::blue);
 		RenderManager::drawDebugCircle(attShape.center(), 0.008f, 8, ColorRGBAf::red);
 		RenderManager::drawDebugCircle(attShape.getSupportPoint(Vector2::up), 0.008f, 32, ColorRGBAf::magenta);
-		RenderManager::drawDebugShape((Vector2*)ground->relativeShape()->getVertices(), ground->relativeShape()->vertexCount(), ColorRGBAf::red);
+//		RenderManager::drawDebugShape((Vector2*)ground->relativeShape()->getVertices(), ground->relativeShape()->vertexCount(), ColorRGBAf::red);
 
 		
 

@@ -452,7 +452,6 @@ namespace bs
 			{
 				manifold.contact[0].normal = closest->normal;
 				manifold.contact[0].penetration = penetration;
-				manifold.contact[0].tangent = Vector2::cross(1, closest->normal);
 				manifold.contact[0].point = b1;
 				manifold.contact[0].incident = true;
 
@@ -469,7 +468,6 @@ namespace bs
 
 				manifold.contact[0].normal = -closest->normal;
 				manifold.contact[0].penetration = penetration;
-				manifold.contact[0].tangent = Vector2::cross(1, -closest->normal);
 				manifold.contact[0].point = a1;
 				manifold.contact[0].incident = true;
 
@@ -483,6 +481,8 @@ namespace bs
 				if (!manifold.contact[0].incident) manifold.flip = !manifold.flip;
 			}
 
+			manifold.contact[0].tangent = Vector2::cross(1,manifold.contact[0].normal);
+			manifold.contact[1].tangent = Vector2::cross(1, manifold.contact[1].normal);
 			return manifold;
 		}
 

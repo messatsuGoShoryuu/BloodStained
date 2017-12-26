@@ -38,17 +38,6 @@ namespace bs
 	}
 	void PhysicsManager2D::update(real dt)
 	{
-			_integrate(dt);
-			_syncShapes();
-			_collideShapes();
-			_resolveCollisions(0.2f);
-			_resolveCollisions(0.2f);
-			_resolveCollisions(0.2f);
-			_resolveCollisions(0.2f);
-			_resolveCollisions(0.2f);
-			_correctPositions();
-			_syncShapes();
-		
 #ifdef BS_DEBUG_PHYSICS
 		ptrsize n = s_shapes.count();
 		for (ui32 i = 0; i < n; i++)
@@ -59,6 +48,17 @@ namespace bs
 				ColorRGBAf::black);
 		}
 #endif
+			_integrate(dt);
+			_syncShapes();
+			_collideShapes();
+			_resolveCollisions(0.2f);
+			_resolveCollisions(0.2f);
+			_resolveCollisions(0.2f);
+			_resolveCollisions(0.2f);
+			_resolveCollisions(0.2f);
+			_correctPositions();
+			_syncShapes();
+
 	}
 
 	PhysicalObject2D * PhysicsManager2D::addPhysicalObject()
@@ -138,6 +138,8 @@ namespace bs
 					p->collision = col;
 					RenderManager::drawDebugLine(p->collision.manifold.contact[0].point, p->collision.manifold.contact[0].point + p->collision.manifold.contact[0].normal * 3, ColorRGBAf::green);
 					RenderManager::drawDebugLine(p->collision.manifold.contact[1].point, p->collision.manifold.contact[1].point + p->collision.manifold.contact[1].normal * 3, ColorRGBAf::green);
+					RenderManager::drawDebugLine(p->collision.manifold.contact[0].point, p->collision.manifold.contact[0].point + p->collision.manifold.contact[0].tangent * 3, ColorRGBAf::cyan);
+					RenderManager::drawDebugLine(p->collision.manifold.contact[1].point, p->collision.manifold.contact[1].point + p->collision.manifold.contact[1].tangent * 3, ColorRGBAf::cyan);
 				}
 			}
 		}
@@ -196,9 +198,24 @@ namespace bs
 
 					
 
+					
+
 					if (contactV > 0) continue;
 					{
 						Vector2 impulse = n * impulseScalar;
+						vRef -= impulse * mRef;
+						vInc += impulse * mInc;
+
+						wRef -= iRef * Vector2::cross(posRef, impulse);
+						wInc += iInc * Vector2::cross(posInc, impulse);
+
+						relV = vInc + Vector2::cross(-wInc, posInc) - vRef - Vector2::cross(-wRef, posRef);
+
+						real tangentV = -relV.dot(t);
+						tangentV /= divisor * 2.0f;
+						tangentV /= (real)pair->collision.manifold.pointCount;
+						impulse = t * tangentV;
+
 						vRef -= impulse * mRef;
 						vInc += impulse * mInc;
 
