@@ -1,0 +1,352 @@
+﻿  bs_Memory.cpp
+d:\programming\bloodstained\bloodstained\bloodstained\allocator\../Math/bs_math.h(213): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
+d:\programming\bloodstained\bloodstained\bloodstained\allocator\../Math/bs_math.h(215): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
+d:\programming\bloodstained\bloodstained\bloodstained\allocator\../Math/bs_math.h(216): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
+d:\programming\bloodstained\bloodstained\bloodstained\allocator\../Math/bs_math.h(217): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
+  bs_Pool.cpp
+d:\programming\bloodstained\bloodstained\bloodstained\allocator\../Math/bs_math.h(213): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
+d:\programming\bloodstained\bloodstained\bloodstained\allocator\../Math/bs_math.h(215): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
+d:\programming\bloodstained\bloodstained\bloodstained\allocator\../Math/bs_math.h(216): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
+d:\programming\bloodstained\bloodstained\bloodstained\allocator\../Math/bs_math.h(217): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
+Allocator\bs_Pool.cpp(56): warning C4267: 'argument': conversion from 'size_t' to 'ui32', possible loss of data
+Allocator\bs_Pool.cpp(76): warning C4267: 'argument': conversion from 'size_t' to 'ui32', possible loss of data
+Allocator\bs_Pool.cpp(86): warning C4267: '+=': conversion from 'size_t' to 'ui32', possible loss of data
+Allocator\bs_Pool.cpp(100): warning C4267: 'argument': conversion from 'size_t' to 'ui32', possible loss of data
+Allocator\bs_Pool.cpp(181): warning C4267: 'argument': conversion from 'size_t' to 'ui32', possible loss of data
+Allocator\bs_Pool.cpp(196): warning C4267: 'argument': conversion from 'size_t' to 'ui16', possible loss of data
+Allocator\bs_Pool.cpp(204): warning C4267: 'argument': conversion from 'size_t' to 'ui32', possible loss of data
+  bs_StackAllocator.cpp
+d:\programming\bloodstained\bloodstained\bloodstained\allocator\../Math/bs_math.h(213): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
+d:\programming\bloodstained\bloodstained\bloodstained\allocator\../Math/bs_math.h(215): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
+d:\programming\bloodstained\bloodstained\bloodstained\allocator\../Math/bs_math.h(216): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
+d:\programming\bloodstained\bloodstained\bloodstained\allocator\../Math/bs_math.h(217): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
+Allocator\bs_StackAllocator.cpp(66): warning C4267: 'argument': conversion from 'size_t' to 'ui32', possible loss of data
+Allocator\bs_StackAllocator.cpp(73): warning C4267: 'argument': conversion from 'size_t' to 'ui32', possible loss of data
+  bs_HashMap.cpp
+d:\programming\bloodstained\bloodstained\bloodstained\containers\../External/HashFunctions/MurmurHash/bs_MurmurHash.h(8): fatal error C1083: Cannot open include file: 'Utilities/bs_types.h': No such file or directory
+  bs_Event.cpp
+d:\programming\bloodstained\bloodstained\bloodstained\events\bs_Event.h(5): fatal error C1083: Cannot open include file: 'Functions/bs_MemberFunction.h': No such file or directory
+  bs_EventManager.cpp
+d:\programming\bloodstained\bloodstained\bloodstained\events\bs_Event.h(5): fatal error C1083: Cannot open include file: 'Functions/bs_MemberFunction.h': No such file or directory
+  bs_MurmurHash.cpp
+d:\programming\bloodstained\bloodstained\bloodstained\external\hashfunctions\murmurhash\bs_MurmurHash.h(8): fatal error C1083: Cannot open include file: 'Utilities/bs_types.h': No such file or directory
+  lodepng.cpp
+External\ImageLoading\LodePng\lodepng.cpp(773): warning C4334: '<<': result of 32-bit shift implicitly converted to 64 bits (was 64-bit shift intended?)
+External\ImageLoading\LodePng\lodepng.cpp(1439): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+External\ImageLoading\LodePng\lodepng.cpp(1443): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+External\ImageLoading\LodePng\lodepng.cpp(1515): warning C4267: '=': conversion from 'size_t' to 'unsigned int', possible loss of data
+External\ImageLoading\LodePng\lodepng.cpp(3437): warning C4334: '<<': result of 32-bit shift implicitly converted to 64 bits (was 64-bit shift intended?)
+External\ImageLoading\LodePng\lodepng.cpp(3443): warning C4267: 'argument': conversion from 'size_t' to 'unsigned int', possible loss of data
+External\ImageLoading\LodePng\lodepng.cpp(4246): warning C4267: '=': conversion from 'size_t' to 'unsigned int', possible loss of data
+External\ImageLoading\LodePng\lodepng.cpp(4294): warning C4267: '=': conversion from 'size_t' to 'unsigned int', possible loss of data
+External\ImageLoading\LodePng\lodepng.cpp(4374): warning C4267: '=': conversion from 'size_t' to 'unsigned int', possible loss of data
+External\ImageLoading\LodePng\lodepng.cpp(5319): warning C4267: 'initializing': conversion from 'size_t' to 'unsigned int', possible loss of data
+  bs_FileSystem.cpp
+d:\programming\bloodstained\bloodstained\bloodstained\containers\../Math/bs_math.h(213): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
+d:\programming\bloodstained\bloodstained\bloodstained\containers\../Math/bs_math.h(215): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
+d:\programming\bloodstained\bloodstained\bloodstained\containers\../Math/bs_math.h(216): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
+d:\programming\bloodstained\bloodstained\bloodstained\containers\../Math/bs_math.h(217): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
+d:\programming\bloodstained\bloodstained\bloodstained\utilities\../Containers/bs_Array.h(490): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+d:\programming\bloodstained\bloodstained\bloodstained\fileio\../Utilities/bs_String.h(36): warning C4267: 'return': conversion from 'size_t' to 'const ui32', possible loss of data
+d:\programming\bloodstained\bloodstained\bloodstained\fileio\../Utilities/bs_String.h(37): warning C4267: 'return': conversion from 'size_t' to 'const ui32', possible loss of data
+d:\programming\bloodstained\bloodstained\bloodstained\fileio\bs_FileSystem.h(5): fatal error C1083: Cannot open include file: 'Platform/bs_Platform.h': No such file or directory
+  bs_Path.cpp
+d:\programming\bloodstained\bloodstained\bloodstained\containers\../Math/bs_math.h(213): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
+d:\programming\bloodstained\bloodstained\bloodstained\containers\../Math/bs_math.h(215): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
+d:\programming\bloodstained\bloodstained\bloodstained\containers\../Math/bs_math.h(216): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
+d:\programming\bloodstained\bloodstained\bloodstained\containers\../Math/bs_math.h(217): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
+d:\programming\bloodstained\bloodstained\bloodstained\utilities\../Containers/bs_Array.h(490): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+d:\programming\bloodstained\bloodstained\bloodstained\fileio\../Utilities/bs_String.h(36): warning C4267: 'return': conversion from 'size_t' to 'const ui32', possible loss of data
+d:\programming\bloodstained\bloodstained\bloodstained\fileio\../Utilities/bs_String.h(37): warning C4267: 'return': conversion from 'size_t' to 'const ui32', possible loss of data
+FileIO\bs_Path.cpp(3): fatal error C1083: Cannot open include file: 'Platform/bs_Platform.h': No such file or directory
+  bs_Resource.cpp
+d:\programming\bloodstained\bloodstained\bloodstained\containers\../Math/bs_math.h(213): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
+d:\programming\bloodstained\bloodstained\bloodstained\containers\../Math/bs_math.h(215): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
+d:\programming\bloodstained\bloodstained\bloodstained\containers\../Math/bs_math.h(216): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
+d:\programming\bloodstained\bloodstained\bloodstained\containers\../Math/bs_math.h(217): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
+d:\programming\bloodstained\bloodstained\bloodstained\utilities\../Containers/bs_Array.h(490): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+d:\programming\bloodstained\bloodstained\bloodstained\fileio\../Utilities/bs_String.h(36): warning C4267: 'return': conversion from 'size_t' to 'const ui32', possible loss of data
+d:\programming\bloodstained\bloodstained\bloodstained\fileio\../Utilities/bs_String.h(37): warning C4267: 'return': conversion from 'size_t' to 'const ui32', possible loss of data
+d:\programming\bloodstained\bloodstained\bloodstained\fileio\bs_Resource.h(5): fatal error C1083: Cannot open include file: 'Rendering/bs_Texture2D.h': No such file or directory
+  bs_ResourceManager.cpp
+d:\programming\bloodstained\bloodstained\bloodstained\containers\../Math/bs_math.h(213): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
+d:\programming\bloodstained\bloodstained\bloodstained\containers\../Math/bs_math.h(215): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
+d:\programming\bloodstained\bloodstained\bloodstained\containers\../Math/bs_math.h(216): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
+d:\programming\bloodstained\bloodstained\bloodstained\containers\../Math/bs_math.h(217): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
+d:\programming\bloodstained\bloodstained\bloodstained\utilities\../Containers/bs_Array.h(490): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+d:\programming\bloodstained\bloodstained\bloodstained\fileio\../Utilities/bs_String.h(36): warning C4267: 'return': conversion from 'size_t' to 'const ui32', possible loss of data
+d:\programming\bloodstained\bloodstained\bloodstained\fileio\../Utilities/bs_String.h(37): warning C4267: 'return': conversion from 'size_t' to 'const ui32', possible loss of data
+d:\programming\bloodstained\bloodstained\bloodstained\fileio\bs_Resource.h(5): fatal error C1083: Cannot open include file: 'Rendering/bs_Texture2D.h': No such file or directory
+  bs_ImageLoader.cpp
+d:\programming\bloodstained\bloodstained\bloodstained\fileio\imageloader\bs_ImageLoader.h(4): fatal error C1083: Cannot open include file: 'Utilities/bs_types.h': No such file or directory
+  bs_Game.cpp
+d:\programming\bloodstained\bloodstained\bloodstained\game\bs_Game.h(4): fatal error C1083: Cannot open include file: 'Utilities/bs_Error.h': No such file or directory
+  bs_Level.cpp
+d:\programming\bloodstained\bloodstained\bloodstained\game\bs_Level.h(4): fatal error C1083: Cannot open include file: 'Utilities/bs_types.h': No such file or directory
+  bs_InputManager.cpp
+d:\programming\bloodstained\bloodstained\bloodstained\input\bs_Keyboard.h(4): fatal error C1083: Cannot open include file: 'Platform/bs_Platform.h': No such file or directory
+  bs_Keyboard.cpp
+d:\programming\bloodstained\bloodstained\bloodstained\input\bs_Keyboard.h(4): fatal error C1083: Cannot open include file: 'Platform/bs_Platform.h': No such file or directory
+  bs_Mouse.cpp
+d:\programming\bloodstained\bloodstained\bloodstained\input\bs_Mouse.h(4): fatal error C1083: Cannot open include file: 'Platform/bs_Platform.h': No such file or directory
+  bs_Matrix3x3.cpp
+d:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(213): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
+d:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(215): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
+d:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(216): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
+d:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(217): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
+  bs_Matrix4x4.cpp
+d:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(213): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
+d:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(215): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
+d:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(216): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
+d:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(217): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
+d:\programming\bloodstained\bloodstained\bloodstained\utilities\../Containers/bs_Array.h(490): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+d:\programming\bloodstained\bloodstained\bloodstained\math\../Utilities/bs_String.h(36): warning C4267: 'return': conversion from 'size_t' to 'const ui32', possible loss of data
+d:\programming\bloodstained\bloodstained\bloodstained\math\../Utilities/bs_String.h(37): warning C4267: 'return': conversion from 'size_t' to 'const ui32', possible loss of data
+d:\programming\bloodstained\bloodstained\bloodstained\utilities\../Containers/bs_Array.h(230): warning C4267: 'argument': conversion from 'size_t' to 'ui32', possible loss of data
+  d:\programming\bloodstained\bloodstained\bloodstained\utilities\../Containers/bs_Array.h(225): note: while compiling class template member function 'void bs::Array<char>::reserve(ptrsize)'
+  d:\programming\bloodstained\bloodstained\bloodstained\utilities\../Containers/bs_Array.h(197): note: see reference to function template instantiation 'void bs::Array<char>::reserve(ptrsize)' being compiled
+  d:\programming\bloodstained\bloodstained\bloodstained\utilities\../Containers/bs_Array.h(195): note: while compiling class template member function 'ptrsize bs::Array<char>::add(const T &)'
+          with
+          [
+              T=char
+          ]
+  d:\programming\bloodstained\bloodstained\bloodstained\math\../Utilities/bs_String.h(73): note: see reference to function template instantiation 'ptrsize bs::Array<char>::add(const T &)' being compiled
+          with
+          [
+              T=char
+          ]
+  d:\programming\bloodstained\bloodstained\bloodstained\math\../Utilities/bs_String.h(126): note: see reference to class template instantiation 'bs::Array<char>' being compiled
+d:\programming\bloodstained\bloodstained\bloodstained\utilities\../Containers/bs_Array.h(368): warning C4267: 'argument': conversion from 'size_t' to 'ui32', possible loss of data
+  d:\programming\bloodstained\bloodstained\bloodstained\utilities\../Containers/bs_Array.h(363): note: while compiling class template member function 'char *bs::Array<char>::_allocate(ptrsize)'
+  d:\programming\bloodstained\bloodstained\bloodstained\utilities\../Containers/bs_Array.h(234): note: see reference to function template instantiation 'char *bs::Array<char>::_allocate(ptrsize)' being compiled
+  d:\programming\bloodstained\bloodstained\bloodstained\utilities\../Containers/bs_Array.h(225): note: while compiling class template member function 'void bs::Array<char>::reserve(ptrsize)'
+  d:\programming\bloodstained\bloodstained\bloodstained\utilities\../Containers/bs_Array.h(197): note: see reference to function template instantiation 'void bs::Array<char>::reserve(ptrsize)' being compiled
+  Compiling...
+  bs_Quaternion.cpp
+d:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(213): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
+d:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(215): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
+d:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(216): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
+d:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(217): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
+d:\programming\bloodstained\bloodstained\bloodstained\utilities\../Containers/bs_Array.h(490): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+d:\programming\bloodstained\bloodstained\bloodstained\math\../Utilities/bs_String.h(36): warning C4267: 'return': conversion from 'size_t' to 'const ui32', possible loss of data
+d:\programming\bloodstained\bloodstained\bloodstained\math\../Utilities/bs_String.h(37): warning C4267: 'return': conversion from 'size_t' to 'const ui32', possible loss of data
+Math\bs_Quaternion.cpp(104): warning C4244: 'initializing': conversion from 'double' to 'real', possible loss of data
+Math\bs_Quaternion.cpp(105): warning C4244: 'initializing': conversion from 'double' to 'real', possible loss of data
+Math\bs_Quaternion.cpp(110): warning C4244: 'initializing': conversion from 'double' to 'real', possible loss of data
+Math\bs_Quaternion.cpp(111): warning C4244: 'initializing': conversion from 'double' to 'real', possible loss of data
+Math\bs_Quaternion.cpp(118): warning C4244: 'initializing': conversion from 'double' to 'real', possible loss of data
+Math\bs_Quaternion.cpp(119): warning C4244: 'initializing': conversion from 'double' to 'real', possible loss of data
+Math\bs_Quaternion.cpp(120): warning C4244: 'initializing': conversion from 'double' to 'real', possible loss of data
+Math\bs_Quaternion.cpp(122): warning C4244: 'initializing': conversion from 'double' to 'real', possible loss of data
+Math\bs_Quaternion.cpp(123): warning C4244: 'initializing': conversion from 'double' to 'real', possible loss of data
+Math\bs_Quaternion.cpp(124): warning C4244: 'initializing': conversion from 'double' to 'real', possible loss of data
+Math\bs_Quaternion.cpp(150): warning C4244: '=': conversion from 'double' to 'real', possible loss of data
+Math\bs_Quaternion.cpp(151): warning C4244: '=': conversion from 'double' to 'real', possible loss of data
+Math\bs_Quaternion.cpp(152): warning C4244: '=': conversion from 'double' to 'real', possible loss of data
+d:\programming\bloodstained\bloodstained\bloodstained\utilities\../Containers/bs_Array.h(230): warning C4267: 'argument': conversion from 'size_t' to 'ui32', possible loss of data
+  d:\programming\bloodstained\bloodstained\bloodstained\utilities\../Containers/bs_Array.h(225): note: while compiling class template member function 'void bs::Array<char>::reserve(ptrsize)'
+  d:\programming\bloodstained\bloodstained\bloodstained\utilities\../Containers/bs_Array.h(197): note: see reference to function template instantiation 'void bs::Array<char>::reserve(ptrsize)' being compiled
+  d:\programming\bloodstained\bloodstained\bloodstained\utilities\../Containers/bs_Array.h(195): note: while compiling class template member function 'ptrsize bs::Array<char>::add(const T &)'
+          with
+          [
+              T=char
+          ]
+  d:\programming\bloodstained\bloodstained\bloodstained\math\../Utilities/bs_String.h(73): note: see reference to function template instantiation 'ptrsize bs::Array<char>::add(const T &)' being compiled
+          with
+          [
+              T=char
+          ]
+  d:\programming\bloodstained\bloodstained\bloodstained\math\../Utilities/bs_String.h(126): note: see reference to class template instantiation 'bs::Array<char>' being compiled
+d:\programming\bloodstained\bloodstained\bloodstained\utilities\../Containers/bs_Array.h(368): warning C4267: 'argument': conversion from 'size_t' to 'ui32', possible loss of data
+  d:\programming\bloodstained\bloodstained\bloodstained\utilities\../Containers/bs_Array.h(363): note: while compiling class template member function 'char *bs::Array<char>::_allocate(ptrsize)'
+  d:\programming\bloodstained\bloodstained\bloodstained\utilities\../Containers/bs_Array.h(234): note: see reference to function template instantiation 'char *bs::Array<char>::_allocate(ptrsize)' being compiled
+  d:\programming\bloodstained\bloodstained\bloodstained\utilities\../Containers/bs_Array.h(225): note: while compiling class template member function 'void bs::Array<char>::reserve(ptrsize)'
+  d:\programming\bloodstained\bloodstained\bloodstained\utilities\../Containers/bs_Array.h(197): note: see reference to function template instantiation 'void bs::Array<char>::reserve(ptrsize)' being compiled
+  bs_Rect.cpp
+d:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(213): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
+d:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(215): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
+d:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(216): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
+d:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(217): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
+  bs_Vector2.cpp
+d:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(213): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
+d:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(215): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
+d:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(216): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
+d:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(217): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
+d:\programming\bloodstained\bloodstained\bloodstained\utilities\../Containers/bs_Array.h(490): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+d:\programming\bloodstained\bloodstained\bloodstained\math\../Utilities/bs_String.h(36): warning C4267: 'return': conversion from 'size_t' to 'const ui32', possible loss of data
+d:\programming\bloodstained\bloodstained\bloodstained\math\../Utilities/bs_String.h(37): warning C4267: 'return': conversion from 'size_t' to 'const ui32', possible loss of data
+d:\programming\bloodstained\bloodstained\bloodstained\utilities\../Containers/bs_Array.h(230): warning C4267: 'argument': conversion from 'size_t' to 'ui32', possible loss of data
+  d:\programming\bloodstained\bloodstained\bloodstained\utilities\../Containers/bs_Array.h(225): note: while compiling class template member function 'void bs::Array<char>::reserve(ptrsize)'
+  d:\programming\bloodstained\bloodstained\bloodstained\utilities\../Containers/bs_Array.h(197): note: see reference to function template instantiation 'void bs::Array<char>::reserve(ptrsize)' being compiled
+  d:\programming\bloodstained\bloodstained\bloodstained\utilities\../Containers/bs_Array.h(195): note: while compiling class template member function 'ptrsize bs::Array<char>::add(const T &)'
+          with
+          [
+              T=char
+          ]
+  d:\programming\bloodstained\bloodstained\bloodstained\math\../Utilities/bs_String.h(73): note: see reference to function template instantiation 'ptrsize bs::Array<char>::add(const T &)' being compiled
+          with
+          [
+              T=char
+          ]
+  d:\programming\bloodstained\bloodstained\bloodstained\math\../Utilities/bs_String.h(126): note: see reference to class template instantiation 'bs::Array<char>' being compiled
+d:\programming\bloodstained\bloodstained\bloodstained\utilities\../Containers/bs_Array.h(368): warning C4267: 'argument': conversion from 'size_t' to 'ui32', possible loss of data
+  d:\programming\bloodstained\bloodstained\bloodstained\utilities\../Containers/bs_Array.h(363): note: while compiling class template member function 'char *bs::Array<char>::_allocate(ptrsize)'
+  d:\programming\bloodstained\bloodstained\bloodstained\utilities\../Containers/bs_Array.h(234): note: see reference to function template instantiation 'char *bs::Array<char>::_allocate(ptrsize)' being compiled
+  d:\programming\bloodstained\bloodstained\bloodstained\utilities\../Containers/bs_Array.h(225): note: while compiling class template member function 'void bs::Array<char>::reserve(ptrsize)'
+  d:\programming\bloodstained\bloodstained\bloodstained\utilities\../Containers/bs_Array.h(197): note: see reference to function template instantiation 'void bs::Array<char>::reserve(ptrsize)' being compiled
+  bs_Vector3.cpp
+d:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(213): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
+d:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(215): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
+d:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(216): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
+d:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(217): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
+d:\programming\bloodstained\bloodstained\bloodstained\utilities\../Containers/bs_Array.h(490): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+d:\programming\bloodstained\bloodstained\bloodstained\math\../Utilities/bs_String.h(36): warning C4267: 'return': conversion from 'size_t' to 'const ui32', possible loss of data
+d:\programming\bloodstained\bloodstained\bloodstained\math\../Utilities/bs_String.h(37): warning C4267: 'return': conversion from 'size_t' to 'const ui32', possible loss of data
+d:\programming\bloodstained\bloodstained\bloodstained\utilities\../Containers/bs_Array.h(230): warning C4267: 'argument': conversion from 'size_t' to 'ui32', possible loss of data
+  d:\programming\bloodstained\bloodstained\bloodstained\utilities\../Containers/bs_Array.h(225): note: while compiling class template member function 'void bs::Array<char>::reserve(ptrsize)'
+  d:\programming\bloodstained\bloodstained\bloodstained\utilities\../Containers/bs_Array.h(197): note: see reference to function template instantiation 'void bs::Array<char>::reserve(ptrsize)' being compiled
+  d:\programming\bloodstained\bloodstained\bloodstained\utilities\../Containers/bs_Array.h(195): note: while compiling class template member function 'ptrsize bs::Array<char>::add(const T &)'
+          with
+          [
+              T=char
+          ]
+  d:\programming\bloodstained\bloodstained\bloodstained\math\../Utilities/bs_String.h(73): note: see reference to function template instantiation 'ptrsize bs::Array<char>::add(const T &)' being compiled
+          with
+          [
+              T=char
+          ]
+  d:\programming\bloodstained\bloodstained\bloodstained\math\../Utilities/bs_String.h(126): note: see reference to class template instantiation 'bs::Array<char>' being compiled
+d:\programming\bloodstained\bloodstained\bloodstained\utilities\../Containers/bs_Array.h(368): warning C4267: 'argument': conversion from 'size_t' to 'ui32', possible loss of data
+  d:\programming\bloodstained\bloodstained\bloodstained\utilities\../Containers/bs_Array.h(363): note: while compiling class template member function 'char *bs::Array<char>::_allocate(ptrsize)'
+  d:\programming\bloodstained\bloodstained\bloodstained\utilities\../Containers/bs_Array.h(234): note: see reference to function template instantiation 'char *bs::Array<char>::_allocate(ptrsize)' being compiled
+  d:\programming\bloodstained\bloodstained\bloodstained\utilities\../Containers/bs_Array.h(225): note: while compiling class template member function 'void bs::Array<char>::reserve(ptrsize)'
+  d:\programming\bloodstained\bloodstained\bloodstained\utilities\../Containers/bs_Array.h(197): note: see reference to function template instantiation 'void bs::Array<char>::reserve(ptrsize)' being compiled
+  bs_Vector4.cpp
+d:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(213): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
+d:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(215): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
+d:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(216): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
+d:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(217): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
+d:\programming\bloodstained\bloodstained\bloodstained\utilities\../Containers/bs_Array.h(490): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+d:\programming\bloodstained\bloodstained\bloodstained\math\../Utilities/bs_String.h(36): warning C4267: 'return': conversion from 'size_t' to 'const ui32', possible loss of data
+d:\programming\bloodstained\bloodstained\bloodstained\math\../Utilities/bs_String.h(37): warning C4267: 'return': conversion from 'size_t' to 'const ui32', possible loss of data
+d:\programming\bloodstained\bloodstained\bloodstained\utilities\../Containers/bs_Array.h(230): warning C4267: 'argument': conversion from 'size_t' to 'ui32', possible loss of data
+  d:\programming\bloodstained\bloodstained\bloodstained\utilities\../Containers/bs_Array.h(225): note: while compiling class template member function 'void bs::Array<char>::reserve(ptrsize)'
+  d:\programming\bloodstained\bloodstained\bloodstained\utilities\../Containers/bs_Array.h(197): note: see reference to function template instantiation 'void bs::Array<char>::reserve(ptrsize)' being compiled
+  d:\programming\bloodstained\bloodstained\bloodstained\utilities\../Containers/bs_Array.h(195): note: while compiling class template member function 'ptrsize bs::Array<char>::add(const T &)'
+          with
+          [
+              T=char
+          ]
+  d:\programming\bloodstained\bloodstained\bloodstained\math\../Utilities/bs_String.h(73): note: see reference to function template instantiation 'ptrsize bs::Array<char>::add(const T &)' being compiled
+          with
+          [
+              T=char
+          ]
+  d:\programming\bloodstained\bloodstained\bloodstained\math\../Utilities/bs_String.h(126): note: see reference to class template instantiation 'bs::Array<char>' being compiled
+d:\programming\bloodstained\bloodstained\bloodstained\utilities\../Containers/bs_Array.h(368): warning C4267: 'argument': conversion from 'size_t' to 'ui32', possible loss of data
+  d:\programming\bloodstained\bloodstained\bloodstained\utilities\../Containers/bs_Array.h(363): note: while compiling class template member function 'char *bs::Array<char>::_allocate(ptrsize)'
+  d:\programming\bloodstained\bloodstained\bloodstained\utilities\../Containers/bs_Array.h(234): note: see reference to function template instantiation 'char *bs::Array<char>::_allocate(ptrsize)' being compiled
+  d:\programming\bloodstained\bloodstained\bloodstained\utilities\../Containers/bs_Array.h(225): note: while compiling class template member function 'void bs::Array<char>::reserve(ptrsize)'
+  d:\programming\bloodstained\bloodstained\bloodstained\utilities\../Containers/bs_Array.h(197): note: see reference to function template instantiation 'void bs::Array<char>::reserve(ptrsize)' being compiled
+  bs_Body2D.cpp
+d:\programming\bloodstained\bloodstained\bloodstained\physics\2d\bs_Transform2D.h(4): fatal error C1083: Cannot open include file: 'Math/bs_Vector.h': No such file or directory
+  bs_Physics2D.cpp
+d:\programming\bloodstained\bloodstained\bloodstained\physics\2d\Collisions/bs_Shape2D.h(4): fatal error C1083: Cannot open include file: 'Math/bs_Vector.h': No such file or directory
+  bs_PhysicsManager2D.cpp
+d:\programming\bloodstained\bloodstained\bloodstained\physics\2d\Collisions/bs_Shape2D.h(4): fatal error C1083: Cannot open include file: 'Math/bs_Vector.h': No such file or directory
+  bs_Transform2D.cpp
+d:\programming\bloodstained\bloodstained\bloodstained\physics\2d\bs_Transform2D.h(4): fatal error C1083: Cannot open include file: 'Math/bs_Vector.h': No such file or directory
+  bs_GJK2D.cpp
+d:\programming\bloodstained\bloodstained\bloodstained\physics\2d\collisions\bs_Collision2D.h(4): fatal error C1083: Cannot open include file: 'Math/bs_Vector.h': No such file or directory
+  bs_Shape2D.cpp
+d:\programming\bloodstained\bloodstained\bloodstained\physics\2d\collisions\bs_Shape2D.h(4): fatal error C1083: Cannot open include file: 'Math/bs_Vector.h': No such file or directory
+  bs_Ray3D.cpp
+d:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(213): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
+d:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(215): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
+d:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(216): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
+d:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(217): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
+d:\programming\bloodstained\bloodstained\bloodstained\physics\3d\collisions\bs_PhysicsPrimitives.h(9): warning C4099: 'bs::Plane': type name first seen using 'class' now seen using 'struct'
+  d:\programming\bloodstained\bloodstained\bloodstained\physics\3d\collisions\bs_PhysicsPrimitives.h(8): note: see declaration of 'bs::Plane'
+  bs_WindowsError.cpp
+Platform\Windows\bs_WindowsError.cpp(2): fatal error C1083: Cannot open include file: 'Utilities/bs_Error.h': No such file or directory
+  bs_WindowsFileSystem.cpp
+d:\programming\bloodstained\bloodstained\bloodstained\platform\windows\bs_WindowsFileSystem.h(4): fatal error C1083: Cannot open include file: 'Utilities/bs_types.h': No such file or directory
+  bs_WindowsInput.cpp
+Platform\Windows\bs_WindowsInput.cpp(2): fatal error C1083: Cannot open include file: 'Input/bs_InputManager.h': No such file or directory
+  bs_WindowsMain.cpp
+Platform\Windows\bs_WindowsMain.cpp(2): fatal error C1083: Cannot open include file: 'Utilities/bs_Error.h': No such file or directory
+  bs_WindowsOpenGL.cpp
+d:\programming\bloodstained\bloodstained\bloodstained\platform\windows\bs_WindowsOpenGL.h(4): fatal error C1083: Cannot open include file: 'Utilities/bs_Error.h': No such file or directory
+  bs_Camera.cpp
+d:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(213): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
+d:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(215): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
+d:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(216): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
+d:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(217): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
+  bs_Camera2D.cpp
+d:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(213): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
+d:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(215): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
+d:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(216): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
+d:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(217): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
+d:\programming\bloodstained\bloodstained\bloodstained\rendering\bs_Screen.h(4): fatal error C1083: Cannot open include file: 'Utilities/bs_types.h': No such file or directory
+  bs_Camera3D.cpp
+d:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(213): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
+d:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(215): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
+d:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(216): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
+d:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(217): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
+d:\programming\bloodstained\bloodstained\bloodstained\rendering\bs_Screen.h(4): fatal error C1083: Cannot open include file: 'Utilities/bs_types.h': No such file or directory
+  Compiling...
+  bs_Color.cpp
+d:\programming\bloodstained\bloodstained\bloodstained\rendering\../Math/bs_math.h(213): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
+d:\programming\bloodstained\bloodstained\bloodstained\rendering\../Math/bs_math.h(215): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
+d:\programming\bloodstained\bloodstained\bloodstained\rendering\../Math/bs_math.h(216): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
+d:\programming\bloodstained\bloodstained\bloodstained\rendering\../Math/bs_math.h(217): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
+d:\programming\bloodstained\bloodstained\bloodstained\utilities\../Containers/bs_Array.h(490): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+d:\programming\bloodstained\bloodstained\bloodstained\rendering\../Utilities/bs_String.h(36): warning C4267: 'return': conversion from 'size_t' to 'const ui32', possible loss of data
+d:\programming\bloodstained\bloodstained\bloodstained\rendering\../Utilities/bs_String.h(37): warning C4267: 'return': conversion from 'size_t' to 'const ui32', possible loss of data
+d:\programming\bloodstained\bloodstained\bloodstained\utilities\../Containers/bs_Array.h(230): warning C4267: 'argument': conversion from 'size_t' to 'ui32', possible loss of data
+  d:\programming\bloodstained\bloodstained\bloodstained\utilities\../Containers/bs_Array.h(225): note: while compiling class template member function 'void bs::Array<char>::reserve(ptrsize)'
+  d:\programming\bloodstained\bloodstained\bloodstained\utilities\../Containers/bs_Array.h(197): note: see reference to function template instantiation 'void bs::Array<char>::reserve(ptrsize)' being compiled
+  d:\programming\bloodstained\bloodstained\bloodstained\utilities\../Containers/bs_Array.h(195): note: while compiling class template member function 'ptrsize bs::Array<char>::add(const T &)'
+          with
+          [
+              T=char
+          ]
+  d:\programming\bloodstained\bloodstained\bloodstained\rendering\../Utilities/bs_String.h(73): note: see reference to function template instantiation 'ptrsize bs::Array<char>::add(const T &)' being compiled
+          with
+          [
+              T=char
+          ]
+  d:\programming\bloodstained\bloodstained\bloodstained\rendering\../Utilities/bs_String.h(126): note: see reference to class template instantiation 'bs::Array<char>' being compiled
+d:\programming\bloodstained\bloodstained\bloodstained\utilities\../Containers/bs_Array.h(368): warning C4267: 'argument': conversion from 'size_t' to 'ui32', possible loss of data
+  d:\programming\bloodstained\bloodstained\bloodstained\utilities\../Containers/bs_Array.h(363): note: while compiling class template member function 'char *bs::Array<char>::_allocate(ptrsize)'
+  d:\programming\bloodstained\bloodstained\bloodstained\utilities\../Containers/bs_Array.h(234): note: see reference to function template instantiation 'char *bs::Array<char>::_allocate(ptrsize)' being compiled
+  d:\programming\bloodstained\bloodstained\bloodstained\utilities\../Containers/bs_Array.h(225): note: while compiling class template member function 'void bs::Array<char>::reserve(ptrsize)'
+  d:\programming\bloodstained\bloodstained\bloodstained\utilities\../Containers/bs_Array.h(197): note: see reference to function template instantiation 'void bs::Array<char>::reserve(ptrsize)' being compiled
+  bs_DebugRenderer.cpp
+d:\programming\bloodstained\bloodstained\bloodstained\rendering\bs_DebugRenderer.h(4): fatal error C1083: Cannot open include file: 'Containers/bs_Array.h': No such file or directory
+  bs_OpenGL.cpp
+d:\programming\bloodstained\bloodstained\bloodstained\rendering\bs_OpenGL.h(4): fatal error C1083: Cannot open include file: 'Utilities/bs_types.h': No such file or directory
+  bs_QuadRenderer.cpp
+d:\programming\bloodstained\bloodstained\bloodstained\rendering\bs_QuadRenderer.h(4): fatal error C1083: Cannot open include file: 'Allocator/bs_StackAllocator.h': No such file or directory
+  bs_RenderBufferObjects.cpp
+d:\programming\bloodstained\bloodstained\bloodstained\rendering\bs_RenderBufferObjects.h(3): fatal error C1083: Cannot open include file: 'Utilities/bs_types.h': No such file or directory
+  bs_RenderManager.cpp
+d:\programming\bloodstained\bloodstained\bloodstained\rendering\bs_RenderManager.h(4): fatal error C1083: Cannot open include file: 'Rendering/bs_Color.h': No such file or directory
+  bs_Screen.cpp
+d:\programming\bloodstained\bloodstained\bloodstained\rendering\bs_Screen.h(4): fatal error C1083: Cannot open include file: 'Utilities/bs_types.h': No such file or directory
+  bs_ShaderManager.cpp
+d:\programming\bloodstained\bloodstained\bloodstained\rendering\bs_ShaderManager.h(4): fatal error C1083: Cannot open include file: 'Utilities/bs_types.h': No such file or directory
+  bs_Shader.cpp
+d:\programming\bloodstained\bloodstained\bloodstained\rendering\bs_Shader.h(4): fatal error C1083: Cannot open include file: 'Utilities/bs_types.h': No such file or directory
+  bs_Sprite.cpp
+d:\programming\bloodstained\bloodstained\bloodstained\rendering\bs_Sprite.h(4): fatal error C1083: Cannot open include file: 'Math/bs_Vector.h': No such file or directory
+  bs_SpriteManager.cpp
+d:\programming\bloodstained\bloodstained\bloodstained\rendering\bs_SpriteManager.h(4): fatal error C1083: Cannot open include file: 'Allocator/bs_PoolAllocator.h': No such file or directory
+  bs_Texture2D.cpp
+d:\programming\bloodstained\bloodstained\bloodstained\rendering\bs_Texture2D.h(4): fatal error C1083: Cannot open include file: 'Utilities/bs_types.h': No such file or directory
+  bs_Clock.cpp
+d:\programming\bloodstained\bloodstained\bloodstained\time\bs_Clock.h(4): fatal error C1083: Cannot open include file: 'Utilities/bs_types.h': No such file or directory
+  bs_Error.cpp
+d:\programming\bloodstained\bloodstained\bloodstained\utilities\bs_Error.h(5): fatal error C1083: Cannot open include file: 'Platform/bs_Platform.h': No such file or directory
+  bs_String.cpp
+d:\programming\bloodstained\bloodstained\bloodstained\utilities\../External/HashFunctions/MurmurHash/bs_MurmurHash.h(8): fatal error C1083: Cannot open include file: 'Utilities/bs_types.h': No such file or directory

@@ -218,6 +218,7 @@ namespace bs
 	{
 		reserve(size);
 		m_count = size;
+		for (int i = 0; i < m_count; i++) new(m_buffer + i) T();
 	}
 
 	template <class T>

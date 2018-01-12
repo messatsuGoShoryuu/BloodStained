@@ -7,6 +7,7 @@
 #include <Input/bs_InputManager.h>
 #include <Time/bs_Clock.h>
 #include <Physics/2D/bs_Physics2D.h>
+#include <Events/bs_EventManager.h>
 
 namespace bs
 {
@@ -29,6 +30,8 @@ namespace bs
 		if (error != ERROR_ID::NONE) return fatalError(error);
 		error = PhysicsManager2D::initialize();
 		if (error != ERROR_ID::NONE) return fatalError(error);
+		error = EventManager::initialize();
+		if (error != ERROR_ID::NONE) return fatalError(error);
 		addLevel();
 		currentLevel()->initialize();
 		return ERROR_ID::NONE;
@@ -39,6 +42,8 @@ namespace bs
 		currentLevel()->shutDown();
 		ERROR_ID error = ERROR_ID::NONE;
 
+		error = EventManager::shutdown();
+		if (error != ERROR_ID::NONE) return fatalError(error);
 		error = RenderManager::shutDown();
 		if (error != ERROR_ID::NONE) return fatalError(error);
 		error = PhysicsManager2D::shutDown();

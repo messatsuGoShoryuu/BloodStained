@@ -1,38 +1,37 @@
-﻿  bs_PhysicsManager2D.cpp
-g:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(213): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
-g:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(215): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
-g:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(216): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
-g:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(217): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
-g:\programming\bloodstained\bloodstained\bloodstained\containers\bs_array.h(490): warning C4067: unexpected tokens following preprocessor directive - expected a newline
-g:\programming\bloodstained\bloodstained\bloodstained\utilities\bs_string.h(36): warning C4267: 'return': conversion from 'size_t' to 'const ui32', possible loss of data
-g:\programming\bloodstained\bloodstained\bloodstained\utilities\bs_string.h(37): warning C4267: 'return': conversion from 'size_t' to 'const ui32', possible loss of data
-g:\programming\bloodstained\bloodstained\bloodstained\rendering\bs_renderbufferobjects.h(75): warning C4267: 'return': conversion from 'size_t' to 'ui32', possible loss of data
-g:\programming\bloodstained\bloodstained\bloodstained\containers\bs_hashmap.h(39): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
-g:\programming\bloodstained\bloodstained\bloodstained\containers\bs_hashmap.h(48): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
-g:\programming\bloodstained\bloodstained\bloodstained\rendering\bs_rendermanager.h(20): warning C4099: 'bs::ColorRGBAf': type name first seen using 'struct' now seen using 'class'
-  g:\programming\bloodstained\bloodstained\bloodstained\rendering\bs_color.h(54): note: see declaration of 'bs::ColorRGBAf'
-g:\programming\bloodstained\bloodstained\bloodstained\physics\2d\bs_physicsmanager2d.cpp(269): warning C4018: '<': signed/unsigned mismatch
-g:\programming\bloodstained\bloodstained\bloodstained\containers\bs_array.h(262): warning C4267: 'initializing': conversion from 'size_t' to 'ui32', possible loss of data
-  g:\programming\bloodstained\bloodstained\bloodstained\containers\bs_array.h(258): note: while compiling class template member function 'void bs::Array<bs::PhysicalObject2D *>::remove(const T &)'
-          with
-          [
-              T=bs::PhysicalObject2D *
-          ]
-  g:\programming\bloodstained\bloodstained\bloodstained\physics\2d\bs_physicsmanager2d.cpp(83): note: see reference to function template instantiation 'void bs::Array<bs::PhysicalObject2D *>::remove(const T &)' being compiled
-          with
-          [
-              T=bs::PhysicalObject2D *
-          ]
-  g:\programming\bloodstained\bloodstained\bloodstained\physics\2d\bs_physicsmanager2d.cpp(13): note: see reference to class template instantiation 'bs::Array<bs::PhysicalObject2D *>' being compiled
-g:\programming\bloodstained\bloodstained\bloodstained\containers\bs_array.h(230): warning C4267: 'argument': conversion from 'size_t' to 'ui32', possible loss of data
-  g:\programming\bloodstained\bloodstained\bloodstained\containers\bs_array.h(225): note: while compiling class template member function 'void bs::Array<bs::PhysicalObject2D *>::reserve(ptrsize)'
-  g:\programming\bloodstained\bloodstained\bloodstained\containers\bs_array.h(197): note: see reference to function template instantiation 'void bs::Array<bs::PhysicalObject2D *>::reserve(ptrsize)' being compiled
-  g:\programming\bloodstained\bloodstained\bloodstained\containers\bs_array.h(162): note: while compiling class template member function 'bs::Array<bs::PhysicalObject2D *>::Array(void)'
-  g:\programming\bloodstained\bloodstained\bloodstained\physics\2d\bs_physicsmanager2d.cpp(13): note: see reference to function template instantiation 'bs::Array<bs::PhysicalObject2D *>::Array(void)' being compiled
-g:\programming\bloodstained\bloodstained\bloodstained\containers\bs_array.h(368): warning C4267: 'argument': conversion from 'size_t' to 'ui32', possible loss of data
-  g:\programming\bloodstained\bloodstained\bloodstained\containers\bs_array.h(363): note: while compiling class template member function 'bs::PhysicalObject2D *bs::Array<bs::PhysicalObject2D *>::_allocate(ptrsize)'
-  g:\programming\bloodstained\bloodstained\bloodstained\containers\bs_array.h(234): note: see reference to function template instantiation 'bs::PhysicalObject2D *bs::Array<bs::PhysicalObject2D *>::_allocate(ptrsize)' being compiled
-  g:\programming\bloodstained\bloodstained\bloodstained\containers\bs_array.h(225): note: while compiling class template member function 'void bs::Array<bs::PhysicalObject2D *>::reserve(ptrsize)'
-  g:\programming\bloodstained\bloodstained\bloodstained\containers\bs_array.h(197): note: see reference to function template instantiation 'void bs::Array<bs::PhysicalObject2D *>::reserve(ptrsize)' being compiled
-  BloodStained.vcxproj -> G:\Programming\BloodStained\BloodStained\x64\Debug\BloodStained.exe
-  BloodStained.vcxproj -> G:\Programming\BloodStained\BloodStained\x64\Debug\BloodStained.pdb (Partial PDB)
+﻿  bs_Level.cpp
+d:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(213): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
+d:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(215): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
+d:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(216): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
+d:\programming\bloodstained\bloodstained\bloodstained\math\bs_math.h(217): warning C4244: '=': conversion from 'ui64' to 'byte', possible loss of data
+d:\programming\bloodstained\bloodstained\bloodstained\containers\bs_array.h(491): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+d:\programming\bloodstained\bloodstained\bloodstained\containers\bs_hashmap.h(39): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+d:\programming\bloodstained\bloodstained\bloodstained\containers\bs_hashmap.h(48): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+d:\programming\bloodstained\bloodstained\bloodstained\containers\bs_linkedarray.h(539): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+d:\programming\bloodstained\bloodstained\bloodstained\containers\bs_linkedarray.h(1091): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+d:\programming\bloodstained\bloodstained\bloodstained\utilities\bs_string.h(36): warning C4267: 'return': conversion from 'size_t' to 'const ui32', possible loss of data
+d:\programming\bloodstained\bloodstained\bloodstained\utilities\bs_string.h(37): warning C4267: 'return': conversion from 'size_t' to 'const ui32', possible loss of data
+d:\programming\bloodstained\bloodstained\bloodstained\fileio\bs_resourcemanager.h(84): warning C4267: 'return': conversion from 'size_t' to 'ui32', possible loss of data
+d:\programming\bloodstained\bloodstained\bloodstained\rendering\bs_renderbufferobjects.h(75): warning C4267: 'return': conversion from 'size_t' to 'ui32', possible loss of data
+d:\programming\bloodstained\bloodstained\bloodstained\rendering\bs_rendermanager.h(20): warning C4099: 'bs::ColorRGBAf': type name first seen using 'struct' now seen using 'class'
+  d:\programming\bloodstained\bloodstained\bloodstained\rendering\bs_color.h(54): note: see declaration of 'bs::ColorRGBAf'
+d:\programming\bloodstained\bloodstained\bloodstained\game\bs_level.cpp(64): warning C4244: 'argument': conversion from 'ui32' to 'real', possible loss of data
+d:\programming\bloodstained\bloodstained\bloodstained\game\bs_level.cpp(147): warning C4244: 'argument': conversion from 'double' to 'real', possible loss of data
+d:\programming\bloodstained\bloodstained\bloodstained\game\bs_level.cpp(148): warning C4244: 'argument': conversion from 'double' to 'real', possible loss of data
+d:\programming\bloodstained\bloodstained\bloodstained\game\bs_level.cpp(150): warning C4305: 'argument': truncation from 'double' to 'real'
+d:\programming\bloodstained\bloodstained\bloodstained\game\bs_level.cpp(151): warning C4305: 'argument': truncation from 'double' to 'real'
+d:\programming\bloodstained\bloodstained\bloodstained\game\bs_level.cpp(280): warning C4018: '<': signed/unsigned mismatch
+d:\programming\bloodstained\bloodstained\bloodstained\containers\bs_array.h(231): warning C4267: 'argument': conversion from 'size_t' to 'ui32', possible loss of data
+  d:\programming\bloodstained\bloodstained\bloodstained\containers\bs_array.h(226): note: while compiling class template member function 'void bs::Array<bs::Camera *>::reserve(ptrsize)'
+  d:\programming\bloodstained\bloodstained\bloodstained\containers\bs_array.h(197): note: see reference to function template instantiation 'void bs::Array<bs::Camera *>::reserve(ptrsize)' being compiled
+  d:\programming\bloodstained\bloodstained\bloodstained\containers\bs_array.h(177): note: while compiling class template member function 'bs::Array<bs::Camera *>::Array(const bs::Array<bs::Camera *> &)'
+  d:\programming\bloodstained\bloodstained\bloodstained\game\bs_level.cpp(29): note: see reference to function template instantiation 'bs::Array<bs::Camera *>::Array(const bs::Array<bs::Camera *> &)' being compiled
+  d:\programming\bloodstained\bloodstained\bloodstained\game\bs_level.h(26): note: see reference to class template instantiation 'bs::Array<bs::Camera *>' being compiled
+d:\programming\bloodstained\bloodstained\bloodstained\containers\bs_array.h(393): warning C4267: 'argument': conversion from 'size_t' to 'ui32', possible loss of data
+  d:\programming\bloodstained\bloodstained\bloodstained\containers\bs_array.h(388): note: while compiling class template member function 'void bs::Array<bs::Camera *>::_copy(const bs::Array<bs::Camera *> &)'
+  d:\programming\bloodstained\bloodstained\bloodstained\containers\bs_array.h(181): note: see reference to function template instantiation 'void bs::Array<bs::Camera *>::_copy(const bs::Array<bs::Camera *> &)' being compiled
+d:\programming\bloodstained\bloodstained\bloodstained\containers\bs_array.h(369): warning C4267: 'argument': conversion from 'size_t' to 'ui32', possible loss of data
+  d:\programming\bloodstained\bloodstained\bloodstained\containers\bs_array.h(364): note: while compiling class template member function 'bs::Camera **bs::Array<bs::Camera *>::_allocate(ptrsize)'
+  d:\programming\bloodstained\bloodstained\bloodstained\containers\bs_array.h(235): note: see reference to function template instantiation 'bs::Camera **bs::Array<bs::Camera *>::_allocate(ptrsize)' being compiled
+  d:\programming\bloodstained\bloodstained\bloodstained\containers\bs_array.h(226): note: while compiling class template member function 'void bs::Array<bs::Camera *>::reserve(ptrsize)'
+  d:\programming\bloodstained\bloodstained\bloodstained\containers\bs_array.h(197): note: see reference to function template instantiation 'void bs::Array<bs::Camera *>::reserve(ptrsize)' being compiled
+  BloodStained.vcxproj -> D:\Programming\BloodStained\BloodStained\x64\Debug\BloodStained.exe

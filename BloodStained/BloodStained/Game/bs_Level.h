@@ -7,6 +7,7 @@
 #include <Containers/bs_Array.h>
 namespace bs
 {
+	struct Event;
 	class Level
 	{
 	public:
@@ -17,6 +18,8 @@ namespace bs
 		void	initialize();
 		void	shutDown();
 		void	update(f32 dt);
+
+		void	onEntityCreated(Event e);
 
 	private:
 		ui32 m_id;

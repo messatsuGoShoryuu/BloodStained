@@ -3,6 +3,8 @@
 
 #include <Rendering/bs_RenderManager.h>
 
+#include <Events/bs_EventManager.h>
+
 #define BS_DEBUG_PHYSICS
 
 namespace bs
@@ -71,6 +73,8 @@ namespace bs
 
 		p->m_relativeShape->setOwner(p);
 		p->m_body->setOwner(p);
+
+		EventManager::dispatch(EVENT_ID::ENTITY_CREATED, p);
 
 		return p;
 	}

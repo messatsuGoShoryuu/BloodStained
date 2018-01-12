@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project DefaultTargets="Build" ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
       <Configuration>Debug</Configuration>
@@ -23,6 +23,8 @@
     <ClCompile Include="Allocator\bs_Pool.cpp" />
     <ClCompile Include="Allocator\bs_StackAllocator.cpp" />
     <ClCompile Include="Containers\bs_HashMap.cpp" />
+    <ClCompile Include="Events\bs_Event.cpp" />
+    <ClCompile Include="Events\bs_EventManager.cpp" />
     <ClCompile Include="External\HashFunctions\MurmurHash\bs_MurmurHash.cpp" />
     <ClCompile Include="External\ImageLoading\LodePng\lodepng.cpp" />
     <ClCompile Include="FileIO\bs_FileSystem.cpp" />
@@ -83,6 +85,8 @@
     <ClInclude Include="Containers\bs_LinkedArray.h" />
     <ClInclude Include="Containers\bs_LinkedList.h" />
     <ClInclude Include="Containers\bs_Stack.h" />
+    <ClInclude Include="Events\bs_EventManager.h" />
+    <ClInclude Include="Events\bs_Event.h" />
     <ClInclude Include="External\HashFunctions\MurmurHash\bs_MurmurHash.h" />
     <ClInclude Include="External\ImageLoading\LodePng\lodepng.h" />
     <ClInclude Include="FileIO\bs_FileSystem.h" />
@@ -91,6 +95,8 @@
     <ClInclude Include="FileIO\bs_Resource.h" />
     <ClInclude Include="FileIO\bs_ResourceManager.h" />
     <ClInclude Include="FileIO\ImageLoader\bs_ImageLoader.h" />
+    <ClInclude Include="Functions\bs_BaseMemberFunction.h" />
+    <ClInclude Include="Functions\bs_MemberFunction.h" />
     <ClInclude Include="Game\bs_Game.h" />
     <ClInclude Include="Game\bs_Level.h" />
     <ClInclude Include="Input\bs_InputManager.h" />
@@ -149,32 +155,32 @@
   <PropertyGroup Label="Globals">
     <ProjectGuid>{5231931E-9050-4A87-BFDE-B4692BDC8F39}</ProjectGuid>
     <RootNamespace>BloodStained</RootNamespace>
-    <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0.16299.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v140</PlatformToolset>
+    <PlatformToolset>v141</PlatformToolset>
     <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
-    <PlatformToolset>v140</PlatformToolset>
+    <PlatformToolset>v141</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v140</PlatformToolset>
+    <PlatformToolset>v141</PlatformToolset>
     <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
-    <PlatformToolset>v140</PlatformToolset>
+    <PlatformToolset>v141</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>
@@ -205,12 +211,12 @@
     <LibraryPath>G:\Programming\BloodStained\Libraries\lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <IncludePath>G:\Programming\BloodStained\Libraries\inc;G:\Programming\BloodStained\BloodStained\BloodStained;$(IncludePath)</IncludePath>
-    <LibraryPath>G:\Programming\BloodStained\Libraries\lib;$(LibraryPath)</LibraryPath>
+    <IncludePath>G:\Programming\BloodStained\Libraries\inc;G:\Programming\BloodStained\BloodStained\BloodStained;D:\Programming\BloodStained\BloodStained\BloodStained;D:\Programming\BloodStained\Libraries\inc;$(IncludePath)</IncludePath>
+    <LibraryPath>G:\Programming\BloodStained\Libraries\lib;D:\Programming\BloodStained\Libraries\lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-    <IncludePath>G:\Programming\BloodStained\Libraries\inc;G:\Programming\BloodStained\BloodStained\BloodStained;$(IncludePath)</IncludePath>
-    <LibraryPath>G:\Programming\BloodStained\Libraries\lib;$(LibraryPath)</LibraryPath>
+    <IncludePath>G:\Programming\BloodStained\Libraries\inc;G:\Programming\BloodStained\BloodStained\BloodStained;D:\Programming\BloodStained\BloodStained\BloodStained;D:\Programming\BloodStained\Libraries\inc;$(IncludePath)</IncludePath>
+    <LibraryPath>D:\Programming\BloodStained\Libraries\lib;G:\Programming\BloodStained\Libraries\lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>

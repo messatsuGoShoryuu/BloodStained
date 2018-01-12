@@ -228,6 +228,12 @@
     <ClCompile Include="Physics\2D\bs_PhysicsManager2D.cpp">
       <Filter>Source Files\Physics\2D</Filter>
     </ClCompile>
+    <ClCompile Include="Events\bs_Event.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Events\bs_EventManager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Platform\Windows\bs_WindowsError.h">
@@ -442,6 +448,18 @@
     </ClInclude>
     <ClInclude Include="Physics\2D\Collisions\bs_Collision2D.h">
       <Filter>Source Files\Physics\2D\Collisions</Filter>
+    </ClInclude>
+    <ClInclude Include="Functions\bs_BaseMemberFunction.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Functions\bs_MemberFunction.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Events\bs_Event.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Events\bs_EventManager.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

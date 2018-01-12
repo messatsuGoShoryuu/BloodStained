@@ -15,7 +15,8 @@
 
 #include <Physics/2D/bs_Physics2D.h>
 #include <Physics/2D/Collisions/bs_GJK2D.h>
-
+#include <Functions/bs_MemberFunction.h>
+#include  <Events/bs_EventManager.h>
 
 namespace bs
 {
@@ -38,6 +39,10 @@ namespace bs
 	{
 		m_cameras.add(new Camera2D());
 		PhysicsManager2D::setGravity(-Vector2::up * 9.8f);
+
+		EventManager::addListener(this, &Level::onEntityCreated, EVENT_ID::ENTITY_CREATED);
+
+		EventManager::dispatch(EVENT_ID::LEVEL_LOADED, &m_id);
 	}
 
 	void Level::shutDown()
@@ -304,10 +309,14 @@ namespace bs
 				player->body()->transform().position() + player->body()->transform().basis().y(), ColorRGBAf::cyan);
 			RenderManager::drawDebugLine(Vector2::zero, Vector2::up, ColorRGBAf::black);
 			RenderManager::drawDebugLine(Vector2::zero, Vector2::right, ColorRGBAf::black);
-			
 		}
 		
 		RenderManager::render(m_cameras);
+	}
+
+	void Level::onEntityCreated(Event e)
+	{
+		RenderManager::drawDebugCircle(Vector2::zero, 1.0f, 8, ColorRGBAf::blue);
 	}
 }
 

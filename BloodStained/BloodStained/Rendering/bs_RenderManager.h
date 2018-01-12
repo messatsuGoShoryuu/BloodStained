@@ -39,11 +39,6 @@ namespace bs
 		static HashMap<String, Texture2D> s_textureDB;
 
 	};
-	template<class T>
-	inline Quad<T>* RenderManager::addQuad(ui32 count, Shader * shader, Texture2D * texture)
-	{
-		return s_quadRenderer.add<Quad<T>>(count, shader, texture);
-	}
 }
 
 #endif // !_BS_RENDERMANAGER_H_
