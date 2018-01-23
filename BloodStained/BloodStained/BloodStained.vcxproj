@@ -45,6 +45,7 @@
     <ClCompile Include="Math\bs_Vector3.cpp" />
     <ClCompile Include="Math\bs_Vector4.cpp" />
     <ClCompile Include="Physics\2D\bs_Body2D.cpp" />
+    <ClCompile Include="Physics\2D\bs_PhysicalObject2D.cpp" />
     <ClCompile Include="Physics\2D\bs_Physics2D.cpp" />
     <ClCompile Include="Physics\2D\bs_PhysicsManager2D.cpp" />
     <ClCompile Include="Physics\2D\bs_Transform2D.cpp" />

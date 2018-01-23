@@ -10,7 +10,7 @@ namespace bs
 		Vector3	normal;
 	};
 
-	class Plane;
+	struct Plane;
 
 	Vector3	hitTest3D(const Ray3D& ray, const Plane& p);
 }

@@ -194,7 +194,7 @@ namespace bs
 		{
 			s_root = Path(GET_APP_FILE_NAME);
 
-#ifdef _WIN32 || WIN64
+#if defined(_WIN32) || defined(WIN64)
 			s_root.toParent();
 #elif defined __APPLE__
 			root.m_string += '/';

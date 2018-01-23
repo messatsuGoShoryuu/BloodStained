@@ -69,10 +69,10 @@ namespace bs
 		m_projection.loadIdentity();
 
 		//First column:
-		m_projection[0][0] = 1.0 / (fov * a);
+		m_projection[0][0] = 1.0f / (fov * a);
 
 		//Second column:
-		m_projection[1][1] = 1.0 / fov;
+		m_projection[1][1] = 1.0f / fov;
 
 		//Third column:
 		m_projection[2][2] = (f + n) / (f - n);
@@ -80,8 +80,8 @@ namespace bs
 
 
 		//Fourth column:
-		m_projection[3][2] = -(2.0 * f * n) / (f - n);
-		m_projection[3][3] = 0.0;
+		m_projection[3][2] = -(2.0f * f * n) / (f - n);
+		m_projection[3][3] = 0.0f;
 
 		m_isDirty = true;
 	}

@@ -228,7 +228,7 @@ namespace bs
 		if (m_bufferSize != 0 && size <= m_bufferSize) return;
 
 		//set size to the nearest power of 2
-		ui32 size2k = math::nearestPowerOfTwo(size);
+		ui32 size2k = math::nearestPowerOfTwo((ui32)size);
 		if (size2k < BS_MINIMUM_ARRAY_ALLOC) size2k = BS_MINIMUM_ARRAY_ALLOC;
 
 		//allocate and migrate
@@ -488,6 +488,6 @@ namespace bs
 }
 
 
-#undef DEFINE_CONSTRUCT_FUNCTION(TYPES,ARGS,PARAMS)
+#undef DEFINE_CONSTRUCT_FUNCTION
 
 #endif // !BS_ARRAY_H

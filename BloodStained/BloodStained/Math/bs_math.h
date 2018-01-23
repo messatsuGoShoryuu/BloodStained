@@ -200,22 +200,22 @@ namespace bs
 
 		inline void storeUi32ToByteArray(byte* array, ui32 value)
 		{
-			array[0] = value & 0x000000FF;
-			array[1] = (value & 0x0000FF00) >> 8;
-			array[2] = (value & 0x00FF0000) >> 16;
-			array[3] = (value & 0XFF000000) >> 24;
+			array[0] = (byte)(value & 0x000000FF);
+			array[1] = (byte)((value & 0x0000FF00) >> 8);
+			array[2] = (byte)((value & 0x00FF0000) >> 16);
+			array[3] = (byte)((value & 0XFF000000) >> 24);
 		}
 
 		inline void storeUi64ToByteArray(byte* array, ui64 value)
 		{
-			array[0] = value & 0x00000000000000FF;
-			array[1] = (value & 0x000000000000FF00) >> 8;
-			array[2] = (value & 0x0000000000FF0000) >> 16;
-			array[3] = (value & 0X00000000FF000000) >> 24;
-			array[4] = (value & 0X000000FF00000000) >> 32;
-			array[5] = (value & 0X0000FF0000000000) >> 40;
-			array[6] = (value & 0X00FF000000000000) >> 48;
-			array[7] = (value & 0XFF00000000000000) >> 56;
+			array[0] = (byte)(value & 0x00000000000000FF);
+			array[1] = (byte)((value & 0x000000000000FF00) >> 8);
+			array[2] = (byte)((value & 0x0000000000FF0000) >> 16);
+			array[3] = (byte)((value & 0X00000000FF000000) >> 24);
+			array[4] = (byte)((value & 0X000000FF00000000) >> 32);
+			array[5] = (byte)((value & 0X0000FF0000000000) >> 40);
+			array[6] = (byte)((value & 0X00FF000000000000) >> 48);
+			array[7] = (byte)((value & 0XFF00000000000000) >> 56);
 		}
 
 		inline void endianSwap(byte* array, byte size)

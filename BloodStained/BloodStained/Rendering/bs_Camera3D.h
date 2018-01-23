@@ -5,7 +5,7 @@
 
 namespace bs
 {
-	class Ray3D;
+	struct Ray3D;
 
 	class Camera3D : public Camera
 	{

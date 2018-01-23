@@ -63,4 +63,8 @@
 #define BS_DEBUG_BUILD
 #endif
 
+#pragma warning( disable : 4267 )
+#pragma warning( disable : 4244 )
+#pragma warning( disable : 4305 )
+
 #endif // !BS_DEFINE_H

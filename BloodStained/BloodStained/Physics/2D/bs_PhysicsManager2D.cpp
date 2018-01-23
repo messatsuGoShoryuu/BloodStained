@@ -2,7 +2,6 @@
 #include "Collisions/bs_GJK2D.h"
 
 #include <Rendering/bs_RenderManager.h>
-
 #include <Events/bs_EventManager.h>
 
 #define BS_DEBUG_PHYSICS
@@ -74,8 +73,6 @@ namespace bs
 		p->m_relativeShape->setOwner(p);
 		p->m_body->setOwner(p);
 
-		EventManager::dispatch(EVENT_ID::ENTITY_CREATED, p);
-
 		return p;
 	}
 
@@ -140,6 +137,11 @@ namespace bs
 					p->i = (PhysicalObject2D*)s_shapes[b]->owner();
 
 					p->collision = col;
+					if (p->r->canDispatch())
+						p->r->_dispatch(EVENT_ID::COLLISION_BEGIN, p->collision.manifold);
+					if(p->i->canDispatch())
+						p->i->_dispatch(EVENT_ID::COLLISION_BEGIN, p->collision.manifold);
+					
 					RenderManager::drawDebugLine(p->collision.manifold.contact[0].point, p->collision.manifold.contact[0].point + p->collision.manifold.contact[0].normal * 3, ColorRGBAf::green);
 					RenderManager::drawDebugLine(p->collision.manifold.contact[1].point, p->collision.manifold.contact[1].point + p->collision.manifold.contact[1].normal * 3, ColorRGBAf::green);
 					RenderManager::drawDebugLine(p->collision.manifold.contact[0].point, p->collision.manifold.contact[0].point + p->collision.manifold.contact[0].tangent * 3, ColorRGBAf::cyan);
@@ -270,7 +272,7 @@ namespace bs
 					bMass -= 0.01f;
 				}
 
-				for (int i = 0; i < pair->collision.manifold.pointCount; i++)
+				for (ui32 i = 0; i < pair->collision.manifold.pointCount; i++)
 				{
 
 					real coef = math::maximum(p - 0.0001f, 0.0f);

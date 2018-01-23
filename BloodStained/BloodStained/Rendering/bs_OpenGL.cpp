@@ -219,6 +219,9 @@ namespace bs
 		BS_glBufferData((GLenum)type, size, data, (GLenum)usage);
 	}
 
+#pragma warning (push)
+#pragma warning( disable :  4311)
+#pragma warning( disable :  4302)
 	ERROR_ID OpenGL::uniform(ui32 shaderID, const char * name, SHADER_ATTRIB_TYPE type, void * data, bool transpose)
 	{
 		int location = BS_glGetUniformLocation(shaderID, name);
@@ -275,6 +278,7 @@ namespace bs
 		}
 		return ERROR_ID::NONE;
 	}
+#pragma warning( pop )
 
 	ui32 OpenGL::getError()
 	{

@@ -234,6 +234,9 @@
     <ClCompile Include="Events\bs_EventManager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Physics\2D\bs_PhysicalObject2D.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Platform\Windows\bs_WindowsError.h">

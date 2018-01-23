@@ -147,9 +147,9 @@ namespace bs
 
 		real zw = z * w;
 
-		out[0][0] = 1.0 - 1.0 * y2 - 2.0 * z2;	out[1][0] = 2.0 * xy - 2.0 * zw;		out[2][0] = 2.0 * xz + 2.0 * yw;
-		out[0][1] = 2.0 * xy + 2.0 * zw;		out[1][1] = 1 - 2.0 * x2 - 2.0 * z2;	out[2][1] = 2.0 * yz - 2.0 * xw;
-		out[0][2] = 2.0 * xy + 2.0 * yw;		out[1][2] = 2.0 * yz + 2.0 * xw;		out[2][2] = 1.0 - 2.0 * x2 - 2.0 * y2;
+		out[0][0] = 1.0f - 1.0f * y2 - 2.0f * z2;	out[1][0] = 2.0f * xy - 2.0f * zw;		out[2][0] = 2.0f * xz + 2.0f * yw;
+		out[0][1] = 2.0f * xy + 2.0f * zw;		out[1][1] = 1.0f - 2.0f * x2 - 2.0f * z2;	out[2][1] = 2.0f * yz - 2.0f * xw;
+		out[0][2] = 2.0f * xy + 2.0f * yw;		out[1][2] = 2.0f * yz + 2.0f * xw;		out[2][2] = 1.0f - 2.0f * x2 - 2.0f * y2;
 	}
 
 	String	Quaternion::toString()

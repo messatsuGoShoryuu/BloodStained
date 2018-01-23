@@ -19,7 +19,7 @@ namespace bs
 		void	shutDown();
 		void	update(f32 dt);
 
-		void	onEntityCreated(Event e);
+		void	onCollisionBegin(Event e);
 
 	private:
 		ui32 m_id;

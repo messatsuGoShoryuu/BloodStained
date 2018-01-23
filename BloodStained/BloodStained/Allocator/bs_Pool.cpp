@@ -83,7 +83,7 @@ namespace bs
 
 		//set next block values
 		memset(m_buffer, 0, m_poolByteCount);
-		for (ui32 i = 0; i < m_poolByteCount; i += m_itemSize)
+		for (ptrsize i = 0; i < m_poolByteCount; i += m_itemSize)
 		{
 			_putPtrSizeToBuffer(i+m_itemSize,i);
 		}
@@ -193,7 +193,7 @@ namespace bs
 		if (m_itemSize == 2)
 		{
 			if (m_itemSize == 1) m_buffer[index] = static_cast<byte>(value);
-			else math::storeUi16ToByteArray(m_buffer + index, value);
+			else math::storeUi16ToByteArray(m_buffer + index, (ui16)value);
 		}
 		else 
 		{

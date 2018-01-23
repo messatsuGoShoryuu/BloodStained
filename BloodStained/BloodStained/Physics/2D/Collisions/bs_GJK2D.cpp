@@ -3,7 +3,7 @@
 #include  <Rendering/bs_RenderManager.h>
 #include <Physics/2D/bs_Physics2D.h>
 
-#define BS_PENETRATION_CLIP_TOLERANCE 0.00005
+#define BS_PENETRATION_CLIP_TOLERANCE 0.00005f
 
 namespace bs
 {
@@ -629,7 +629,7 @@ namespace bs
 
 			debugStruct = {};
 			//loop
-			for(int i = 0; i<maxIterations;i++)
+			for(ui32 i = 0; i<maxIterations;i++)
 			{
 				simplexPoint = getSupportPoint(a, b, direction);
 

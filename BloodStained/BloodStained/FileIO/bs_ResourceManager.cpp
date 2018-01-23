@@ -292,5 +292,5 @@ namespace bs
 
 }
 
-#undef ADD_FILE_TO_MAP(type, allocator) 
-#undef LOAD_RESOURCE(resourceType, returnFail)
+#undef ADD_FILE_TO_MAP
+#undef LOAD_RESOURCE

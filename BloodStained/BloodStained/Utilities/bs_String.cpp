@@ -181,7 +181,7 @@ namespace bs
 		char c = m_buffer[0];
 		bool isInBreak = false;
 
-		int lastIndex = 0;
+		ui32 lastIndex = 0;
 
 		for (ui32 i = 0; i < count; i++)
 		{
@@ -218,7 +218,7 @@ namespace bs
 		char c = m_buffer[0];
 		bool isInBreak = false;
 
-		int lastIndex = 0;
+		ui32 lastIndex = 0;
 
 		for (ui32 i = 0; i < count; i++)
 		{

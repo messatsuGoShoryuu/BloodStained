@@ -17,7 +17,7 @@ namespace bs
 	enum class ERROR_ID;
 	class Camera;
 	class Vector2;
-	class ColorRGBAf;
+	struct ColorRGBAf;
 
 	class RenderManager
 	{

@@ -39,10 +39,6 @@ namespace bs
 	{
 		m_cameras.add(new Camera2D());
 		PhysicsManager2D::setGravity(-Vector2::up * 9.8f);
-
-		EventManager::addListener(this, &Level::onEntityCreated, EVENT_ID::ENTITY_CREATED);
-
-		EventManager::dispatch(EVENT_ID::LEVEL_LOADED, &m_id);
 	}
 
 	void Level::shutDown()
@@ -57,6 +53,8 @@ namespace bs
 		static  PhysicalObject2D* ground = PhysicsManager2D::addPhysicalObject();
 		static  PhysicalObject2D* wall1 = PhysicsManager2D::addPhysicalObject();
 		static  PhysicalObject2D* wall2 = PhysicsManager2D::addPhysicalObject();
+
+		if(!player->canDispatch()) player->addListener(this, &Level::onCollisionBegin);
 
 
 		Camera2D* cam = dynamic_cast<Camera2D*>(m_cameras[0]);
@@ -277,7 +275,7 @@ namespace bs
 		
 
 
-		for (int i = 0; i < attShape.vertexCount(); i++)
+		for (ui32 i = 0; i < attShape.vertexCount(); i++)
 		{
 			i32 id = i + 1;
 			id %= attShape.vertexCount();
@@ -314,9 +312,11 @@ namespace bs
 		RenderManager::render(m_cameras);
 	}
 
-	void Level::onEntityCreated(Event e)
+	void Level::onCollisionBegin(Event e)
 	{
-		RenderManager::drawDebugCircle(Vector2::zero, 1.0f, 8, ColorRGBAf::blue);
+		Manifold2D* m = (Manifold2D*)e.data;
+		
+		RenderManager::drawDebugCircle(m->contact[0].point, 1.0f, 8, ColorRGBAf::blue);
 	}
 }
 

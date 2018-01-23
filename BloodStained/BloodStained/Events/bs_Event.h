@@ -16,6 +16,8 @@ namespace bs
 		LEVEL_UNLOADED,
 		ENTITY_CREATED,
 		ENTITY_DESTROYED,
+		COLLISION_BEGIN,
+		COLLISION_END,
 	};
 
 	struct Event
@@ -35,6 +37,7 @@ namespace bs
 	public:
 		void addListener(BaseMemberFunction<void, Event>* function);
 		void dispatch(Event event);
+		inline const bool canDispatch()const { return m_members.count() > 0; }
 		BaseMemberFunction<void, Event>* removeListener(BaseMemberFunction<void, Event>* function);
 
 	private:
